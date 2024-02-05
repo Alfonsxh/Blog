@@ -1,9 +1,9 @@
 ---
-title: "1_exporter简单入门"
+title: "Exporter简单入门"
 date: 2024-02-04T18:16:45+08:00
 lastmod: 2024-02-04T18:16:45+08:00
 draft: false
-keywords: ["Prometheus", "Exporter", "node_exporter"]
+keywords: ["Prometheus", "Exporter"]
 description: ""
 tags: ["Prometheus", "Exporter"]                      # 归档 
 categories: ["Prometheus", "Exporter"]                # 分类
