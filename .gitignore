@@ -100,3 +100,5 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 /.hugo_build.lock
 /resources/
+
+.idea
