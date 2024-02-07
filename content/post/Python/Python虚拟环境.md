@@ -2,7 +2,7 @@
 title: "Python虚拟环境"
 date: 2024-02-07T14:38:49+08:00
 lastmod: 2024-02-07T14:38:49+08:00
-draft: true
+draft: false
 keywords: ["Python", "虚拟环境", "Linux"]
 description: "Python虚拟环境现状，解决Linux多操作系统版本虚拟环境分发的问题"
 tags: ["Python", "虚拟环境", "Linux"]                      # 归档 
