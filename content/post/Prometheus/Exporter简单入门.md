@@ -252,6 +252,12 @@ func main() {
 }
 ```
 
+## 总结
+
+- Prometheus 的 Exporter 就是一个 Web 服务端，Prometheus 通过定时访问对应的 API 进行指标项的采集
+- Exporter 的编写按照上述的 "**三板斧**" 进行
+- 最终采集指标的值，通过管道传输到调用层
+
 ## 参考
 
 - [client_golang](https://pkg.go.dev/github.com/prometheus/client_golang)
