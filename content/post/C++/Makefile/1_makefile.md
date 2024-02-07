@@ -2,7 +2,7 @@
 title: "Makefile"
 date: 2023-11-01T16:03:57+08:00
 lastmod: 2023-11-01T16:03:57+08:00
-draft: false
+draft: true
 keywords: ["Makefile", "C++", "Linux"]
 description: ""
 tags: ["Makefile", "C++", "Linux"]                  # 归档 
