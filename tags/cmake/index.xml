@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CMake on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/tags/cmake/</link>
+    <link>https://alfonsxh.github.io/Blog/tags/cmake/</link>
     <description>Recent content in CMake on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 10 Nov 2018 23:27:53 +0000</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/tags/cmake/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/Blog/tags/cmake/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CMake使用(一)-格式规范</title>
-      <link>https://alfonsxh.github.io/post/c&#43;&#43;/cmake/1_cmake%E4%BD%BF%E7%94%A8-%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/</link>
+      <link>https://alfonsxh.github.io/Blog/post/c&#43;&#43;/cmake/1_cmake%E4%BD%BF%E7%94%A8-%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/</link>
       <pubDate>Sat, 10 Nov 2018 23:27:53 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/c&#43;&#43;/cmake/1_cmake%E4%BD%BF%E7%94%A8-%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/c&#43;&#43;/cmake/1_cmake%E4%BD%BF%E7%94%A8-%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/</guid>
       <description>&lt;p&gt;一个cmake文件至少包含以下内容&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;cmake_minimum_required&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;VERSION&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;所需的cmake最低版本&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;project&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Tutorial&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;工程名&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;add_executable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Tutorial&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;tutorial&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cxx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;可执行程序的名称&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;以及项目可执行程序的编译文件&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>CMake使用(二)-预编译选项添加</title>
-      <link>https://alfonsxh.github.io/post/c&#43;&#43;/cmake/2_cmake%E4%BD%BF%E7%94%A8-%E9%A2%84%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9%E6%B7%BB%E5%8A%A0/</link>
+      <link>https://alfonsxh.github.io/Blog/post/c&#43;&#43;/cmake/2_cmake%E4%BD%BF%E7%94%A8-%E9%A2%84%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9%E6%B7%BB%E5%8A%A0/</link>
       <pubDate>Sat, 10 Nov 2018 23:27:53 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/c&#43;&#43;/cmake/2_cmake%E4%BD%BF%E7%94%A8-%E9%A2%84%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9%E6%B7%BB%E5%8A%A0/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/c&#43;&#43;/cmake/2_cmake%E4%BD%BF%E7%94%A8-%E9%A2%84%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9%E6%B7%BB%E5%8A%A0/</guid>
       <description>&lt;p&gt;分两种情况，一种是添加宏定义选项，一种是添加编译选项。&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,65 +2,65 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python标准库 on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/tags/python%E6%A0%87%E5%87%86%E5%BA%93/</link>
+    <link>https://alfonsxh.github.io/Blog/tags/python%E6%A0%87%E5%87%86%E5%BA%93/</link>
     <description>Recent content in Python标准库 on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <atom:link href="https://alfonsxh.github.io/tags/python%E6%A0%87%E5%87%86%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/Blog/tags/python%E6%A0%87%E5%87%86%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>argparse 处理命令行参数</title>
-      <link>https://alfonsxh.github.io/post/python/stl/11_generic_operating/11.2-argparse/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/11_generic_operating/11.2-argparse/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/stl/11_generic_operating/11.2-argparse/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/11_generic_operating/11.2-argparse/</guid>
       <description>&lt;p&gt;&lt;strong&gt;argparse模块&lt;/strong&gt; 主要用来处理传入的命令行参数，之前版本有使用 &lt;strong&gt;optparse模块&lt;/strong&gt; 实现类似的效果，不过 &lt;strong&gt;optparse模块&lt;/strong&gt; 已停止更新，并不推荐使用了。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;argparse模块&lt;/strong&gt; 使用：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;ArgumentParser&lt;/strong&gt; - 创建parser实例。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;add_argument&lt;/strong&gt; - 添加命令行参数。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;parse_args&lt;/strong&gt; - 处理参数。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;其中关键的部分是 &lt;strong&gt;add_argument&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>configparser 配置解析</title>
-      <link>https://alfonsxh.github.io/post/python/stl/09_file_formats/9.1-configparser/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/09_file_formats/9.1-configparser/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/stl/09_file_formats/9.1-configparser/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/09_file_formats/9.1-configparser/</guid>
       <description>&lt;p&gt;&lt;strong&gt;configparser&lt;/strong&gt; 模块是标准库中用来解析类似 &lt;strong&gt;.ini&lt;/strong&gt; 文件的模块。&lt;/p&gt;</description>
     </item>
     <item>
       <title>difflib 字符串差异比较</title>
-      <link>https://alfonsxh.github.io/post/python/stl/01_text_processing/1.3-difflib/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.3-difflib/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/stl/01_text_processing/1.3-difflib/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.3-difflib/</guid>
       <description>&lt;p&gt;&lt;strong&gt;difflib&lt;/strong&gt; 模块用于比较两段字符串的差异，有点类似于github的更新对比功能。&lt;/p&gt;</description>
     </item>
     <item>
       <title>platform 平台信息模块</title>
-      <link>https://alfonsxh.github.io/post/python/stl/11_generic_operating/11.1-platform/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/11_generic_operating/11.1-platform/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/stl/11_generic_operating/11.1-platform/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/11_generic_operating/11.1-platform/</guid>
       <description>&lt;p&gt;&lt;strong&gt;platform&lt;/strong&gt; 模块主要功能是，提供平台的一些信息，包括操作系统信息，python版本信息等。不同的平台获取的信息不同。&lt;/p&gt;</description>
     </item>
     <item>
       <title>re 正则表达式</title>
-      <link>https://alfonsxh.github.io/post/python/stl/01_text_processing/1.2-re/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.2-re/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/stl/01_text_processing/1.2-re/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.2-re/</guid>
       <description>&lt;p&gt;正则表达式在各种语言上都有实现，使用相同的语法可以得到相同的效果。&lt;/p&gt;</description>
     </item>
     <item>
       <title>string 字符串常量和模板</title>
-      <link>https://alfonsxh.github.io/post/python/stl/01_text_processing/1.1-string/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.1-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/stl/01_text_processing/1.1-string/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.1-string/</guid>
       <description>&lt;p&gt;&lt;strong&gt;string&lt;/strong&gt; 模块大部分功能已被 &lt;strong&gt;str对象&lt;/strong&gt; 实现，但一些字符常量人保留了下来&lt;/p&gt;</description>
     </item>
     <item>
       <title>struct 二进制编码与解码</title>
-      <link>https://alfonsxh.github.io/post/python/stl/02_binary_data/2.1-struct/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/02_binary_data/2.1-struct/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/stl/02_binary_data/2.1-struct/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/02_binary_data/2.1-struct/</guid>
       <description>&lt;p&gt;&lt;strong&gt;struct&lt;/strong&gt; 模块用于二进制数据，常用于处理网络数据。&lt;/p&gt;</description>
     </item>
     <item>
       <title>textwrap 字符串段格式化</title>
-      <link>https://alfonsxh.github.io/post/python/stl/01_text_processing/1.4-textwrap/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.4-textwrap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/stl/01_text_processing/1.4-textwrap/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.4-textwrap/</guid>
       <description>&lt;p&gt;&lt;strong&gt;textwrap&lt;/strong&gt; 模块是一个使字符串按要求排列的模块。主要方式包括以下几种：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;wrap&lt;/strong&gt; - 返回格式化后的字符串列表，每一行为列表的一个元素。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;fill&lt;/strong&gt; - 按指定宽度填充字符串的每一行。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;shorten&lt;/strong&gt; - 略缩显示字符串。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;dedent&lt;/strong&gt; - 反缩进去除每行行首的空白。这方便显示三引号中的内容而不修改其源代码中的缩进。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;indent&lt;/strong&gt; - 添加缩进。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>

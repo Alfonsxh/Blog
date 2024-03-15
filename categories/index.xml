@@ -2,255 +2,255 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/categories/</link>
+    <link>https://alfonsxh.github.io/Blog/categories/</link>
     <description>Recent content in Categories on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 07 Feb 2024 14:38:49 +0800</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/Blog/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux</title>
-      <link>https://alfonsxh.github.io/categories/linux/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/linux/</link>
       <pubDate>Wed, 07 Feb 2024 14:38:49 +0800</pubDate>
-      <guid>https://alfonsxh.github.io/categories/linux/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>https://alfonsxh.github.io/categories/python/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/python/</link>
       <pubDate>Wed, 07 Feb 2024 14:38:49 +0800</pubDate>
-      <guid>https://alfonsxh.github.io/categories/python/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/python/</guid>
       <description></description>
     </item>
     <item>
       <title>虚拟环境</title>
-      <link>https://alfonsxh.github.io/categories/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Wed, 07 Feb 2024 14:38:49 +0800</pubDate>
-      <guid>https://alfonsxh.github.io/categories/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
       <description></description>
     </item>
     <item>
       <title>Exporter</title>
-      <link>https://alfonsxh.github.io/categories/exporter/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/exporter/</link>
       <pubDate>Mon, 05 Feb 2024 17:32:58 +0800</pubDate>
-      <guid>https://alfonsxh.github.io/categories/exporter/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/exporter/</guid>
       <description></description>
     </item>
     <item>
       <title>Node_exporter</title>
-      <link>https://alfonsxh.github.io/categories/node_exporter/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/node_exporter/</link>
       <pubDate>Mon, 05 Feb 2024 17:32:58 +0800</pubDate>
-      <guid>https://alfonsxh.github.io/categories/node_exporter/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/node_exporter/</guid>
       <description></description>
     </item>
     <item>
       <title>Prometheus</title>
-      <link>https://alfonsxh.github.io/categories/prometheus/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/prometheus/</link>
       <pubDate>Mon, 05 Feb 2024 17:32:58 +0800</pubDate>
-      <guid>https://alfonsxh.github.io/categories/prometheus/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/prometheus/</guid>
       <description></description>
     </item>
     <item>
       <title>Leetcode</title>
-      <link>https://alfonsxh.github.io/categories/leetcode/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/leetcode/</link>
       <pubDate>Sun, 27 Feb 2022 21:57:29 +0800</pubDate>
-      <guid>https://alfonsxh.github.io/categories/leetcode/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/leetcode/</guid>
       <description></description>
     </item>
     <item>
       <title>Pyconcrete</title>
-      <link>https://alfonsxh.github.io/categories/pyconcrete/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/pyconcrete/</link>
       <pubDate>Wed, 03 Jun 2020 22:53:48 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/pyconcrete/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/pyconcrete/</guid>
       <description></description>
     </item>
     <item>
       <title>Linux服务器</title>
-      <link>https://alfonsxh.github.io/categories/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Tue, 03 Sep 2019 08:23:26 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description></description>
     </item>
     <item>
       <title>Books</title>
-      <link>https://alfonsxh.github.io/categories/books/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/books/</link>
       <pubDate>Sun, 11 Aug 2019 14:35:42 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/books/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/books/</guid>
       <description></description>
     </item>
     <item>
       <title>深入理解Python特性</title>
-      <link>https://alfonsxh.github.io/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/</link>
       <pubDate>Sun, 11 Aug 2019 14:35:42 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/</guid>
       <description></description>
     </item>
     <item>
       <title>Linux系统编程</title>
-      <link>https://alfonsxh.github.io/categories/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Sat, 20 Jul 2019 12:05:56 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</guid>
       <description></description>
     </item>
     <item>
       <title>极客时间</title>
-      <link>https://alfonsxh.github.io/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/</link>
       <pubDate>Sun, 16 Jun 2019 17:25:21 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/</guid>
       <description></description>
     </item>
     <item>
       <title>许式伟的架构课</title>
-      <link>https://alfonsxh.github.io/categories/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/</link>
       <pubDate>Sun, 16 Jun 2019 17:25:21 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/</guid>
       <description></description>
     </item>
     <item>
       <title>Linux运维</title>
-      <link>https://alfonsxh.github.io/categories/linux%E8%BF%90%E7%BB%B4/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/linux%E8%BF%90%E7%BB%B4/</link>
       <pubDate>Mon, 10 Jun 2019 22:15:49 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/linux%E8%BF%90%E7%BB%B4/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/linux%E8%BF%90%E7%BB%B4/</guid>
       <description></description>
     </item>
     <item>
       <title>Docker</title>
-      <link>https://alfonsxh.github.io/categories/docker/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/docker/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/docker/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/docker/</guid>
       <description></description>
     </item>
     <item>
       <title>陈皓专栏笔记</title>
-      <link>https://alfonsxh.github.io/categories/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Wed, 17 Apr 2019 22:46:17 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/</guid>
       <description></description>
     </item>
     <item>
       <title>Linux命令</title>
-      <link>https://alfonsxh.github.io/categories/linux%E5%91%BD%E4%BB%A4/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/linux%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/linux%E5%91%BD%E4%BB%A4/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/linux%E5%91%BD%E4%BB%A4/</guid>
       <description></description>
     </item>
     <item>
       <title>流畅的Python</title>
-      <link>https://alfonsxh.github.io/categories/%E6%B5%81%E7%95%85%E7%9A%84python/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/%E6%B5%81%E7%95%85%E7%9A%84python/</link>
       <pubDate>Sat, 09 Mar 2019 22:05:43 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/%E6%B5%81%E7%95%85%E7%9A%84python/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/%E6%B5%81%E7%95%85%E7%9A%84python/</guid>
       <description></description>
     </item>
     <item>
       <title>陶冶情操</title>
-      <link>https://alfonsxh.github.io/categories/%E9%99%B6%E5%86%B6%E6%83%85%E6%93%8D/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/%E9%99%B6%E5%86%B6%E6%83%85%E6%93%8D/</link>
       <pubDate>Wed, 20 Feb 2019 23:23:59 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/%E9%99%B6%E5%86%B6%E6%83%85%E6%93%8D/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/%E9%99%B6%E5%86%B6%E6%83%85%E6%93%8D/</guid>
       <description></description>
     </item>
     <item>
       <title>爬虫</title>
-      <link>https://alfonsxh.github.io/categories/%E7%88%AC%E8%99%AB/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/%E7%88%AC%E8%99%AB/</link>
       <pubDate>Sun, 17 Feb 2019 22:45:16 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/%E7%88%AC%E8%99%AB/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/%E7%88%AC%E8%99%AB/</guid>
       <description></description>
     </item>
     <item>
       <title>SqlAlchemy</title>
-      <link>https://alfonsxh.github.io/categories/sqlalchemy/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/sqlalchemy/</link>
       <pubDate>Mon, 28 Jan 2019 14:17:43 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/sqlalchemy/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/sqlalchemy/</guid>
       <description></description>
     </item>
     <item>
       <title>Scrapy</title>
-      <link>https://alfonsxh.github.io/categories/scrapy/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/scrapy/</link>
       <pubDate>Mon, 14 Jan 2019 16:25:42 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/scrapy/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/scrapy/</guid>
       <description></description>
     </item>
     <item>
       <title>Redis</title>
-      <link>https://alfonsxh.github.io/categories/redis/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/redis/</link>
       <pubDate>Tue, 18 Dec 2018 21:21:48 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/redis/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/redis/</guid>
       <description></description>
     </item>
     <item>
       <title>Algorithms</title>
-      <link>https://alfonsxh.github.io/categories/algorithms/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/algorithms/</link>
       <pubDate>Sun, 09 Dec 2018 21:43:03 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/algorithms/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/algorithms/</guid>
       <description></description>
     </item>
     <item>
       <title>Frida</title>
-      <link>https://alfonsxh.github.io/categories/frida/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/frida/</link>
       <pubDate>Thu, 29 Nov 2018 19:29:58 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/frida/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/frida/</guid>
       <description></description>
     </item>
     <item>
       <title>图解设计模式</title>
-      <link>https://alfonsxh.github.io/categories/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Tue, 27 Nov 2018 21:07:00 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description></description>
     </item>
     <item>
       <title>Django笔记</title>
-      <link>https://alfonsxh.github.io/categories/django%E7%AC%94%E8%AE%B0/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/django%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Tue, 27 Nov 2018 16:24:15 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/django%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/django%E7%AC%94%E8%AE%B0/</guid>
       <description></description>
     </item>
     <item>
       <title>C&#43;&#43;</title>
-      <link>https://alfonsxh.github.io/categories/c&#43;&#43;/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/c&#43;&#43;/</link>
       <pubDate>Sat, 10 Nov 2018 23:27:53 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/c&#43;&#43;/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/c&#43;&#43;/</guid>
       <description></description>
     </item>
     <item>
       <title>CMake</title>
-      <link>https://alfonsxh.github.io/categories/cmake/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/cmake/</link>
       <pubDate>Sat, 10 Nov 2018 23:27:53 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/cmake/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/cmake/</guid>
       <description></description>
     </item>
     <item>
       <title>MySQL必知必会</title>
-      <link>https://alfonsxh.github.io/categories/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/</link>
       <pubDate>Mon, 05 Nov 2018 22:03:45 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/</guid>
       <description></description>
     </item>
     <item>
       <title>Hashcat</title>
-      <link>https://alfonsxh.github.io/categories/hashcat/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/hashcat/</link>
       <pubDate>Fri, 28 Sep 2018 21:51:01 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/hashcat/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/hashcat/</guid>
       <description></description>
     </item>
     <item>
       <title>图解密码技术</title>
-      <link>https://alfonsxh.github.io/categories/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/</guid>
       <description></description>
     </item>
     <item>
       <title>程序员的自我修养</title>
-      <link>https://alfonsxh.github.io/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/</link>
       <pubDate>Wed, 18 Jul 2018 23:11:52 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/</guid>
       <description></description>
     </item>
     <item>
       <title>Python标准库</title>
-      <link>https://alfonsxh.github.io/categories/python%E6%A0%87%E5%87%86%E5%BA%93/</link>
+      <link>https://alfonsxh.github.io/Blog/categories/python%E6%A0%87%E5%87%86%E5%BA%93/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/categories/python%E6%A0%87%E5%87%86%E5%BA%93/</guid>
+      <guid>https://alfonsxh.github.io/Blog/categories/python%E6%A0%87%E5%87%86%E5%BA%93/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Redis on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/categories/redis/</link>
+    <link>https://alfonsxh.github.io/Blog/categories/redis/</link>
     <description>Recent content in Redis on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 13 Jan 2019 11:29:53 +0000</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/categories/redis/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/Blog/categories/redis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Redis使用</title>
-      <link>https://alfonsxh.github.io/post/redis%E4%BD%BF%E7%94%A8/</link>
+      <link>https://alfonsxh.github.io/Blog/post/redis%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Tue, 18 Dec 2018 21:21:48 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/redis%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/redis%E4%BD%BF%E7%94%A8/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Redis&lt;/strong&gt; 可以把它当作一个 &lt;strong&gt;存在于内存中、非关系型(nosql)的数据库&lt;/strong&gt;。其实现有点儿类似于 &lt;strong&gt;磁盘缓存策略的实现方式&lt;/strong&gt;，不过似乎要复杂一点。&lt;/p&gt;</description>
     </item>
   </channel>

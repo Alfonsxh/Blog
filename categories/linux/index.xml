@@ -2,136 +2,136 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/categories/linux/</link>
+    <link>https://alfonsxh.github.io/Blog/categories/linux/</link>
     <description>Recent content in Linux on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 07 Feb 2024 14:38:49 +0800</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/Blog/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python虚拟环境</title>
-      <link>https://alfonsxh.github.io/post/python/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Wed, 07 Feb 2024 14:38:49 +0800</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
       <description>&lt;p&gt;虚拟环境为运行Python项目的理想环境，可以有效的与系统Python环境进行隔离，每个项目都可以有一个干净的环境运行。&lt;/p&gt;&#xA;&lt;p&gt;但是对于国内一些企业，客户现场环境复杂，甚至无法连接外网。对于这种场景，任何虚拟环境创建的手段都无法实现。&lt;/p&gt;&#xA;&lt;p&gt;虽然 Pyinstaller 可以实现，但跨多个 Linux 操作系统，想要实现 &amp;ldquo;&lt;strong&gt;一包通用&lt;/strong&gt;&amp;quot;，仍没有办法实现。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux服务器负载均衡</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
       <pubDate>Tue, 03 Sep 2019 08:23:26 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid>
       <description>&lt;p&gt;这篇主要是了解一下早年前辈们 &lt;strong&gt;如何设计服务器，应对高并发网络请求&lt;/strong&gt;，实际上可能不是这样操作，但是 &lt;strong&gt;这种解决问题的思路十分重要&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux系统编程:进程_虚拟内存</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/3_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E8%BF%9B%E7%A8%8B_%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/3_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E8%BF%9B%E7%A8%8B_%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</link>
       <pubDate>Sat, 20 Jul 2019 12:05:56 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/3_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E8%BF%9B%E7%A8%8B_%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/3_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E8%BF%9B%E7%A8%8B_%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</guid>
       <description>&lt;p&gt;引用一下wiki上的话：&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;虚拟内存&lt;/strong&gt; 是计算机内存管理的一种技术。它使得应用程序认为它拥有连续可用的内存（一个连续完整的地址空间），而实际上，它通常是被分隔成多个物理内存碎片，还有部分暂时存储在外部磁盘存储器上，在需要时进行数据交换。与没有使用虚拟内存技术的系统相比，使用这种技术的系统使得大型程序的编写变得更容易，对真正的物理内存（例如RAM）的使用也更有效率。&lt;/p&gt;&#xA;&lt;p&gt;注意：&lt;strong&gt;虚拟内存不只是“用磁盘空间来扩展物理内存”的意思&lt;/strong&gt; ——这只是扩充内存级别以使其包含硬盘驱动器而已。把内存扩展到磁盘只是使用虚拟内存技术的一个结果，它的作用也可以通过覆盖或者把处于不活动状态的程序以及它们的数据全部交换到磁盘上等方式来实现。对虚拟内存的定义是基于对地址空间的重定义的，即 &lt;strong&gt;把地址空间定义为“连续的虚拟内存地址”，以借此“欺骗”程序，使它们以为自己正在使用一大块的“连续”地址&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
     <item>
       <title>Linux系统编程:进程_基础部分</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/3_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E8%BF%9B%E7%A8%8B_%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/3_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E8%BF%9B%E7%A8%8B_%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</link>
       <pubDate>Thu, 04 Jul 2019 23:06:17 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/3_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E8%BF%9B%E7%A8%8B_%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/3_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E8%BF%9B%E7%A8%8B_%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</guid>
       <description>&lt;h2 id=&#34;进程和程序&#34;&gt;进程和程序&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;进程(process)&lt;/strong&gt; 是一个可执行 &lt;strong&gt;程序(program)&lt;/strong&gt; 的实例。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux系统编程:网络_基础部分</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/4_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E7%BD%91%E7%BB%9C_%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/4_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E7%BD%91%E7%BB%9C_%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</link>
       <pubDate>Sun, 16 Jun 2019 17:25:21 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/4_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E7%BD%91%E7%BB%9C_%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/4_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E7%BD%91%E7%BB%9C_%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</guid>
       <description>&lt;p&gt;网络是多台计算机之间的互联互通形成的信息交互通道。现在的网络世界看似复杂，却遵从着一些基本设计原则。&lt;/p&gt;</description>
     </item>
     <item>
       <title>PCIE</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E8%BF%90%E7%BB%B4/pcie/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E8%BF%90%E7%BB%B4/pcie/</link>
       <pubDate>Mon, 10 Jun 2019 22:15:49 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E8%BF%90%E7%BB%B4/pcie/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E8%BF%90%E7%BB%B4/pcie/</guid>
       <description>&lt;p&gt;&lt;strong&gt;PCIE(Peripheral Component Interconnect Express，快捷外设互联标准)&lt;/strong&gt; 仅应用于内部互连，相当于CPU与各硬件设备数据传输的高速公路。&lt;/p&gt;</description>
     </item>
     <item>
       <title>RAID</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E8%BF%90%E7%BB%B4/raid/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E8%BF%90%E7%BB%B4/raid/</link>
       <pubDate>Mon, 10 Jun 2019 22:15:49 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E8%BF%90%E7%BB%B4/raid/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E8%BF%90%E7%BB%B4/raid/</guid>
       <description>&lt;p&gt;&lt;strong&gt;独立硬盘冗余阵列(RAID, Redundant Array of Independent Disks)&lt;/strong&gt;，利用虚拟化技术将多个磁盘组合起来，成为一个多个硬盘的阵列，从而提升效率或者资料冗余。&lt;/p&gt;&#xA;&lt;p&gt;根据RAID的层级不同，资料会以多种形式放置在多个磁盘上。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux系统编程:文件_文件的挂载</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_5_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E6%8C%82%E8%BD%BD/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_5_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E6%8C%82%E8%BD%BD/</link>
       <pubDate>Sun, 26 May 2019 16:53:28 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_5_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E6%8C%82%E8%BD%BD/</guid>
-      <description>&lt;p&gt;在Linux中，文件的目录层次是一个树状的形式，根路径为 &lt;code&gt;/&lt;/code&gt;。如果需要 &lt;strong&gt;使用磁盘上的新的分区&lt;/strong&gt;，就需要将分区通过 &lt;strong&gt;挂载的方式挂上目录树&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://alfonsxh.github.io/images/Linux/Chapter14/14_linux_dir_tree.png&#34; alt=&#34;14_linux_dir_tree&#34;&gt;&lt;/p&gt;</description>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_5_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E6%8C%82%E8%BD%BD/</guid>
+      <description>&lt;p&gt;在Linux中，文件的目录层次是一个树状的形式，根路径为 &lt;code&gt;/&lt;/code&gt;。如果需要 &lt;strong&gt;使用磁盘上的新的分区&lt;/strong&gt;，就需要将分区通过 &lt;strong&gt;挂载的方式挂上目录树&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://alfonsxh.github.io/Blog/images/Linux/Chapter14/14_linux_dir_tree.png&#34; alt=&#34;14_linux_dir_tree&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux系统编程:文件_IO缓存</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_4_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_io%E7%BC%93%E5%AD%98/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_4_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_io%E7%BC%93%E5%AD%98/</link>
       <pubDate>Tue, 23 Apr 2019 23:19:09 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_4_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_io%E7%BC%93%E5%AD%98/</guid>
-      <description>&lt;h2 id=&#34;io缓存概览&#34;&gt;I/O缓存概览&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://alfonsxh.github.io/images/Linux/Chapter13/13_io_cache.png&#34; alt=&#34;I/O_cache&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Linux系统中的 &lt;strong&gt;文件I/O缓存&lt;/strong&gt; 操作大致如上图所示：&lt;/p&gt;</description>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_4_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_io%E7%BC%93%E5%AD%98/</guid>
+      <description>&lt;h2 id=&#34;io缓存概览&#34;&gt;I/O缓存概览&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://alfonsxh.github.io/Blog/images/Linux/Chapter13/13_io_cache.png&#34; alt=&#34;I/O_cache&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Linux系统中的 &lt;strong&gt;文件I/O缓存&lt;/strong&gt; 操作大致如上图所示：&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux系统编程:文件_深入理解文件描述符</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_3_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_3_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/</link>
       <pubDate>Tue, 23 Apr 2019 23:19:09 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_3_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_3_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/</guid>
       <description>&lt;p&gt;每个进程中都维护着一张文件描述符表，里面存放的是 &lt;strong&gt;文件描述符&lt;/strong&gt; 以及 &lt;strong&gt;指向内核维护的一张文件表中的一项的指针&lt;/strong&gt;。（文件表中的一项，在 &lt;strong&gt;《Linux/Unix系统编程手册》&lt;/strong&gt; 中称为 &lt;strong&gt;文件句柄&lt;/strong&gt;，在 &lt;strong&gt;《Unix环境高级编程》&lt;/strong&gt; 中称为 &lt;strong&gt;文件表项&lt;/strong&gt;）&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux系统编程:文件_高级文件IO调用</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_2_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E9%AB%98%E7%BA%A7%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_2_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E9%AB%98%E7%BA%A7%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/</link>
       <pubDate>Sun, 31 Mar 2019 22:52:56 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_2_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E9%AB%98%E7%BA%A7%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_2_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E9%AB%98%E7%BA%A7%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/</guid>
       <description>&lt;h2 id=&#34;原子操作&#34;&gt;原子操作&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;原子操作(atomicity)&lt;/strong&gt; —— 将某一系统调用所要完成的各个动作作为不可中断的操作，一次性加以执行。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux系统编程:文件_基础文件IO调用</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E5%9F%BA%E7%A1%80%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E5%9F%BA%E7%A1%80%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/</link>
       <pubDate>Sat, 30 Mar 2019 23:40:30 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E5%9F%BA%E7%A1%80%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E5%9F%BA%E7%A1%80%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/</guid>
       <description>&lt;p&gt;本篇文章主要记录了《Linux/Unix系统编程手册》第4章的学习笔记。&lt;/p&gt;&#xA;&lt;p&gt;在Linux系统中，一切都是文件！我们可以用操作文件的方式，操作Linux上的一切。文件I/O对于Linux系统来说，非常重要！&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux系统编程:文件_文件系统</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Sat, 30 Mar 2019 23:40:30 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid>
       <description>&lt;p&gt;本篇文章主要记录了《Linux/Unix系统编程手册》第14章的学习笔记。&lt;/p&gt;</description>
     </item>
     <item>
       <title>awk</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/awk/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/awk/</link>
       <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/awk/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/awk/</guid>
       <description>&lt;p&gt;&lt;strong&gt;awk命令&lt;/strong&gt; 输入的数据为 &lt;strong&gt;行数据&lt;/strong&gt;，经过一些判别处理后，按对应的格式输出。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux命令find</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/find/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/find/</link>
       <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/find/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/find/</guid>
       <description>&lt;p&gt;通过 &lt;strong&gt;find命令&lt;/strong&gt;，可以很方便的查找符合目标类型的文件，例如多长时间内修改过的文件，大小范围内的文件等，配合一些其他的操作，例如删除操作。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;find命令&lt;/strong&gt; 基本语法： &lt;code&gt;find [path] [option] [expression]&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux系统编程:概念</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%A6%82%E5%BF%B5/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%A6%82%E5%BF%B5/</link>
       <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%A6%82%E5%BF%B5/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%A6%82%E5%BF%B5/</guid>
       <description>&lt;p&gt;本篇文章主要记录了《Linux/Unix系统编程手册》第1-3章的学习笔记。&lt;/p&gt;</description>
     </item>
     <item>
       <title>sed</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/sed/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/sed/</link>
       <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/sed/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/sed/</guid>
       <description>&lt;p&gt;&lt;strong&gt;sed&lt;/strong&gt; 是一种流编辑器，用于处理文本数据。文本数据是以 &lt;strong&gt;行为单位&lt;/strong&gt; 进行处理。可以是文件流，也可以是 &lt;strong&gt;STDIN&lt;/strong&gt; 管道传入的数据。&lt;/p&gt;&#xA;&lt;p&gt;命令格式为： &lt;code&gt;sed [参数] [动作]&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>去除awk截取参数中的换行符</title>
-      <link>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/%E5%8E%BB%E9%99%A4awk%E6%88%AA%E5%8F%96%E5%8F%82%E6%95%B0%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6/</link>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/%E5%8E%BB%E9%99%A4awk%E6%88%AA%E5%8F%96%E5%8F%82%E6%95%B0%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6/</link>
       <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/%E5%8E%BB%E9%99%A4awk%E6%88%AA%E5%8F%96%E5%8F%82%E6%95%B0%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/%E5%8E%BB%E9%99%A4awk%E6%88%AA%E5%8F%96%E5%8F%82%E6%95%B0%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6/</guid>
       <description>&lt;p&gt;事情是这样的：&lt;/p&gt;&#xA;&lt;p&gt;有一个配置文件，里面有数据库的账号密码，需要读出来，然后对数据库进行初始化。&lt;/p&gt;&#xA;&lt;p&gt;可是搞了半天，用户名和密码用awk是读出来了，打印出来看着是正常的，但是初始化数据库时总是出错。&lt;/p&gt;&#xA;&lt;p&gt;最后发现是文件的问题，用010打开，在windows下的文件换行符为 &lt;strong&gt;\r&lt;/strong&gt;，awk取出来时，账号名和密码都包含这个特殊的字符，导致初始化未能成功。&lt;/p&gt;</description>
     </item>
   </channel>

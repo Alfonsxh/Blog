@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Django笔记 on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/categories/django%E7%AC%94%E8%AE%B0/</link>
+    <link>https://alfonsxh.github.io/Blog/categories/django%E7%AC%94%E8%AE%B0/</link>
     <description>Recent content in Django笔记 on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 27 Nov 2018 21:07:00 +0000</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/categories/django%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/Blog/categories/django%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Django--URLconf</title>
-      <link>https://alfonsxh.github.io/post/python/django%E7%AC%94%E8%AE%B0/2_django_urlconf/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/2_django_urlconf/</link>
       <pubDate>Tue, 27 Nov 2018 16:24:15 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/django%E7%AC%94%E8%AE%B0/2_django_urlconf/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/2_django_urlconf/</guid>
       <description>&lt;p&gt;&lt;code&gt;URLconf (URL configuration)&lt;/code&gt;，Django中的 &lt;strong&gt;URL调度器&lt;/strong&gt; 使用的是纯python代码，是 &lt;strong&gt;URL路径&lt;/strong&gt; 解释到 &lt;strong&gt;Python功能函数&lt;/strong&gt; 的映射。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Django--模板</title>
-      <link>https://alfonsxh.github.io/post/python/django%E7%AC%94%E8%AE%B0/3_django_%E6%A8%A1%E6%9D%BF/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/3_django_%E6%A8%A1%E6%9D%BF/</link>
       <pubDate>Tue, 27 Nov 2018 16:24:15 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/django%E7%AC%94%E8%AE%B0/3_django_%E6%A8%A1%E6%9D%BF/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/3_django_%E6%A8%A1%E6%9D%BF/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Django&lt;/strong&gt; 中的视图要么返回一个包含被请求页面内容的 &lt;strong&gt;HttpResponse&lt;/strong&gt; 对象，或者抛出一个异常。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Django通用视图</title>
-      <link>https://alfonsxh.github.io/post/python/django%E7%AC%94%E8%AE%B0/4_django_%E9%80%9A%E7%94%A8%E8%A7%86%E5%9B%BE/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/4_django_%E9%80%9A%E7%94%A8%E8%A7%86%E5%9B%BE/</link>
       <pubDate>Tue, 27 Nov 2018 16:24:15 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/django%E7%AC%94%E8%AE%B0/4_django_%E9%80%9A%E7%94%A8%E8%A7%86%E5%9B%BE/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/4_django_%E9%80%9A%E7%94%A8%E8%A7%86%E5%9B%BE/</guid>
       <description>&lt;p&gt;使用通用视图的好处在于，能够最大程度的重复利用代码，减少代码量，并且方便扩展。&lt;/p&gt;&#xA;&lt;p&gt;使用 &lt;strong&gt;函数&lt;/strong&gt; 的方式实现：&lt;/p&gt;</description>
     </item>
     <item>
       <title>Django入门篇1-模型和admin用户</title>
-      <link>https://alfonsxh.github.io/post/python/django%E7%AC%94%E8%AE%B0/1_diango%E5%85%A5%E9%97%A8%E7%AF%87/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/1_diango%E5%85%A5%E9%97%A8%E7%AF%87/</link>
       <pubDate>Fri, 09 Nov 2018 00:26:41 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/django%E7%AC%94%E8%AE%B0/1_diango%E5%85%A5%E9%97%A8%E7%AF%87/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/1_diango%E5%85%A5%E9%97%A8%E7%AF%87/</guid>
       <description>&lt;h2 id=&#34;项目与应用&#34;&gt;项目与应用&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;code&gt;项目&lt;/code&gt;是一个网站使用的配置和应用的集合。项目可以包含很多个应用。应用可以被很多个项目使用。&#xA;&lt;code&gt;应用&lt;/code&gt;是一个专门做某件事的网络应用程序——比如博客系统，或者公共记录的数据库，或者简单的投票程序。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;在Django中，使用&lt;code&gt;startproject&lt;/code&gt;来创建项目，使用&lt;code&gt;startapp&lt;/code&gt;来创建应用。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Django论坛部署</title>
-      <link>https://alfonsxh.github.io/post/python/django%E7%AC%94%E8%AE%B0/django%E8%AE%BA%E5%9D%9B%E9%83%A8%E7%BD%B2/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/django%E8%AE%BA%E5%9D%9B%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Sat, 07 Jul 2018 19:12:47 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/django%E7%AC%94%E8%AE%B0/django%E8%AE%BA%E5%9D%9B%E9%83%A8%E7%BD%B2/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/django%E8%AE%BA%E5%9D%9B%E9%83%A8%E7%BD%B2/</guid>
       <description>&lt;p&gt;这两天在外部压力的作用下，把之前写的Django框架搭建的留言板部署了一下。本来是觉得，既然代码都已经弄得差不多了，本地运行没什么问题的，部不部署就没什么了。&lt;/p&gt;&#xA;&lt;p&gt;哈哈哈，还是太天真了。&lt;/p&gt;&#xA;&lt;p&gt;查看了一下原教程的&lt;a href=&#34;https://simpleisbetterthancomplex.com/series/2017/10/16/a-complete-beginners-guide-to-django-part-7.html&#34;&gt;部署步骤&lt;/a&gt;，应该问题不大。&lt;/p&gt;&#xA;&lt;p&gt;服务器去年搭梯子时已经买了。私人部署，域名需不需要，感觉关系不大，可以省略。&lt;/p&gt;&#xA;&lt;p&gt;OK，开始部署。&lt;/p&gt;</description>
     </item>
   </channel>

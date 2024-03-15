@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pyconcrete on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/categories/pyconcrete/</link>
+    <link>https://alfonsxh.github.io/Blog/categories/pyconcrete/</link>
     <description>Recent content in Pyconcrete on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 03 Jun 2020 22:53:48 +0000</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/categories/pyconcrete/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/Blog/categories/pyconcrete/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python pyconcrete加解密py文件</title>
-      <link>https://alfonsxh.github.io/post/python/python_pyconcrete%E5%8A%A0%E8%A7%A3%E5%AF%86py%E6%96%87%E4%BB%B6/</link>
+      <link>https://alfonsxh.github.io/Blog/post/python/python_pyconcrete%E5%8A%A0%E8%A7%A3%E5%AF%86py%E6%96%87%E4%BB%B6/</link>
       <pubDate>Wed, 03 Jun 2020 22:53:48 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/post/python/python_pyconcrete%E5%8A%A0%E8%A7%A3%E5%AF%86py%E6%96%87%E4%BB%B6/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python_pyconcrete%E5%8A%A0%E8%A7%A3%E5%AF%86py%E6%96%87%E4%BB%B6/</guid>
       <description>&lt;p&gt;&lt;strong&gt;pyconcrete&lt;/strong&gt; 是一个加密模块，可以将py文件，通过AES加密的方式，将py文件编译过后的pyc文件转换成家秘密后的pye文件，在使用时，再通过AES解密出pyc源码，直接加载到内存中，进行执行。&lt;/p&gt;&#xA;&lt;p&gt;这种方式可以暂时保证源码不被泄漏，但是，加密的方式为对称加密，只要知道密钥，就能解密出pyc源码，再通过其他方式，就能还原出py文件。&lt;/p&gt;</description>
     </item>
   </channel>

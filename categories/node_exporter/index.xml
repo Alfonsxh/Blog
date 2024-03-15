@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Node_exporter on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/categories/node_exporter/</link>
+    <link>https://alfonsxh.github.io/Blog/categories/node_exporter/</link>
     <description>Recent content in Node_exporter on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 05 Feb 2024 17:32:58 +0800</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/categories/node_exporter/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/Blog/categories/node_exporter/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>node_exporter</title>
-      <link>https://alfonsxh.github.io/post/prometheus/node_exporter/</link>
+      <link>https://alfonsxh.github.io/Blog/post/prometheus/node_exporter/</link>
       <pubDate>Mon, 05 Feb 2024 17:32:58 +0800</pubDate>
-      <guid>https://alfonsxh.github.io/post/prometheus/node_exporter/</guid>
+      <guid>https://alfonsxh.github.io/Blog/post/prometheus/node_exporter/</guid>
       <description>&lt;p&gt;node_exporter 是 Prometheus 官方提供的一个用于采集计算机硬件信息的 Exporter。几乎所有的指标都来源于文件系统：&lt;code&gt;/proc&lt;/code&gt;、&lt;code&gt;/sys&lt;/code&gt;。这么做的好处显而易见，指标采集的效率非常的高。&lt;/p&gt;</description>
     </item>
   </channel>
