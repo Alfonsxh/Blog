@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Frida on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/Blog/tags/frida/</link>
+    <link>https://alfonsxh.github.io/tags/frida/</link>
     <description>Recent content in Frida on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 29 Nov 2018 19:29:58 +0000</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/Blog/tags/frida/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/tags/frida/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Frida API</title>
-      <link>https://alfonsxh.github.io/Blog/post/python/frida/frida_api_%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E/</link>
+      <link>https://alfonsxh.github.io/post/python/frida/frida_api_%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E/</link>
       <pubDate>Thu, 29 Nov 2018 19:29:58 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/python/frida/frida_api_%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E/</guid>
+      <guid>https://alfonsxh.github.io/post/python/frida/frida_api_%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E/</guid>
       <description>&lt;h2 id=&#34;python-api&#34;&gt;Python API&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;Frida Python端&lt;/code&gt;调用的&lt;code&gt;API&lt;/code&gt;主要用于启动程序，并将&lt;code&gt;JavaScript 脚本&lt;/code&gt;注入到对应进程的内存。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Frida使用手册</title>
-      <link>https://alfonsxh.github.io/Blog/post/python/frida/frida_%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
+      <link>https://alfonsxh.github.io/post/python/frida/frida_%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
       <pubDate>Thu, 29 Nov 2018 19:29:58 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/python/frida/frida_%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
+      <guid>https://alfonsxh.github.io/post/python/frida/frida_%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
       <description>&lt;h2 id=&#34;0介绍&#34;&gt;0、介绍&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;Frida&lt;/code&gt; 是一个跨平台的应用分析工具。能够注入JavaScript或者自己库的片段注入到 Windows, macOS, Linux, iOS, Android, and QNX 平台的应用上。支持 Google 的 &lt;code&gt;V8&lt;/code&gt; 引擎，从版本9开始，也支持 &lt;code&gt;Duktape&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;代码注入的方式很多。&lt;code&gt;Xposed&lt;/code&gt; 会永久修改Android应用程序加载器，每次启动的新进程都运行的时自己的挂钩程序。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;Frida&lt;/code&gt; 通过将代码直接写入进程内存来实现代码的植入。当附加到正在运行的应用程序时，&lt;code&gt;Frida&lt;/code&gt;使用&lt;code&gt;ptrace&lt;/code&gt;来劫持正在运行的进程的线程。该线程用于分配一块内存并使用迷你引导程序填充它。引导程序启动一个新线程，连接到设备上运行的&lt;code&gt;Frida&lt;/code&gt;调试服务器，并加载包含&lt;code&gt;Frida&lt;/code&gt;代理程序和检测代码的动态生成的库文件。被劫持的线程在恢复到其原始状态后恢复，并且流程执行继续照常进行。&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dockerfile on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/Blog/tags/dockerfile/</link>
+    <link>https://alfonsxh.github.io/tags/dockerfile/</link>
     <description>Recent content in Dockerfile on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 22 Mar 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/Blog/tags/dockerfile/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/tags/dockerfile/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker(三) - Dockerfile 创建镜像</title>
-      <link>https://alfonsxh.github.io/Blog/post/docker/docker_2_dockerfile%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F/</link>
+      <link>https://alfonsxh.github.io/post/docker/docker_2_dockerfile%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F/</link>
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/docker/docker_2_dockerfile%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F/</guid>
+      <guid>https://alfonsxh.github.io/post/docker/docker_2_dockerfile%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Dockerfile&lt;/strong&gt; 是一个文本格式的配置文件，用户可以通过使用 &lt;strong&gt;Dockerfile&lt;/strong&gt; 文件快速自定义需要的镜像。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dockerfile&lt;/strong&gt; 由一行一行的命令构成，主体部分包括：&lt;strong&gt;基础镜像信息&lt;/strong&gt;、&lt;strong&gt;镜像操作指令&lt;/strong&gt;、&lt;strong&gt;容器启动时执行指令&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
   </channel>

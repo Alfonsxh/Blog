@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>程序员的自我修养 on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/Blog/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/</link>
+    <link>https://alfonsxh.github.io/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/</link>
     <description>Recent content in 程序员的自我修养 on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 18 Jul 2018 23:11:52 +0000</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/Blog/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>程序员的自我修养 - Elf文件</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/elf%E6%96%87%E4%BB%B6/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/elf%E6%96%87%E4%BB%B6/</link>
       <pubDate>Wed, 18 Jul 2018 23:11:52 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/elf%E6%96%87%E4%BB%B6/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/elf%E6%96%87%E4%BB%B6/</guid>
       <description>&lt;blockquote&gt;&#xA;&lt;p&gt;如果把程序从产生到运行比作做菜的话，那么静态的源程序就相当于是菜谱，操作系统相当于是厨师，系统的各种硬件则是炊具，程序加载到内存中运行的整个过程就相当于是烹饪的整个过程。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;下面介绍一下菜谱本身的结构。&lt;/p&gt;</description>
     </item>
     <item>
       <title>程序员的自我修养 - 编译</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/</link>
       <pubDate>Wed, 18 Jul 2018 23:11:52 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/</guid>
       <description>&lt;blockquote&gt;&#xA;&lt;p&gt;如果把程序从产生到运行比作做菜的话，那么静态的源程序就相当于是菜谱，操作系统相当于是厨师，系统的各种硬件则是炊具，程序加载到内存中运行的整个过程就相当于是烹饪的整个过程。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;下面介绍一下菜谱的制作过程，以及两道特色菜 &lt;strong&gt;静态库&lt;/strong&gt; 和 &lt;strong&gt;动态库&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
   </channel>

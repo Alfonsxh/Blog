@@ -2,101 +2,101 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>图解密码技术 on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/Blog/tags/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/</link>
+    <link>https://alfonsxh.github.io/tags/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/</link>
     <description>Recent content in 图解密码技术 on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 19 Mar 2019 22:39:13 +0000</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/Blog/tags/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/tags/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>图解密码技术 - PGP</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/13-pgp/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/13-pgp/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/13-pgp/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/13-pgp/</guid>
       <description>&lt;p&gt;&lt;code&gt;PGP(Pretty Good Privacy)&lt;/code&gt;是一款密码软件，里面包含了多种加密算法。本章重点介绍的是多种密码技术的组合。&lt;/p&gt;</description>
     </item>
     <item>
       <title>图解密码技术 - 公钥密码</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/5-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/5-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/5-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/5-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81/</guid>
       <description>&lt;h2 id=&#34;密钥配送问题&#34;&gt;密钥配送问题&lt;/h2&gt;&#xA;&lt;p&gt;在之前的&lt;code&gt;对称密码&lt;/code&gt;模式中，加密和解密的密钥都是相同的，接收者必须收到密码和与之对应的密钥才能进行解密。在这一过程中，我们不能保证这个过程是否被劫持者劫持。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;密钥必须发送，但又不能发送。&lt;/code&gt;这就是对称密码的&lt;code&gt;密钥配送问题&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;解决方法有以下几种：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;通过事先共享密钥来解决&lt;/li&gt;&#xA;&lt;li&gt;通过密钥分配中心解决&lt;/li&gt;&#xA;&lt;li&gt;通过Diffie-Hellman密钥交换来解决&lt;/li&gt;&#xA;&lt;li&gt;通过公钥密码来解决&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;前面三种方式都有各自的缺点，都不考虑。第四种方式&lt;code&gt;通过公钥密码交换对称密钥&lt;/code&gt;为可行的方式。&lt;/p&gt;</description>
     </item>
     <item>
       <title>图解密码技术 - 分组密码的模式</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E7%9A%84%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E7%9A%84%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E7%9A%84%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E7%9A%84%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;p&gt;本章主要介绍了分组密码的模式，包括ECB、CBC、CFB、OFB、CTR。&lt;/p&gt;</description>
     </item>
     <item>
       <title>图解密码技术 - 单向散列函数</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/7-%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/7-%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/7-%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/7-%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</guid>
       <description>&lt;h2 id=&#34;单向散列函数的性质&#34;&gt;单向散列函数的性质&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;单向散列函数(one-way hash function)&lt;/code&gt;有一个输入和一个输出，输入称为&lt;code&gt;消息(message)&lt;/code&gt;，输出称为&lt;code&gt;散列值(hash value)&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;单向散列函数&lt;/code&gt;主要的功能是&lt;code&gt;防止文件被篡改&lt;/code&gt;，它用于验证文件的&lt;code&gt;完整性&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;单向散列函数&lt;/code&gt;主要有以下性质：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;能够根据任意长度的消息计算出固定长度的散列值&lt;/li&gt;&#xA;&lt;li&gt;能够快速计算出散列值&lt;/li&gt;&#xA;&lt;li&gt;消息不同散列值也不同&lt;/li&gt;&#xA;&lt;li&gt;具备单向性：无法通过散列值反推出消息。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>图解密码技术 - 历史上的密码</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/2-%E5%8E%86%E5%8F%B2%E4%B8%8A%E7%9A%84%E5%AF%86%E7%A0%81/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/2-%E5%8E%86%E5%8F%B2%E4%B8%8A%E7%9A%84%E5%AF%86%E7%A0%81/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/2-%E5%8E%86%E5%8F%B2%E4%B8%8A%E7%9A%84%E5%AF%86%E7%A0%81/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/2-%E5%8E%86%E5%8F%B2%E4%B8%8A%E7%9A%84%E5%AF%86%E7%A0%81/</guid>
       <description>&lt;p&gt;本章主要介绍了几种著名的密码：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;凯撒密码&lt;/li&gt;&#xA;&lt;li&gt;简单替换密码&lt;/li&gt;&#xA;&lt;li&gt;Enigma&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;以及两种破译密码的方式：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;暴力攻击&lt;/li&gt;&#xA;&lt;li&gt;频率分析&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>图解密码技术 - 密钥</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/11-%E5%AF%86%E9%92%A5/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/11-%E5%AF%86%E9%92%A5/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/11-%E5%AF%86%E9%92%A5/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/11-%E5%AF%86%E9%92%A5/</guid>
       <description>&lt;h2 id=&#34;什么是密钥&#34;&gt;什么是密钥&lt;/h2&gt;&#xA;&lt;p&gt;密钥其实就是一个巨大的数字，在使用对称密码、公钥密码(非对称密码)、消息认证码、数字签名等密码技术时，都需要使用密钥。&lt;/p&gt;&#xA;&lt;p&gt;数字本身的大小并不重要，重要的是&lt;code&gt;密钥空间的大小&lt;/code&gt;，也就是可能出现的密钥的总数量，&lt;code&gt;密钥空间越大，进行暴力破解就越难&lt;/code&gt;。另一方面，&lt;code&gt;密钥空间的大小&lt;/code&gt;由&lt;code&gt;密钥的长度&lt;/code&gt;决定。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;密钥和明文&lt;/code&gt;是等价的，攻击者知道密钥、密文和加密方式后，就能知道明文。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;信息的机密性不应该依赖于密码算法本身，而是应该依赖密钥。&lt;/code&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>图解密码技术 - 对称密码</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81/</guid>
       <description>&lt;p&gt;本章主要介绍几种对称密码算法，包括DES、三重DES、AES以及其他一些密码算法。在这之前，还介绍了比特序列、XOR运算以及一次性密码本。&lt;/p&gt;</description>
     </item>
     <item>
       <title>图解密码技术 - 数字签名</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/9-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/9-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/9-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/9-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</guid>
       <description>&lt;p&gt;&lt;code&gt;数字签名(Digital Signature)&lt;/code&gt;是一种相当于现实世界中的盖章、签字的功能在计算机世界中实现的技术，使用数字签名可以识别&lt;code&gt;篡改&lt;/code&gt;、&lt;code&gt;伪装&lt;/code&gt;、&lt;code&gt;防止否认&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>图解密码技术 - 消息认证码</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/8-%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/8-%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/8-%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/8-%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81/</guid>
       <description>&lt;p&gt;&lt;code&gt;消息认证码(Message Authentication Code)&lt;/code&gt;是一种确认完整性并进行认证的技术。&lt;/p&gt;&#xA;&lt;p&gt;对于&lt;code&gt;单向散列函数&lt;/code&gt;来说，主要的作用是为了确保消息的&lt;code&gt;完整性&lt;/code&gt;。但对于&lt;code&gt;消息认证码&lt;/code&gt;，主要作用是&lt;code&gt;认证&lt;/code&gt;，指的是&lt;code&gt;消息来自正确的发送者&lt;/code&gt;这一性质。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;消息认证码&lt;/code&gt;的输入包括任意长度的消息和一个发送者与接收者之间的&lt;code&gt;共享密钥&lt;/code&gt;，输出为一个固定长度的数据，称为&lt;code&gt;MAC值&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>图解密码技术 - 混合密码系统</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/6-%E6%B7%B7%E5%90%88%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/6-%E6%B7%B7%E5%90%88%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/6-%E6%B7%B7%E5%90%88%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/6-%E6%B7%B7%E5%90%88%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F/</guid>
       <description>&lt;p&gt;&lt;code&gt;混合密码系统(hybird cryptosystem)&lt;/code&gt;结合了&lt;code&gt;对称密码&lt;/code&gt;和&lt;code&gt;非对称密码&lt;/code&gt;两种加密方式各自的优势，使用&lt;code&gt;对称密码&lt;/code&gt;对数据的明文进行加密，使用&lt;code&gt;非对称密码&lt;/code&gt;对&lt;code&gt;对称密码&lt;/code&gt;的密钥进行加密。&lt;/p&gt;&#xA;&lt;p&gt;这种方式解决了只使用&lt;code&gt;非对称密码&lt;/code&gt;时，处理速度慢的问题，但对于中间人的攻击并无抵御。&lt;/p&gt;</description>
     </item>
     <item>
       <title>图解密码技术 - 环游密码世界</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/1-%E7%8E%AF%E6%B8%B8%E5%AF%86%E7%A0%81%E4%B8%96%E7%95%8C/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/1-%E7%8E%AF%E6%B8%B8%E5%AF%86%E7%A0%81%E4%B8%96%E7%95%8C/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/1-%E7%8E%AF%E6%B8%B8%E5%AF%86%E7%A0%81%E4%B8%96%E7%95%8C/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/1-%E7%8E%AF%E6%B8%B8%E5%AF%86%E7%A0%81%E4%B8%96%E7%95%8C/</guid>
       <description>&lt;p&gt;本章主要是一些入门知识。&lt;/p&gt;</description>
     </item>
     <item>
       <title>图解密码技术 - 证书</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/10-%E8%AF%81%E4%B9%A6/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/10-%E8%AF%81%E4%B9%A6/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/10-%E8%AF%81%E4%B9%A6/</guid>
-      <description>&lt;p&gt;&lt;code&gt;公钥证书(Public-Key Certificate，PKC)&lt;/code&gt;记录了公钥所有者的组织、邮箱地址、公钥等信息，并由&lt;code&gt;认证机构(Certification Authority，CA)&lt;/code&gt;施加数字签名&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/10-Produce-CA.png&#34; alt=&#34;10-Produce-CA&#34;&gt;&lt;/p&gt;</description>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/10-%E8%AF%81%E4%B9%A6/</guid>
+      <description>&lt;p&gt;&lt;code&gt;公钥证书(Public-Key Certificate，PKC)&lt;/code&gt;记录了公钥所有者的组织、邮箱地址、公钥等信息，并由&lt;code&gt;认证机构(Certification Authority，CA)&lt;/code&gt;施加数字签名&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://alfonsxh.github.io/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/10-Produce-CA.png&#34; alt=&#34;10-Produce-CA&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>图解密码技术 - 随机数</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/12-%E9%9A%8F%E6%9C%BA%E6%95%B0/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/12-%E9%9A%8F%E6%9C%BA%E6%95%B0/</link>
       <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/12-%E9%9A%8F%E6%9C%BA%E6%95%B0/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/12-%E9%9A%8F%E6%9C%BA%E6%95%B0/</guid>
       <description>&lt;h2 id=&#34;随机数的作用&#34;&gt;随机数的作用&lt;/h2&gt;&#xA;&lt;p&gt;随机数主要用来：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;生成密钥：用于对称密码和消息认证码&lt;/li&gt;&#xA;&lt;li&gt;生成密钥对：用于非对称密码和数字签名&lt;/li&gt;&#xA;&lt;li&gt;生成初始化向量(IV)：用于对称密码的CBC、CFB、OFB模式&lt;/li&gt;&#xA;&lt;li&gt;生成nonce：用于防御重放攻击以及对称密码CTR模式&lt;/li&gt;&#xA;&lt;li&gt;生成盐&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>

@@ -2,80 +2,80 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>极客时间 on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/Blog/tags/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/</link>
+    <link>https://alfonsxh.github.io/tags/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/</link>
     <description>Recent content in 极客时间 on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 16 Jun 2019 17:25:21 +0000</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/Blog/tags/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/tags/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>网络</title>
-      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/07_%E7%BD%91%E7%BB%9C/</link>
+      <link>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/07_%E7%BD%91%E7%BB%9C/</link>
       <pubDate>Sun, 16 Jun 2019 17:25:21 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/07_%E7%BD%91%E7%BB%9C/</guid>
+      <guid>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/07_%E7%BD%91%E7%BB%9C/</guid>
       <description>&lt;p&gt;网络是多台计算机之间的互联互通形成的信息交互通道。现在的网络世界看似复杂，却遵从着一些基本设计原则。&lt;/p&gt;</description>
     </item>
     <item>
       <title>需求分析</title>
-      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/08_%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/</link>
+      <link>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/08_%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/</link>
       <pubDate>Sun, 16 Jun 2019 17:25:21 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/08_%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/</guid>
+      <guid>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/08_%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/</guid>
       <description></description>
     </item>
     <item>
       <title>进程、线程与协程</title>
-      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/06_%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/</link>
+      <link>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/06_%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/</link>
       <pubDate>Sun, 26 May 2019 16:53:28 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/06_%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/</guid>
+      <guid>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/06_%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/</guid>
       <description>&lt;h2 id=&#34;进程和线程&#34;&gt;进程和线程&lt;/h2&gt;&#xA;&lt;p&gt;在操作系统中，进程是操作系统中资源调度的最小单位，&lt;strong&gt;每一个可执行程序都是一个进程&lt;/strong&gt;，在这个 &lt;strong&gt;主进程&lt;/strong&gt; 下面，可以有 &lt;strong&gt;多个子进程或者线程&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;p&gt;在Linux中，每一个主进程又是属于 &lt;strong&gt;pid为1&lt;/strong&gt; 的祖先进程的子进程。操作系统在开机启动时，会启动一个 &lt;strong&gt;pid为0的进程idle&lt;/strong&gt;：&lt;/p&gt;</description>
     </item>
     <item>
       <title>冯诺依曼体系</title>
-      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/02_%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB/</link>
+      <link>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/02_%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB/</link>
       <pubDate>Sat, 25 May 2019 23:58:22 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/02_%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB/</guid>
+      <guid>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/02_%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB/</guid>
       <description>&lt;p&gt;冯诺依曼体系结构是计算机发展的基石，它将计算机的的物理结构抽象成了三个模块(大致)：&lt;strong&gt;处理器&lt;/strong&gt;、&lt;strong&gt;存储&lt;/strong&gt;、&lt;strong&gt;输入输出设备&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>操作系统</title>
-      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/04_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/04_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Sat, 25 May 2019 23:58:22 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/04_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/04_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
       <description>&lt;p&gt;操作系统是用户与计算机交互的窗口，现代计算机离开了操作系统的支持，将无法进行正常使用。&lt;/p&gt;</description>
     </item>
     <item>
       <title>编程语言</title>
-      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/03_%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</link>
+      <link>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/03_%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</link>
       <pubDate>Sat, 25 May 2019 23:58:22 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/03_%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</guid>
+      <guid>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/03_%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</guid>
       <description>&lt;p&gt;从 &lt;strong&gt;0101打孔纸带&lt;/strong&gt; 到 &lt;strong&gt;汇编语言&lt;/strong&gt;，再到现在的 &lt;strong&gt;高级语言&lt;/strong&gt;，编程方式的每一次改变，都会对计算机带来很大的变化。&lt;/p&gt;</description>
     </item>
     <item>
       <title>输入与输出</title>
-      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/05_%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/</link>
+      <link>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/05_%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/</link>
       <pubDate>Sat, 25 May 2019 23:58:22 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/05_%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/</guid>
+      <guid>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/05_%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/</guid>
       <description>&lt;p&gt;在早期，打卡机是唯一的人与计算机交互的途径。&lt;/p&gt;&#xA;&lt;p&gt;现在，输入输出设备的样式层出不穷，只有你想不到，没有厂商做不到。&lt;/p&gt;</description>
     </item>
     <item>
       <title>架构师的宏观视角</title>
-      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/01_%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E5%AE%8F%E8%A7%82%E8%A7%86%E8%A7%92/</link>
+      <link>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/01_%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E5%AE%8F%E8%A7%82%E8%A7%86%E8%A7%92/</link>
       <pubDate>Wed, 17 Apr 2019 22:46:17 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/01_%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E5%AE%8F%E8%A7%82%E8%A7%86%E8%A7%92/</guid>
+      <guid>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/01_%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E5%AE%8F%E8%A7%82%E8%A7%86%E8%A7%92/</guid>
       <description>&lt;p&gt;计算机的世界里，所有的复杂的东西都是由简单的东西一步一步搭建起来的，归根结底，程序最终还是翻译成指令集的不同组合，这些组合不同的顺序以及数量，组成了我们现在的计算机世界。&lt;/p&gt;</description>
     </item>
     <item>
       <title>泛型编程</title>
-      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/1_%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/</link>
+      <link>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/1_%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Wed, 17 Apr 2019 22:46:17 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/1_%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/1_%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/</guid>
       <description>&lt;h2 id=&#34;泛型编程的含义&#34;&gt;泛型编程的含义&lt;/h2&gt;&#xA;&lt;p&gt;在编程的时候，总会遇到 &lt;strong&gt;同样的逻辑但是所需的类型不同&lt;/strong&gt; 的问题。理想情况下，&lt;strong&gt;算法应是和数据结构和类型无关的，各种特殊的数据类型理应做好自己分内的工作&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>编程的本质</title>
-      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/2_%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8/</link>
+      <link>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/2_%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8/</link>
       <pubDate>Wed, 17 Apr 2019 22:46:17 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/2_%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8/</guid>
+      <guid>https://alfonsxh.github.io/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/2_%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8/</guid>
       <description>&lt;p&gt;之前一直有听说这么一句话：&lt;code&gt;Programs = Algorithms + Data Structures&lt;/code&gt;。但要具体点描述就说不出什么了。&lt;/p&gt;</description>
     </item>
   </channel>

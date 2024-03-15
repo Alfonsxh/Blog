@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux命令 on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/Blog/tags/linux%E5%91%BD%E4%BB%A4/</link>
+    <link>https://alfonsxh.github.io/tags/linux%E5%91%BD%E4%BB%A4/</link>
     <description>Recent content in Linux命令 on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 23 Mar 2019 20:16:43 +0000</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/Blog/tags/linux%E5%91%BD%E4%BB%A4/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/tags/linux%E5%91%BD%E4%BB%A4/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>awk</title>
-      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/awk/</link>
+      <link>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/awk/</link>
       <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/awk/</guid>
+      <guid>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/awk/</guid>
       <description>&lt;p&gt;&lt;strong&gt;awk命令&lt;/strong&gt; 输入的数据为 &lt;strong&gt;行数据&lt;/strong&gt;，经过一些判别处理后，按对应的格式输出。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux命令find</title>
-      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/find/</link>
+      <link>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/find/</link>
       <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/find/</guid>
+      <guid>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/find/</guid>
       <description>&lt;p&gt;通过 &lt;strong&gt;find命令&lt;/strong&gt;，可以很方便的查找符合目标类型的文件，例如多长时间内修改过的文件，大小范围内的文件等，配合一些其他的操作，例如删除操作。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;find命令&lt;/strong&gt; 基本语法： &lt;code&gt;find [path] [option] [expression]&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>sed</title>
-      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/sed/</link>
+      <link>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/sed/</link>
       <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/sed/</guid>
+      <guid>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/sed/</guid>
       <description>&lt;p&gt;&lt;strong&gt;sed&lt;/strong&gt; 是一种流编辑器，用于处理文本数据。文本数据是以 &lt;strong&gt;行为单位&lt;/strong&gt; 进行处理。可以是文件流，也可以是 &lt;strong&gt;STDIN&lt;/strong&gt; 管道传入的数据。&lt;/p&gt;&#xA;&lt;p&gt;命令格式为： &lt;code&gt;sed [参数] [动作]&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>去除awk截取参数中的换行符</title>
-      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/%E5%8E%BB%E9%99%A4awk%E6%88%AA%E5%8F%96%E5%8F%82%E6%95%B0%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6/</link>
+      <link>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/%E5%8E%BB%E9%99%A4awk%E6%88%AA%E5%8F%96%E5%8F%82%E6%95%B0%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6/</link>
       <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/%E5%8E%BB%E9%99%A4awk%E6%88%AA%E5%8F%96%E5%8F%82%E6%95%B0%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6/</guid>
+      <guid>https://alfonsxh.github.io/post/linux/linux%E5%91%BD%E4%BB%A4/%E5%8E%BB%E9%99%A4awk%E6%88%AA%E5%8F%96%E5%8F%82%E6%95%B0%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6/</guid>
       <description>&lt;p&gt;事情是这样的：&lt;/p&gt;&#xA;&lt;p&gt;有一个配置文件，里面有数据库的账号密码，需要读出来，然后对数据库进行初始化。&lt;/p&gt;&#xA;&lt;p&gt;可是搞了半天，用户名和密码用awk是读出来了，打印出来看着是正常的，但是初始化数据库时总是出错。&lt;/p&gt;&#xA;&lt;p&gt;最后发现是文件的问题，用010打开，在windows下的文件换行符为 &lt;strong&gt;\r&lt;/strong&gt;，awk取出来时，账号名和密码都包含这个特殊的字符，导致初始化未能成功。&lt;/p&gt;</description>
     </item>
   </channel>

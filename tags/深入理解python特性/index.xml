@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>深入理解Python特性 on Alfons&#39;s Blog</title>
-    <link>https://alfonsxh.github.io/Blog/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/</link>
+    <link>https://alfonsxh.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/</link>
     <description>Recent content in 深入理解Python特性 on Alfons&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 11 Aug 2019 14:35:42 +0000</lastBuildDate>
-    <atom:link href="https://alfonsxh.github.io/Blog/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alfonsxh.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>深入理解Python特性 - 1-Python简洁之道</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/1-python%E7%AE%80%E6%B4%81%E4%B9%8B%E9%81%93/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/1-python%E7%AE%80%E6%B4%81%E4%B9%8B%E9%81%93/</link>
       <pubDate>Sun, 11 Aug 2019 14:35:42 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/1-python%E7%AE%80%E6%B4%81%E4%B9%8B%E9%81%93/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/1-python%E7%AE%80%E6%B4%81%E4%B9%8B%E9%81%93/</guid>
       <description>&lt;h2 id=&#34;断言assert&#34;&gt;断言(assert)&lt;/h2&gt;&#xA;&lt;p&gt;断言是python程序中用于内部自检的方式之一，如声明一些代码中不可能出现的条件。如果触发了某个条件，即意味着程序中存在相应的bug。&lt;/p&gt;&#xA;&lt;p&gt;语法规则为：&lt;code&gt;assert 判断语句, 异常提示&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>深入理解Python特性 - 2-高效的函数</title>
-      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/2-%E9%AB%98%E6%95%88%E7%9A%84%E5%87%BD%E6%95%B0/</link>
+      <link>https://alfonsxh.github.io/post/books/professionbooks/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/2-%E9%AB%98%E6%95%88%E7%9A%84%E5%87%BD%E6%95%B0/</link>
       <pubDate>Sun, 11 Aug 2019 14:35:42 +0000</pubDate>
-      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/2-%E9%AB%98%E6%95%88%E7%9A%84%E5%87%BD%E6%95%B0/</guid>
+      <guid>https://alfonsxh.github.io/post/books/professionbooks/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/2-%E9%AB%98%E6%95%88%E7%9A%84%E5%87%BD%E6%95%B0/</guid>
       <description>&lt;h2 id=&#34;函数是对象&#34;&gt;函数是对象&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Python中一切皆对象，函数也如此。可以将函数分配给变量或者存储在数据结构中。作为头等对象，函数还可以被传递给其他函数或作为其他函数的返回值。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;能够接收其他函数作为参数的函数称之为高阶函数&lt;/strong&gt;。如map、reduce、filter等等。&lt;/li&gt;&#xA;&lt;li&gt;函数可以嵌套，并且可以捕获并携带父函数的一些状态。具有这种行为的函数成为闭包。&lt;/li&gt;&#xA;&lt;li&gt;对象可以被设置成可调用的，因此很多情况下可以将其作为函数对待。(类中需实现 &lt;code&gt;_call__&lt;/code&gt; 方法)&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
