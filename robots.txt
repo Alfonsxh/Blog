@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://alfonsxh.github.io/Blog/sitemap.xml

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>图解密码技术 - 对称密码 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="对称密码" /><meta name="keywords" content="Books, 图解密码技术" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">图解密码技术 - 对称密码</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-18 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/books/"> Books </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/"> 图解密码技术 </a>
+            </div>
+          <span class="more-meta"> 242 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#比特序列">比特序列</a></li>
+        <li><a href="#xor">XOR</a></li>
+        <li><a href="#一次性密码本">一次性密码本</a></li>
+        <li><a href="#des">DES</a>
+          <ul>
+            <li><a href="#des的结构feistel网络">DES的结构(Feistel网络)</a></li>
+            <li><a href="#针对des的攻击">针对DES的攻击</a></li>
+          </ul>
+        </li>
+        <li><a href="#三重des">三重DES</a></li>
+        <li><a href="#aes">AES</a>
+          <ul>
+            <li><a href="#rijndael">Rijndael</a></li>
+            <li><a href="#针对rijndael的攻击">针对Rijndael的攻击</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本章主要介绍几种对称密码算法，包括DES、三重DES、AES以及其他一些密码算法。在这之前，还介绍了比特序列、XOR运算以及一次性密码本。</p>
+<hr>
+<h2 id="比特序列">比特序列</h2>
+<p><strong>比特序列</strong>指由0、1组成的序列，将现实世界中的东西映射为比特序列的操作称为<strong>编码</strong>。</p>
+<hr>
+<h2 id="xor">XOR</h2>
+<p><strong>XOR</strong>全称是<strong>exclusive or</strong>，中文名为<strong>异或</strong>。</p>
+<p>运算规则如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="mi">0</span> <span class="n">XOR</span> <span class="mi">0</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0</span> <span class="n">XOR</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="mi">1</span> <span class="n">XOR</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="mi">1</span> <span class="n">XOR</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>相同数字XOR的结果为0，不同数字XOR的结果为1。</p>
+<p>将一个比特序列进行两次XOR，将得到明文。</p>
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">    <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span>     <span class="p">...</span> <span class="n">A</span>
+</span></span><span class="line"><span class="cl"><span class="err">⊕</span>  <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span>     <span class="p">...</span>    <span class="n">B</span>
+</span></span><span class="line"><span class="cl"><span class="o">--------------------------------</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>     <span class="p">...</span><span class="n">A</span> <span class="err">⊕</span> <span class="n">B</span>
+</span></span><span class="line"><span class="cl"><span class="err">⊕</span>  <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span>     <span class="p">...</span>     <span class="n">B</span>
+</span></span><span class="line"><span class="cl"><span class="o">---------------------------------</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span>     <span class="p">...</span> <span class="n">A</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="一次性密码本">一次性密码本</h2>
+<p><strong>一次性密码本</strong>是将明文与一串随机的等长的比特序列进行XOR运算。</p>
+<p>只要通过暴力破解的方法对密钥空间进行遍历，无论什么密文总有一天也都能够被破译。然而<strong>一次性密码本</strong> 却不能，因为破译者根本不知道 <strong>所破译的明文</strong> 是不是 <strong>原始的明文</strong>。</p>
+<p>但是，<strong>一次性密码本</strong> 并没有实用性。与其以安全的方式发送密码，不如以安全的方式发送明文。</p>
+<hr>
+<h2 id="des">DES</h2>
+<p><strong>DES(Data Encryption Standard)</strong> 是由美国联办信息处理标准所采用的一种对称密码。</p>
+<ul>
+<li>是一种将64比特的明文加密成64比特的密文的对称加密算法，密钥长度为56比特(实际上DES的密钥长度为64位，但每隔7位有个校验位)。</li>
+<li>是以64比特的明文(比特序列)为一个单位来进行加密的，这64比特的单位称为 <strong>分组</strong>。所以 <strong>DES</strong> 也是 <strong>分组密码(block cipher)</strong> 的一种。</li>
+<li>如果明文较长，九需要对 <strong>DES</strong> 加密进行迭代，而迭代的具体方式称为 <strong>模式(mode)</strong>。</li>
+</ul>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-DES-Encrypt.png" alt="3-DES-Encrypt"></p>
+<h3 id="des的结构feistel网络">DES的结构(Feistel网络)</h3>
+<p><strong>Feistel网络</strong> 也称为 <strong>Feistel结构</strong>、 <strong>Feistel密码</strong>。这一结构不仅被用于DES，在其他很多密码算法中也有应用。</p>
+<p>在 <strong>Feistel网络</strong> 中，加密的每个步骤称为 <strong>轮(round)</strong>，整个加密过程就是若干次轮的循环。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-DES-Feistel.png" alt="3-DES-Feistel"></p>
+<p>在每轮中，会将输入的明文分为左右两块，每块32比特。右侧内容和子密钥通过论函数f，生成密钥与左侧进行XOR操作，生成加密后的左侧。右侧不做改变。</p>
+<p>下图为 <strong>Feistel网络</strong> 进行三轮加密的示意图。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-DES-Feistel-Encrypt.png" alt="3-DES-Feistel-Encrypt"></p>
+<p>解密的话，只需要将子密钥的顺序颠倒就行。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-DES-Feistel-Decrypt.png" alt="3-DES-Feistel-Decrypt"></p>
+<p>总结一下 <strong>Feistel网络</strong> 的特性：</p>
+<ul>
+<li><strong>Feistel网络</strong> 的 <strong>轮数可以任意增加</strong>，无论进行多少轮加密计算，都不会发生无法解密的情况。</li>
+<li>加密时无论使用什么函数作为论函数都可以正确解密。因为左侧只进行XOR操作，XOR两次相同的值，将会恢复原始的明文。</li>
+<li>加密和解密使用完全相同的结构来实现。</li>
+</ul>
+<h3 id="针对des的攻击">针对DES的攻击</h3>
+<p>在可以选择任意明文并得到其加密的结果的情况下，使用 <strong>差分分析</strong> 以及 <strong>线性分析</strong> 的攻击。</p>
+<hr>
+<h2 id="三重des">三重DES</h2>
+<p><strong>三重DES(triple-DES)</strong> 是为了增强DES的强度，将DES重复三次得到的一种密码算法。</p>
+<p>加密过程如下图所示：</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-DES-Triple-Encrypt.png" alt="3-DES-Triple-Encrypt"></p>
+<p>值得注意的是，第二重DES <strong>并不是加密</strong>，而是 <strong>解密</strong>。会出现这样的情况的原因主要是为了兼容之前的DES加密模式。如果 <strong>三重DES加密</strong> 使用三个 <strong>相同</strong> 的密钥进行加密，则效果和一重DES加密的效果是一样的。</p>
+<p><strong>三重DES</strong> 的解密过程与加密过程正好相反。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-DES-Triple-Decrypt.png" alt="3-DES-Triple-Decrypt"></p>
+<hr>
+<h2 id="aes">AES</h2>
+<p><strong>AES(Advanced Encryption Standard)</strong> 是取代其前任标准(DES)二称为新标准的一种对称密码算法。</p>
+<p>AES的选拔过程是对全世界公开的，<strong>被选为AES的密码算法必须无条件的免费供全世界使用</strong>！</p>
+<p>最终，<strong>Rijndael</strong> 算法被选为AES的标准算法。</p>
+<p>其他四个候选算法包括： <strong>MARS(IBM公司)</strong>、 <strong>RC6(RSA公司)</strong>、 <strong>Serpent(Anderson，Biham，Knudsen)</strong>、 <strong>Twofish(Counterpane公司)</strong>。</p>
+<h3 id="rijndael">Rijndael</h3>
+<p><strong>Rijndael</strong> 是由比利时密码学家 <strong>Joan Daemen</strong> 和 <strong>Vincent Rijmen</strong> 设计的分组密码算法。其分组长度和密钥长度可以分别以32比特为单位在128比特到256比特的范围内进行选择。</p>
+<p><strong>Rijndael</strong> 算法也由多个 <strong>轮</strong> 组成，其中每一轮分为 <strong>SubBytes</strong>、 <strong>ShiftRows</strong>、 <strong>MixColumns</strong>、 <strong>AddRoundKey</strong> 共4个步骤。</p>
+<h4 id="subbytes">SubBytes</h4>
+<p>在这一步骤中，首先，需要逐个字节的对16字节的输入数据进行 <strong>SubBytes</strong> 处理。从一张拥有256个值的 <strong>替换表</strong> 中找到对应的对应值，进行替换。相当于前面所说的替换密码的256个字母版本。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-AES-SubBytes.png" alt="3-AES-SubBytes"></p>
+<h4 id="shiftrows">ShiftRows</h4>
+<p>在 <strong>ShiftRows</strong> 这一步中，将以4字节为单位的行按照一定的规则向左平移，且每一行平移的字节数是不同的。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-AES-ShiftRows.png" alt="3-AES-ShiftRows"></p>
+<h4 id="mixcolumns">MixColumns</h4>
+<p>在 <strong>MixColumns</strong> 这一步中，对一个4字节的值进行比特运算，将其变成另外一个4字节的值。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-AES-MixColumns.png" alt="3-AES-MixColumns"></p>
+<h4 id="addroundkey">AddRoundKey</h4>
+<p>最后需要对 <strong>MixColumns</strong> 的结果进行 <strong>AddRoundKey</strong> 操作。在这一步中，主要是对 <strong>MixColumns</strong> 的结果与 <strong>轮密钥</strong> 进行 <strong>XOR</strong> 操作。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-AES-AddRoundKey.png" alt="3-AES-AddRoundKey"></p>
+<p>综上所述， <strong>Rijndael</strong> 的加密过程中，每一轮所进行的处理为：</p>
+<p>SubBytes → ShiftRows → MixColumns → AddRoundKey</p>
+<p>而解密时，则与加密相反，即：</p>
+<p>AddRoundKey → InvMixColumns → InvShiftRows → InvSubBytes</p>
+<h3 id="针对rijndael的攻击">针对Rijndael的攻击</h3>
+<p>攻击方式和之前介绍的攻击方式差不多。但 <strong>Rijndael</strong> 的算法有着严谨的数学结构，不排除有破译者通过公式推导实现破译的可能。</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-08-18
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/books/">Books</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/">图解密码技术</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/11-%E5%AF%86%E9%92%A5/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">图解密码技术 - 密钥</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/9-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/">
+            <span class="next-text nav-default">图解密码技术 - 数字签名</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

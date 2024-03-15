@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>2_Scrapy模块使用及调试 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="2_Scrapy模块使用及调试" /><meta name="keywords" content="Python, Scrapy, 爬虫" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/python/spider/scrapy/2_scrapy%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8%E5%8F%8A%E8%B0%83%E8%AF%95/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">2_Scrapy模块使用及调试</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-01-14 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/python/"> Python </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/scrapy/"> Scrapy </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/%E7%88%AC%E8%99%AB/"> 爬虫 </a>
+            </div>
+          <span class="more-meta"> 150 words </span>
+          <span class="more-meta"> 1 min read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#创建一个新工程">创建一个新工程</a></li>
+        <li><a href="#启动调试">启动调试</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="安装">安装</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install scrapy
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="创建一个新工程">创建一个新工程</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">scrapy startproject &lt;project_name&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中 <strong>project_name</strong> 为项目名称，默认会在当前目录下创建一个名为 <strong>project_name</strong> 的文件夹用于目标 <strong>Spider任务</strong>。</p>
+<p>具体命令如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ scrapy startproject -h
+</span></span><span class="line"><span class="cl"><span class="nv">Usage</span>
+</span></span><span class="line"><span class="cl"><span class="o">=====</span>
+</span></span><span class="line"><span class="cl">  scrapy startproject &lt;project_name&gt; <span class="o">[</span>project_dir<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Create new project
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">Options</span>
+</span></span><span class="line"><span class="cl"><span class="o">=======</span>
+</span></span><span class="line"><span class="cl">--help, -h              show this <span class="nb">help</span> message and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Global Options
+</span></span><span class="line"><span class="cl">--------------
+</span></span><span class="line"><span class="cl">--logfile<span class="o">=</span>FILE          log file. <span class="k">if</span> omitted stderr will be used
+</span></span><span class="line"><span class="cl">--loglevel<span class="o">=</span>LEVEL, -L LEVEL
+</span></span><span class="line"><span class="cl">                        log level <span class="o">(</span>default: DEBUG<span class="o">)</span>
+</span></span><span class="line"><span class="cl">--nolog                 disable logging completely
+</span></span><span class="line"><span class="cl">--profile<span class="o">=</span>FILE          write python cProfile stats to FILE
+</span></span><span class="line"><span class="cl">--pidfile<span class="o">=</span>FILE          write process ID to FILE
+</span></span><span class="line"><span class="cl">--set<span class="o">=</span><span class="nv">NAME</span><span class="o">=</span>VALUE, -s <span class="nv">NAME</span><span class="o">=</span>VALUE
+</span></span><span class="line"><span class="cl">                        set/override setting <span class="o">(</span>may be repeated<span class="o">)</span>
+</span></span><span class="line"><span class="cl">--pdb                   <span class="nb">enable</span> pdb on failure
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>初始时的目录结构如下所示：</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/Scrapy/scrapy_project_framework_begin.png" alt="project_framework_begin"></p>
+<h2 id="启动调试">启动调试</h2>
+<p>使用 <strong>IDE</strong> 时，为了方便调试，可以新建 <strong>run.py</strong> 使用 <strong>spider.cmdline</strong> 中的 <strong>execute函数</strong> 执行命令，达到调试的效果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># run.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">scrapy.cmdline</span> <span class="kn">import</span> <span class="n">execute</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">spider_app</span> <span class="o">=</span> <span class="s1">&#39;DoubanMovie&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cmd</span> <span class="o">=</span> <span class="s1">&#39;scrapy crawl </span><span class="si">{0}</span><span class="s1"> --nolog&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spider_app</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">execute</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-01-14
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/python/">Python</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/scrapy/">Scrapy</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/python/python__slots__%E5%92%8C__all__/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Python   slots  和  all  </span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/python/python_json%E8%A7%A3%E6%9E%90%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/">
+            <span class="next-text nav-default">Python json解析错误处理</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

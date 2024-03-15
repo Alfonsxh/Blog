@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Frida API - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Frida API" /><meta name="keywords" content="Python, Frida" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/python/frida/frida_api_%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Frida API</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-11-29 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/python/"> Python </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/frida/"> Frida </a>
+            </div>
+          <span class="more-meta"> 1724 words </span>
+          <span class="more-meta"> 9 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#python-api">Python API</a>
+          <ul>
+            <li><a href="#获取设备相关">获取设备相关</a></li>
+            <li><a href="#设备相关">设备相关</a></li>
+            <li><a href="#脚本相关">脚本相关</a></li>
+          </ul>
+        </li>
+        <li><a href="#fridas-javascript-api">Frida&rsquo;s JavaScript API</a>
+          <ul>
+            <li><a href="#console接口">console接口</a></li>
+            <li><a href="#process接口">Process接口</a></li>
+            <li><a href="#module接口">Module接口</a></li>
+            <li><a href="#memory接口">Memory接口</a></li>
+            <li><a href="#基础类型">基础类型</a></li>
+            <li><a href="#interceptor接口">Interceptor接口</a></li>
+            <li><a href="#java接口">Java接口</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考资料">参考资料</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="python-api">Python API</h2>
+<p><code>Frida Python端</code>调用的<code>API</code>主要用于启动程序，并将<code>JavaScript 脚本</code>注入到对应进程的内存。</p>
+<h3 id="获取设备相关">获取设备相关</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;&gt;&gt; frida.enumerate_devices<span class="o">()</span>    <span class="c1"># 获取所有的设备列表</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>Device<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="s2">&#34;local&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Local System&#34;</span>, <span class="nv">type</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="o">)</span>, Device<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="s2">&#34;tcp&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Local TCP&#34;</span>, <span class="nv">type</span><span class="o">=</span><span class="s1">&#39;remote&#39;</span><span class="o">)</span>, Device<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="s2">&#34;ZX1G222TZL&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Motorola Nexus 6&#34;</span>, <span class="nv">type</span><span class="o">=</span><span class="s1">&#39;usb&#39;</span><span class="o">)]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; frida.get_local_device<span class="o">()</span>    <span class="c1"># 获取本地设备</span>
+</span></span><span class="line"><span class="cl">Device<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="s2">&#34;local&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Local System&#34;</span>, <span class="nv">type</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; frida.get_remote_device<span class="o">()</span>   <span class="c1"># 获取远程设备</span>
+</span></span><span class="line"><span class="cl">Device<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="s2">&#34;tcp&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Local TCP&#34;</span>, <span class="nv">type</span><span class="o">=</span><span class="s1">&#39;remote&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; frida.get_usb_device<span class="o">()</span>  <span class="c1"># 获取usb设备</span>
+</span></span><span class="line"><span class="cl">Device<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="s2">&#34;ZX1G222TZL&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Motorola Nexus 6&#34;</span>, <span class="nv">type</span><span class="o">=</span><span class="s1">&#39;usb&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; <span class="nv">device_manager</span> <span class="o">=</span> frida.get_device_manager<span class="o">()</span>     <span class="c1"># 获取设备管理员</span>
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device_manager
+</span></span><span class="line"><span class="cl">&lt;_frida.DeviceManager object at 0x0000021DC7BE2E90&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device_manager.enumerate_devices<span class="o">()</span>  <span class="c1"># 从设别管理员处获取所有设备的列表</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>Device<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="s2">&#34;local&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Local System&#34;</span>, <span class="nv">type</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="o">)</span>, Device<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="s2">&#34;tcp&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Local TCP&#34;</span>, <span class="nv">type</span><span class="o">=</span><span class="s1">&#39;remote&#39;</span><span class="o">)</span>, Device<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="s2">&#34;ZX1G222TZL&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Motorola Nexus 6&#34;</span>, <span class="nv">type</span><span class="o">=</span><span class="s1">&#39;usb&#39;</span><span class="o">)]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device_manager.add_remote_device<span class="o">(</span><span class="s2">&#34;127.0.0.1&#34;</span><span class="o">)</span>   <span class="c1"># 添加远程设备</span>
+</span></span><span class="line"><span class="cl">Device<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="s2">&#34;tcp@127.0.0.1&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;127.0.0.1&#34;</span>, <span class="nv">type</span><span class="o">=</span><span class="s1">&#39;remote&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device_manager.remove_remote_device<span class="o">(</span><span class="s2">&#34;127.0.0.1&#34;</span><span class="o">)</span> <span class="c1"># 移除远程设备</span>
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device_manager.get_device<span class="o">(</span><span class="s2">&#34;ZX1G222TZL&#34;</span><span class="o">)</span>     <span class="c1"># 根据deviceId获取设备句柄</span>
+</span></span><span class="line"><span class="cl">Device<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="s2">&#34;ZX1G222TZL&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Motorola Nexus 6&#34;</span>, <span class="nv">type</span><span class="o">=</span><span class="s1">&#39;usb&#39;</span><span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="设备相关">设备相关</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;&gt;&gt; <span class="nv">device</span> <span class="o">=</span> frida.get_usb_device<span class="o">()</span>     <span class="c1"># 获取usb设备</span>
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device
+</span></span><span class="line"><span class="cl">Device<span class="o">(</span><span class="nv">id</span><span class="o">=</span><span class="s2">&#34;ZX1G222TZL&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Motorola Nexus 6&#34;</span>, <span class="nv">type</span><span class="o">=</span><span class="s1">&#39;usb&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device.get_frontmost_application<span class="o">()</span>  <span class="c1"># 获取当前正在运行的应用信息</span>
+</span></span><span class="line"><span class="cl">Application<span class="o">(</span><span class="nv">identifier</span><span class="o">=</span><span class="s2">&#34;com.android.chrome&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Chrome&#34;</span>, <span class="nv">pid</span><span class="o">=</span>8310<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device.enumerate_applications<span class="o">()</span> <span class="c1"># 获取当前设备所有的应用信息</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>Application<span class="o">(</span><span class="nv">identifier</span><span class="o">=</span><span class="s2">&#34;com.github.shadowsocks&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;Shadowsocks&#34;</span><span class="o">)</span>, Application<span class="o">(</span><span class="nv">identifier</span><span class="o">=</span><span class="s2">&#34;com.android.cts.priv.ctsshim&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;com.android.cts.priv.ctsshim&#34;</span><span class="o">)</span>, Application<span class="o">(</span><span class="nv">identifier</span><span class="o">=</span><span class="s2">&#34;com.android.providers.telephony&#34;</span>, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;电话和短信存储&#34;</span>, <span class="nv">pid</span><span class="o">=</span>1579<span class="o">)</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device.enumerate_processes<span class="o">()</span>    <span class="c1"># 获取当前所有的进程信息</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>Process<span class="o">(</span><span class="nv">pid</span><span class="o">=</span>1, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;init&#34;</span><span class="o">)</span>, Process<span class="o">(</span><span class="nv">pid</span><span class="o">=</span>229, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;ueventd&#34;</span><span class="o">)</span>, Process<span class="o">(</span><span class="nv">pid</span><span class="o">=</span>247, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;logd&#34;</span><span class="o">)</span>, Process<span class="o">(</span><span class="nv">pid</span><span class="o">=</span>255, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;debuggerd&#34;</span><span class="o">)</span>, Process<span class="o">(</span><span class="nv">pid</span><span class="o">=</span>256, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;vold&#34;</span><span class="o">)</span>, Process<span class="o">(</span><span class="nv">pid</span><span class="o">=</span>258, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;debuggerd:signaller&#34;</span><span class="o">)</span>, Process<span class="o">(</span><span class="nv">pid</span><span class="o">=</span>286, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;healthd&#34;</span><span class="o">)</span>, Process<span class="o">(</span><span class="nv">pid</span><span class="o">=</span>287, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;mdm_helper&#34;</span><span class="o">)</span>, Process<span class="o">(</span><span class="nv">pid</span><span class="o">=</span>288, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;sensors.qcom&#34;</span><span class="o">)</span>, Process<span class="o">(</span><span class="nv">pid</span><span class="o">=</span>289, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;qseecomd&#34;</span><span class="o">)</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device.get_process<span class="o">(</span><span class="s2">&#34;com.tencent.mm&#34;</span><span class="o">)</span>   <span class="c1"># 获取对应进程的信息</span>
+</span></span><span class="line"><span class="cl">Process<span class="o">(</span><span class="nv">pid</span><span class="o">=</span>4269, <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;com.tencent.mm&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device.spawn<span class="o">(</span><span class="s2">&#34;com.tencent.mm&#34;</span><span class="o">)</span>  <span class="c1"># 重新启动对应的应用，返回启动后的进程ID（如果设备上进程已经打开，则不用进行此步骤）</span>
+</span></span><span class="line"><span class="cl"><span class="m">9097</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device.resume<span class="o">(</span>processId<span class="o">)</span>    <span class="c1"># 恢复对应进程的状态，参数可以是进程ID，也可以是进程的名称</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; <span class="nv">attachSession</span> <span class="o">=</span> device.attach<span class="o">(</span>processId<span class="o">)</span>    <span class="c1"># 附着对应的进程，返回对应进程的会话。参数可以是进程ID，也可以是进程的名称</span>
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; attachSession
+</span></span><span class="line"><span class="cl">Session<span class="o">(</span><span class="nv">pid</span><span class="o">=</span>9922<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; device.kill<span class="o">(</span><span class="s2">&#34;com.tencent.mm&#34;</span><span class="o">)</span> <span class="c1"># 杀死对应的进程。参数可以是进程ID，也可以是进程的名称</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="脚本相关">脚本相关</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;&gt;&gt; <span class="nv">script</span> <span class="o">=</span> attachSession.create_script<span class="o">(</span>jscode<span class="o">)</span>  <span class="c1"># 在附着的进程中创建一个脚本，传入参数为str类型，如果要输入字节码类型，使用create_script_from_bytes接口</span>
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; script
+</span></span><span class="line"><span class="cl">&lt;_frida.Script object at 0x0000015C20F12DC8&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; script.on<span class="o">(</span><span class="s2">&#34;message&#34;</span>, on_message<span class="o">)</span>    <span class="c1"># 创建一个message的回调函数(frida特别指定了message回调)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; script.load<span class="o">()</span>  <span class="c1"># 加载js脚本，并打印运行结果</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>Frida</code>关于python的接口使用大致就上述内容，还有一些接口并未完全展示。</p>
+<h2 id="fridas-javascript-api">Frida&rsquo;s JavaScript API</h2>
+<p>相对于python的接口，<code>Frida</code>中更重要的是<code>JavaScript</code>的接口。</p>
+<h3 id="console接口">console接口</h3>
+<p><code>console</code>日志模块是<code>Frida</code>中使用频率最多的一个模块。<code>console.log(line)</code>, <code>console.warn(line)</code>, <code>console.error(line)</code>三个都是打印日志的接口。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">//在内存中查找libc.so的起始地址，打印前256字节的内容。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">libc</span> <span class="o">=</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">findBaseAddress</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">buf</span> <span class="o">=</span> <span class="nx">Memory</span><span class="p">.</span><span class="nx">readByteArray</span><span class="p">(</span><span class="nx">libc</span><span class="p">,</span> <span class="mi">256</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hexdump</span><span class="p">(</span><span class="nx">buf</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">offset</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">length</span><span class="o">:</span> <span class="mi">256</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">header</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ansi</span><span class="o">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="process接口">Process接口</h3>
+<p><code>Process</code>接口主要包含了程序运行的环境，查找模块的地址等等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] Process.arch -&gt; &#34;</span> <span class="o">+</span> <span class="nx">Process</span><span class="p">.</span><span class="nx">arch</span><span class="p">);</span>       <span class="c1">// 打印cpu的平台，ia32, x64, arm or arm64
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Process.platform -&gt; &#34;</span> <span class="o">+</span> <span class="nx">Process</span><span class="p">.</span><span class="nx">platform</span><span class="p">);</span>     <span class="c1">// 打印目标操作系统，linux、windows
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Process.pageSize -&gt; &#34;</span> <span class="o">+</span> <span class="nx">Process</span><span class="p">.</span><span class="nx">pageSize</span><span class="p">);</span>         <span class="c1">// 打印虚拟页面大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Process.pointerSize -&gt; &#34;</span> <span class="o">+</span> <span class="nx">Process</span><span class="p">.</span><span class="nx">pointerSize</span><span class="p">);</span>   <span class="c1">// 打印指针占用的内存大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Process.codeSigningPolicy -&gt; &#34;</span> <span class="o">+</span> <span class="nx">Process</span><span class="p">.</span><span class="nx">codeSigningPolicy</span><span class="p">);</span>     <span class="c1">// 默认值是 optional，除非是在 Gadget 模式下通过配置文件来使用 required，通过这个属性可以确定 Interceptor API 是否有限制，确定代码修改或者执行未签名代码是否安全。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Process.isDebuggerAttached() -&gt; &#34;</span> <span class="o">+</span> <span class="nx">Process</span><span class="p">.</span><span class="nx">isDebuggerAttached</span><span class="p">());</span>     <span class="c1">// 确定当前是否有调试器附加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Process.getCurrentThreadId() -&gt; &#34;</span> <span class="o">+</span> <span class="nx">Process</span><span class="p">.</span><span class="nx">getCurrentThreadId</span><span class="p">());</span>     <span class="c1">// 获取当前线程ID
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">Process</span><span class="p">.</span><span class="nx">enumerateThreads</span><span class="p">({</span>                  <span class="c1">// 枚举所有线程enumerateThreadsSync为返回所有线程的列表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">onMatch</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">thread</span><span class="p">)</span> <span class="p">{</span>            <span class="c1">// 匹配到执行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] thread.id -&gt; &#34;</span> <span class="o">+</span> <span class="nx">thread</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>     <span class="c1">// 打印线程id
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] thread.state -&gt; &#34;</span> <span class="o">+</span> <span class="nx">thread</span><span class="p">.</span><span class="nx">state</span><span class="p">);</span>     <span class="c1">// 打印线程状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] thread.context -&gt; &#34;</span> <span class="o">+</span> <span class="nx">thread</span><span class="p">.</span><span class="nx">context</span><span class="p">);</span>     <span class="c1">// 打印寄存器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onComplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Process</span><span class="p">.</span><span class="nx">enumerateModules</span><span class="p">({</span>                  <span class="c1">// 枚举所有模块。enumerateModulesSync返回所有模块的列表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">onMatch</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">module</span><span class="p">)</span> <span class="p">{</span>         <span class="c1">// 匹配到执行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] module.name -&gt; &#34;</span> <span class="o">+</span> <span class="nx">module</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>     <span class="c1">//打印模块名字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] module.base -&gt; &#34;</span> <span class="o">+</span> <span class="nx">module</span><span class="p">.</span><span class="nx">base</span><span class="p">);</span>     <span class="c1">// 打印模块基地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] module.size -&gt; &#34;</span> <span class="o">+</span> <span class="nx">module</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span>     <span class="c1">// 打印模块大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] module.path -&gt; &#34;</span> <span class="o">+</span> <span class="nx">module</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>     <span class="c1">// 打印模块路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onComplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">libc_module</span> <span class="o">=</span> <span class="nx">Process</span><span class="p">.</span><span class="nx">findModuleByName</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">);</span>       <span class="c1">// 根据模块的名字查找模块，同getModuleByName
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">libc_module</span> <span class="o">=</span> <span class="nx">Process</span><span class="p">.</span><span class="nx">findModuleByAddress</span><span class="p">(</span><span class="nx">libc_module</span><span class="p">.</span><span class="nx">base</span><span class="p">);</span>        <span class="c1">// 根据模块的地址查找模块，同getModuleByAddress
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] Process.findModuleByName(\&#34;libc.so\&#34;):&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] libc_module.name -&gt; &#34;</span> <span class="o">+</span> <span class="nx">libc_module</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>     <span class="c1">//打印模块名字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] libc_module.base -&gt; &#34;</span> <span class="o">+</span> <span class="nx">libc_module</span><span class="p">.</span><span class="nx">base</span><span class="p">);</span>     <span class="c1">// 打印模块基地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] libc_module.size -&gt; &#34;</span> <span class="o">+</span> <span class="nx">libc_module</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span>     <span class="c1">// 打印模块大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] libc_module.path -&gt; &#34;</span> <span class="o">+</span> <span class="nx">libc_module</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>     <span class="c1">// 打印模块路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">cache_block</span> <span class="o">=</span> <span class="nx">Process</span><span class="p">.</span><span class="nx">findRangeByAddress</span><span class="p">(</span><span class="nx">Process</span><span class="p">.</span><span class="nx">getModuleByName</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">).</span><span class="nx">base</span><span class="p">);</span>  <span class="c1">// 获取目标内存块信息，地址找不到返回null。getRangeByAddress则会抛出异常
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] cache_block.base -&gt; &#34;</span> <span class="o">+</span> <span class="nx">cache_block</span><span class="p">.</span><span class="nx">base</span><span class="p">);</span>     <span class="c1">// 内存块的基地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] cache_block.size -&gt; &#34;</span> <span class="o">+</span> <span class="nx">cache_block</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span>     <span class="c1">// 内存块大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] cache_block.protection -&gt; &#34;</span> <span class="o">+</span> <span class="nx">cache_block</span><span class="p">.</span><span class="nx">protection</span><span class="p">);</span> <span class="c1">// 内存块保护属性，r-x、rwx等
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] cache_block.file.path -&gt; &#34;</span> <span class="o">+</span> <span class="nx">cache_block</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>   <span class="c1">// 内存块对应文件路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] cache_block.file.offset -&gt; &#34;</span> <span class="o">+</span> <span class="nx">cache_block</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">offset</span><span class="p">);</span>   <span class="c1">// 内存块对应文件内偏移
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] cache_block.file.size -&gt; &#34;</span> <span class="o">+</span> <span class="nx">cache_block</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span>   <span class="c1">// 内存块对应文件大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">Process</span><span class="p">.</span><span class="nx">enumerateRanges</span><span class="p">(</span><span class="s2">&#34;r-x&#34;</span><span class="p">,</span> <span class="p">{</span>        <span class="c1">// 枚举指定 protection 类型的内存块。Process.enumerateRangesSync(protection)返回所有匹配到的内存块列表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">onMatch</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">range</span><span class="p">)</span> <span class="p">{</span>         <span class="c1">// 匹配到指定内存块的操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] range.base -&gt; &#34;</span> <span class="o">+</span> <span class="nx">range</span><span class="p">.</span><span class="nx">base</span><span class="p">);</span>     <span class="c1">// 内存块的基地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] range.size -&gt; &#34;</span> <span class="o">+</span> <span class="nx">range</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span>     <span class="c1">// 内存块大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] range.protection -&gt; &#34;</span> <span class="o">+</span> <span class="nx">range</span><span class="p">.</span><span class="nx">protection</span><span class="p">);</span> <span class="c1">// 内存块保护属性，r-x、rwx等
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="nx">range</span><span class="p">.</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>           <span class="c1">// 如果含有file属性的话，打印file属性的内部参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] range.file.path -&gt; &#34;</span> <span class="o">+</span> <span class="nx">range</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>   <span class="c1">// 内存块对应文件路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] range.file.offset -&gt; &#34;</span> <span class="o">+</span> <span class="nx">range</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">offset</span><span class="p">);</span>   <span class="c1">// 内存块对应文件内偏移
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] range.file.size -&gt; &#34;</span> <span class="o">+</span> <span class="nx">range</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span>   <span class="c1">// 内存块对应文件大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onComplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] onComplete! &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="module接口">Module接口</h3>
+<p><code>Module</code>接口主要和各个模块相关。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">Module</span><span class="p">.</span><span class="nx">enumerateImports</span><span class="p">(</span><span class="s2">&#34;libwechatnormsg.so&#34;</span><span class="p">,</span> <span class="p">{</span>      <span class="c1">// 根据模块的名称，枚举指定模块从其他模块中导入的项。enumerateImportsSync(name)同步版本，返回导入项列表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">onMatch</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">imp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] imp.type -&gt; &#34;</span> <span class="o">+</span> <span class="nx">imp</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span>       <span class="c1">// 导入项的类型，function 或者 variable
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] imp.name -&gt; &#34;</span> <span class="o">+</span> <span class="nx">imp</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>         <span class="c1">// 导入项的名称
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] imp.module -&gt; &#34;</span> <span class="o">+</span> <span class="nx">imp</span><span class="p">.</span><span class="nx">module</span><span class="p">);</span>     <span class="c1">// 与导入项关联的模块的名称
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] imp.address -&gt; &#34;</span> <span class="o">+</span> <span class="nx">imp</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>   <span class="c1">// 导入项的绝对地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onComplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] onComplete! &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Module</span><span class="p">.</span><span class="nx">enumerateExports</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">,</span> <span class="p">{</span>      <span class="c1">// 根据模块的名称，枚举指定模块被其他模块使用的导出的项。enumerateExportsSync(name)同步版本，返回导出项列表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">onMatch</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">exp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] exp.type -&gt; &#34;</span> <span class="o">+</span> <span class="nx">exp</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span>       <span class="c1">// 导出项的类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] exp.name -&gt; &#34;</span> <span class="o">+</span> <span class="nx">exp</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>         <span class="c1">// 导出项的名称
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] exp.address -&gt; &#34;</span> <span class="o">+</span> <span class="nx">exp</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>   <span class="c1">// 导出项的绝对地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onComplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] onComplete! &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Module</span><span class="p">.</span><span class="nx">enumerateSymbols</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">,</span> <span class="p">{</span>            <span class="c1">// 枚举模块中包含的符号。enumerateSymbolsSync(name)为同步版本，返回符号的列表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">onMatch</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">sym</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] sym.isGlobal -&gt; &#34;</span> <span class="o">+</span> <span class="nx">sym</span><span class="p">.</span><span class="nx">isGlobal</span><span class="p">);</span>   <span class="c1">//bool类型，表示符号是否全局可见
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] sym.type -&gt; &#34;</span> <span class="o">+</span> <span class="nx">sym</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span>   <span class="c1">//符号的类型，包括unknown,section,undefined (Mach-O),absolute (Mach-O),prebound-undefined (Mach-O),indirect (Mach-O),object (ELF),function (ELF),file (ELF),common (ELF),tls (ELF)。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="nx">sym</span><span class="p">.</span><span class="nx">section</span><span class="p">)</span> <span class="p">{</span>          <span class="c1">// 节区信息。不一定含有
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] sym.section.id -&gt; &#34;</span> <span class="o">+</span> <span class="nx">sym</span><span class="p">.</span><span class="nx">section</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>   <span class="c1">// 节区名称
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] sym.section.protection -&gt; &#34;</span> <span class="o">+</span> <span class="nx">sym</span><span class="p">.</span><span class="nx">section</span><span class="p">.</span><span class="nx">protection</span><span class="p">);</span>   <span class="c1">// 节区保护属性，r-x、rwx等
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] sym.name -&gt; &#34;</span> <span class="o">+</span> <span class="nx">sym</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>   <span class="c1">// 符号名称
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] sym.address -&gt; &#34;</span> <span class="o">+</span> <span class="nx">sym</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>   <span class="c1">// 符号的绝对地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onComplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] onComplete! &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="memory接口">Memory接口</h3>
+<p><code>Memory</code>接口，主要实现的是对内存的操作，包括内存的读和写。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 在 address 开始的地址，size 大小的内存范围内以 pattern 这个模式进行匹配查找，查找到一个内存块就回调callbacks
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Memory</span><span class="p">.</span><span class="nx">scan</span><span class="p">(</span><span class="nx">Module</span><span class="p">.</span><span class="nx">findBaseAddress</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">),</span> <span class="mi">1024</span><span class="p">,</span> <span class="s2">&#34;50 e5 ?? 64&#34;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onMatch</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">size</span><span class="p">)</span> <span class="p">{</span>                     <span class="c1">// 根据条件匹配到相应的内存块后，回调匹配信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Memory.scan.onMatch.address -&gt; &#34;</span> <span class="o">+</span> <span class="nx">address</span><span class="p">);</span>   <span class="c1">// 打印匹配到的地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Memory.scan.onMatch.size -&gt; &#34;</span> <span class="o">+</span> <span class="nx">size</span><span class="p">);</span>     <span class="c1">// 打印匹配到的内容长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onError</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>            <span class="c1">// 异常处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Memory.scan.onError.reason -&gt; &#34;</span> <span class="o">+</span> <span class="nx">reason</span><span class="p">);</span>     
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onComplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Memory.scan.onComplete over.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">buf</span> <span class="o">=</span> <span class="nx">Memory</span><span class="p">.</span><span class="nx">alloc</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>       <span class="c1">// 在目标进程的堆上分配size字节的空间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] Before copy: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hexdump</span><span class="p">(</span><span class="nx">buf</span><span class="p">,</span> <span class="p">{</span>          <span class="c1">// 打印buf的内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">offset</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">length</span><span class="o">:</span> <span class="mi">128</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">header</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ansi</span><span class="o">:</span> <span class="kc">false</span>                 <span class="c1">// ansi为windows系统下的字体
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Memory</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="nx">buf</span><span class="p">,</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">findBaseAddress</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">),</span> <span class="mi">128</span><span class="p">);</span>         <span class="c1">// 从src地址拷贝规定size的内容至dst地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] After Memory.copy -&gt; &#34;</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hexdump</span><span class="p">(</span><span class="nx">buf</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">offset</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">length</span><span class="o">:</span> <span class="mi">128</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">header</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ansi</span><span class="o">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">buf2</span> <span class="o">=</span> <span class="nx">Memory</span><span class="p">.</span><span class="nx">dup</span><span class="p">(</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">findBaseAddress</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">),</span> <span class="mi">64</span><span class="p">);</span>      <span class="c1">// dup结合了alloc和copy的操作，从指定地址开始，复制大小为size的内容，返回复制后的内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] After Memory.dup -&gt; &#34;</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hexdump</span><span class="p">(</span><span class="nx">buf2</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">offset</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">length</span><span class="o">:</span> <span class="mi">128</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">header</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ansi</span><span class="o">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">cache_block</span> <span class="o">=</span> <span class="nx">Process</span><span class="p">.</span><span class="nx">findRangeByAddress</span><span class="p">(</span><span class="nx">Process</span><span class="p">.</span><span class="nx">getModuleByName</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">).</span><span class="nx">base</span><span class="p">);</span>  <span class="c1">// 获取原始libc.so模块内存信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] Before Memory.protect:&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] cache_block.base -&gt; &#34;</span> <span class="o">+</span> <span class="nx">cache_block</span><span class="p">.</span><span class="nx">base</span><span class="p">);</span>     <span class="c1">// 原始内存块的基地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] cache_block.size -&gt; &#34;</span> <span class="o">+</span> <span class="nx">cache_block</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span>     <span class="c1">// 原始内存块的大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] cache_block.protection -&gt; &#34;</span> <span class="o">+</span> <span class="nx">cache_block</span><span class="p">.</span><span class="nx">protection</span><span class="p">);</span> <span class="c1">// 原始内存块的保护属性为r-x
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">Memory</span><span class="p">.</span><span class="nx">protect</span><span class="p">(</span><span class="nx">cache_block</span><span class="p">.</span><span class="nx">base</span><span class="p">,</span> <span class="nx">cache_block</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span> <span class="s2">&#34;rwx&#34;</span><span class="p">);</span>      <span class="c1">// 修改内存块的保护属性为rwx
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">cache_block2</span> <span class="o">=</span> <span class="nx">Process</span><span class="p">.</span><span class="nx">findRangeByAddress</span><span class="p">(</span><span class="nx">Process</span><span class="p">.</span><span class="nx">getModuleByName</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">).</span><span class="nx">base</span><span class="p">);</span> <span class="c1">// 重新读取libc.so模块内存信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] After Memory.protect:&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] cache_block2.base -&gt; &#34;</span> <span class="o">+</span> <span class="nx">cache_block2</span><span class="p">.</span><span class="nx">base</span><span class="p">);</span>     <span class="c1">// 修改后内存块的基地址  不变
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] cache_block2.size -&gt; &#34;</span> <span class="o">+</span> <span class="nx">cache_block2</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span>     <span class="c1">// 修改后内存块大小  不变
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] cache_block2.protection -&gt; &#34;</span> <span class="o">+</span> <span class="nx">cache_block2</span><span class="p">.</span><span class="nx">protection</span><span class="p">);</span> <span class="c1">// 修改后内存块的保护属性  改变为rwx
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">pointerValue</span> <span class="o">=</span> <span class="nx">Memory</span><span class="p">.</span><span class="nx">readPointer</span><span class="p">(</span><span class="nx">Process</span><span class="p">.</span><span class="nx">getModuleByName</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">).</span><span class="nx">base</span><span class="p">);</span>     <span class="c1">// 读取指定地址处的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Before Memory.writePointer-&gt; &#34;</span> <span class="o">+</span> <span class="nx">pointerValue</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Memory</span><span class="p">.</span><span class="nx">writePointer</span><span class="p">(</span><span class="nx">libc_address</span><span class="p">,</span> <span class="nx">ptr</span><span class="p">(</span><span class="s2">&#34;0x78563412&#34;</span><span class="p">));</span>       <span class="c1">// 在指定内存地址处写入值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">pointerValue</span> <span class="o">=</span> <span class="nx">Memory</span><span class="p">.</span><span class="nx">readPointer</span><span class="p">(</span><span class="nx">Process</span><span class="p">.</span><span class="nx">getModuleByName</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">).</span><span class="nx">base</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] After Memory.writePointer -&gt; &#34;</span> <span class="o">+</span> <span class="nx">pointerValue</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Memory</span><span class="p">.</span><span class="nx">writeByteArray</span><span class="p">(</span><span class="nx">Process</span><span class="p">.</span><span class="nx">getModuleByName</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">).</span><span class="nx">base</span><span class="p">,</span> <span class="p">[</span><span class="mh">0xff</span><span class="p">,</span> <span class="mh">0xff</span><span class="p">]);</span>           <span class="c1">// 在指定地址，写入对应的字节数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">valueArr</span> <span class="o">=</span> <span class="nx">Memory</span><span class="p">.</span><span class="nx">readByteArray</span><span class="p">(</span><span class="nx">Process</span><span class="p">.</span><span class="nx">getModuleByName</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">).</span><span class="nx">base</span><span class="p">,</span> <span class="mi">128</span><span class="p">);</span>      <span class="c1">// 读取指定地址，规定size大小的内容。读取的内容需要通过hexdump接口展示
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Memory.readByteArray -&gt; &#34;</span> <span class="o">+</span> <span class="nx">valueArr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hexdump</span><span class="p">(</span><span class="nx">valueArr</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">offset</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">length</span><span class="o">:</span> <span class="mi">128</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">header</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ansi</span><span class="o">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>Memory</code>模块还有很多指定类型的读取写入的模块接口，这里不做展示。</p>
+<h3 id="基础类型">基础类型</h3>
+<p>官方说明文档中主要介绍了三种类型，int64、uint64、NativePointer。其中<code>NativePointer</code>类型对应于<code>C</code>中的指针类型。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">int_v</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Int64</span><span class="p">(</span><span class="mi">64</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] new Int64(64) -&gt; &#34;</span> <span class="o">+</span> <span class="nx">int_v</span><span class="p">);</span>       <span class="c1">// Int64(v)、UInt64(v) 需要使用关键字new来创建
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] int64(64) -&gt; &#34;</span> <span class="o">+</span> <span class="nx">int64</span><span class="p">(</span><span class="mi">64</span><span class="p">));</span>   <span class="c1">// int64(v)、uint64(v) 不需要，可直接创建
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] int_v.toString(radix = 16) -&gt; 0x&#34;</span> <span class="o">+</span> <span class="nx">int_v</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">radix</span> <span class="o">=</span> <span class="mi">16</span><span class="p">));</span>     <span class="c1">// 按照对应进制进行转换（貌似只有十进制和十六进制选择）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">nativePointerA</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NativePointer</span><span class="p">(</span><span class="s2">&#34;0x123456&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] new NativePointer(\&#34;0x123456\&#34;) -&gt; &#34;</span> <span class="o">+</span> <span class="nx">nativePointerA</span><span class="p">);</span>      <span class="c1">// 指针类型变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] ptr(\&#34;0x123456\&#34;) -&gt; &#34;</span> <span class="o">+</span> <span class="nx">ptr</span><span class="p">(</span><span class="s2">&#34;0x123456&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] ptr(\&#34;0x123456\&#34;) + ptr(\&#34;0x111111\&#34;) -&gt; &#34;</span> <span class="o">+</span>  <span class="nx">ptr</span><span class="p">(</span><span class="s2">&#34;0x123456&#34;</span><span class="p">).</span><span class="nx">add</span><span class="p">(</span><span class="mh">0x111111</span><span class="p">));</span>    <span class="c1">// 指针类型变量不能直接相加，需要使用add()接口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] nativePointerA.toInt32() -&gt; &#34;</span> <span class="o">+</span> <span class="nx">nativePointerA</span><span class="p">.</span><span class="nx">toInt32</span><span class="p">());</span>         <span class="c1">// 转换成int类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] nativePointerA.toString() -&gt; &#34;</span> <span class="o">+</span> <span class="nx">nativePointerA</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">radix</span><span class="o">=</span><span class="mi">10</span><span class="p">));</span>       <span class="c1">// 按进制转换成对应进制的值
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="interceptor接口">Interceptor接口</h3>
+<p><code>Interceptor</code>一系列接口中最重要的是<code>attach(target, callbacks)</code>接口。通过该接口，可以在进入目标函数前<code>查看和修改</code>目标函数的参数。</p>
+<p><code>Interceptor.attach(target, callbacks)</code>接口一般用于<code>Android Native层Hook</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">Interceptor</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">Module</span><span class="p">.</span><span class="nx">findExportByName</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">,</span> <span class="s2">&#34;open&#34;</span><span class="p">),</span> <span class="p">{</span>       <span class="c1">// Interceptor拦截器附着(attach)所有函数名为dlopen
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">onEnter</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>                              <span class="c1">// 拦截函数进入时的操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Interceptor.attach.onEnter!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">arg</span> <span class="k">in</span> <span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] args[&#34;</span> <span class="o">+</span> <span class="nx">arg</span> <span class="o">+</span> <span class="s2">&#34;] -&gt; &#34;</span> <span class="o">+</span> <span class="nx">args</span><span class="p">[</span><span class="nx">arg</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[*] Context information:&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[*] Context  : &#39;</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">context</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[*] Return   : &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">returnAddress</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[*] ThreadId : &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">threadId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[*] Depth    : &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">depth</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[*] Errornr  : &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">err</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onLeave</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">retval</span><span class="p">)</span> <span class="p">{</span>                            <span class="c1">// 函数返回后的操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Interceptor.attach.onLeave!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">r</span> <span class="k">in</span> <span class="nx">retval</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] retval[&#34;</span> <span class="o">+</span> <span class="nx">r</span> <span class="o">+</span> <span class="s2">&#34;] -&gt; &#34;</span> <span class="o">+</span> <span class="nx">retval</span><span class="p">[</span><span class="nx">r</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="java接口">Java接口</h3>
+<p><code>Frida</code>通过<code>jni</code>打通了<code>Java</code>和<code>JavaScript</code>的通道。在<code>Frida</code>中的<code>Java接口</code>都由<code>JavaScript</code>实现。</p>
+<p>这里需要特别注意的一点是，在<code>Frida</code>中调用<code>Java</code>，需要将实现功能的函数都放置在<code>Java.perform()</code>内。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] Java.available -&gt; &#34;</span> <span class="o">+</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">available</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Java</span><span class="p">.</span><span class="nx">perform</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>                  <span class="c1">// 执行任意 Java 操作都需要使⽤此函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">Java</span><span class="p">.</span><span class="nx">enumerateLoadedClasses</span><span class="p">({</span>                <span class="c1">// 枚举加载的类。enumerateLoadedClassesSync() 为同步版本，返回值为类名的列表。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">onMatch</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">className</span><span class="p">)</span> <span class="p">{</span>          <span class="c1">// 匹配到时，参数为类名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] className -&gt; &#34;</span> <span class="o">+</span> <span class="nx">className</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">onComplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Java.enumerateLoadedClasses.onComplete -&gt; &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="kd">var</span> <span class="nx">logClass</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&#34;com.tencent.mm.sdk.platformtools.x&#34;</span><span class="p">);</span>  <span class="c1">// 获取指定类名的JavaScript引用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">logClass</span><span class="p">.</span><span class="nx">i</span><span class="p">.</span><span class="nx">overload</span><span class="p">(</span><span class="s2">&#34;java.lang.String&#34;</span><span class="p">,</span> <span class="s2">&#34;java.lang.String&#34;</span><span class="p">).</span><span class="nx">implementation</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// 源代码中含有重载的函数接口，这里要指定。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="s2">&#34;MicroMsg.LauncherUI&#34;</span> <span class="o">===</span> <span class="nx">arg1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] logClass.i.overload(\&#34;java.lang.String\&#34;, \&#34;java.lang.String\&#34;)&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Original arg1 -&gt; &#34;</span> <span class="o">+</span> <span class="nx">arg1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Original arg2 -&gt; &#34;</span> <span class="o">+</span> <span class="nx">arg2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">i</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">);</span>     <span class="c1">// 如果不运行源函数功能，则源函数也不会运行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">strClass</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&#34;java.lang.String&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">logClass</span><span class="p">.</span><span class="nx">i</span><span class="p">.</span><span class="nx">overload</span><span class="p">(</span><span class="s2">&#34;java.lang.String&#34;</span><span class="p">,</span> <span class="s2">&#34;java.lang.String&#34;</span><span class="p">,</span> <span class="s1">&#39;[Ljava.lang.Object;&#39;</span><span class="p">).</span><span class="nx">implementation</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">,</span> <span class="nx">arg3</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="s2">&#34;MicroMsg.LauncherUI&#34;</span> <span class="o">===</span> <span class="nx">arg1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 使用JavaScript引用类的功能，包括：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// $new：new 运算符，初始化新对象。注意与 $init 区分
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// $alloc：分配内存，但不不初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// $init：构造器器⽅方法，⽤用来 hook ⽽而不不是给 js 调⽤用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// $dispose：析构函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// $isSameObject：是否与另⼀一个 Java 对象相同
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// $className：类名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;\n[*] strClass.$className -&gt; &#34;</span> <span class="o">+</span> <span class="nx">strClass</span><span class="p">.</span><span class="nx">$className</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] strClass.$new(\&#34;Hello World!) -&gt; &#34;</span> <span class="o">+</span> <span class="nx">strClass</span><span class="p">.</span><span class="nx">$new</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">i</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">,</span> <span class="nx">arg3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">bool_a</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&#34;java.lang.Boolean&#34;</span><span class="p">).</span><span class="nx">$new</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>      <span class="c1">// 与Java相关的接口，必须在Java.perform(function(){...}) 规定的函数外层使用，内层不能使用。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">Java</span><span class="p">.</span><span class="nx">scheduleOnMainThread</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// var bool_a = Java.use(&#34;java.lang.Boolean&#34;).$new(true);       // 错误的做法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Java.use(\&#34;java.lang.Boolean\&#34;).$new(true) -&gt; &#34;</span> <span class="o">+</span> <span class="nx">bool_a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">Java</span><span class="p">.</span><span class="nx">choose</span><span class="p">(</span><span class="s2">&#34;com.tencent.mm.ui.LauncherUI&#34;</span><span class="p">,</span> <span class="p">{</span>     <span class="c1">// 在Java的内存堆上扫描指定类名称的Java对象，每次扫描到一个对象，则回调callbacks
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">onMatch</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">instance</span><span class="p">)</span> <span class="p">{</span>              <span class="c1">// 参数为目标的单例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">instance</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] instance[&#34;</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s2">&#34;] -&gt; &#34;</span> <span class="o">+</span> <span class="nx">instance</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">onComplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;[*] Java.choose().onComplete!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">Java</span><span class="p">.</span><span class="nx">cast</span><span class="p">(</span><span class="nx">ptr</span><span class="p">(</span><span class="s2">&#34;0x1234&#34;</span><span class="p">),</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&#34;java.lang.String&#34;</span><span class="p">));</span>     <span class="c1">// 将指定地址的内容强转为目标类型(使用Java.use()后的对象)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://www.frida.re/docs/javascript-api/">Frida JavaScript API</a></li>
+<li><a href="https://www.slideshare.net/ssusercf6665/frida-107244825">基于 FRIDA 的全平台逆向分析</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-11-29
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/python/">Python</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/frida/">Frida</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/python/spider/beautifulsoup%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Beautiful Soup使用手册</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/python/frida/frida_%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">
+            <span class="next-text nav-default">Frida使用手册</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

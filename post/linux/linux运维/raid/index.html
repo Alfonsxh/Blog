@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>RAID - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="RAID" /><meta name="keywords" content="Linux, Linux运维" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/linux/linux%E8%BF%90%E7%BB%B4/raid/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">RAID</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-06-10 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/linux/"> Linux </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/linux%E8%BF%90%E7%BB%B4/"> Linux运维 </a>
+            </div>
+          <span class="more-meta"> 534 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#raid层级">RAID层级</a>
+          <ul>
+            <li><a href="#raid-0-stripe">RAID 0 (stripe)</a></li>
+            <li><a href="#raid-1-mirror">RAID 1 (mirror)</a></li>
+            <li><a href="#raid-5-奇偶校验">RAID 5 (奇偶校验)</a></li>
+            <li><a href="#raid-10">RAID 10</a></li>
+          </ul>
+        </li>
+        <li><a href="#raid信息查看">RAID信息查看</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><strong>独立硬盘冗余阵列(RAID, Redundant Array of Independent Disks)</strong>，利用虚拟化技术将多个磁盘组合起来，成为一个多个硬盘的阵列，从而提升效率或者资料冗余。</p>
+<p>根据RAID的层级不同，资料会以多种形式放置在多个磁盘上。</p>
+<h2 id="raid层级">RAID层级</h2>
+<p>RAID的层级，常用的包括：RAID0、RAID1、RAID5、RAID10。</p>
+<h3 id="raid-0-stripe">RAID 0 (stripe)</h3>
+<p><img src="https://alfonsxh.github.io/Blog/images/Linux%E8%BF%90%E7%BB%B4/RAID_raid0.png" alt="RAID_raid0"></p>
+<p><strong>raid 0</strong> 的方式是将原始数据按块分别存储在不同的磁盘上。这种方式目前不推荐使用，<strong>因为一旦某一块磁盘损坏，将会使得该块磁盘保存的数据丢失。</strong></p>
+<h3 id="raid-1-mirror">RAID 1 (mirror)</h3>
+<p><img src="https://alfonsxh.github.io/Blog/images/Linux%E8%BF%90%E7%BB%B4/RAID_raid1.png" alt="RAID_raid1"></p>
+<p><strong>raid 1</strong> 的方式比 <strong>raid 0</strong> 要好一些，<strong>将原始数据拷贝成多份，存储在不同的磁盘上</strong>。这样做的好处在于，当一块磁盘损坏了，另一块磁盘仍可以提供数据。</p>
+<p><strong>raid 1</strong> 也有缺点，数据重复，磁盘利用率低。</p>
+<h3 id="raid-5-奇偶校验">RAID 5 (奇偶校验)</h3>
+<p><img src="https://alfonsxh.github.io/Blog/images/Linux%E8%BF%90%E7%BB%B4/RAID_raid5.png" alt="RAID_raid5"></p>
+<p><strong>raid 5</strong> 的方式:</p>
+<ul>
+<li>将原始数据分成多份，分别存储在不同的磁盘上。</li>
+<li>必须要有三块或以上的物理磁盘。</li>
+<li>存储的数据量为 <strong>(n-1)/n * 磁盘总量</strong>。</li>
+<li>假如有四块盘，前三块存储了A、B、C三份数据，第四块的内容则使用奇偶校验的方式进行计算得到。</li>
+<li>不做热备份的情况下，允许损坏一块磁盘，损坏的一块的内容可以通过其他三块盘计算得到。</li>
+<li>热备盘的作用是，当其中的一块磁盘损坏时，能够通过奇偶校验的方式，将数据还原到热备盘上，用热备盘替换损坏的磁盘工作。</li>
+<li>损坏两块磁盘就不能恢复数据了。</li>
+<li><strong>每块盘都可以存储奇偶校验的内容。</strong></li>
+</ul>
+<h3 id="raid-10">RAID 10</h3>
+<p><img src="https://alfonsxh.github.io/Blog/images/Linux%E8%BF%90%E7%BB%B4/RAID_raid10.png" alt="RAID_raid10"></p>
+<p><strong>raid 10</strong> 的架构如上图，底层通过 <strong>raid 1</strong> 将数据进行镜像备份，上一层通过 <strong>raid 0</strong> 将原始数据分别分发给不同的raid。</p>
+<p>这么做能够有效的防止坏盘导致数据的丢失问题。</p>
+<p><strong>PS: raid可以通过不同的组合方式组成新的磁盘阵列</strong>。</p>
+<h2 id="raid信息查看">RAID信息查看</h2>
+<p>不同的产商提供的工具有所不同，大环境下，使用的比较多的是 <strong>storcli64</strong> 工具。</p>
+<p>下面主要介绍如何查看raid相关的信息。</p>
+<p><code>storcli64 show</code> 可以查看raid的信息，可以分成几个等级：</p>
+<ul>
+<li><strong>/cx</strong> - Controller specific commands</li>
+<li><strong>/ex</strong> - Enclosure specific commands</li>
+<li><strong>/sx</strong> - Slot/PD specific commands</li>
+<li><strong>/vx</strong> - Virtual drive specific commands</li>
+<li><strong>/dx</strong> - Disk group specific commands</li>
+<li><strong>/fx</strong> - Foreign configuration specific commands</li>
+<li><strong>/px</strong> - Phy specific commands</li>
+<li><strong>/bbu</strong> - Battery Backup Unit related commands</li>
+</ul>
+<p>可以通过 <code>storcli64 show</code> 查看raid的基本信息，主要是控制器相关。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">System Overview :
+</span></span><span class="line"><span class="cl"><span class="o">===============</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">---------------------------------------------------------------
+</span></span><span class="line"><span class="cl">Ctl Model   Ports PDs DGs DNOpt VDs VNOpt BBU sPR DS  EHS ASOs 
+</span></span><span class="line"><span class="cl">---------------------------------------------------------------
+</span></span><span class="line"><span class="cl">  <span class="m">0</span> 9271-8i     <span class="m">8</span>  <span class="m">12</span>   <span class="m">2</span>     <span class="m">0</span>   <span class="m">2</span>     <span class="m">0</span> Opt On  1<span class="p">&amp;</span><span class="m">2</span> Y      <span class="m">3</span> 
+</span></span><span class="line"><span class="cl">---------------------------------------------------------------
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面的内容是输出的结果，可以看到该设备只有一个控制器，物理磁盘作为raid的有12块，raid的数量有2个。</p>
+<p>通过 <code>storcli64 /c0 show</code> 查看对应的控制器的信息，如果有两块，第二块通过 <code>/c1</code> 的方式，以此类推。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">TOPOLOGY :
+</span></span><span class="line"><span class="cl"><span class="o">========</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">--------------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">DG Arr Row EID:Slot DID Type  State BT       Size PDC  PI SED DS3  FSpace 
+</span></span><span class="line"><span class="cl">--------------------------------------------------------------------------
+</span></span><span class="line"><span class="cl"> <span class="m">0</span> -   -   -        -   RAID5 Optl  N    2.181 TB enbl N  N   dflt N      
+</span></span><span class="line"><span class="cl"> <span class="m">0</span> <span class="m">0</span>   -   -        -   RAID5 Optl  N    2.181 TB enbl N  N   dflt N      
+</span></span><span class="line"><span class="cl"> <span class="m">0</span> <span class="m">0</span>   <span class="m">0</span>   8:0      <span class="m">9</span>   DRIVE Onln  N  744.687 GB enbl N  N   dflt -      
+</span></span><span class="line"><span class="cl"> <span class="m">0</span> <span class="m">0</span>   <span class="m">1</span>   8:1      <span class="m">12</span>  DRIVE Onln  N  744.687 GB enbl N  N   dflt -      
+</span></span><span class="line"><span class="cl"> <span class="m">0</span> <span class="m">0</span>   <span class="m">2</span>   8:2      <span class="m">17</span>  DRIVE Onln  N  744.687 GB enbl N  N   dflt -      
+</span></span><span class="line"><span class="cl"> <span class="m">0</span> <span class="m">0</span>   <span class="m">3</span>   8:3      <span class="m">11</span>  DRIVE Onln  N  744.687 GB enbl N  N   dflt -      
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> -   -   -        -   RAID5 Optl  N    5.089 TB enbl N  N   dflt N      
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> <span class="m">0</span>   -   -        -   RAID5 Optl  N    5.089 TB enbl N  N   dflt N      
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> <span class="m">0</span>   <span class="m">0</span>   8:4      <span class="m">16</span>  DRIVE Onln  N  744.687 GB enbl N  N   dflt -      
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> <span class="m">0</span>   <span class="m">1</span>   8:5      <span class="m">19</span>  DRIVE Onln  N  744.687 GB enbl N  N   dflt -      
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> <span class="m">0</span>   <span class="m">2</span>   8:6      <span class="m">10</span>  DRIVE Onln  N  744.687 GB enbl N  N   dflt -      
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> <span class="m">0</span>   <span class="m">3</span>   8:7      <span class="m">14</span>  DRIVE Onln  N  744.687 GB enbl N  N   dflt -      
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> <span class="m">0</span>   <span class="m">4</span>   8:8      <span class="m">13</span>  DRIVE Onln  N  744.687 GB enbl N  N   dflt -      
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> <span class="m">0</span>   <span class="m">5</span>   8:9      <span class="m">18</span>  DRIVE Onln  N  744.687 GB enbl N  N   dflt -      
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> <span class="m">0</span>   <span class="m">6</span>   8:10     <span class="m">20</span>  DRIVE Onln  N  744.687 GB enbl N  N   dflt -      
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> <span class="m">0</span>   <span class="m">7</span>   8:11     <span class="m">15</span>  DRIVE Onln  N  744.687 GB enbl N  N   dflt -      
+</span></span><span class="line"><span class="cl">--------------------------------------------------------------------------
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>结果会显示出控制器 <code>/c0</code> 下的详细信息，包括 <strong>TOPOLOGY(拓扑结构)</strong>、<strong>VD LIST</strong>、<strong>PD LIST</strong>、<strong>BBU_Info</strong> 等。</p>
+<p>如果觉得结果很难处理的话，可以通过在命令的末尾添加 <strong>j</strong> 来输出json格式的结果。如 <code>storcli64 /c0 show j</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;Controllers&#34;</span>:<span class="o">[</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="s2">&#34;Command Status&#34;</span> : <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="s2">&#34;Controller&#34;</span> : 0,
+</span></span><span class="line"><span class="cl">		<span class="s2">&#34;Status&#34;</span> : <span class="s2">&#34;Success&#34;</span>,
+</span></span><span class="line"><span class="cl">		<span class="s2">&#34;Description&#34;</span> : <span class="s2">&#34;None&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>,
+</span></span><span class="line"><span class="cl">	<span class="s2">&#34;Response Data&#34;</span> : <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}]</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过组合不同等级的设备可以单独查看各设备的信息。例如 <code>/c0/v0</code> 即为查看 <strong>0号控制器下0号raid的信息</strong>。命令为 <code>storcli64 /c0/v0 show</code>。</p>
+<p>如果项查看所有的信息，可以通过 <strong>all</strong> 来替换索引来实现。如 <code>storcli64 /c0/vall show</code> 为查看 <strong>0号控制器下所有raid的信息</strong>。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://datapacket.com/blog/advantages-disadvantages-various-raid-levels/">Advantages and disadvantages of various RAID levels</a></li>
+<li><a href="https://www.youtube.com/watch?v=U-OCdTeZLac">What is RAID 0, 1, 5, &amp; 10?</a></li>
+<li><a href="https://wsgzao.github.io/post/raid/">RAID 磁盘阵列配置和调优小结</a></li>
+<li><a href="https://www.cnblogs.com/luxiaodai/p/9878747.html">storcli 简易使用介绍</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-06-12
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/linux/">Linux</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/linux%E8%BF%90%E7%BB%B4/">Linux运维</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/linux/linux%E8%BF%90%E7%BB%B4/pcie/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">PCIE</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_5_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E6%8C%82%E8%BD%BD/">
+            <span class="next-text nav-default">Linux系统编程:文件_文件的挂载</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

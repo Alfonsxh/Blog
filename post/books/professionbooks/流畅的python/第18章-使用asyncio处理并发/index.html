@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>流畅的Python - 第18章-使用asyncio处理并发 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="第18章-使用asyncio处理并发" /><meta name="keywords" content="Books, 流畅的Python" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC18%E7%AB%A0-%E4%BD%BF%E7%94%A8asyncio%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">流畅的Python - 第18章-使用asyncio处理并发</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-18 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/books/"> Books </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/%E6%B5%81%E7%95%85%E7%9A%84python/"> 流畅的Python </a>
+            </div>
+          <span class="more-meta"> 124 words </span>
+          <span class="more-meta"> 1 min read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#线程与协程对比">线程与协程对比</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="线程与协程对比">线程与协程对比</h2>
+<p><code>线程</code>处理任务时，所有的线程争抢CPU的资源；<code>协程</code>处理任务时，由单线程完成，所有的任务都有序的安排在未来进行执行。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E6%B5%81%E7%95%85%E7%9A%84Python/18-deff-between-thread-and-coroutine.png" alt="18-deff-between-thread-and-coroutine"></p>
+<p>书上的<a href="https://github.com/Alfonsxh/FluentPython/tree/master/18-Asyncio">示例</a>主要讲了实现动画形式显示文本式旋转指针，线程和协程两种不同的方式。</p>
+<p>线程方面，主要使用了<code>threading</code>模块中的<code>Thread</code>方法创建线程并执行。注意的一点是，python中的线程<code>不提供终止线程的API</code>，所以需要给线程发送消息才能关闭线程，如此例中的<code>signal.go</code>属性。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">supervisor</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    启动线程开始执行
+</span></span></span><span class="line"><span class="cl"><span class="s2">    :return: 返回结果
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">signal</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">spinner</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">spin</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="s2">&#34;thinking&#34;</span><span class="p">,</span> <span class="n">signal</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Spinner object -&gt; </span><span class="si">{}</span><span class="s2"> begin&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spinner</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">spinner</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">slow_function</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">signal</span><span class="o">.</span><span class="n">go</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">spinner</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过<code>asyncio</code>模块创建协程的要求比较多。</p>
+<ul>
+<li>首先需要有一个<code>事件循环</code>，使用<code>asyncio.get_event_loop()</code>产生。</li>
+<li>然后使用<code>run_until_complete</code>将<code>协程</code>注册到<code>事件循环</code>中。<code>run_until_complete</code>接收<code>Future对象</code>或者<code>Task任务(为Future对象的子类)</code>，也可以接收<code>普通的协程</code>，默认会将协程封装成<code>Task</code>。</li>
+<li>task对象可以使用<code>loop.create_task(supervisor())</code>实现，也可以使用<code>asyncio.ensure_future(supervisor())</code>实现。</li>
+<li>最后全部任务执行完后返回所有的结果，<code>run_until_complete</code>接收什么参数，就返回对应参数返回的结果。如果传入的是<code>wait_coro</code>，则返回<code>wait_coro</code>对象所做的事，返回一个元组。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">supervisor</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    事件驱动的参数函数
+</span></span></span><span class="line"><span class="cl"><span class="s2">    :return: 返回思考结果
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># spinner = asyncio.async(spin(&#34;thinking&#34;))         # update asyncio.async to asyncio.ensure_future</span>
+</span></span><span class="line"><span class="cl">    <span class="n">spinner</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">ensure_future</span><span class="p">(</span><span class="n">spin</span><span class="p">(</span><span class="s2">&#34;thinking&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Spinner -&gt; </span><span class="si">{}</span><span class="s2"> begin.&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spinner</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">slow_function</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">spinner</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>  <span class="c1"># 获取事件循环</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">supervisor</span><span class="p">())</span>  <span class="c1"># 驱动supervisor协程，返回参数返回的结果</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># 关闭事件驱动</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Answer:&#34;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>线程方式与协程方式的对比如下：</p>
+<ul>
+<li>协程中不建议使用<code>time.sleep(...)</code>来进行时间的等待，会引起阻塞。推荐的是使用<code>await asyncio.sleep(...)</code>代替。</li>
+<li>用于驱动协程的<code>Task对象</code>不能由自己动手实例化，而是通过把协程传给<code>async.async(...)函数</code>或者<code>loop.create_task(...)方法</code>获取。获取完后的<code>Task对象</code>的执行时间已经确定！在线程中，必须调用<code>start()方法</code>才能运行线程。</li>
+<li>线程不能通过外部的API进行停止，协程可以通过使用<code>Task.cancel()</code>实例方法，在协程内部抛出<code>asyncio.CancelledError</code>异常，协程可以在暂停的<code>yield</code>处捕获此异常进行退出操作。</li>
+<li>在协程中，supervisor()函数(或者task对象)必须由<code>loop.run_until_complete()</code>执行。</li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-08-18
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/books/">Books</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/%E6%B5%81%E7%95%85%E7%9A%84python/">流畅的Python</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC17%E7%AB%A0-%E4%BD%BF%E7%94%A8future%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">流畅的Python - 第17章-使用future处理并发</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC16%E7%AB%A0-%E5%8D%8F%E7%A8%8B/">
+            <span class="next-text nav-default">流畅的Python - 第16章-协程</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

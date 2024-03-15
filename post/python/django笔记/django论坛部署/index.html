@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Django论坛部署 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Django论坛部署" /><meta name="keywords" content="Python, Django笔记" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/django%E8%AE%BA%E5%9D%9B%E9%83%A8%E7%BD%B2/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Django论坛部署</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-07-07 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/python/"> Python </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/django%E7%AC%94%E8%AE%B0/"> Django笔记 </a>
+            </div>
+          <span class="more-meta"> 241 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#开始部署">开始部署</a>
+          <ul>
+            <li><a href="#version-control">Version Control</a></li>
+            <li><a href="#project-settings">Project Settings</a></li>
+            <li><a href="#tracking-requirements">Tracking Requirements</a></li>
+            <li><a href="#domain-name">Domain Name</a></li>
+            <li><a href="#deployment-strategy">Deployment Strategy</a></li>
+          </ul>
+        </li>
+        <li><a href="#踩的坑">踩的坑</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>这两天在外部压力的作用下，把之前写的Django框架搭建的留言板部署了一下。本来是觉得，既然代码都已经弄得差不多了，本地运行没什么问题的，部不部署就没什么了。</p>
+<p>哈哈哈，还是太天真了。</p>
+<p>查看了一下原教程的<a href="https://simpleisbetterthancomplex.com/series/2017/10/16/a-complete-beginners-guide-to-django-part-7.html">部署步骤</a>，应该问题不大。</p>
+<p>服务器去年搭梯子时已经买了。私人部署，域名需不需要，感觉关系不大，可以省略。</p>
+<p>OK，开始部署。</p>
+<blockquote>
+<p>有一句说一句，在整个学习过程中，不知道作者是不是故意的，把某个框的宽度设置成了22%，导致代码没办法很好的复制。我只好认为是作者的好意，让读者自己操作一遍，而不是简单复制粘贴。</p>
+</blockquote>
+<h2 id="开始部署">开始部署</h2>
+<p>就按照原教程的步骤来。</p>
+<h3 id="version-control">Version Control</h3>
+<p>使用的是git进行版本控制。好在之前的代码已经都传到了github，这一步不难。</p>
+<p>直接把github上的代码clone下来</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone yourProject.git
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="project-settings">Project Settings</h3>
+<p>需要用到的是一个.env文件，这个文件包含了一些特有的信息，代码上传github的时候并没把这个文件上传。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">SECRET_KEY</span><span class="o">=</span>××××××××××××××××××××××××××××××××××××××××
+</span></span><span class="line"><span class="cl"><span class="nv">DEBUG</span><span class="o">=</span>True
+</span></span><span class="line"><span class="cl"><span class="nv">ALLOWED_HOSTS</span><span class="o">=</span>.localhost,127.0.0.1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在要做的就是新建一个.env文件，内容为setting.py中需要的内容。比如上面的 <strong>SECRET_KEY</strong> 、<strong>DEBUG</strong>、<strong>ALLOWED_HOSTS</strong>。</p>
+<h3 id="tracking-requirements">Tracking Requirements</h3>
+<p>就是requirements.txt，还好每次都有存，现在只需要 <strong>pip install -r requirements.txt</strong></p>
+<h3 id="domain-name">Domain Name</h3>
+<p>暂时不需要</p>
+<h3 id="deployment-strategy">Deployment Strategy</h3>
+<p>之前已经买好了VPS。装上需要的软件就行了。</p>
+<p>有一点需要说明的是，教程里使用的是Ubuntu的服务器，我使用的是Centos的服务器，这导致了后面的一些步骤不能完全照着教程上来。</p>
+<h4 id="python-36">Python 3.6</h4>
+<p>下载安装python3。</p>
+<h4 id="postgresql">PostgreSQL</h4>
+<p>用的是sqlite3，这一步跳过。</p>
+<h4 id="nginx">NGINX</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum install nginx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="supervisor">Supervisor</h4>
+<p>用不来这个，取代的是使用systemd设置启动服务service来实现。</p>
+<h4 id="virtualenv">Virtualenv</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip3.6 install virtualenv
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="application-user">Application User</h4>
+<p>添加用户的步骤和教程不一样，详细步骤参考<a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart">Centos版本的</a>。</p>
+<h4 id="django-project-setup">Django Project Setup</h4>
+<p>步骤和教程不一样，我只做了git clone以及后面运行manage.py部分。</p>
+<p>git clone之前已经做过了。</p>
+<p>如果数据库里已经含有了数据，因为我用到是之前测试的数据库，所以会出现下面的情况。提示 <strong>No migrations to apply</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python manage.py migrate
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Operations to perform:
+</span></span><span class="line"><span class="cl">  Apply all migrations: admin, auth, boards, contenttypes, sessions
+</span></span><span class="line"><span class="cl">Running migrations:
+</span></span><span class="line"><span class="cl">  No migrations to apply.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>紧接着拷贝静态文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python manage.py collectstatic
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">You have requested to collect static files at the destination
+</span></span><span class="line"><span class="cl">location as specified in your settings:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    /home/××××/staticfiles
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">This will overwrite existing files!
+</span></span><span class="line"><span class="cl">Are you sure you want to <span class="k">do</span> this?
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Type <span class="s1">&#39;yes&#39;</span> to <span class="k">continue</span>, or <span class="s1">&#39;no&#39;</span> to cancel: yes
+</span></span><span class="line"><span class="cl">Copying <span class="s1">&#39;/home/××××/venv/lib/python3.6/site-packages/django/contrib/admin/static/admin/css/changelists.css&#39;</span>
+</span></span><span class="line"><span class="cl">Copying <span class="s1">&#39;/home/××××/venv/lib/python3.6/site-packages/django/contrib/admin/static/admin/css/forms.css&#39;</span>
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">118</span> static files copied to <span class="s1">&#39;/home/××××/staticfiles&#39;</span>.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>关键的一部是，需要把之前工程目录下的静态文件static目录下的文件夹链接到&rsquo;/home/××××/staticfiles&rsquo;下面。要不然访问时无法加载背景样式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> /home/××××/staticfiles
+</span></span><span class="line"><span class="cl">ln -s /home/××××/myproject/myproject/static/* ./
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="configuring-gunicorn">Configuring Gunicorn</h4>
+<p>按照教程上的来，不过路径有所改变。</p>
+<h4 id="configuring-supervisor">Configuring Supervisor</h4>
+<p>使用的是systemd实现，具体操作是在 <strong>/etc/systemd/system/</strong> 目录下新建一个myDjango.service。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">[Unit]
+</span></span><span class="line"><span class="cl">Description=YourProjectName
+</span></span><span class="line"><span class="cl">After=httpd.service
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[Service]
+</span></span><span class="line"><span class="cl">TimeoutStartSec=0
+</span></span><span class="line"><span class="cl">ExecStart=/home/××××/gunicorn_start
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[Install]
+</span></span><span class="line"><span class="cl">WantedBy=multi-user.target
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后启动，并设置成开机自启。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl start myDjango
+</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> myDjango
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="configuring-nginx">Configuring NGINX</h4>
+<p>和教程上有些不同，我这是修改的 <strong>/etc/nginx/nginx.conf</strong>，在原配置文件的基础上，新增教程上的内容。</p>
+<p>修改完后重启nginx服务。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl restart nginx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>至此，所有步骤结束，可以直接通过地址访问^-^ <a href="http://155.94.175.66/">http://155.94.175.66/</a></p>
+<h2 id="踩的坑">踩的坑</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">错误</th>
+<th style="text-align:left">原因</th>
+<th style="text-align:left">解决办法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">一直提示502</td>
+<td style="text-align:left">工程的路径问题，因为一直使用的是root通过ssh访问，所以相关的工程都在root目录下，但貌似nginx对root权限有些特殊，所以造成了502错误。</td>
+<td style="text-align:left">将工程挪到 <strong>/home</strong> 目录下</td>
+</tr>
+<tr>
+<td style="text-align:center">背景样式无法展示</td>
+<td style="text-align:left">工程使用的样式路径不在staticfiles目录下</td>
+<td style="text-align:left">将工程使用的样式软连接到staticfiles目录下</td>
+</tr>
+<tr>
+<td style="text-align:center">提示数据库只读或者打开数据库失败</td>
+<td style="text-align:left">db.sqlite3文件的权限问题</td>
+<td style="text-align:left">将db.sqlite3文件的用户和用户组设置为boards</td>
+</tr>
+</tbody>
+</table>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-07
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/python/">Python</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/django%E7%AC%94%E8%AE%B0/">Django笔记</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">程序员的自我修养 - 编译</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/python/subprocess%E4%B8%ADpopencall%E7%9A%84%E5%8C%BA%E5%88%AB/">
+            <span class="next-text nav-default">subprocess中Popen，call的区别</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

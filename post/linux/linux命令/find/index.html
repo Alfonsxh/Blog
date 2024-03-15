@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Linux命令find - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Linux命令find" /><meta name="keywords" content="Linux, Linux命令" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/find/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Linux命令find</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-23 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/linux/"> Linux </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/linux%E5%91%BD%E4%BB%A4/"> Linux命令 </a>
+            </div>
+          <span class="more-meta"> 589 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#例子">例子</a>
+          <ul>
+            <li><a href="#基本操作">基本操作</a></li>
+            <li><a href="#查找时间范围内的文件">查找时间范围内的文件</a></li>
+            <li><a href="#根据文件类型查找">根据文件类型查找</a></li>
+            <li><a href="#根据文件大小查找">根据文件大小查找</a></li>
+            <li><a href="#找到文件后的操作">找到文件后的操作</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>通过 <strong>find命令</strong>，可以很方便的查找符合目标类型的文件，例如多长时间内修改过的文件，大小范围内的文件等，配合一些其他的操作，例如删除操作。</p>
+<p><strong>find命令</strong> 基本语法： <code>find [path] [option] [expression]</code>。</p>
+<h2 id="例子">例子</h2>
+<h3 id="基本操作">基本操作</h3>
+<p>列出当前目录及其子目录的文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 直接使用find即可</span>
+</span></span><span class="line"><span class="cl">$ find
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">./去除awk截取参数中的换行符.md
+</span></span><span class="line"><span class="cl">./Linux命令find.md
+</span></span><span class="line"><span class="cl">./README.md
+</span></span><span class="line"><span class="cl">./Linux命令awk.md
+</span></span><span class="line"><span class="cl">./Linux命令sed.md
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>找出特定格式的文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ find ../Image/ -name <span class="s2">&#34;*.jpg&#34;</span>
+</span></span><span class="line"><span class="cl">../Image/Python/同步与异步/DiffBetweenThreadAndCoro.jpg
+</span></span><span class="line"><span class="cl">../Image/Python/GIL全局解释器锁/GIL_with_diff_CPU.jpg
+</span></span><span class="line"><span class="cl">../Image/Python/hashcat使用说明/increment_set_8_9.jpg
+</span></span><span class="line"><span class="cl">../Image/Python/hashcat使用说明/increment_not_set.jpg
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在目录深度的最大范围为2的目录中查找指定格式的文件，只有三个</span>
+</span></span><span class="line"><span class="cl">$ find ../Image/ -maxdepth <span class="m">2</span> -name <span class="s2">&#34;*.jpg&#34;</span> 
+</span></span><span class="line"><span class="cl">../Image/Docker/get_master_nil.jpg
+</span></span><span class="line"><span class="cl">../Image/Docker/diff_between_run_create.jpg
+</span></span><span class="line"><span class="cl">../Image/Docker/get_master_success.jpg
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="查找时间范围内的文件">查找时间范围内的文件</h3>
+<p>时间范围选项：</p>
+<ul>
+<li><strong>atime/天，amin/分钟</strong>: a表示 <strong>accessed</strong>，按照用户最近一次访问(存取过)时间来过滤。</li>
+<li><strong>ctime/天，cmin/分钟</strong>: c表示 <strong>change</strong>，按照文件数据元(例如权限等)最近一次修改时间来过滤。</li>
+<li><strong>mtime/天，mmin/分钟</strong>: m表示 <strong>modified</strong>，按照用户最近一次修改时间来过滤。</li>
+<li><strong>newer file</strong>: 查找比 <strong>file</strong> 修改时间更长的文件。(newer 表示file更新一点)</li>
+<li><strong>anewer file</strong>: 查找比 <strong>file</strong> 存取时间更长的文件。</li>
+<li><strong>cnewer file</strong>: 查找比 <strong>file</strong> 修改时间更长的文件。</li>
+</ul>
+<p>对于前六个参数的时间范围:</p>
+<ul>
+<li><strong>-atime -7</strong> 表示在七天内修改过。</li>
+<li><strong>-atime 7</strong> 表示正好在七天前修改过。</li>
+<li><strong>-atime +7</strong> 表示修改时间超过七天。</li>
+</ul>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 找出特定时间范围内的文件</span>
+</span></span><span class="line"><span class="cl">$ find ../Image/ -name <span class="s2">&#34;*.jpg&#34;</span> -ctime -30 <span class="p">|</span> xargs ls -l
+</span></span><span class="line"><span class="cl">-rw一点-rw-r-- <span class="m">1</span> alfons alfons  <span class="m">79076</span> 3月   <span class="m">9</span> 21:57 ../Image/Docker/dif一点f_between_run_create.jpg
+</span></span><span class="line"><span class="cl">-rw一点-rw-r-- <span class="m">1</span> alfons alfons <span class="m">154655</span> 3月   <span class="m">9</span> 21:57 ../Image/Docker/get一点_master_nil.jpg
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> alfons alfons <span class="m">156051</span> 3月   <span class="m">9</span> 21:57 ../Image/Docker/get_master_success.jpg
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> alfons alfons <span class="m">211543</span> 2月  <span class="m">20</span> 22:25 ../Image/Python/DoubanMovie爬虫/1_new_search_subjects.jpg
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> alfons alfons   <span class="m">5366</span> 1月  <span class="m">14</span> 10:49 ../Image/Python/DoubanMovie爬虫/5_captcha.jpg
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 找到比READM.md更老的文件</span>
+</span></span><span class="line"><span class="cl">$ ls -l README.md 
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> alfons alfons <span class="m">9</span> 7月  <span class="m">18</span>  <span class="m">2018</span> README.md
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find ../Image/ -name <span class="s2">&#34;*.jpg&#34;</span> -newer README.md <span class="p">|</span> xargs ls -l
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> alfons alfons  <span class="m">84299</span> 9月  <span class="m">28</span> 22:33 ../Image/Books/OtherBooks/见识.jpg
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> alfons alfons  <span class="m">26541</span> 11月  <span class="m">4</span> 21:26 ../Image/Books/OtherBooks/今日简史.jpg
+</span></span><span class="line"><span class="cl">....
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="根据文件类型查找">根据文件类型查找</h3>
+<p>基本命令格式： <code>find . -type [类型参数]</code>。</p>
+<p>类型参数：</p>
+<ul>
+<li><strong>f</strong>: 普通文件。</li>
+<li><strong>l</strong>: 链接符号。</li>
+<li><strong>d</strong>: 目录。</li>
+<li><strong>c</strong>: 字符设备。</li>
+<li><strong>b</strong>: 块设备</li>
+<li><strong>s</strong>: sock套接字。</li>
+<li><strong>p</strong>: FIFO。</li>
+</ul>
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 查找本地文件夹内七天前修改过的普通文件</span>
+</span></span><span class="line"><span class="cl">$ find . -type f -ctime +7 <span class="p">|</span> xargs ls -l
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> alfons alfons <span class="m">9</span> 7月  <span class="m">18</span>  <span class="m">2018</span> ./README.md
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查找修改日期超过七天的文件夹</span>
+</span></span><span class="line"><span class="cl">$ find .. -maxdepth <span class="m">1</span> -type d -ctime +7 <span class="p">|</span> xargs ls -l -d
+</span></span><span class="line"><span class="cl">drwxr-xr-x   <span class="m">3</span> alfons alfons <span class="m">4096</span> 12月 <span class="m">17</span> 21:06 ../Algorithms
+</span></span><span class="line"><span class="cl">drwxr-xr-x   <span class="m">4</span> alfons alfons <span class="m">4096</span> 7月  <span class="m">18</span>  <span class="m">2018</span> ../Books
+</span></span><span class="line"><span class="cl">drwxrwxr-x   <span class="m">3</span> alfons alfons <span class="m">4096</span> 11月 <span class="m">10</span> 17:05 ../C++
+</span></span><span class="line"><span class="cl">drwxr-xr-x   <span class="m">2</span> alfons alfons <span class="m">4096</span> 7月   <span class="m">7</span>  <span class="m">2018</span> ../LeetCode
+</span></span><span class="line"><span class="cl">drwxrwxr-x <span class="m">149</span> alfons alfons <span class="m">4096</span> 7月  <span class="m">31</span>  <span class="m">2018</span> ../node_modules
+</span></span><span class="line"><span class="cl">drwxr-xr-x   <span class="m">6</span> alfons alfons <span class="m">4096</span> 1月  <span class="m">30</span> 13:26 ../Python
+</span></span><span class="line"><span class="cl">drwxrwxr-x   <span class="m">2</span> alfons alfons <span class="m">4096</span> 7月   <span class="m">7</span>  <span class="m">2018</span> ../.vscode
+</span></span><span class="line"><span class="cl">drwxrwxr-x   <span class="m">2</span> alfons alfons <span class="m">4096</span> 1月  <span class="m">30</span> 13:43 ../陈皓专栏笔记
+</span></span><span class="line"><span class="cl">drwxrwxr-x   <span class="m">2</span> alfons alfons <span class="m">4096</span> 2月  <span class="m">17</span> 21:28 ../随笔
+</span></span><span class="line"><span class="cl">drwxrwxr-x   <span class="m">2</span> alfons alfons <span class="m">4096</span> 12月 <span class="m">16</span> 21:52 ../《左耳听风每周练习》
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="根据文件大小查找">根据文件大小查找</h3>
+<p>按文件大小查找需要用到 <code>-size n</code> 选项，后面跟单位选项：</p>
+<ul>
+<li><strong>b</strong>: 块（512字节）</li>
+<li><strong>c</strong>: 字节</li>
+<li><strong>w</strong>: 字（2字节）</li>
+<li><strong>k</strong>: 千字节</li>
+<li><strong>M</strong>: 兆字节</li>
+<li><strong>G</strong>: 吉字节</li>
+</ul>
+<p><strong>n</strong> 的大小和上面时间的使用一样， <strong>+</strong> 表示超过n大小的文件， <strong>-</strong> 表示小于n大小的文件。</p>
+<p>找到大小大于 <strong>10KB</strong> 的md文件:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ find . -type f -name <span class="s2">&#34;*.md&#34;</span> -size +10k <span class="p">|</span> xargs ls -l -h
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> alfons alfons 17K 12月  <span class="m">2</span> 20:08 ./Algorithms/AlgorithmsArea/红黑树.md
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> alfons alfons 14K 11月  <span class="m">6</span> 23:24 ./Books/OtherBooks/见识.md
+</span></span><span class="line"><span class="cl">-rwx------ <span class="m">1</span> alfons alfons 28K 10月 <span class="m">17</span> 15:15 ./Books/ProfessionBooks/MySQL必知必会/2_MySQL基本操作.md
+</span></span><span class="line"><span class="cl">-rwx------ <span class="m">1</span> alfons alfons 13K 10月 <span class="m">18</span> 17:39 ./Books/ProfessionBooks/MySQL必知必会/3_MySQL高级操作_聚集和分组.md
+</span></span><span class="line"><span class="cl">-rwx------ <span class="m">1</span> alfons alfons 14K 10月 <span class="m">23</span> 20:13 ./Books/ProfessionBooks/MySQL必知必会/4_MySQL高级操作_联结查询.md
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="找到文件后的操作">找到文件后的操作</h3>
+<p>大部分时候，我们查找到文件后，需要对文件进行一些操作。需要用到 <code>-exec</code> 或者 <code>-ok</code> 选项，后面跟的都是 <strong>shell命令</strong>。</p>
+<p>命令格式：<code>find . -type f -exec rm {} \;</code>。</p>
+<p><code>-exec</code> 和 <code>-ok</code> 的不同之处在于，<code>-exec</code> 会直接执行后续的操作。而 <code>-ok</code> 选项需要用户确认是否执行后续的选项。</p>
+<p>后面的 <strong>{}</strong> 表示的是待处理的已经找到的目标文件。</p>
+<p><code>-exec</code> 必须由一个 <strong>;</strong> 结束，之所以使用 <code>\;</code>，是转义的意思，shell脚本通常会对 <strong>;</strong> 进行处理。</p>
+<p>找到目标文件并删除：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 使用 -exec 选项不会出现确认选项</span>
+</span></span><span class="line"><span class="cl">$ find . -type f -size -8c -exec rm <span class="o">{}</span> <span class="se">\;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 而使用 -ok 选项则会出现用户确认</span>
+</span></span><span class="line"><span class="cl">$ find . -type f -size -8c -ok rm <span class="o">{}</span> <span class="se">\;</span>
+</span></span><span class="line"><span class="cl">&lt; rm ... ./wait_del.txt &gt; ? y
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>比较推荐的是 <strong>使用管道的方式</strong> 来对找到的目标文件进行处理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 有些命令不支持管道操作，需要使用xargs命令做下中转</span>
+</span></span><span class="line"><span class="cl">$ find . -type f -size -10c <span class="p">|</span> xargs ls -l
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> alfons alfons <span class="m">9</span> 7月  <span class="m">18</span>  <span class="m">2018</span> ./README.md
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li><a href="http://man.linuxde.net/find">find命令</a></li>
+<li><a href="https://blog.csdn.net/u011334621/article/details/38063143">Linux命令之find exec rm</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-03-23
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/linux/">Linux</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/linux%E5%91%BD%E4%BB%A4/">Linux命令</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/awk/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">awk</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%A6%82%E5%BF%B5/">
+            <span class="next-text nav-default">Linux系统编程:概念</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

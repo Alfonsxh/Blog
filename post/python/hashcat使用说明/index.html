@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Hashcat使用说明 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Hashcat使用说明" /><meta name="keywords" content="Python, hashcat" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Hashcat使用说明</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-09-28 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/python/"> Python </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/hashcat/"> hashcat </a>
+            </div>
+          <span class="more-meta"> 483 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#破解基础命令">破解基础命令</a></li>
+        <li><a href="#破解模式">破解模式</a>
+          <ul>
+            <li><a href="#straight字典破解--a-0">Straight(字典破解 -a 0)</a></li>
+            <li><a href="#combination组合破解--a-1">Combination(组合破解 -a 1)</a></li>
+            <li><a href="#brute-force暴力破解--a-3">Brute-force(暴力破解 -a 3)</a></li>
+            <li><a href="#hybrid-wordlist--mask字典加掩码破解--a-6">Hybrid Wordlist + Mask(字典加掩码破解 -a 6)</a></li>
+            <li><a href="#hybrid-mask--wordlist掩码加字典破解--a-7">Hybrid Mask + Wordlist(掩码加字典破解 -a 7)</a></li>
+          </ul>
+        </li>
+        <li><a href="#hashcat进阶">Hashcat进阶</a>
+          <ul>
+            <li><a href="#pcap包转换为hccapx格式">pcap包转换为hccapx格式。</a></li>
+            <li><a href="#显示已破解的密码">显示已破解的密码。</a></li>
+            <li><a href="#设置密码长度">设置密码长度。</a></li>
+            <li><a href="#恢复上一次的破解状态">恢复上一次的破解状态。</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><code>hashcat</code>是目前世界上最快的密码破解工具，能够破译众多类型的密码，可以使用CPU，也可以使用GPU作为计算单元。</p>
+<h2 id="破解基础命令">破解基础命令</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-m</td>
+<td style="text-align:left">设置待破解文件类型，WPA/WPA2类型为2500</td>
+<td style="text-align:left">-m 2500</td>
+</tr>
+<tr>
+<td style="text-align:left">-a</td>
+<td style="text-align:left">破解模式</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;runtime</td>
+<td style="text-align:left">指定程序运行时间X，单位秒</td>
+<td style="text-align:left">&ndash;runtime=X</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;session</td>
+<td style="text-align:left">指定一个特殊的hashcat会话名称</td>
+<td style="text-align:left">&ndash;session=mysession</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;restore</td>
+<td style="text-align:left">从restore文件中恢复会话状态</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;restore-disable</td>
+<td style="text-align:left">会话时不使用restore文件</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;restore-file-path</td>
+<td style="text-align:left">指定特殊的restore文件路径，默认路径在<code>.hashcat/session/</code>下</td>
+<td style="text-align:left">&ndash;restore-file-path=path</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;outfile</td>
+<td style="text-align:left">破解出的hash存放路径</td>
+<td style="text-align:left">-o outfile.txt</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;show</td>
+<td style="text-align:left">展示破解文件中已破解的hash</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;left</td>
+<td style="text-align:left">展示破解文件中未破解出的hash</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;increment</td>
+<td style="text-align:left">设置自动变长模式开关，密码长度由用户指定，不能在字典破解模式下</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;increment-min</td>
+<td style="text-align:left">最短密码长度</td>
+<td style="text-align:left">&ndash;increment-min=8</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;increment-max</td>
+<td style="text-align:left">最长密码长度</td>
+<td style="text-align:left">&ndash;increment-max=13</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;cpu-affinity</td>
+<td style="text-align:left">使用CPU破解时，使用特定的CPU进行破解</td>
+<td style="text-align:left">&ndash;cpu-affinity=1,2</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;segment-size</td>
+<td style="text-align:left">使用字典破解时，字典在内存中的缓存大小，单位MB</td>
+<td style="text-align:left">&ndash;segment-size=1024</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;gpu-temp-abort</td>
+<td style="text-align:left">中断破解，当GPU达到此温度</td>
+<td style="text-align:left">&ndash;gpu-temp-abort=100</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;skip</td>
+<td style="text-align:left">跳过字典前面 X 个密码</td>
+<td style="text-align:left">&ndash;skip X</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;limit</td>
+<td style="text-align:left">只使用字典前 X 个密码</td>
+<td style="text-align:left">&ndash;limit X</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;status</td>
+<td style="text-align:left">设置自动刷新hashcat状态开关</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;status-timer</td>
+<td style="text-align:left">设置自动刷新时间 X</td>
+<td style="text-align:left">&ndash;status-timer=X</td>
+</tr>
+</tbody>
+</table>
+<p>hashcat启动方式为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hashcat -a <span class="m">0</span> -m <span class="m">2500</span> xxxx.hccapx dict1 dict2    <span class="c1"># 字典破解模式，普通启动</span>
+</span></span><span class="line"><span class="cl">hashcat -a <span class="m">3</span> -m <span class="m">2500</span> --session<span class="o">=</span>xxxx xxxx.hccapx ?l?l?d?d?d?d?d?d   <span class="c1"># 暴力破解模式以会话方式启动</span>
+</span></span><span class="line"><span class="cl">hashcat --session xxxx --restore    <span class="c1"># 以会话形式从restore文件中恢复</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="破解模式">破解模式</h2>
+<p>hashcat的破解模式有5种。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="m">0</span> <span class="p">|</span> Straight      <span class="c1"># 字典破解</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="p">|</span> Combination   <span class="c1"># 组合破解</span>
+</span></span><span class="line"><span class="cl"><span class="m">3</span> <span class="p">|</span> Brute-force   <span class="c1"># 暴力破解</span>
+</span></span><span class="line"><span class="cl"><span class="m">6</span> <span class="p">|</span> Hybrid Wordlist + Mask  <span class="c1"># 字典加掩码破解</span>
+</span></span><span class="line"><span class="cl"><span class="m">7</span> <span class="p">|</span> Hybrid Mask + Wordlist  <span class="c1"># 掩码加字典破解</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="straight字典破解--a-0">Straight(字典破解 -a 0)</h3>
+<p>纯字典破解模式，遍历字典文件中的所有密码，对目标破解文件进行匹配。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hashcat -a <span class="m">0</span> -m <span class="m">2500</span> xxxx.hccapx dict
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="combination组合破解--a-1">Combination(组合破解 -a 1)</h3>
+<p>组合两个字典文件的内容进行破解，<code>只支持两个字典文件密码组合</code>！该模式会将dict1中的密码与dict2中的密码依次组合。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cat dict1
+</span></span><span class="line"><span class="cl">abc
+</span></span><span class="line"><span class="cl">def
+</span></span><span class="line"><span class="cl">gh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">cat dict2
+</span></span><span class="line"><span class="cl"><span class="m">1234</span>
+</span></span><span class="line"><span class="cl"><span class="m">23456</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 组合后需要破解的字典为</span>
+</span></span><span class="line"><span class="cl">abc1234
+</span></span><span class="line"><span class="cl">abc23456
+</span></span><span class="line"><span class="cl">def1234
+</span></span><span class="line"><span class="cl">def23456
+</span></span><span class="line"><span class="cl">gh1234
+</span></span><span class="line"><span class="cl">gh23456
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">hashcat -a <span class="m">1</span> -m <span class="m">2500</span> xxxx.hccapx dict1 dict2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>组合模式进行破解时，如果子字典内密码个数较多的话，整体的字典数量就十分巨大，造成破解时间成倍增加。</p>
+<h3 id="brute-force暴力破解--a-3">Brute-force(暴力破解 -a 3)</h3>
+<p>hashcat中自定义了8种默认的字符集。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">l <span class="p">|</span> abcdefghijklmnopqrstuvwxyz      <span class="c1"># 全体小写字母</span>
+</span></span><span class="line"><span class="cl">u <span class="p">|</span> ABCDEFGHIJKLMNOPQRSTUVWXYZ      <span class="c1"># 全体大写字母</span>
+</span></span><span class="line"><span class="cl">d <span class="p">|</span> <span class="m">0123456789</span>          <span class="c1"># 数字</span>
+</span></span><span class="line"><span class="cl">h <span class="p">|</span> 0123456789abcdef    <span class="c1"># 十六进制数字</span>
+</span></span><span class="line"><span class="cl">H <span class="p">|</span> 0123456789ABCDEF    <span class="c1"># 十六进制数字大写</span>
+</span></span><span class="line"><span class="cl">s <span class="p">|</span>  !<span class="s2">&#34;#</span>$<span class="s2">%&amp;&#39;()*+,-./:;&lt;=&gt;?@[\]^_`{|}~   # 符号
+</span></span></span><span class="line"><span class="cl"><span class="s2">a | ?l?u?d?s        # 所有字符集
+</span></span></span><span class="line"><span class="cl"><span class="s2">b | 0x00 - 0xff     # 0-255
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>同时也提供四个字符，让用户自定义符号使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> -1, --custom-charset1          <span class="p">|</span> CS   <span class="p">|</span> User-defined charset ?1                              <span class="p">|</span> -1 ?l?d?u
+</span></span><span class="line"><span class="cl"> -2, --custom-charset2          <span class="p">|</span> CS   <span class="p">|</span> User-defined charset ?2                              <span class="p">|</span> -2 ?l?d?s
+</span></span><span class="line"><span class="cl"> -3, --custom-charset3          <span class="p">|</span> CS   <span class="p">|</span> User-defined charset ?3                              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"> -4, --custom-charset4          <span class="p">|</span> CS   <span class="p">|</span> User-defined charset ?4                              <span class="p">|</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用时，组合不同的字符集，破译密码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 使用默认字符集</span>
+</span></span><span class="line"><span class="cl">hashcat -a <span class="m">3</span> -m <span class="m">2500</span> xxxx.hccapx ?l?l?l?l?l?l?l?l  <span class="c1"># 密码规则为8位小写字母的组合</span>
+</span></span><span class="line"><span class="cl">hashcat -a <span class="m">3</span> -m <span class="m">2500</span> xxxx.hccapx ?l?l?l?l?d?d?d?d  <span class="c1"># 密码规则为8位，4位小写字母+4位数字的组合</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用用户自定义字符集</span>
+</span></span><span class="line"><span class="cl">hashcat -a <span class="m">3</span> -m <span class="m">2500</span> xxxx.hccapx -1 qwert -2 <span class="m">123456</span> ?1?1?1?1?2?2?2?2 <span class="c1"># 前四位密码为qwert中的组合，后四位密码为12345数字的组合</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="hybrid-wordlist--mask字典加掩码破解--a-6">Hybrid Wordlist + Mask(字典加掩码破解 -a 6)</h3>
+<p>后两种破解方式结合了字典和规则，与<code>组合模式(-a 1)</code>十分类似。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 假如使用的字典为dict</span>
+</span></span><span class="line"><span class="cl">cat dict
+</span></span><span class="line"><span class="cl">admin
+</span></span><span class="line"><span class="cl">root
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>假设实际的明文密码为<code>adminer123456</code>，则使用的规则为<code>?l?l?d?d?d?d?d</code>，即可匹配到明文密码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hashcat -a <span class="m">6</span> -m <span class="m">2500</span> xxxx.hccapx dict1 dict2 dict3 ?l?l?d?d?d?d?d
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这种模式下，可以使用多个字典和规则进行组合。</p>
+<h3 id="hybrid-mask--wordlist掩码加字典破解--a-7">Hybrid Mask + Wordlist(掩码加字典破解 -a 7)</h3>
+<p>与字典加掩码模式相反，掩码加字典破解是规则在前，字典在后。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hashcat -a <span class="m">7</span> -m <span class="m">2500</span> xxxx.hccapx ?l?l?d?d?d?d?d dict1 dict2 dict3
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="hashcat进阶">Hashcat进阶</h2>
+<h3 id="pcap包转换为hccapx格式">pcap包转换为hccapx格式。</h3>
+<p>三种方式</p>
+<ul>
+<li>使用cap2hccapx.bin</li>
+<li>使用Aircrack-ng(1.3版本)的<code>-j</code>参数</li>
+<li><a href="https://hashcat.net/cap2hccapx/">在线</a>转换</li>
+</ul>
+<h3 id="显示已破解的密码">显示已破解的密码。</h3>
+<p>已经破解出的密码，hashcat会默认保存在<code>.hashcat/hashcat.potfile</code>文件中，可以通过此文件查看已破解的密码。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/cat_potfile.jpg" alt="cat_potfile"></p>
+<p>也可以通过<code>--show</code>命令查看特定握手包内破解出的AP的密码。也可以通过<code>--left</code>命令查看未破解出的密码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ hashcat -m <span class="m">2500</span> helloworld.hccapx --show
+</span></span><span class="line"><span class="cl">c5b769d43cd2c3449c001cb3fd1a666a:0018e7b25200:9cd91730dc8e:helloworld:hello12345
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ hashcat -m <span class="m">2500</span> helloworld.hccapx --left
+</span></span><span class="line"><span class="cl">60bdcbb80306cc99b5dd786334edad73:0018e7b25200:9cd91730dc8e:helloworld
+</span></span><span class="line"><span class="cl">c52577dde5a3539890c2393a3f7f8551:0018e7b25200:9cd91730dc8e:helloworld
+</span></span><span class="line"><span class="cl">2394e4c7311821872adc9a8c54503446:0018e7b25200:9cd91730dc8e:helloworld
+</span></span><span class="line"><span class="cl">cba153ab6ee3597e5512dae45ad0ef64:0018e7b25200:9cd91730dc8e:helloworld
+</span></span><span class="line"><span class="cl">812da0113e74622d154d7301679e0481:0018e7b25200:9cd91730dc8e:helloworld
+</span></span><span class="line"><span class="cl">517b035a3a1b1cc29d5abb27aea37b45:0018e7b25200:9cd91730dc8e:helloworld
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="设置密码长度">设置密码长度。</h3>
+<p>在使用规则进行破解(暴力破解、掩码组合破解)时，可以通过<code>--increment</code>参数激活破解密码长度选项。可以通过<code>--increment-min</code>指定最小长度，通过<code>--increment-max</code>指定最大长度。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/increment_not_set.jpg" alt="increment_not_set"></p>
+<p>可以看到在未设置长度的情况下，总共需要进行 $26^{10} = 141167095653376$ 次密码尝试。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/increment_set_8_9.jpg" alt="increment_set_8_9"></p>
+<p>在设置了长度为8时，密码长度明显减少到了 $26^8 = 208827064576$ 次</p>
+<h3 id="恢复上一次的破解状态">恢复上一次的破解状态。</h3>
+<p>方法有两种：</p>
+<p>第一种在在交互界面中使用<code>[p]ause</code>进行暂停。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/stdin_pause.jpg" alt="stdin_pause"></p>
+<p>如需恢复，则在交互界面中使用<code>[r]esume</code>。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/stdin_resume.jpg" alt="restore_resume"></p>
+<p>第二种需要事先指定会话。</p>
+<p>首先需要在破解时指定会话<code>--session=xxx</code>，默认的<code>.restore</code>文件存放在<code>.hashcat/session/</code>目录下，如果需要在特殊位置存放缓存文件，需要增加<code>--restore-file-path</code>参数。</p>
+<p><code>.restore</code>文件为会话缓存文件，存放的是会话最后一次的破解状态，包括会话的执行命令、会话使用的目录、已使用的密码偏移等等。</p>
+<p><code>hashcat</code>会根据破解的进度自动保存<code>restore</code>文件！</p>
+<p>正常退出，在交互界面使用<code>[q]uit</code>命令，则会保存最后一次的破解状态。如果异常退出或者强制退出<code>Ctrl + c</code>，则<code>.restore</code>文件将不记录最后一次的状态。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/restore_format.jpg" alt="restore_format"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 启动会话任务helloworld，restore文件存放目录为./restore/helloword.restore</span>
+</span></span><span class="line"><span class="cl">hashcat -a <span class="m">0</span> -m <span class="m">2500</span> --session helloworld --restore-file-path<span class="o">=</span>./restore/helloword.restore  helloworld.hccapx Top306Million-WPA-probable-v2.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在界面输入命令参数<code>q</code>退出会话任务后，会将破解进度信息自动保存到restore文件中。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/restore_pause.jpg" alt="restore_pause"></p>
+<p>存储完后，通过下面命令可以恢复绘画任务之前的状态。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 前两个参数必须要填，如果之前是指定目录存放restore文件，则第三个文件也必须要设置</span>
+</span></span><span class="line"><span class="cl">hashcat  --session helloworld --restore --restore-file-path<span class="o">=</span>./restore/helloword.restore
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://alfonsxh.github.io/Blog/images/Python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/restore_resume.jpg" alt="restore_resume"></p>
+<p>可以看见，任务从上一次结束的地方开始进行了！！</p>
+<h2 id="参考">参考</h2>
+<p><a href="https://hashcat.net/hashcat/">hashcat wiki</a>
+<a href="https://hashcat.net/wiki/doku.php?id=restore">hashcat restore</a>
+<a href="https://klionsec.github.io/2017/04/26/use-hashcat-crack-hash/">hashcat use</a>
+<a href="http://www.freebuf.com/column/176660.html">Hybrid Wordlist + Mask</a></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-09-28
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/python/">Python</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/hashcat/">hashcat</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/otherbooks/%E8%A7%81%E8%AF%86/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">见识</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/python/python%E6%9D%80%E4%B8%8D%E6%AD%BB%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B/">
+            <span class="next-text nav-default">如何杀死Python subprocess.Popen创建的进程</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

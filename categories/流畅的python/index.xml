@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>流畅的Python on Alfons&#39;s Blog</title>
+    <link>https://alfonsxh.github.io/Blog/categories/%E6%B5%81%E7%95%85%E7%9A%84python/</link>
+    <description>Recent content in 流畅的Python on Alfons&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 Apr 2019 23:46:56 +0000</lastBuildDate>
+    <atom:link href="https://alfonsxh.github.io/Blog/categories/%E6%B5%81%E7%95%85%E7%9A%84python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>流畅的Python - 第1章-Python数据模型</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC1%E7%AB%A0-python%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Sat, 09 Mar 2019 22:05:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC1%E7%AB%A0-python%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;魔术方法(magic method)&lt;/strong&gt; 是python特殊方法的昵称，形如 &lt;code&gt;__gititem__&lt;/code&gt; 这样的方法成为特殊方法。&lt;/p&gt;&#xA;&lt;p&gt;在python的风格中，通常没有 &lt;strong&gt;collection.len()&lt;/strong&gt;，取而代之的是 &lt;strong&gt;len(collection)&lt;/strong&gt;。关键是collection对象中实现了 &lt;code&gt;__len__&lt;/code&gt; 方法。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第2章-序列构成的数组</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC2%E7%AB%A0-%E5%BA%8F%E5%88%97%E6%9E%84%E6%88%90%E7%9A%84%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Sat, 09 Mar 2019 22:05:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC2%E7%AB%A0-%E5%BA%8F%E5%88%97%E6%9E%84%E6%88%90%E7%9A%84%E6%95%B0%E7%BB%84/</guid>
+      <description>&lt;h2 id=&#34;内置序列类型&#34;&gt;内置序列类型&lt;/h2&gt;&#xA;&lt;p&gt;Python标准库用C实现了丰富的序列类型。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;容器序列&lt;/strong&gt;: list、tuple和collections.deque能存放不同类型的数据。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;扁平序列&lt;/strong&gt;: str、bytearray、memoryview和array.array，这类序列只能容纳一种类型。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第3章-字典和集合</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC3%E7%AB%A0-%E5%AD%97%E5%85%B8%E5%92%8C%E9%9B%86%E5%90%88/</link>
+      <pubDate>Sat, 09 Mar 2019 22:05:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC3%E7%AB%A0-%E5%AD%97%E5%85%B8%E5%92%8C%E9%9B%86%E5%90%88/</guid>
+      <description>&lt;p&gt;标准库中的所有映射类型都是利用dict来实现的，因此它们有个共同的限制&amp;ndash;&lt;strong&gt;只有可散列的数据类型才能用作这些映射里的键(只有键key有这个要求，值value不需要是散列形式)&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;p&gt;可散列类型：如果一个对象是可散列的，那么在这个对象的生命周期中，它的散列值是不变的，而且这个对象需要实现 &lt;code&gt;__hash__()&lt;/code&gt; 方法。如果需要和其他的对象对比的话，还需要实现 &lt;code&gt;__eq__()&lt;/code&gt; 方法。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第19章-动态属性和特性</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC19%E7%AB%A0-%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E7%89%B9%E6%80%A7/</link>
+      <pubDate>Thu, 30 Aug 2018 22:28:33 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC19%E7%AB%A0-%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E7%89%B9%E6%80%A7/</guid>
+      <description>&lt;p&gt;属性：通过&lt;code&gt;obj.attr&lt;/code&gt;的方式获取，称为属性。&lt;/p&gt;&#xA;&lt;p&gt;特性：有点函数味道的属性。可以通过&lt;code&gt;@property&lt;/code&gt;装饰器，或者&lt;code&gt;property()&lt;/code&gt;函数设置特性。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第20章-属性描述符</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC20%E7%AB%A0-%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6/</link>
+      <pubDate>Thu, 30 Aug 2018 22:28:33 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC20%E7%AB%A0-%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6/</guid>
+      <description>&lt;p&gt;描述符是实现了特定协议的类，这个协议包括&lt;code&gt;__get__&lt;/code&gt;、&lt;code&gt;__set__&lt;/code&gt;、&lt;code&gt;__delete__&lt;/code&gt;方法，&lt;code&gt;property&lt;/code&gt;类实现了完整的描述符协议。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第21章-类元编程</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC21%E7%AB%A0-%E7%B1%BB%E5%85%83%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Thu, 30 Aug 2018 22:28:33 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC21%E7%AB%A0-%E7%B1%BB%E5%85%83%E7%BC%96%E7%A8%8B/</guid>
+      <description>&lt;h2 id=&#34;使用type函数构造类&#34;&gt;使用type函数构造类&lt;/h2&gt;&#xA;&lt;p&gt;在python可以通过type函数构造类。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MyClass&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;MyClass&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;x&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;func&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;lambda&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MyClass2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;以上两种方式的效果是一样的，都构造了&lt;code&gt;MyClass&lt;/code&gt;类，并且含有属性x，以及类方法&lt;code&gt;func&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第17章-使用future处理并发</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC17%E7%AB%A0-%E4%BD%BF%E7%94%A8future%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC17%E7%AB%A0-%E4%BD%BF%E7%94%A8future%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91/</guid>
+      <description>&lt;p&gt;本章主要是列举了几个从网站下载例子，主要涉及到了多线程并发。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第18章-使用asyncio处理并发</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC18%E7%AB%A0-%E4%BD%BF%E7%94%A8asyncio%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC18%E7%AB%A0-%E4%BD%BF%E7%94%A8asyncio%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91/</guid>
+      <description>&lt;h2 id=&#34;线程与协程对比&#34;&gt;线程与协程对比&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;线程&lt;/code&gt;处理任务时，所有的线程争抢CPU的资源；&lt;code&gt;协程&lt;/code&gt;处理任务时，由单线程完成，所有的任务都有序的安排在未来进行执行。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第16章-协程</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC16%E7%AB%A0-%E5%8D%8F%E7%A8%8B/</link>
+      <pubDate>Thu, 26 Jul 2018 23:02:08 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC16%E7%AB%A0-%E5%8D%8F%E7%A8%8B/</guid>
+      <description>&lt;h2 id=&#34;yield关键字&#34;&gt;yield关键字&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;yield&lt;/code&gt;关键字主要有两个使用方式：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;yield item:&lt;/code&gt;会产出一个值，提供给&lt;code&gt;next(...)&lt;/code&gt;的调用方。也可以不产生值，需要&lt;code&gt;yield&lt;/code&gt;后面不跟任何参数，返回值为None&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;i = yield：&lt;/code&gt;从调用方接收数据。调用方通过&lt;code&gt;.send(...)&lt;/code&gt;的方式将数据提供给协程。&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;yield：&lt;/code&gt;既不接收也不发送数据，纯粹作为流程控制使用。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;将&lt;code&gt;yield&lt;/code&gt;作为协程使用时，通常也是将其作为&lt;code&gt;流程控制&lt;/code&gt;的调度器使用。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

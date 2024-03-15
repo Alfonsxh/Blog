@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>图解密码技术 - 分组密码的模式 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="分组密码的模式" /><meta name="keywords" content="Books, 图解密码技术" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E7%9A%84%E6%A8%A1%E5%BC%8F/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">图解密码技术 - 分组密码的模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-18 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/books/"> Books </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/"> 图解密码技术 </a>
+            </div>
+          <span class="more-meta"> 438 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#分组密码与流密码">分组密码与流密码</a></li>
+        <li><a href="#分组密码的模式">分组密码的模式</a>
+          <ul>
+            <li><a href="#ecb-模式">ECB 模式</a></li>
+            <li><a href="#cbc-模式">CBC 模式</a></li>
+            <li><a href="#cfb-模式">CFB 模式</a></li>
+            <li><a href="#ofb-模式">OFB 模式</a></li>
+            <li><a href="#ctr-模式">CTR 模式</a></li>
+          </ul>
+        </li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本章主要介绍了分组密码的模式，包括ECB、CBC、CFB、OFB、CTR。</p>
+<hr>
+<h2 id="分组密码与流密码">分组密码与流密码</h2>
+<p><strong>分组密码(block cipher)</strong> 指的是每次只能处理特定长度的一块数据的一类密码算法，<strong>处理完一个分组就结束了，不需要通过内部状态来记录加密的进度</strong>。</p>
+<p><strong>流密码(stream cipher)</strong> 指对数据进行连续处理的一类密码算法。相对于分组密码，流密码在处理过程中 <strong>需要通过内部状态来记录加密的进度</strong>。</p>
+<hr>
+<h2 id="分组密码的模式">分组密码的模式</h2>
+<p>分组密码只能加密固定长度的分组，当明文长度大于算法规定的长度时，需要对明文进行分组，进行迭代，以便将一段很长的明文全部加密。</p>
+<p>迭代的方法称为分组密码的 <strong>模式(mode)</strong>。</p>
+<p>模式有很多种类，主要的模式有：</p>
+<ul>
+<li><strong>ECB 模式:</strong> Electronic CodeBook mode (电子密码本模式)</li>
+<li><strong>CBC 模式:</strong> Cipher Block Chaining mode (密码分组链接模式)</li>
+<li><strong>CFB 模式:</strong> Cipher FeedBack mode (密码反馈模式)</li>
+<li><strong>OFB 模式:</strong> Output FeedBack mode (输出反馈模式)</li>
+<li><strong>CTR 模式:</strong> CounTeR mode (计数器模式)</li>
+</ul>
+<hr>
+<h3 id="ecb-模式">ECB 模式</h3>
+<p>在 <strong>ECB 模式</strong> 中，将明文分组加密之后的结果直接组装成密文分组，明文分组和密文分组是一一对应的。当最后一个分组长度不够时，需要进行填充(padding)。</p>
+<h4 id="ecb-模式加解密流程">ECB 模式加解密流程</h4>
+<p>如下图所示，为 <strong>ECB 模式</strong> 的加密过程：</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-AES-ECB-Encrypt.png" alt="4-AES-ECB-Encrypt"></p>
+<p>解密很简答，直接反过来就OK了：</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-AES-ECB-Decrypt.png" alt="4-AES-ECB-Decrypt"></p>
+<h4 id="针对ecb-模式的攻击">针对ECB 模式的攻击</h4>
+<p>由于各个明文分组都是各自独立地进行加密和解密，所以攻击者可能 <strong>通过改变密文分组的顺序</strong>，从而使得相应的明文分组的顺序也改变。这种攻击方式 <strong>不需要破译密钥就能实现！！！</strong></p>
+<p>Alice要向Bob转账100块，对应的明文分组如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="err">明文分组</span><span class="mi">1</span> <span class="o">=</span> <span class="mi">41</span> <span class="mi">6</span><span class="n">c</span> <span class="mi">69</span> <span class="mi">63</span> <span class="mi">65</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span><span class="err">（付款人：</span><span class="n">Alice</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl"><span class="err">明文分组</span><span class="mi">2</span> <span class="o">=</span> <span class="mi">42</span> <span class="mf">6f</span> <span class="mi">62</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span><span class="err">（收款人：</span><span class="n">Bob</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl"><span class="err">明文分组</span><span class="mi">3</span> <span class="o">=</span> <span class="mi">31</span> <span class="mi">30</span> <span class="mi">30</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span><span class="err">（付款金额：</span><span class="mi">100</span><span class="err">）</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>假设经过ECB模式加密过后的密文为下面所示。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="err">密文分组</span><span class="mi">1</span> <span class="o">=</span> <span class="n">dd</span> <span class="mi">85</span> <span class="n">e0</span> <span class="n">f1</span> <span class="mi">6</span><span class="n">c</span> <span class="n">b3</span> <span class="n">b4</span> <span class="n">c4</span> <span class="n">fe</span> <span class="mo">07</span> <span class="mi">0</span><span class="n">a</span> <span class="n">b7</span> <span class="mf">3f</span> <span class="mi">2</span><span class="n">c</span> <span class="mi">74</span> <span class="n">fc</span><span class="err">（付款人：？？？）</span>
+</span></span><span class="line"><span class="cl"><span class="err">密文分组</span><span class="mi">2</span> <span class="o">=</span> <span class="mi">2</span><span class="n">a</span> <span class="n">ea</span> <span class="mi">0</span><span class="n">d</span> <span class="n">ec</span> <span class="n">b9</span> <span class="mi">64</span> <span class="mi">77</span> <span class="mi">3</span><span class="n">b</span> <span class="n">fe</span> <span class="mi">86</span> <span class="mi">8</span><span class="n">c</span> <span class="mi">24</span> <span class="mi">4</span><span class="n">b</span> <span class="mi">78</span> <span class="mi">82</span> <span class="mi">9</span><span class="n">a</span><span class="err">（收款人：？？？）</span>
+</span></span><span class="line"><span class="cl"><span class="err">密文分组</span><span class="mi">3</span> <span class="o">=</span> <span class="mi">80</span> <span class="mi">9</span><span class="n">b</span> <span class="mi">16</span> <span class="n">fc</span> <span class="n">e6</span> <span class="n">c7</span> <span class="n">b3</span> <span class="n">b2</span> <span class="mi">9</span><span class="n">e</span> <span class="mi">9</span><span class="n">e</span> <span class="mi">0</span><span class="n">a</span> <span class="n">a9</span> <span class="mi">76</span> <span class="n">d1</span> <span class="mi">54</span> <span class="mi">46</span><span class="err">（付款金额：？？？）</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>攻击者Eve只需要将密文分组 1 和 2 的顺序对调，则结果与实际的结果完全相反！！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="err">密文分组</span><span class="mi">1</span> <span class="o">=</span> <span class="mi">2</span><span class="n">a</span> <span class="n">ea</span> <span class="mi">0</span><span class="n">d</span> <span class="n">ec</span> <span class="n">b9</span> <span class="mi">64</span> <span class="mi">77</span> <span class="mi">3</span><span class="n">b</span> <span class="n">fe</span> <span class="mi">86</span> <span class="mi">8</span><span class="n">c</span> <span class="mi">24</span> <span class="mi">4</span><span class="n">b</span> <span class="mi">78</span> <span class="mi">82</span> <span class="mi">9</span><span class="n">a</span><span class="err">（付款人：？？？）</span>
+</span></span><span class="line"><span class="cl"><span class="err">密文分组</span><span class="mi">2</span> <span class="o">=</span> <span class="n">dd</span> <span class="mi">85</span> <span class="n">e0</span> <span class="n">f1</span> <span class="mi">6</span><span class="n">c</span> <span class="n">b3</span> <span class="n">b4</span> <span class="n">c4</span> <span class="n">fe</span> <span class="mo">07</span> <span class="mi">0</span><span class="n">a</span> <span class="n">b7</span> <span class="mf">3f</span> <span class="mi">2</span><span class="n">c</span> <span class="mi">74</span> <span class="n">fc</span><span class="err">（收款人：？？？）</span>
+</span></span><span class="line"><span class="cl"><span class="err">密文分组</span><span class="mi">3</span> <span class="o">=</span> <span class="mi">80</span> <span class="mi">9</span><span class="n">b</span> <span class="mi">16</span> <span class="n">fc</span> <span class="n">e6</span> <span class="n">c7</span> <span class="n">b3</span> <span class="n">b2</span> <span class="mi">9</span><span class="n">e</span> <span class="mi">9</span><span class="n">e</span> <span class="mi">0</span><span class="n">a</span> <span class="n">a9</span> <span class="mi">76</span> <span class="n">d1</span> <span class="mi">54</span> <span class="mi">46</span><span class="err">（付款金额：？？？）</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="cbc-模式">CBC 模式</h3>
+<p><strong>CBC 模式</strong> 是将前一个密文分组与下一个明文分组混合起来进行加密的。</p>
+<h4 id="cbc-模式加解密过程">CBC 模式加解密过程</h4>
+<p>在加密时，首先将明文分组与上一个密文分组进行 <strong>XOR</strong> 操作，然后再进行加密操作。第一个明文分组进行加密时，需要一个 <strong>初始化向量(Initialization Vector)</strong> 与其进行 <strong>XOR</strong> 操作。</p>
+<p>具体加密过程如下所示：</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-AES-CBC-Encrypt.png" alt="4-AES-CBC-Encrypt"></p>
+<p>解密流程与加密流程相反。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-AES-CBC-Decrypt.png" alt="4-AES-CBC-Decrypt"></p>
+<p><strong>CBC 模式</strong> 的特点：</p>
+<ul>
+<li>明文分组在加密前与前一个密文分组进行 <strong>XOR</strong> 操作，因此，即使相邻的两个明文分组的内容完全一样，所得到的密文分组也 <strong>不一定相等</strong>。</li>
+<li>无法 <strong>单独对一个明文分组</strong> 进行加密。</li>
+<li>当 CBC 模式中有 <strong>一个密文分组的内容损坏</strong> ，只要密文分组的长度没有发生变化，则解密时 <strong>最多只会有2个分组</strong> 受到影响。</li>
+<li>但如果密文分组中有比特缺失，则此后的密文分组解密都将发生错误。</li>
+</ul>
+<h4 id="针对cbc-模式的攻击">针对CBC 模式的攻击</h4>
+<ul>
+<li>填充提示攻击</li>
+<li>初始化向量攻击</li>
+</ul>
+<hr>
+<h3 id="cfb-模式">CFB 模式</h3>
+<p><strong>CFB 模式</strong> 是将前一个密文分组进行加密后与明文分组进行 <strong>XOR</strong> 操作得到密文分组。</p>
+<h4 id="cfb-模式加解密过程">CFB 模式加解密过程</h4>
+<p>在加密时，首先将上一个密文分组进行加密，然后将得到的机密结果与明文分组进行 <strong>XOR</strong> 操作，得到的结果即为密文分组。第一个密文分组由 <strong>初始化向量(Initialization Vector)</strong> 代替。</p>
+<p>具体加密流程如下：</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-AES-CFB-Encrypt.png" alt="4-AES-CFB-Encrypt"></p>
+<p>解密过程和 <strong>加密过程一样！</strong> 只不过数据的方向相反。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-AES-CFB-Decrypt.png" alt="4-AES-CFB-Decrypt"></p>
+<p><strong>CFB 模式</strong> 的特点：</p>
+<ul>
+<li>在 <strong>CFB 模式</strong> 中，明文分组并没有通过密码算法来直接进行加密。</li>
+<li>明文分组和密文分组之间只有 <strong>XOR</strong> 操作。</li>
+<li>在解密时，依然执行的是 <strong>加密操作！</strong> (同一数据异或两次后得到原始数据)</li>
+</ul>
+<h4 id="针对cfb-模式的攻击">针对CFB 模式的攻击</h4>
+<p>对 <strong>CFB 模式</strong> 可以实施 <strong>重放攻击(replay attack)</strong>。</p>
+<p>Alice向Bob发送了四个分组组成的消息，主动攻击者Eve将后面三个分组的消息保存下来。</p>
+<p>Alice第二次向Bob发送了内容不同的，同样也是由四个分组组成的消息，此时，Eve将后面三个分组的消息使用第一次保留的三个分组消息进行替换。</p>
+<p>当Bob对第二次接收的消息进行解密时，<strong>分组二</strong> 的消息会 <strong>解密失败</strong>，但 <strong>分组三</strong> 和 <strong>分组四</strong> 的消息都能 <strong>成功解密</strong>。</p>
+<p>Bob无法判断消息错误是由通信错误造成的，还是被攻击造成的。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-AES-CFB-Replay-Attack.png" alt="4-AES-CFB-Replay-Attack"></p>
+<hr>
+<h3 id="ofb-模式">OFB 模式</h3>
+<p>在 <strong>OFB 模式</strong> 中，上一次密码算法的输出会作为这次密码算法的输入，产生的结果与明文分组进行 <strong>XOR</strong> 操作，得到对应密文分组。</p>
+<h4 id="ofb-模式加解密过程">OFB 模式加解密过程</h4>
+<p>在加密时，首先通过密码算法计算加密后的结果。使用 <strong>密码算法的输出</strong> 和 <strong>明文分组</strong> 进行 <strong>XOR</strong> 操作产生密文分组。密码算法的 <strong>初始输入为初始化向量！！！</strong></p>
+<p>具体流程如下图：</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-AES-OFB-Encrypt.png" alt="4-AES-OFB-Encrypt"></p>
+<p>解密过程和加密过程一样，只不过数据的流向不同。 <strong>密文分组</strong> 和 <strong>密码算法的输出</strong> 作为 <strong>XOR</strong> 操作的对象。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-AES-OFB-Decrypt.png" alt="4-AES-OFB-Decrypt"></p>
+<p><strong>OFB 模式</strong> 的特点：</p>
+<ul>
+<li>明文分组没有通过密码算法直接进行。</li>
+<li>密码算法的输出结果只与初始化向量有关。</li>
+<li>密码算法的输出可以先计算出，后续的 <strong>XOR</strong> 操作能够进行并行计算。</li>
+</ul>
+<h4 id="针对ofb-模式的攻击">针对OFB 模式的攻击</h4>
+<p>在某个分组中，当密码算法的输入与输出得到相同结果时，后续的分组都将相同的密码算法输出与明文分组进行 <strong>XOR</strong> 操作！！</p>
+<hr>
+<h3 id="ctr-模式">CTR 模式</h3>
+<p><strong>CTR 模式</strong> 是一种通过逐次累加计数器进行加密来生成密钥流的流密码</p>
+<h4 id="ctr-模式加解密过程">CTR 模式加解密过程</h4>
+<p>在加密过程中，每个明文分组对应一个逐次累加的计数器，通过对计数器进行加密来生成密钥流。</p>
+<p>最终的密文分组是由通过计数器加密后得到的比特序列和明文分组进行 <strong>XOR</strong> 操作得到的。</p>
+<p>具体的加密流程如下。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-AES-CTR-Encrypt.png" alt="4-AES-CTR-Encrypt"></p>
+<p>解密过程和加密过程一样，只是数据分组的流向不同。<strong>密文分组</strong> 和 <strong>计数器加密的输出</strong> 作为 <strong>XOR</strong> 操作的对象。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-AES-CTR-Decrypt.png" alt="4-AES-CTR-Decrypt"></p>
+<p><strong>CTR 模式</strong> 的特点：</p>
+<ul>
+<li>每次密码算法的输出都不同(前提是保证密码算法的强大性)。</li>
+<li>可是事先进行密码算法的加密解密操作。</li>
+<li>加密解密过程可以并行完成。</li>
+<li>对密文分组中的错误只会出现在对应的明文分组中，错误不会被放大。</li>
+</ul>
+<h2 id="总结">总结</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">模式</th>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">优点</th>
+<th style="text-align:left">缺点</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ECB模式</td>
+<td style="text-align:left">Electronic CodeBook mode (电子密码本模式)</td>
+<td style="text-align:left">1、简单；<br/>2、kuaisu；<br/>3、支持并行计算(加密、解密)</td>
+<td style="text-align:left">1、明文中的重复排列会反映在密文中；<br/>2、通过删除、替换密文分组对明文进行操作；<br/>3、对包含某些比特错误的密文进行解密时，对应的分组会出错；<br/>4、不能低于重放攻击。</td>
+<td style="text-align:left">不推荐使用</td>
+</tr>
+<tr>
+<td style="text-align:center">CBC模式</td>
+<td style="text-align:left">Cipher Block Chaining mode (密码分组链接模式)</td>
+<td style="text-align:left">1、明文的重复排列不会反应在密文中；<br/>2、支持并行运算(解密)；<br/>3、能够解密任意密文分组。</td>
+<td style="text-align:left">1、对包含某些错误比特的密文进行解密时，第一个分组的全部比特以及后一个分组的相应比特会出错；<br/>2、加密不支持并行计算。</td>
+<td style="text-align:left">推荐使用</td>
+</tr>
+<tr>
+<td style="text-align:center">CFB模式</td>
+<td style="text-align:left">Cipher FeedBack mode (密码反馈模式)</td>
+<td style="text-align:left">1、不需要填充(padding)；<br/>2、支持并行计算(仅解密)；<br/>3、能够揭秘任意密文分组。</td>
+<td style="text-align:left">1、加密不支持并行计算；<br/>2、对包含某些错误比特的密文进行解密时，第一个分组的相应比特以及后一个分组的全部比特都会出错；<br/>3、不能抵御重放攻击。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">OFB模式</td>
+<td style="text-align:left">Output FeedBack mode (输出反馈模式)</td>
+<td style="text-align:left">1、不需要填充(padding)；<br/>2、可事先进行加密、解密的准备；<br/>3、加密、解密使用相同的结构；<br/>4、对包含某些错误比特的密文进行解密时，只有铭文中的相对应的比特会出错。</td>
+<td style="text-align:left">1、不支持并行计算；<br/>2、主动攻击者反转密文分组中的某些比特时，明文分组中相对应的比特也会被反转。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">CTR模式</td>
+<td style="text-align:left">CounTeR mode (计数器模式)</td>
+<td style="text-align:left">1、不需要填充(padding)；<br/>2、可事先进行加密、解密的准备；<br/>3、加密、解密使用相同的结构；<br/>4、对包含某些错误比特的密文进行解密时，只有明文中对应的比特会出错；<br/>5、支持并行计算(加密、解密)。</td>
+<td style="text-align:left">主动攻击者反转密文分组中的某些比特时，明文分组中相对应的比特也会被反转。</td>
+<td style="text-align:left">推荐使用</td>
+</tr>
+</tbody>
+</table>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-03-19
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/books/">Books</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/">图解密码技术</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/5-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">图解密码技术 - 公钥密码</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/7-%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/">
+            <span class="next-text nav-default">图解密码技术 - 单向散列函数</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

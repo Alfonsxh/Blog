@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Python lxml模块中使用XPath语句 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Python lxml模块中使用XPath语句" /><meta name="keywords" content="Python, 爬虫" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/python/spider/lxml%E4%B8%AD%E4%BD%BF%E7%94%A8xpath/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Python lxml模块中使用XPath语句</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-11-29 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/python/"> Python </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/%E7%88%AC%E8%99%AB/"> 爬虫 </a>
+            </div>
+          <span class="more-meta"> 661 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#xpath">XPath</a>
+          <ul>
+            <li><a href="#xpath语法">XPath语法</a></li>
+          </ul>
+        </li>
+        <li><a href="#xpath在lxml模块中使用">XPath在lxml模块中使用</a>
+          <ul>
+            <li><a href="#lxml解析html">lxml解析html</a></li>
+            <li><a href="#element对象">Element对象</a></li>
+            <li><a href="#xpath选择兄弟节点">xpath选择兄弟节点</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><strong>lxml模块</strong> 有很多种功能，不单只有 <strong>XPath</strong> 的方式解析 <strong>xml文档</strong>。</p>
+<h2 id="xpath">XPath</h2>
+<p><strong>XPath</strong> 为 <strong>XML</strong> 路径语言(XML Path Language)，它是一种用来确定 xml文档中某部分位置的语言。在前端代码中常使用。</p>
+<h3 id="xpath语法">XPath语法</h3>
+<p><strong>XPath</strong> 选择节点的方式有点类似于Linux下选择路径的方式。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表达式</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">nodename</td>
+<td style="text-align:left">选取此节点的所有子节点。</td>
+</tr>
+<tr>
+<td style="text-align:left">/</td>
+<td style="text-align:left">从根节点选取。</td>
+</tr>
+<tr>
+<td style="text-align:left">//</td>
+<td style="text-align:left">从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。</td>
+</tr>
+<tr>
+<td style="text-align:left">.</td>
+<td style="text-align:left">选取当前节点。</td>
+</tr>
+<tr>
+<td style="text-align:left">..</td>
+<td style="text-align:left">选取当前节点的父节点。</td>
+</tr>
+<tr>
+<td style="text-align:left">@</td>
+<td style="text-align:left">选取属性。</td>
+</tr>
+</tbody>
+</table>
+<p>例如下面的xml文档：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;bookstore&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;book&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;title</span> <span class="na">lang=</span><span class="s">&#34;eng&#34;</span><span class="nt">&gt;</span>Harry Potter<span class="nt">&lt;/title&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;price&gt;</span>29.99<span class="nt">&lt;/price&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/book&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;book&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;title</span> <span class="na">lang=</span><span class="s">&#34;eng&#34;</span><span class="nt">&gt;</span>Learning XML<span class="nt">&lt;/title&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;price&gt;</span>39.95<span class="nt">&lt;/price&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/book&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/bookstore&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th style="text-align:left">路径表达式</th>
+<th style="text-align:left">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">bookstore</td>
+<td style="text-align:left">选取 bookstore 元素的所有子节点。</td>
+</tr>
+<tr>
+<td style="text-align:left">/bookstore</td>
+<td style="text-align:left">选取根元素 bookstore。假如路径起始于正斜杠( / )，则此路径始终代表到某元素的绝对路径！</td>
+</tr>
+<tr>
+<td style="text-align:left">bookstore/book</td>
+<td style="text-align:left">选取属于 bookstore 的子元素的所有 book 元素。</td>
+</tr>
+<tr>
+<td style="text-align:left">//book</td>
+<td style="text-align:left">选取所有 book 子元素，而不管它们在文档中的位置。</td>
+</tr>
+<tr>
+<td style="text-align:left">bookstore//book</td>
+<td style="text-align:left">选择属于 bookstore 元素的后代的所有 book 元素，而不管它们位于 bookstore 之下的什么位置。</td>
+</tr>
+<tr>
+<td style="text-align:left">//@lang</td>
+<td style="text-align:left">选取名为 lang 的所有属性。</td>
+</tr>
+</tbody>
+</table>
+<p>以上路径表达式所选取的都为目标节点下的所有子节点，如果想要得到特定位置的子节点，需要使用 <strong>[]</strong> 进行选取。选取的方式有以下几种。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">路径表达式</th>
+<th style="text-align:left">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">/bookstore/book[1]</td>
+<td style="text-align:left">按照索引号进行选取，第一个索引为1。选取属于 bookstore 子元素的第一个 book 元素。</td>
+</tr>
+<tr>
+<td style="text-align:left">/bookstore/book[last()]</td>
+<td style="text-align:left">使用函数。选取属于 bookstore 子元素的最后一个 book 元素。</td>
+</tr>
+<tr>
+<td style="text-align:left">/bookstore/book[last()-1]</td>
+<td style="text-align:left">选取属于 bookstore 子元素的倒数第二个 book 元素。</td>
+</tr>
+<tr>
+<td style="text-align:left">/bookstore/book[position() &lt; 3]</td>
+<td style="text-align:left">选取最前面的两个属于 bookstore 元素的子元素的 book 元素。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="xpath在lxml模块中使用">XPath在lxml模块中使用</h2>
+<p><strong>lxml模块</strong> 是一款高性能的 <strong>Python XML库</strong>，它构建在两个C库之上: <strong>libxml2</strong> 和 <strong>libxslt</strong>。它们为执行解析、序列化和转换等核心任务提供了主要动力。</p>
+<h3 id="lxml解析html">lxml解析html</h3>
+<p><strong>lxml模块</strong> 解析html文档的方式有三种：<strong>etree.fromstring</strong>、<strong>etree.HTML</strong>、<strong>etree.parse</strong>。前两种的处理的方式是一样的，输入都为字符串类型，输出都为 <strong>根节点的Element对象</strong>。<strong>etree.parse</strong> 方式输入为文件类型的对象，如文件的名称或路径、文件对象、类文件对象、使用URL路径，输出为 <strong>ElementTree对象</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">html_name</span> <span class="o">=</span> <span class="s2">&#34;test.html&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">html_content</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&lt;html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &lt;head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &lt;/head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &lt;body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &lt;p class=&#34;title story&#34; name=&#34;dromouse story&#34;&gt;The Dormouse&#39;s story&lt;/p&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Dornouse
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &lt;p class=&#34;story&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">            Once upon a time there were three little sisters; and their names were
+</span></span></span><span class="line"><span class="cl"><span class="s2">            &lt;a href=&#34;http://example.com/elsie&#34; class=&#34;sister&#34; id=&#34;link1&#34;&gt;&lt;!-- Elsie --&gt;&lt;/a&gt;,
+</span></span></span><span class="line"><span class="cl"><span class="s2">            &lt;a href=&#34;http://example.com/lacie&#34; class=&#34;sister&#34; id=&#34;link2&#34;&gt;Lacie&lt;/a&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s2">            and
+</span></span></span><span class="line"><span class="cl"><span class="s2">            &lt;a href=&#34;http://example.com/tillie&#34; class=&#34;sister&#34; id=&#34;link3&#34;&gt;Tillie&lt;/a&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">            ;and they lived at the bottom of a well.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &lt;/p&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Good Story!
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &lt;p class=&#34;story&#34;&gt;...&lt;/p&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &lt;/body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&lt;/html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">root_node_fromstring</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>   <span class="c1"># 对象为sting类型，返回Element对象</span>
+</span></span><span class="line"><span class="cl"><span class="n">root_node_HTML</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>       <span class="c1"># 对象为string类型，返回Element对象</span>
+</span></span><span class="line"><span class="cl"><span class="n">root_node_parse</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">html_name</span><span class="p">)</span>        <span class="c1"># 对象为文件类型对象，返回ElementTree对象</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="element对象">Element对象</h3>
+<p><strong>lxml模块</strong> 将 <strong>html文档</strong> 中的tag节点都当作了 <strong>Element对象</strong> 处理。<strong>Element对象</strong> 中现在只关注它的几个属性，以及 <strong>xpath方法</strong> 。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">attrib</td>
+<td style="text-align:left">Element对象中的属性字典，可以使用get(), set(), keys(), values() 和 items() 函数来存取属性。</td>
+</tr>
+<tr>
+<td style="text-align:left">base</td>
+<td style="text-align:left">Element对象的基础URI，如果使用parse，会显示为文档的路径，如果URI不知道的话，会设置成None。</td>
+</tr>
+<tr>
+<td style="text-align:left">nsmap</td>
+<td style="text-align:left">Namespcae prefix，所有的父节点的命名空间声明字典。</td>
+</tr>
+<tr>
+<td style="text-align:left">prefix</td>
+<td style="text-align:left">命名空间前缀。</td>
+</tr>
+<tr>
+<td style="text-align:left">sourceline</td>
+<td style="text-align:left">Element对象在解析时在原文档中的行位置，不知道时为None。</td>
+</tr>
+<tr>
+<td style="text-align:left">tag</td>
+<td style="text-align:left">Element对象的tag名称。</td>
+</tr>
+<tr>
+<td style="text-align:left">tail</td>
+<td style="text-align:left">与下一个Element对象之间的字符串，如果下一个Element对象不存在，则为None。</td>
+</tr>
+<tr>
+<td style="text-align:left">text</td>
+<td style="text-align:left">与第一个子节点之间的字符串变量。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>xpath()方法</strong> 的作用是按照xpath语法找到对应的 <strong>Element对象</strong> 列表，后续的操作都在这个列表中展开。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">html_name</span> <span class="o">=</span> <span class="s2">&#34;test.html&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">root_node_parse</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">html_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">a_node_list</span> <span class="o">=</span> <span class="n">root_node_parse</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&#34;//p/a&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">a_node</span> <span class="ow">in</span> <span class="n">a_node_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{a_base}</span><span class="s1"> </span><span class="si">{a_line}</span><span class="s1">: &lt;</span><span class="si">{a_tag}</span><span class="s1"> href=&#34;</span><span class="si">{a_href}</span><span class="s1">&#34; class=&#34;</span><span class="si">{a_class}</span><span class="s1">&#34; id=&#34;</span><span class="si">{a_id}</span><span class="s1">&#34;&gt;</span><span class="si">{a_text}</span><span class="s1">&lt;/</span><span class="si">{a_tag}</span><span class="s1">&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a_base</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">base</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a_line</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">sourceline</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a_tag</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a_href</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&#34;href&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a_class</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&#34;class&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a_id</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&#34;id&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a_text</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># test.html 10: &lt;a href=&#34;http://example.com/elsie&#34; class=&#34;sister&#34; id=&#34;link1&#34;&gt;None&lt;/a&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># test.html 11: &lt;a href=&#34;http://example.com/lacie&#34; class=&#34;sister&#34; id=&#34;link2&#34;&gt;Lacie&lt;/a&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># test.html 13: &lt;a href=&#34;http://example.com/tillie&#34; class=&#34;sister&#34; id=&#34;link3&#34;&gt;Tillie&lt;/a&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在使用 <strong>xpath方法</strong> 时，xpath语句的作用对象为整个的文档，并不是以当前的 <strong>Element对象</strong> 为root节点！如果要以当前的 <strong>Element对象</strong> 为root节点，需要使用 <strong>.</strong> 语句。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">p_node_list</span> <span class="o">=</span> <span class="n">root_node_parse</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&#34;//p&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">p_node</span> <span class="ow">in</span> <span class="n">p_node_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">a_node_list</span> <span class="o">=</span> <span class="n">p_node</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&#34;./a&#34;</span><span class="p">)</span>   <span class="c1"># 使用当前的 Element对象 </span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">a_node</span> <span class="ow">in</span> <span class="n">a_node_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{a_base}</span><span class="s1"> </span><span class="si">{a_line}</span><span class="s1">: &lt;</span><span class="si">{a_tag}</span><span class="s1"> href=&#34;</span><span class="si">{a_href}</span><span class="s1">&#34; class=&#34;</span><span class="si">{a_class}</span><span class="s1">&#34; id=&#34;</span><span class="si">{a_id}</span><span class="s1">&#34;&gt;</span><span class="si">{a_text}</span><span class="s1">&lt;/</span><span class="si">{a_tag}</span><span class="s1">&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">a_base</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">base</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">a_line</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">sourceline</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">a_tag</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">a_href</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&#34;href&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="n">a_class</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&#34;class&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="n">a_id</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&#34;id&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="n">a_text</span> <span class="o">=</span> <span class="n">a_node</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># test.html 10: &lt;a href=&#34;http://example.com/elsie&#34; class=&#34;sister&#34; id=&#34;link1&#34;&gt;None&lt;/a&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># test.html 11: &lt;a href=&#34;http://example.com/lacie&#34; class=&#34;sister&#34; id=&#34;link2&#34;&gt;Lacie&lt;/a&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># test.html 13: &lt;a href=&#34;http://example.com/tillie&#34; class=&#34;sister&#34; id=&#34;link3&#34;&gt;Tillie&lt;/a&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其他的 <strong>XPath语法</strong> 使用方式一样。</p>
+<h3 id="xpath选择兄弟节点">xpath选择兄弟节点</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;info&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;pl&#34;</span><span class="p">&gt;</span>制片国家/地区:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> 美国<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;pl&#34;</span><span class="p">&gt;</span>语言:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> 英语<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;pl&#34;</span><span class="p">&gt;</span>上映日期:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">span</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;v:initialReleaseDate&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;2014-01-18(圣丹斯电影节)&#34;</span><span class="p">&gt;</span>2014-01-18(圣丹斯电影节)<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> / <span class="p">&lt;</span><span class="nt">span</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;v:initialReleaseDate&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;2015-09-18(美国)&#34;</span><span class="p">&gt;</span>2015-09-18(美国)<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;pl&#34;</span><span class="p">&gt;</span>片长:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">span</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;v:runti/following::*me&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;88&#34;</span><span class="p">&gt;</span>88分钟<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;pl&#34;</span><span class="p">&gt;</span>又名:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> 虱子<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;pl&#34;</span><span class="p">&gt;</span>IMDb链接:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;http://www.imdb.com/title/tt2490326&#34;</span> <span class="na">target</span><span class="o">=</span><span class="s">&#34;_blank&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;nofollow&#34;</span><span class="p">&gt;</span>tt2490326<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>例如上面的例子，想要获取制片国家和语言的信息，但这部分信息不在 <strong>span</strong> 标签中，而是处于 <strong>span和br</strong> 之间。</p>
+<p>首先，我们找到 <strong>制片国家/地区</strong> 这个节点</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">country</span> <span class="o">=</span> <span class="n">root_node</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&#34;//div[contains(@id, &#39;info&#39;)]/span[contains(@class, &#39;pl&#39;) and contains(text(), &#39;制片国家/地区:&#39;)]&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>国家对应的属性为 <strong>text()</strong>，并且是在tag后面的属性。xpath中，对于相邻属性，有 <strong>following</strong>、<strong>following-sibling</strong>、<strong>preceding</strong>、<strong>preceding-sibling</strong> 四种方式获取。对于上面的例子来说，可以使用 <strong>following</strong>、<strong>following-sibling</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">country_1</span> <span class="o">=</span> <span class="n">root_node</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&#34;//div[contains(@id, &#39;info&#39;)]/span[contains(@class, &#39;pl&#39;) and contains(text(), &#39;制片国家/地区:&#39;)]/following::text()&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">country_1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># output:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="s1">&#39; 美国&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        &#39;</span><span class="p">,</span> <span class="s1">&#39;语言:&#39;</span><span class="p">,</span> <span class="s1">&#39; 英语&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        &#39;</span><span class="p">,</span> <span class="s1">&#39;上映日期:&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;2014-01-18(圣丹斯电影节)&#39;</span><span class="p">,</span> <span class="s1">&#39; / &#39;</span><span class="p">,</span> <span class="s1">&#39;2015-09-18(美国)&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        &#39;</span><span class="p">,</span> <span class="s1">&#39;片长:&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;88分钟&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        &#39;</span><span class="p">,</span> <span class="s1">&#39;又名:&#39;</span><span class="p">,</span> <span class="s1">&#39; 虱子&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        &#39;</span><span class="p">,</span> <span class="s1">&#39;IMDb链接:&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;tt2490326&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">country_2</span> <span class="o">=</span> <span class="n">root_node</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&#34;//div[contains(@id, &#39;info&#39;)]/span[contains(@class, &#39;pl&#39;) and contains(text(), &#39;制片国家/地区:&#39;)]/following-sibling::text()&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">country_2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># output:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="s1">&#39; 美国&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        &#39;</span><span class="p">,</span> <span class="s1">&#39; 英语&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39; / &#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        &#39;</span><span class="p">,</span> <span class="s1">&#39; 虱子&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>following</strong> 方式获取的是后继所有 <strong>tag</strong> 中的 <strong>text()</strong>。而 <strong>following-sibling</strong> 获取的是 <strong>同等级的兄弟节点的内容</strong>。</p>
+<p><strong>preceding</strong>、<strong>preceding-sibling</strong> 为前驱节点，用法和上面的一样。</p>
+<p>另外，还有几个：</p>
+<ul>
+<li><strong>parent::</strong> - 取当前节点的 <strong>父节点</strong>。</li>
+<li><strong>child::</strong> - 取当前节点的 <strong>子节点</strong>。</li>
+<li><strong>ancestor::</strong> - 取当前节点的 <strong>父节点、祖父节点等</strong>。</li>
+<li><strong>descendant::</strong> - 取当前节点的 <strong>子节点、子孙节点</strong>。</li>
+</ul>
+<h2 id="参考">参考</h2>
+<p><a href="https://lxml.de/api/index.html">lxml etree API</a>
+<a href="http://www.ruanyifeng.com/blog/2009/07/xpath_path_expressions.html">xpath路径表达式笔记</a>
+<a href="http://www.w3school.com.cn/xpath/index.asp">W3school XPath 教程</a></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-01-13
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/python/">Python</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/python/frida/frida_%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Frida使用手册</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/0-%E5%85%B3%E4%BA%8Euml/">
+            <span class="next-text nav-default">图解设计模式 - 0-关于UML</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

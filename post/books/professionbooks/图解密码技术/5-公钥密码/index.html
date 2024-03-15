@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>图解密码技术 - 公钥密码 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="公钥密码" /><meta name="keywords" content="Books, 图解密码技术" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/5-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">图解密码技术 - 公钥密码</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-18 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/books/"> Books </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/"> 图解密码技术 </a>
+            </div>
+          <span class="more-meta"> 233 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#密钥配送问题">密钥配送问题</a></li>
+        <li><a href="#公钥密码">公钥密码</a></li>
+        <li><a href="#rsa算法">RSA算法</a>
+          <ul>
+            <li><a href="#rsa加密和解密">RSA加密和解密</a></li>
+            <li><a href="#rsa生成密钥对">RSA生成密钥对</a></li>
+          </ul>
+        </li>
+        <li><a href="#对rsa的攻击">对RSA的攻击</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="密钥配送问题">密钥配送问题</h2>
+<p>在之前的<code>对称密码</code>模式中，加密和解密的密钥都是相同的，接收者必须收到密码和与之对应的密钥才能进行解密。在这一过程中，我们不能保证这个过程是否被劫持者劫持。</p>
+<p><code>密钥必须发送，但又不能发送。</code>这就是对称密码的<code>密钥配送问题</code>。</p>
+<p>解决方法有以下几种：</p>
+<ul>
+<li>通过事先共享密钥来解决</li>
+<li>通过密钥分配中心解决</li>
+<li>通过Diffie-Hellman密钥交换来解决</li>
+<li>通过公钥密码来解决</li>
+</ul>
+<p>前面三种方式都有各自的缺点，都不考虑。第四种方式<code>通过公钥密码交换对称密钥</code>为可行的方式。</p>
+<h2 id="公钥密码">公钥密码</h2>
+<p><strong>公钥密码(public-key cryptography)</strong> 也称为 <strong>非对称密钥(asymmetric cryptography)</strong> ，加密和解密的过程分别由<code>加密密钥</code>和<code>解密密钥</code>来完成。发送者用加密密钥对消息进行加密，接收者用解密密钥对密文进行解密。</p>
+<p>在公钥密码中，加密密钥一般是公开的，称为<code>公钥(public key)</code>。解密密钥是绝对不能公开的，称为<code>私钥(private key)</code>。公钥和私钥是一一对应的，称为<code>密钥对(key pair)</code>。</p>
+<p>公钥和私钥一般都由接收者提供，接收者将加密密钥公开，这样<code>任何人</code>都可以通公钥对信息进行<code>加密</code>，但<code>只有接收者</code>才能通过<code>私钥</code>对加密后的信息进行解密。</p>
+<p>简单的流程图如下所示。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/5-Alice-Bob.png" alt="5-Alice-Bob"></p>
+<h2 id="rsa算法">RSA算法</h2>
+<p><strong>RSA</strong> 是一种非对称加密算法，名字由它的三位创始人<code>Ron Rivest, Adi Shamir, Leonard Adleman</code>的姓氏首字母组成。</p>
+<p><code>RSA</code>可以被用于<code>非对称密码</code>和<code>数字签名</code>。</p>
+<h3 id="rsa加密和解密">RSA加密和解密</h3>
+<p>在<code>RSA</code>中，明文、密文和密钥都是数字。</p>
+<p>加密过程的公式如下所示。</p>
+<p>$$ cipher = plaintxt^E;mod;N$$</p>
+<p>简单来说，RSA的加密过程就是<code>求明文的 E 次方 mod N</code>，只要知道了<code>E</code>和<code>N</code>两个数，就能完成加密的运算。<code>E</code>和<code>N</code>的组合就是<code>公钥(E,N)</code>。</p>
+<p>解密的过程和加密的过程一样。</p>
+<p>$$ plaintxt = cipher^D;mod;N$$</p>
+<p>解密的过程是<code>求密文的 D 次方 mod N</code>, 所用的密钥称为<code>私钥(D,N)</code>。</p>
+<h3 id="rsa生成密钥对">RSA生成密钥对</h3>
+<p>RSA的密钥对由E、D、N组成，<code>(E,N)为公钥</code>，<code>(D,N)为私钥</code>。</p>
+<p><code>RSA的密钥对</code>的生成步骤主要由一下几步完成。</p>
+<h4 id="求n">求N</h4>
+<p>首先准备两个质数<code>p</code>、<code>q</code>，暂时选择17和19。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">p</span> <span class="o">=</span> <span class="m">17</span>
+</span></span><span class="line"><span class="cl"><span class="nv">q</span> <span class="o">=</span> <span class="m">19</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">N</span> <span class="o">=</span> p * <span class="nv">q</span>
+</span></span><span class="line"><span class="cl">  <span class="o">=</span> <span class="m">17</span> * <span class="nv">19</span>
+</span></span><span class="line"><span class="cl">  <span class="o">=</span> <span class="m">323</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="求l">求L</h4>
+<p><code>L</code>为<code>p - 1</code>和<code>q - 1</code>的<code>最小公倍数</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">p - <span class="nv">1</span> <span class="o">=</span> <span class="m">16</span>
+</span></span><span class="line"><span class="cl">q - <span class="nv">1</span> <span class="o">=</span> <span class="m">18</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">L</span> <span class="o">=</span> lcm<span class="o">(</span>p - 1, q - 1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">=</span> lcm<span class="o">(</span>16, 18<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">=</span> <span class="m">144</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="求e">求E</h4>
+<p>找到一个数<code>E</code>，使得<code>E</code>和<code>L</code>互质。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">gcd<span class="o">(</span>E, L<span class="o">)</span> <span class="o">=</span> <span class="m">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>满足条件的E有很多，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">5,7,11,13,17,19,23,25,29,31...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里选择<code>5</code>作为<code>E</code>的值。</p>
+<p>至此，得到了<code>公钥(5, 323)</code>。</p>
+<h4 id="求d">求D</h4>
+<p>接下来求<code>D</code>，<code>D</code>要满足的条件是，<code>E</code>与<code>D</code>的乘积<code>mod L</code>的结果为<code>1</code>。即$$E * D;mod;L = 1$$。</p>
+<p>当<code>D = 29</code>时，正好满足条件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">E x D mod <span class="nv">L</span> <span class="o">=</span> <span class="m">5</span> x <span class="m">29</span> mod <span class="nv">144</span>
+</span></span><span class="line"><span class="cl">            <span class="o">=</span> <span class="m">145</span> mod <span class="nv">144</span>
+</span></span><span class="line"><span class="cl">            <span class="o">=</span> <span class="m">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="模拟加密与解密">模拟加密与解密</h4>
+<p>至此，我们已经成功得到了<code>公钥对(E, N) = (5, 323)</code>和<code>私钥对(D, N) = (29, 323)</code>。</p>
+<p>这里要注意的是，要加密的明文必须小于<code>323</code>。因为如果明文大于<code>N</code>时，<code>mod</code>的结果必将小于<code>N</code>，这样的话，解密的结果也就必定小于<code>N</code>，无法还原出正确明文。</p>
+<p>我们选择<code>123</code>作为加密的明文。</p>
+<p>加密：$$plaintxt^E;mod;N=123^5;mod;323=225$$</p>
+<p>解密：$$cipher^D;mod;N=225^{29};mod;323=225^{10}<em>225^{10}<em>225^{9};mod;323=16</em>16</em>191;mod;323=123$$</p>
+<p>总结起来，求密钥对的过程可以由下表表示。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">步骤</th>
+<th style="text-align:left">过程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">求N</td>
+<td style="text-align:left">用伪随机数生成器生成<code>质数</code>p和q，N = p * q</td>
+</tr>
+<tr>
+<td style="text-align:center">求L</td>
+<td style="text-align:left">L 为 p -1 和 q - 1 的最小公倍数，L = lcm(p - 1, q - 1)</td>
+</tr>
+<tr>
+<td style="text-align:center">求E</td>
+<td style="text-align:left">E 和 L 互质，并且1 &lt; E &lt; L， gcd(E, L) = 1</td>
+</tr>
+<tr>
+<td style="text-align:center">求D</td>
+<td style="text-align:left">E 和 D mod L = 1，并且1 &lt; D &lt; L，E * D mod L = 1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="对rsa的攻击">对RSA的攻击</h2>
+<p>对<code>RSA</code>的攻击主要还是中间人的方式。其他的攻击方式都很难实现。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/5-RSA-Crack.png" alt="5-RSA-Crack"></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-08-18
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/books/">Books</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/">图解密码技术</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/13-pgp/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">图解密码技术 - PGP</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E7%9A%84%E6%A8%A1%E5%BC%8F/">
+            <span class="next-text nav-default">图解密码技术 - 分组密码的模式</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

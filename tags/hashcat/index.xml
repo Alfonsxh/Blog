@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hashcat on Alfons&#39;s Blog</title>
+    <link>https://alfonsxh.github.io/Blog/tags/hashcat/</link>
+    <description>Recent content in Hashcat on Alfons&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 28 Sep 2018 22:01:27 +0000</lastBuildDate>
+    <atom:link href="https://alfonsxh.github.io/Blog/tags/hashcat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hashcat使用说明</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
+      <pubDate>Fri, 28 Sep 2018 21:51:01 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</guid>
+      <description>&lt;p&gt;&lt;code&gt;hashcat&lt;/code&gt;是目前世界上最快的密码破解工具，能够破译众多类型的密码，可以使用CPU，也可以使用GPU作为计算单元。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

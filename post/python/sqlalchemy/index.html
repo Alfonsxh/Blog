@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>SqlAlchemy使用 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="SqlAlchemy使用" /><meta name="keywords" content="Python, SqlAlchemy" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/python/sqlalchemy/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">SqlAlchemy使用</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-01-28 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/python/"> Python </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/sqlalchemy/"> SqlAlchemy </a>
+            </div>
+          <span class="more-meta"> 931 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#pymysql">pymysql</a></li>
+        <li><a href="#sqlalchemy-core">SqlAlchemy Core</a>
+          <ul>
+            <li><a href="#连接">连接</a></li>
+            <li><a href="#定义和创建表">定义和创建表</a></li>
+            <li><a href="#insert操作">Insert操作</a></li>
+            <li><a href="#select操作">Select操作</a></li>
+            <li><a href="#使用textual-sql">使用Textual SQL</a></li>
+          </ul>
+        </li>
+        <li><a href="#sqlalchemy-orm">SqlAlchemy ORM</a>
+          <ul>
+            <li><a href="#连接-1">连接</a></li>
+            <li><a href="#创建表对象">创建表对象</a></li>
+            <li><a href="#查询">查询</a></li>
+          </ul>
+        </li>
+        <li><a href="#性能">性能</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><strong>SqlAlchemy(Sql炼金术？)</strong> 是Python下的一款 <strong>ORM(Object Relational Mapping 对象关系映射)框架</strong>，框架建立在数据库API之上，使用关系对象映射进行数据库操作。将对象转换为sql，然后调用数据库API执行sql并获取结果。</p>
+<h2 id="pymysql">pymysql</h2>
+<p><strong>pymysql</strong> 是python下的一款数据库操作API模块，用户使用时，需要自己完成数据库连接、数据库语句编写、同步数据库、关闭数据库等操作。</p>
+<p>基本操作流程如下：</p>
+<ul>
+<li>1.创建数据库连接。</li>
+<li>2.获取游标对象。</li>
+<li>3.执行sql命令。</li>
+<li>4.获取命令结果。</li>
+<li>5.关闭数据库。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pymysql</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 打开数据库连接</span>
+</span></span><span class="line"><span class="cl"><span class="n">db</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&#34;localhost&#34;</span><span class="p">,</span><span class="s2">&#34;testuser&#34;</span><span class="p">,</span><span class="s2">&#34;test123&#34;</span><span class="p">,</span><span class="s2">&#34;TESTDB&#34;</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 cursor() 方法创建一个游标对象 cursor</span>
+</span></span><span class="line"><span class="cl"><span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 execute()  方法执行 SQL 查询</span>
+</span></span><span class="line"><span class="cl"><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&#34;SELECT VERSION()&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 fetchone() 方法获取单条数据.</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span> <span class="p">(</span><span class="s2">&#34;Database version : </span><span class="si">%s</span><span class="s2"> &#34;</span> <span class="o">%</span> <span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 关闭数据库连接</span>
+</span></span><span class="line"><span class="cl"><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>值得注意的是，在使用多线程进行操作同一数据库对象时，需要用户自行加锁，否则会出现下面的问题：</p>
+<blockquote>
+<p>mysql error sql: Packet sequence number wrong - got 1 expected 2
+for this sql query:</p>
+</blockquote>
+<p>解决问题的方式有两种：</p>
+<ul>
+<li>每个线程使用独立的数据库连接对象，但这种方式在对于并发量特别大的时候，会造成很大的效率问题。</li>
+<li>在操作数据库连接对象前，加锁。这种方式需要留心死锁问题，尤其是某些数据库操作调用了其他操作时。</li>
+</ul>
+<p>还有另一种方案，使用 <strong>SqlAlchemy</strong>。</p>
+<h2 id="sqlalchemy-core">SqlAlchemy Core</h2>
+<p><strong>SqlAlchemy</strong> 在使用时有两种方式，一种是 <strong>SQLAlchemy Core</strong> 使用原生的sql语句对数据库进行操作，另一种为使用 <strong>SQLAlchemy ORM</strong> 的方式。</p>
+<h3 id="连接">连接</h3>
+<p><strong>SqlAlchemy</strong> 模块在使用时，需要有一个引擎负责和数据库服务器交互。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;dialect[+driver]://user:password@host/dbname[?key=value..]&#34;</span><span class="p">,</span> <span class="n">echo</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>连接不同的数据库需要不同的参数：</p>
+<ul>
+<li><strong>dialect</strong> - 表示连接数据库的名字，可以为 <strong>mysql</strong>、<strong>oracle</strong>等等。</li>
+<li><strong>driver</strong> - 可有可无，表示的是连接数据库所使用的API，对于mysql可以选择 <strong>pyodbc</strong>、<strong>pymssql</strong>、<strong>pymysql</strong>等。</li>
+<li><strong>user:password</strong> - 数据库登陆的用户名和密码。</li>
+<li><strong>host/dbname</strong> - 数据库的地址以及所使用的目标数据库的名字。</li>
+<li><strong>[?key=value..]</strong> - 登陆数据库时的一些其他选项。</li>
+</ul>
+<blockquote>
+<p><strong>echo</strong> 参数的意义是，为 <strong>True</strong> 时，会在执行语句时，打印出对应的sql执行语句。</p>
+</blockquote>
+<h4 id="各类型数据库进行连接">各类型数据库进行连接</h4>
+<p>PostgreSQL进行连接:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># default</span>
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://scott:tiger@localhost/mydatabase&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># psycopg2</span>
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql+psycopg2://scott:tiger@localhost/mydatabase&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># pg8000</span>
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql+pg8000://scott:tiger@localhost/mydatabase&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Mysql进行连接:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># default</span>
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;mysql://scott:tiger@localhost/foo&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># mysql-python</span>
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;mysql+mysqldb://scott:tiger@localhost/foo&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># MySQL-connector-python</span>
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;mysql+mysqlconnector://scott:tiger@localhost/foo&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># OurSQL</span>
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;mysql+oursql://scott:tiger@localhost/foo&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>SQLite进行连接：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># sqlite use memory</span>
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///:memory:&#39;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># sqlite use file</span>
+</span></span><span class="line"><span class="cl"><span class="n">engine</span><span class="o">=</span><span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///./cnblogblog.db&#39;</span><span class="p">,</span><span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="定义和创建表">定义和创建表</h3>
+<p>在 <strong>SqlAlchemy</strong> 中，列通常由对象 <strong>Column</strong> 关联，并且多条列被关联到一个 <strong>Table</strong> 对象。一个 <strong>Table对象</strong> 以及与它关联的 <strong>子对象</strong> 的集合被称为 <strong>数据库元数据</strong>。</p>
+<p>我们所定义的 <strong>Table对象</strong> 都处于一个 <strong>MetaData对象的目录中</strong>。在使用 <strong>Table对象</strong> 创建表时，有两种方式，都和sql语句 <strong>SQL CREATE TABLE</strong> 类似。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Table</span><span class="p">,</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">MetaData</span><span class="p">,</span> <span class="n">ForeignKey</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;sqlite:///./memory.db&#34;</span><span class="p">,</span> <span class="n">echo</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">metadata</span> <span class="o">=</span> <span class="n">MetaData</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 第一种方式：table_obj.create()</span>
+</span></span><span class="line"><span class="cl"><span class="n">users</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s2">&#34;users&#34;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">Column</span><span class="p">(</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">autoincrement</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">primary_key</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">comment</span> <span class="o">=</span> <span class="s2">&#34;用户ID&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">              <span class="n">Column</span><span class="p">(</span><span class="s2">&#34;name&#34;</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">comment</span> <span class="o">=</span> <span class="s2">&#34;用户名&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">              <span class="n">Column</span><span class="p">(</span><span class="s2">&#34;fullname&#34;</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">comment</span> <span class="o">=</span> <span class="s2">&#34;用户全名&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">users</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">addresses</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s2">&#34;addresses&#34;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">Column</span><span class="p">(</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span> <span class="o">=</span> <span class="kc">True</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">Column</span><span class="p">(</span><span class="s2">&#34;user_id&#34;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s2">&#34;users.id&#34;</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">Column</span><span class="p">(</span><span class="s2">&#34;email_address&#34;</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">addresses</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 第二种方式：metadata.create_all(engine)</span>
+</span></span><span class="line"><span class="cl"><span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>总结起来的步骤就是：</p>
+<ul>
+<li>创建数据库引擎</li>
+<li>定义元数据并绑定引擎</li>
+<li>通过 <strong>Table对象</strong> 建表， <strong>Column对象</strong> 添加表字段</li>
+<li>通过例子中的两种方式创建表结构</li>
+</ul>
+<p>对于已经存在的表，可以使用 <strong>autoload</strong> 参数在加载时自动生成 <strong>Table对象</strong>。如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">users</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s2">&#34;users&#34;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">autoload</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">addresses</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s2">&#34;addresses&#34;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">autoload</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="insert操作">Insert操作</h3>
+<p>数据的插入有几种方式，主要区别在于待插入数据的设置方式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conn</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ins1</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&#34;alfons&#34;</span><span class="p">,</span> <span class="n">fullname</span> <span class="o">=</span> <span class="s2">&#34;alfons_xh&#34;</span><span class="p">),</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;alfons&#34;</span><span class="p">,</span> <span class="s2">&#34;fullname&#34;</span><span class="p">:</span> <span class="s2">&#34;alfons_xh&#34;</span><span class="p">}])</span>
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">ins1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ins2</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="n">insert</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">([</span><span class="nb">dict</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&#34;alfons&#34;</span><span class="p">,</span> <span class="n">fullname</span> <span class="o">=</span> <span class="s2">&#34;alfons_xh&#34;</span><span class="p">),</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;alfons&#34;</span><span class="p">,</span> <span class="s2">&#34;fullname&#34;</span><span class="p">:</span> <span class="s2">&#34;alfons_xh&#34;</span><span class="p">}])</span>
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">ins2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ins3</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="n">insert</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">ins3</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&#34;alfons&#34;</span><span class="p">,</span> <span class="n">fullname</span> <span class="o">=</span> <span class="s2">&#34;alfons_xh&#34;</span><span class="p">),</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;alfons&#34;</span><span class="p">,</span> <span class="s2">&#34;fullname&#34;</span><span class="p">:</span> <span class="s2">&#34;alfons_xh&#34;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&#34;insert into users (name, fullname) values (&#39;alfons&#39;, &#39;alfons_xh&#39;), (&#39;alfons&#39;, &#39;alfons_xh&#39;)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&#34;insert into users (name, fullname) values (?, ?)&#34;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;alfons&#39;</span><span class="p">,</span> <span class="s1">&#39;alfons_xh&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;alfons&#39;</span><span class="p">,</span> <span class="s1">&#39;alfons_xh&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&#34;alfons&#34;</span><span class="p">,</span> <span class="n">fullname</span> <span class="o">=</span> <span class="s2">&#34;alfons_xh&#34;</span><span class="p">),</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;alfons&#34;</span><span class="p">,</span> <span class="s2">&#34;fullname&#34;</span><span class="p">:</span> <span class="s2">&#34;alfons_xh&#34;</span><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>总结起来大致三种方式：</p>
+<ul>
+<li>使用 <strong>Table对象</strong> 的 <strong>insert方法</strong></li>
+<li>使用引擎的 <strong>connect对象</strong>，其中 <strong>connect对象</strong> 又分为两种方式
+<ul>
+<li>直接使用sql语句执行</li>
+<li>绑定 <strong>insert方法</strong>。</li>
+</ul>
+</li>
+</ul>
+<p>在进行插入操作时，会使用 <strong>?</strong> 作为占位符，有些命令会使用默认值作为字段的默认值，有些则不会，需要通过观察打印出的执行sql。</p>
+<h3 id="select操作">Select操作</h3>
+<p><strong>SqlAlchemy</strong> 中的查找操作有两种方式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conn</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 第一种方式，使用 Table 对象的 select方法</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># SELECT users.id, users.name, users.fullname FROM users WHERE id &lt; 5 order by name</span>
+</span></span><span class="line"><span class="cl"><span class="n">sel1</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">whereclause</span> <span class="o">=</span> <span class="s2">&#34;id &lt; 5 order by name&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">rows</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sel1</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 第二种方式，使用 sqlalchemy.sql 中的 select对象</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sqlalchemy.sql</span> <span class="kn">import</span> <span class="n">select</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># SELECT users.id, users.name, users.fullname FROM users WHERE id &gt; 5</span>
+</span></span><span class="line"><span class="cl"><span class="n">sel2</span> <span class="o">=</span> <span class="n">select</span><span class="p">([</span><span class="n">users</span><span class="p">],</span> <span class="n">whereclause</span> <span class="o">=</span> <span class="s2">&#34;id &gt; 5&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">rows</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sel2</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>两种方式殊途同归，<strong>Table对象</strong> 中的select最终调用的仍是 sqlalchemy.sql 中的 select对象。</p>
+<p>此外，在查询时可以附加不同的条件进行筛选条件，通过 <strong>where以及其他方法</strong>，用法如下所示，三种方式效果都一样。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sqlalchemy.sql</span> <span class="kn">import</span> <span class="n">select</span><span class="p">,</span> <span class="n">and_</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">conn</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># SELECT users.id, users.name, users.fullname, addresses.id, addresses.user_id, addresses.email_address FROM users, addresses WHERE users.id = addresses.user_id AND users.id = ? ORDER BY users.name</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># sel = select([users, addresses]).where(and_(users.c.id == addresses.c.user_id, users.c.id == 102)).order_by(users.c.name)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># sel = select([users, addresses]).where((users.c.id == addresses.c.user_id) &amp; (users.c.id == 102)).order_by(users.c.name)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sel</span> <span class="o">=</span> <span class="n">select</span><span class="p">([</span><span class="n">users</span><span class="p">,</span> <span class="n">addresses</span><span class="p">])</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">addresses</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="mi">102</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">resultProxy</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">resultProxy</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如上面的例子所示，<strong>select</strong> 中为需要选择的内容，可以为整个表：<strong>users、addresses</strong>，也可以为某些字段：<strong>users.id、users.name、addresses.user_id</strong>。多个字段使用列表包装。</p>
+<p>条件判断语句可以在同一个 <strong>where</strong> 中，使用 <strong>and_、or_、not_</strong> 或者使用 <strong>&amp;、|、！</strong> 等符号，也可以使用多个 <strong>where</strong>，但效果只能是 <strong>and</strong> 了。</p>
+<p>值得注意的是，<strong>where</strong> 以及其他表达式中需要使用 <strong>Table对象</strong> 的 <strong>.c属性</strong> 来获取表对应的字段。如 <strong>users</strong> 表中的 <strong>id</strong> 字段，需要使用 <strong>users.c.id</strong> 的方式来获取。查看源码，可以发现，<strong>c</strong> 其实代表的是 <strong>columns方法</strong>，获取的是所有的字段。然后通过取属性的方式可以得到对应的字段。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@_memoized_property</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">columns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;A named-based collection of :class:`.ColumnElement` objects
+</span></span></span><span class="line"><span class="cl"><span class="s2">    maintained by this :class:`.FromClause`.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    The :attr:`.columns`, or :attr:`.c` collection, is the gateway
+</span></span></span><span class="line"><span class="cl"><span class="s2">    to the construction of SQL expressions using table-bound or
+</span></span></span><span class="line"><span class="cl"><span class="s2">    other selectable-bound columns::
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">        select([mytable]).where(mytable.c.somecolumn == 5)
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s1">&#39;_columns&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_init_collections</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_populate_column_collection</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_columns</span><span class="o">.</span><span class="n">as_immutable</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">c</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">attrgetter</span><span class="p">(</span><span class="s1">&#39;columns&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">doc</span><span class="o">=</span><span class="s2">&#34;An alias for the :attr:`.columns` attribute.&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="使用textual-sql">使用Textual SQL</h3>
+<p><strong>sqlalchemy.sql</strong> 中 <strong>text</strong> 的用法和直接使用sql语句的方式差不多，只不过 <strong>text</strong> 中的判断参数更加的具体，可以指定参数的类型等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sqlalchemy.sql</span> <span class="kn">import</span> <span class="n">text</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sqlalchemy.sql</span> <span class="kn">import</span> <span class="n">bindparam</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 1、使用text</span>
+</span></span><span class="line"><span class="cl"><span class="n">sel</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s2">&#34;select * from users where users.id &lt; :a&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">bindparams</span><span class="p">(</span><span class="n">bindparam</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">type_</span><span class="o">=</span> <span class="n">Integer</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">res</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># res = engine.execute(sel, a = 1000).fetchall()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2、使用sql语句</span>
+</span></span><span class="line"><span class="cl"><span class="n">sel</span> <span class="o">=</span> <span class="s2">&#34;select * from users where users.id &lt; 1000&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">res</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如上所示，在使用text构成sql语句时，使用了 <strong>:a</strong> 对 <strong>users.id</strong> 的上界进行了占位，使用 <strong>bindparam对象</strong> 对a进行绑定，设置a的值和类型。而直接使用sql语句时，则没有这种设置方式。</p>
+<blockquote>
+<p>使用 <strong>SqlAlchemy core</strong> 与 <strong>pymysql</strong> 最大的区别在于 <strong>返回的结果</strong>。
+对于 <strong>SqlAlchemy core</strong> 来说，返回的内容是 <strong>RowProxy</strong> 对象的实例，用户可以通过获取属性的方式得到想要的数据，如上面的 <strong>c.id、c.name</strong>。
+对于 <strong>pymysql</strong> 来说，返回的是一个 <strong>tuple</strong>，用户只能通过 <strong>res[index]</strong> 的方式，按照顺序获取结果。</p>
+</blockquote>
+<h2 id="sqlalchemy-orm">SqlAlchemy ORM</h2>
+<p><strong>SQLAlchemy Object Relational Mapper(SQLAlchemy对象关系映射)</strong> 提出了一个方案，使用用户自定义的python类与数据库的表关联，这些类的实例就代表了数据库中的一行(row)。</p>
+<p><strong>SqlAlchemy ORM</strong> 与 <strong>SqlAlchemy core</strong> 最大的区别是， <strong>ORM</strong> 对数据库的表进行了 <strong>高度的抽象</strong>，让使用者感觉不是在操作数据库，而是在操作 <strong>Python对象</strong>。</p>
+<p>#todo</p>
+<h3 id="连接-1">连接</h3>
+<h3 id="创建表对象">创建表对象</h3>
+<h3 id="查询">查询</h3>
+<h2 id="性能">性能</h2>
+<p>性能方面，<strong>SqlAlchemy core</strong> 和 <strong>SqlAlchemy ORM</strong> 多少都有将原始数据抽象的过程，将数据从数据库服务器读取出来后，还有一步将数据转换为对象的过程。在写入数据库时，同样也由将操作的对象转换成sql语句的过程，造成了速度上的劣势。而 <strong>pymysql</strong> 更接近直接使用sql命令，速度方面基本没太大的影响。</p>
+<p>比较了一下 <strong>pymysql模块</strong>、<strong>SqlAlchemy模块</strong>、<strong>SqlAlchemy Orm</strong>的执行效率。</p>
+<ul>
+<li>系统：<strong>Ubuntu 18.04 虚拟机</strong></li>
+<li>CPU：<strong>Intel(R) Core(TM) i5-4590 CPU @ 3.30GHz</strong></li>
+<li>测试数据：<strong>2万条</strong>，分十次，每次 <strong>2千</strong>，插入方式为单条插入。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">模块</th>
+<th style="text-align:center">平均时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">pymysql模块</td>
+<td style="text-align:center">3.55&rsquo;s</td>
+</tr>
+<tr>
+<td style="text-align:center">SqlAlchemy模块</td>
+<td style="text-align:center">5.22&rsquo;s</td>
+</tr>
+<tr>
+<td style="text-align:center">SqlAlchemy Orm</td>
+<td style="text-align:center">13.01&rsquo;s</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://docs.sqlalchemy.org/en/latest/core/engines.html">Engine Configuration</a></li>
+<li><a href="https://docs.sqlalchemy.org/en/latest/">SQLAlchemy 1.3 Documentation</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-01-28
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/python/">Python</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/sqlalchemy/">SqlAlchemy</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/python/gil%E5%85%A8%E5%B1%80%E8%A7%A3%E9%87%8A%E5%99%A8%E9%94%81/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Python GIL</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/python/python%E8%A3%85%E9%A5%B0%E5%99%A8/">
+            <span class="next-text nav-default">Python装饰器----Decorator</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>程序员的自我修养 - 编译 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="编译" /><meta name="keywords" content="Books, 程序员的自我修养" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">程序员的自我修养 - 编译</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-07-18 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/books/"> Books </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"> 程序员的自我修养 </a>
+            </div>
+          <span class="more-meta"> 2293 words </span>
+          <span class="more-meta"> 11 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-编译">1 编译</a>
+          <ul>
+            <li><a href="#11-示例代码">1.1 示例代码</a></li>
+            <li><a href="#12-预处理preprocessing">1.2 预处理(<strong>Preprocessing</strong>)</a></li>
+            <li><a href="#13-编译compilation">1.3 编译(<strong>Compilation</strong>)</a></li>
+            <li><a href="#14-汇编assembly">1.4 汇编(<strong>Assembly</strong>)</a></li>
+            <li><a href="#15-链接linking">1.5 链接(<strong>Linking</strong>)</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-共享库">2. 共享库</a>
+          <ul>
+            <li><a href="#21-示例代码">2.1 示例代码</a></li>
+            <li><a href="#22-静态库archive">2.2 静态库(archive)</a></li>
+            <li><a href="#23-动态库">2.3 动态库</a></li>
+            <li><a href="#24-dlopen-api">2.4 dlopen API</a></li>
+            <li><a href="#25-动态库初始化和终止函数">2.5 动态库初始化和终止函数</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-动态库相关工具介绍">3 动态库相关工具介绍</a>
+          <ul>
+            <li><a href="#31-ldd">3.1 ldd</a></li>
+            <li><a href="#32-objdump">3.2 objdump</a></li>
+            <li><a href="#33-readelf">3.3 readelf</a></li>
+            <li><a href="#34-nm">3.4 nm</a></li>
+            <li><a href="#35-ldconfig">3.5 ldconfig</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-相关参考">4 相关参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>如果把程序从产生到运行比作做菜的话，那么静态的源程序就相当于是菜谱，操作系统相当于是厨师，系统的各种硬件则是炊具，程序加载到内存中运行的整个过程就相当于是烹饪的整个过程。</p>
+</blockquote>
+<p>下面介绍一下菜谱的制作过程，以及两道特色菜 <strong>静态库</strong> 和 <strong>动态库</strong>。</p>
+<h2 id="1-编译">1 编译</h2>
+<p>linux上可执行程序的生成，简单来说经历了下面几个步骤:</p>
+<ul>
+<li>预处理(<strong>Preprocessing</strong>)</li>
+<li>编译(<strong>Compilation</strong>)</li>
+<li>汇编(<strong>Assembly</strong>)</li>
+<li>链接(<strong>Linking</strong>)</li>
+</ul>
+<p>下面将从这几个步骤介绍可执行程序的生成过程。</p>
+<p><img src="../../../Image/Books/ProfessionBooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/gcc-process.jpeg" alt="编译过程"></p>
+<h3 id="11-示例代码">1.1 示例代码</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Hello World!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="12-预处理preprocessing">1.2 预处理(<strong>Preprocessing</strong>)</h3>
+<p>不同的源码文件，可能引用同一个头文件(比如stdio.h)。编译的时候，头文件也必须一起编译。为了节省时间，编译器会在编译源码之前，先编译头文件。这保证了头文件 <strong>只需编译一次</strong> ，不必每次用到的时候，都重新编译了。</p>
+<p>预处理过程主要是处理那些源代码文件中以&quot;#&ldquo;开始的预编译命令。比如 <strong>#include</strong>、<strong>#define</strong>等，主要处理规则如下：</p>
+<ul>
+<li>将所有的 <strong>#define</strong> 删除，并展开所有的宏定义。</li>
+<li>处理所有的条件预编译指令，如 <strong>#if</strong>、 <strong>#ifdef</strong>、 <strong>#elif</strong>、 <strong>#else</strong>、 <strong>#endif</strong>。</li>
+<li>处理 <strong>#include</strong> 预编译指令，将被包含的文件插入到该预编译指令的位置。值得注意的是，此过程采用的是 <strong>广度优先</strong> 递归进行，相同的头文件只会处理一次。</li>
+<li>删除所有的注释 <strong>//</strong> 和 <strong>/**/</strong>。</li>
+<li>保留所有的 <strong>#pragma</strong> 编译器指令，编译器需要使用。</li>
+</ul>
+<p>gcc使用 <strong>-E</strong> 参数实现预处理过程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ gcc -E main.c -o main.i
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>经过<strong>预处理器(CPP)</strong> 处理后，只是对源文件进行了扩展。得到的<strong>main.i</strong> 文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="err">···</span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="kt">int</span> <span class="nf">ftrylockfile</span> <span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">__stream</span><span class="p">)</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">__nothrow__</span> <span class="p">,</span> <span class="n">__leaf__</span><span class="p">))</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="kt">void</span> <span class="nf">funlockfile</span> <span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">__stream</span><span class="p">)</span> <span class="nf">__attribute__</span> <span class="p">((</span><span class="n">__nothrow__</span> <span class="p">,</span> <span class="n">__leaf__</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="cp"># 942 &#34;/usr/include</span><span class="cpf">/stdio.h&#34; 3 4</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp"># 3 &#34;main.c&#34; 2
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp"># 4 &#34;main.c&#34;
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Hello World!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="13-编译compilation">1.3 编译(<strong>Compilation</strong>)</h3>
+<p>在这个阶段中，主要是把预处理完的文件进行一系列 <strong>词法分析</strong>、 <strong>语法分析</strong> 、<strong>语义分析</strong> 及 <strong>优化</strong>，产生相应的汇编代码文件。</p>
+<p>gcc使用 <strong>-S</strong> 参数实现编译过程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ gcc -S main.i -o main.s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>main.s</strong>的内容为汇编语言程序。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">    <span class="p">.</span><span class="n">file</span>       <span class="s">&#34;main.c&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">section</span>    <span class="p">.</span><span class="n">rodata</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nl">LC0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">string</span>     <span class="s">&#34;Hello World!&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">globl</span>      <span class="n">main</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">type</span>       <span class="n">main</span><span class="p">,</span> <span class="err">@</span><span class="n">function</span>
+</span></span><span class="line"><span class="cl"><span class="nl">main</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nl">LFB0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">cfi_startproc</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pushq</span>       <span class="o">%</span><span class="n">rbp</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">cfi_def_cfa_offset</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">cfi_offset</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span>
+</span></span><span class="line"><span class="cl">    <span class="n">movq</span>        <span class="o">%</span><span class="n">rsp</span><span class="p">,</span> <span class="o">%</span><span class="n">rbp</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">cfi_def_cfa_register</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl">    <span class="n">movl</span>        <span class="err">$</span><span class="p">.</span><span class="n">LC0</span><span class="p">,</span> <span class="o">%</span><span class="n">edi</span>
+</span></span><span class="line"><span class="cl">    <span class="n">call</span>        <span class="n">puts</span>
+</span></span><span class="line"><span class="cl">    <span class="n">movl</span>        <span class="err">$</span><span class="mi">0</span><span class="p">,</span> <span class="o">%</span><span class="n">eax</span>
+</span></span><span class="line"><span class="cl">    <span class="n">popq</span>        <span class="o">%</span><span class="n">rbp</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">cfi_def_cfa</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ret</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">cfi_endproc</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nl">LFE0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">size</span>       <span class="n">main</span><span class="p">,</span> <span class="p">.</span><span class="o">-</span><span class="n">main</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">ident</span>      <span class="s">&#34;GCC: (Ubuntu 5.4.0-6ubuntu1~16.04.9) 5.4.0 20160609&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">section</span>    <span class="p">.</span><span class="n">note</span><span class="p">.</span><span class="n">GNU</span><span class="o">-</span><span class="n">stack</span><span class="p">,</span><span class="s">&#34;&#34;</span><span class="p">,</span><span class="err">@</span><span class="n">progbits</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="14-汇编assembly">1.4 汇编(<strong>Assembly</strong>)</h3>
+<p><strong>汇编器(AS)</strong> 将<strong>main.s</strong> 中的汇编语言指令转变为机器可以执行的指令，每一条汇编语句对应一条或多条机器指令，生成<strong>可重定位文件main.o</strong>(本系列未特殊指明类型的话，指的是ELF类型的文件)。</p>
+<p>gcc使用 <strong>-c</strong> 参数实现编译过程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ gcc -c main.s -o main.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ nm main.o
+</span></span><span class="line"><span class="cl"><span class="m">0000000000000000</span> T main
+</span></span><span class="line"><span class="cl">                 U puts
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到，这一过程产生的文件中，main函数的地址并没有确定，需要进行链接步骤。</p>
+<h3 id="15-链接linking">1.5 链接(<strong>Linking</strong>)</h3>
+<p><strong>链接程序(LD)</strong> 将<strong>main.o</strong> 和一些其他必要的目标文件组合起来，创建可执行目标文件。</p>
+<ul>
+<li>各个中间文之间的同名section合并</li>
+<li>对代码段，数据段以及各符号进行地址分配</li>
+<li>链接时重定位修正</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ gcc -o main main.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ nm main
+</span></span><span class="line"><span class="cl">···
+</span></span><span class="line"><span class="cl">000000000040052d T main
+</span></span><span class="line"><span class="cl">                 U puts@@GLIBC_2.2.5
+</span></span><span class="line"><span class="cl">···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们现在所说的链接过程其实仍属于的是 <strong>&ldquo;静态&quot;链接</strong> 的范畴，main函数的相对地址已经确定，但printf对应的puts函数的地址需要在运行时从动态链接库glic中查找，此时需要 <strong>&ldquo;动态&quot;链接</strong>。</p>
+<blockquote>
+<p><strong>&ldquo;静态&quot;链接</strong> 是程序开发阶段程序员用 <strong>ld(gcc 实际上在后台调用了 ld)静态链接器</strong>手动链接的过程，而 <strong>&ldquo;动态&quot;链接</strong> 则是程序运行期间系统调用 <strong>动态链接器(ld-linux.so)</strong> 自动链接的过程。具体参考<a href="https://github.com/tinyclub/open-c-book/blob/master/zh/chapters/02-chapter4.markdown#toc_23258_14315_6">《动态符号链接的细节》</a>。</p>
+</blockquote>
+<p>运行./main，程序加载并运行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ./main
+</span></span><span class="line"><span class="cl">Hello World!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>生成的<strong>main.o</strong> 和<strong>main</strong> 都为ELF格式。</p>
+<blockquote>
+<p>注:以上步骤可以只通过 <strong>gcc -o main main.c</strong> 实现</p>
+</blockquote>
+<h2 id="2-共享库">2. 共享库</h2>
+<p><strong>共享库</strong>是一种将库函数打包成一个单元使之能够在运行时被多个进程共享的技术。主要有<strong>静态库</strong>和<strong>动态库</strong>两种。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">共享库</th>
+<th style="text-align:center">优点</th>
+<th style="text-align:center">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">静态库</td>
+<td style="text-align:center">在编译过程中已经被载入可执行程序，编译后的执行程序不需要外部的函数库支持。不会发生应用程序在 不同 Linux 版本下的标准库不兼容问题。</td>
+<td style="text-align:center">代码在编译过程中已经被载入可执行程序，因此体积较大。</td>
+</tr>
+<tr>
+<td style="text-align:center">动态库</td>
+<td style="text-align:center">代码是在可执行程序运行时才载入内存的，在编译过程中仅简单的引用，因此代码体积较小。</td>
+<td style="text-align:center">比较容易发生应用程序在不同 Linux 版本下标准库依赖不兼容问题。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="21-示例代码">2.1 示例代码</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// addvec.h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">addvec</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// addvec.cpp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;addvec.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">void</span> <span class="nf">addvec</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(;</span> <span class="n">i</span><span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// mulvec.h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">multvec</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span>  <span class="n">z</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// mulvec.cpp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;mulvec.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">void</span> <span class="nf">multvec</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span>  <span class="n">z</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// main.cpp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;addvec.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">z</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">addvec</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;z = [&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;]</span><span class="se">\n</span><span class="s">&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="22-静态库archive">2.2 静态库(archive)</h3>
+<p><strong>静态库</strong> 也被称为归档文件，它是UNIX系统提供的第一种库。</p>
+<ul>
+<li>可以将一组经常被用到的目标文件组织进单个库文件，这样就可以使用它来构建多个可执行程序并且在构建各个应用程序的时候无需重新编译原来的源代码文件。</li>
+<li>链接命令变得更加简单。在链接命令行中只需要指定静态库的名称即可，而无需一个个的列出目标文件。</li>
+</ul>
+<h4 id="221-创建静态库">2.2.1 创建静态库</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ gcc -c addvec.cpp mulvec.cpp            <span class="c1"># 产生.o重定位文件</span>
+</span></span><span class="line"><span class="cl">$ ar r libstatic.a addvec.o  mulvec.o     <span class="c1"># 生成静态库文件libstatic.a</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看静态库中的目录表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ar tv libstatic.a
+</span></span><span class="line"><span class="cl">rw-r--r-- 0/0   <span class="m">1344</span> Apr <span class="m">19</span> 09:29 <span class="m">2018</span> addvec.o
+</span></span><span class="line"><span class="cl">rw-r--r-- 0/0   <span class="m">1344</span> Apr <span class="m">19</span> 09:29 <span class="m">2018</span> mulvec.o
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>删除静态库中的一个模块</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ar d libstatic.a mulvec.o
+</span></span><span class="line"><span class="cl">$ ar tv libstatic.a
+</span></span><span class="line"><span class="cl">rw-r--r-- 0/0   <span class="m">1344</span> Apr <span class="m">19</span> 09:29 <span class="m">2018</span> addvec.o
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用归档文件打开器打开静态库文件后可以看见内部的结构。</p>
+<p><img src="../../../Image/Books/ProfessionBooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/static.jpg" alt="静态库压缩文件打开"></p>
+<p>打开<strong>1.txt</strong> 文件可以看见相关函数的信息。</p>
+<p><img src="../../../Image/Books/ProfessionBooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/txt.jpg" alt="静态库文件信息展示"></p>
+<h4 id="222-使用静态库">2.2.2 使用静态库</h4>
+<p>第一种，直接链接。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ g++ -o main_static main.cpp ./libstatic.a
+</span></span><span class="line"><span class="cl">$ ./main_static
+</span></span><span class="line"><span class="cl"><span class="nv">z</span> <span class="o">=</span> <span class="o">[</span><span class="m">4</span> 6<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第二种，从指定目录链接(编译时添加 <strong>-L</strong>选项)。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ g++ -o main_static main.cpp -L./lib -lstatic  <span class="c1"># 从本地的lib目录下链接libstatic.a静态库</span>
+</span></span><span class="line"><span class="cl">$ ./main_static
+</span></span><span class="line"><span class="cl"><span class="nv">z</span> <span class="o">=</span> <span class="o">[</span><span class="m">4</span> 6<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意，一般情况下GCC、G++会优先使用动态库作为链接选项，所以当<strong>libstatic.so</strong>和<strong>libstatic.a</strong>同时存在时，会优先使用<strong>libstatic.so</strong>。要想只使用静态库进行链接，需要使用参数 <strong>-static</strong>。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ g++ -o main_static main.cpp -L./lib -static -lstatic
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>相关编译选项请参考:<a href="http://www.shanghai.ws/gnu/gcc_1.htm">gcc编译选项</a>、<a href="http://www.cppblog.com/SEMAN/archive/2005/11/30/1440.html">GCC 参数详解</a>或者 <em><strong>man gcc</strong></em></p>
+<h3 id="23-动态库">2.3 动态库</h3>
+<p>将程序与静态库链接起来时，得到的可执行文件会包含所有的被链接进程序的目标文件的副本。当几个不同的可执行程序使用了同样的目标模块时，每个执行程序会拥有自己的目标模块的副本。就会造成一些问题:</p>
+<ul>
+<li>存储同一个目标模块的多个副本严重浪费磁盘空间.</li>
+<li>使用同一模块的程序在同一时刻运行，每一程序会在虚拟内存中保存一份目标模块的副本，提高了系统虚拟内存的使用量。</li>
+<li>修改静态库的一个目标模块，需要重新链接静态库文件以合并这个更改。</li>
+</ul>
+<p>动态库的设计用来解决以上的问题。动态库的关键思想是目标模块的<strong>单个副本由所有需要这些模块的程序共享</strong>。目标模块不会复制到链接过的可执行文件中。</p>
+<p>动态库的另一种用法是作为<strong>Java Native Interface(JNI)</strong> 中的构建块，它允许Java代码通过调用动态库中的<strong>C/C++</strong> 函数直接访问底层操作系统的特性。</p>
+<p><img src="../../../Image/Books/ProfessionBooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/jni.jpg" alt="jni_example"></p>
+<h4 id="231-动态库创建">2.3.1 动态库创建</h4>
+<h5 id="2311-一般动态库创建">2.3.1.1 一般动态库创建</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ g++ -fPIC -Wall -c addvec.cpp mulvec.cpp
+</span></span><span class="line"><span class="cl">$ g++ -g -shared -o libdynamic.so addvec.o mulvec.o
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过上面过程，产生了<strong>libdynamic.so</strong> 动态库，相关参数解释如下:</p>
+<ul>
+<li><em><strong>-fPIC</strong></em>(<strong>Position Independent Code</strong>): 位置独立的代码。作用于编译阶段，告诉编译器产生与位置无关代码。<strong>没有绝对地址，全部使用相对地址</strong>，故而代码可以被加载器加载到内存的任意位置，都可以正确的执行。这正是共享库所要求的，共享库被加载时，在内存的位置不是固定的。</li>
+<li><em><strong>-Wall</strong></em>: 打开所有警告</li>
+<li><em><strong>-g</strong></em>: 在编译的时候，产生调试信息。</li>
+<li><em><strong>-shared</strong></em>: 生成共享目标文件。</li>
+</ul>
+<h5 id="2312-带soname的动态库">2.3.1.2 带soname的动态库</h5>
+<p>上述的动态库中所使用的都为动态库的真是名称。但是还有一种常用的做法是——使用别名来创建动态库，这种别名称为<strong>soname</strong>(ELF文件中的 中的DT_SONAME标签)。</p>
+<ul>
+<li>如果动态库拥有一个soname，那么链接阶段会将soname嵌入到可执行文件中，同时之后在运行时程序也会使用这个soname来搜索库。</li>
+<li>引入soname的目的是为了提供一层中间层，方便后续动态库的更新，版本的变化。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 使用soname选项编译</span>
+</span></span><span class="line"><span class="cl">$ g++ -g -shared -Wl,-soname,libdy.so -o libdynamic.so addvec.o mulvec.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用readelf查看动态库后，发现多了一个SONAME标签</span>
+</span></span><span class="line"><span class="cl">$ readelf -d libdynamic.so
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Dynamic section at offset 0xdd8 contains <span class="m">28</span> entries:
+</span></span><span class="line"><span class="cl">  标记        类型                         名称/值
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libstdc++.so.6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libm.so.6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libgcc_s.so.1<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libc.so.6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x000000000000000e <span class="o">(</span>SONAME<span class="o">)</span>             Library soname: <span class="o">[</span>libdy.so<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> ···
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 编译可执行程序，仍使用动态库的真是名称</span>
+</span></span><span class="line"><span class="cl">$ g++ -g -Wall -o main_dynamic main.cpp ./lib/libdynamic.so
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用readelf查看可执行程序，依赖的共享库为libdy.so</span>
+</span></span><span class="line"><span class="cl">$ readelf -d main_dynamic
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Dynamic section at offset 0xde8 contains <span class="m">28</span> entries:
+</span></span><span class="line"><span class="cl">  标记        类型                         名称/值
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libdy.so<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libstdc++.so.6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libm.so.6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libgcc_s.so.1<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libc.so.6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> ···
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># 调用动态库时，提示错误:libdy.so未找到</span>
+</span></span><span class="line"><span class="cl">$ <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>./lib/ ./main_dynamic 
+</span></span><span class="line"><span class="cl">./main_dynamic: error <span class="k">while</span> loading shared libraries: libdy.so: cannot open shared object file: No such file or directory
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 需要软链接连接libdy.so至libdynamic.so</span>
+</span></span><span class="line"><span class="cl">$ ln -s libdynamic.so libdy.so
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 再次运行</span>
+</span></span><span class="line"><span class="cl">$ <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>./lib/ ./main_dynamic
+</span></span><span class="line"><span class="cl"><span class="nv">z</span> <span class="o">=</span> <span class="o">[</span><span class="m">4</span> 6<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="232-动态库使用">2.3.2 动态库使用</h4>
+<p>动态库的调用主要有两种方式，<strong>静态链接</strong>和 <strong>动态加载</strong>。</p>
+<ul>
+<li>一种是动态地将程序和共享库链接并让 Linux 在执行时加载库(如果它已经在内存中了，则无需再加载)。</li>
+<li>一种是通过<strong>dlopen API</strong>在程序需要的时候，先加载一个特定的库(已加载则不必)，然后调用该库中的某一特定函数。</li>
+</ul>
+<p>不管是<strong>静态链接</strong>还是<strong>动态加载</strong>，在运行时，所依赖的库文件的搜索路径都是按照一定顺序来查找的。</p>
+<ol>
+<li>编译目标代码时指定的动态库搜索路径 <strong>rpath</strong>，编译过程中指定</li>
+<li>环境变量 <strong>LD_LIBRARY_PATH</strong> 指定的动态库搜索路径，运行时指定</li>
+<li>配置文件 <strong>/etc/ld.so.conf</strong> 中指定的动态库搜索路径</li>
+<li>默认的动态库搜索路径/lib</li>
+<li>默认的动态库搜索路径/usr/lib</li>
+</ol>
+<blockquote>
+<p>后两项不同系统会有所不同</p>
+</blockquote>
+<h5 id="2321-静态链接static-linking">2.3.2.1 静态链接(Static Linking)</h5>
+<h6 id="23211-可执行程序链接动态库">2.3.2.1.1 可执行程序链接动态库</h6>
+<p>使用g++编译可执行程序时，将动态库一起链接上。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ g++ -g -Wall -o main_dynamic main.cpp libdynamic.so
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用<strong>readelf</strong> 命令查看<strong>main_dynamic</strong>，会显示程序所依赖的动态库信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ readelf -d  main_dynamic
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Dynamic section at offset 0xde8 contains <span class="m">28</span> entries:
+</span></span><span class="line"><span class="cl">  标记        类型                         名称/值
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libdynamic.so<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libstdc++.so.6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libm.so.6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libgcc_s.so.1<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libc.so.6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> ···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h6 id="23213-运行程序">2.3.2.1.3 运行程序</h6>
+<p>直接调用<strong>main_dynamic</strong> 会提示错误: libdynamic.so未找到。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ./main_dynamic
+</span></span><span class="line"><span class="cl">./main_dynamic: error <span class="k">while</span> loading shared libraries: libdynamic.so: cannot open shared object file: No such file or directory
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>调用动态库时，有两种方式。</p>
+<ul>
+<li>一种是在调用可执行程序时，设置环境变量<strong>LD_LIBRARY_PATH</strong>为动态库的位置。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>./lib ./main_dynamic 
+</span></span><span class="line"><span class="cl"><span class="nv">z</span> <span class="o">=</span> <span class="o">[</span><span class="m">4</span> 6<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>一种是在编译时，通过<strong>rpath</strong>选项指定运行时搜索动态库的位置。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 指定main_dynamic在执行时搜索./lib目录下的libdynamic.so</span>
+</span></span><span class="line"><span class="cl">$ g++ -g -Wall -Wl,-rpath<span class="o">=</span>./lib/ -o main_dynamic main.cpp ./lib/libdynamic.so
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 通过readelf命令可以发现，多了一个RPATH标签</span>
+</span></span><span class="line"><span class="cl">$ readelf -d main_dynamic
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Dynamic section at offset 0xdd8 contains <span class="m">29</span> entries:
+</span></span><span class="line"><span class="cl">  标记        类型                         名称/值
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libdynamic.so<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libstdc++.so.6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libm.so.6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libgcc_s.so.1<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x0000000000000001 <span class="o">(</span>NEEDED<span class="o">)</span>             共享库:<span class="o">[</span>libc.so.6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> 0x000000000000000f <span class="o">(</span>RPATH<span class="o">)</span>              Library rpath: <span class="o">[</span>./lib/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">···
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 再次调用main_dynamic，只要./lib目录下含有对应的动态库文件，则能够成功执行</span>
+</span></span><span class="line"><span class="cl">$ ./main_dynamic
+</span></span><span class="line"><span class="cl"><span class="nv">z</span> <span class="o">=</span> <span class="o">[</span><span class="m">4</span> 6<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="2322-动态加载dynamic-loading">2.3.2.2 动态加载(Dynamic Loading)</h5>
+<p>动态加载指的是可执行程序开始运行之后，动态链接器不加载依赖的动态库，在需要的时候通过<strong>dlopen API</strong>的接口加载所需的动态库。具体请参考下一节的<strong>dlopen API</strong>。</p>
+<h3 id="24-dlopen-api">2.4 dlopen API</h3>
+<p><strong>动态加载</strong> 支持程序在运行时控制自己加载的模块,并且可以在不需要的时候随时卸载。这种加载模块的方式很灵活，可以用来实现一些诸如插件、驱动等功能。</p>
+<p><strong>dlopen</strong> 主要<strong>API</strong> 有以下几个。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><em><strong>dlopen()</strong></em></td>
+<td style="text-align:left">打开一个动态库，返回一个供后续调用的</td>
+</tr>
+<tr>
+<td style="text-align:center"><em><strong>dlsym()</strong></em></td>
+<td style="text-align:left">在动态库中搜索一个符号(一个包含函数或变量的字符串)并返回其地址</td>
+</tr>
+<tr>
+<td style="text-align:center"><em><strong>dlclose()</strong></em></td>
+<td style="text-align:left">关闭由dlopen()打开的库</td>
+</tr>
+<tr>
+<td style="text-align:center"><em><strong>dlerror()</strong></em></td>
+<td style="text-align:left">返回一个错误消息字符串</td>
+</tr>
+</tbody>
+</table>
+<h4 id="241-dlopen">2.4.1 dlopen()</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;dlfcn.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">dlopen</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">libfilename</span><span class="p">,</span> <span class="kt">int</span> <span class="n">mode</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果<strong>libfilename</strong>包含 <strong>&rsquo;/&rsquo;</strong>，dlopen会将其解释成一个绝对或者相对的路径名称。否则，会按照上一节提到的顺序搜索。</p>
+<p><strong>mode</strong>为打开动态库的模式，主要使用两种模式: <em><strong>RTLD_LAZY</strong></em>、<em><strong>RTLD_NOW</strong></em>。</p>
+<ul>
+<li><em><strong>RTLD_LAZY</strong></em>: 只有当代码被执行的时候才解析库中未定义的函数符号。</li>
+<li><em><strong>RTLD_NOW</strong></em>: 在<strong>dlopen()</strong> 结束之前立即加载动态库中所有的未定义的符号，不管是否需要用到这些符号。这种模式下打开库的速度变慢了，但能立即检测到任何潜在的未定义函数符号错误。</li>
+</ul>
+<p>函数返回值为 <strong>ELF</strong> 对象的句柄。</p>
+<h4 id="242-dlsym">2.4.2 dlsym()</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;dlfcn.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">dlsym</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">handle</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">symbol</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过 <strong>dlopen()</strong> 函数获取到 <strong>ELF</strong> 对象的句柄后，通过调用 <strong>dlsym()</strong> 函数在handle指向的库以及该库的依赖树中的库中搜索名为<strong>symbol</strong>的符号(函数或变量)。</p>
+<p>如果找到了<strong>symbol</strong>，则返回对应的地址，否则返回NULL。</p>
+<ul>
+<li>如果<strong>symbol</strong>是一个变量的名称，可以将**dlsym()**的返回值赋给一个合适的指针类型，并通过反引用改指针来得到变量的值</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="o">*</span><span class="n">ip</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ip</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="nf">dlsym</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">symbol</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">ip</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Value is %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="n">ip</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>如果<strong>symbol</strong>是一个函数的名称，可以使用**dlsym()**的返回的指针来调用该函数。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">funcp</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>  <span class="err">#</span> <span class="err">定义函数指针</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">*</span><span class="p">(</span><span class="kt">void</span> <span class="o">**</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">funcp</span><span class="p">)</span> <span class="o">=</span> <span class="nf">dlsym</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">symbol</span><span class="p">);</span>    <span class="err">#</span> <span class="err">获取函数</span>
+</span></span><span class="line"><span class="cl"><span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">funcp</span><span class="p">)(</span><span class="n">arg</span><span class="p">);</span>        <span class="err">#</span> <span class="err">函数使用</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="243-dlclose">2.4.3 dlclose()</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;dlfcn.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">dlclose</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>dlclose()</strong> 函数会减小<strong>handle</strong> 所引用的库的打开引用的系统计数。</li>
+<li>如果计数为0，并且其他库都不需要用到该库中的符号了，那么就会卸载这个库。</li>
+<li>系统会在这个库的依赖树中的库执行(递归地)同样的过程。</li>
+<li>当进程终止时会隐式地对所有的库执行<strong>dlclose()</strong>。</li>
+</ul>
+<h4 id="244-dlerror">2.4.4 dlerror()</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;dlfcn.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">dlerror</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当调用<strong>dlopen API</strong>的过程中得到了一个错误，那么可以使用<strong>dlerror()</strong> 来获取一个指向表明错误原因的字符串的指针。</p>
+<h4 id="245-c-name-mangling">2.4.5 C++ Name Mangling</h4>
+<p>在C++程序里，所有的non-static函数都是以二进制文件symbols来表示。这些symbols都是些特殊的文本字符串，都是唯一的在程序中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 使用nm命令查看动态库文件时，显示函数名附加了别的内容，所以dlsym函数无法通过&#34;addvec&#34;找到对应函数</span>
+</span></span><span class="line"><span class="cl">$ nm libdynamic.so
+</span></span><span class="line"><span class="cl">···
+</span></span><span class="line"><span class="cl">0000000000000a50 T _Z6addvecPiS_S_i
+</span></span><span class="line"><span class="cl">0000000000000ac0 T _Z7multvecPiS_S_i
+</span></span><span class="line"><span class="cl">···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然而在C语言中，函数的symbol名字就是函数名字本身，例如 <strong>strcpy</strong> 的symbol就是 <strong>strcpy</strong>，所以在C语言中不会有中non-static函数出现重名情况。</p>
+<p>由于C++有很多C语言没有的功能，例如class、函数的overloading、异常处理等等，所以symbol不可能简单的以函数名来定。</p>
+<p>为了解决这个问题，C++提出了<strong>name mangling</strong>，这个name mangling的功能就是把function的名字转换成只有编译器知道的奇怪字符串，利用该函数所有的已知信息，如果函数参数的类型，个数，函数等等，所有如果函数名字为 <strong>foo(int， char)</strong>，利用name mangling之后，其名字可能是 <strong>foo_int_char</strong> 或者其他字符串也说不定。</p>
+<blockquote>
+<p>在C＋＋标准里中还没有定义这个函数名是被怎样的mangled的，每个编译器都有自己的一套方法。</p>
+</blockquote>
+<p>处理方式是添加 <em><strong>extern &ldquo;C&rdquo;</strong></em> 标识。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// addvec.h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">extern</span> <span class="s">&#34;C&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">addvec</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// addvec.cpp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;addvec.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="kt">void</span> <span class="n">addvec</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>添加了<strong>extern &ldquo;C&rdquo;</strong> 编译后的动态库文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ nm libdynamic.so
+</span></span><span class="line"><span class="cl">···
+</span></span><span class="line"><span class="cl">00000000000006c5 T addvec           <span class="c1"># addvec的symbol为函数名</span>
+</span></span><span class="line"><span class="cl">···
+</span></span><span class="line"><span class="cl"><span class="m">0000000000000735</span> T _Z7multvecPiS_S_i    <span class="c1"># mulvec的symbol仍为之前</span>
+</span></span><span class="line"><span class="cl">···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="246-使用动态加载">2.4.6 使用动态加载</h4>
+<p>修改main函数如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// main.cpp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;dlfcn.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">z</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="o">*</span><span class="n">dl_handle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">)(</span><span class="kt">int</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="o">*</span><span class="n">error</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 打开动态库文件，获取句柄
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">dl_handle</span> <span class="o">=</span> <span class="n">dlopen</span><span class="p">(</span><span class="s">&#34;../libdynamic.so&#34;</span><span class="p">,</span> <span class="n">RTLD_NOW</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dl_handle</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;!!! &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">dlerror</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 根据函数名查找函数地址，C++需要注意name mangling的问题
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">*</span><span class="p">(</span><span class="kt">void</span> <span class="o">**</span><span class="p">)</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">func</span><span class="p">)</span> <span class="o">=</span> <span class="n">dlsym</span><span class="p">(</span><span class="n">dl_handle</span><span class="p">,</span> <span class="s">&#34;addvec&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">error</span> <span class="o">=</span> <span class="n">dlerror</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;!!! &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">dlerror</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 执行获取的函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;z = [&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;]</span><span class="se">\n</span><span class="s">&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 结束句柄
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">dlclose</span><span class="p">(</span><span class="n">dl_handle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="25-动态库初始化和终止函数">2.5 动态库初始化和终止函数</h3>
+<p>可以定义<strong>一个</strong>或<strong>多个</strong>在共享库被加载和卸载时自动执行的函数，使之能在使用共享库时就能完成一些初始化和终止工作。</p>
+<p>不管库是自动被加载还是使用<strong>dlopen</strong> 接口显示加载，初始化和终止函数都会被执行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp"># 在addvec.h中添加初始化和终止函数声明
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">extern</span> <span class="s">&#34;C&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">addvec</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">constructor</span><span class="p">))</span> <span class="nf">x_init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">destructor</span><span class="p">))</span> <span class="nf">x_fini</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp"># 在addvec.cpp中添加初始化和终止函数实现
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;addvec.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="kt">void</span> <span class="nf">addvec</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">constructor</span><span class="p">))</span> <span class="nf">x_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;void __attribute__((constructor)) x_init(void) execute!!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">destructor</span><span class="p">))</span> <span class="nf">x_fini</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;void __attribute__((constructor)) x_fini(void) execute!!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过<strong>nm</strong>命令查看动态库中的相关函数名，新增了<strong>x_fini</strong>、<strong>xinit</strong>函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ nm libdynamic.so
+</span></span><span class="line"><span class="cl">···
+</span></span><span class="line"><span class="cl">0000000000000a15 T addvec
+</span></span><span class="line"><span class="cl">0000000000000ae1 T x_fini
+</span></span><span class="line"><span class="cl">0000000000000a85 T x_init
+</span></span><span class="line"><span class="cl">0000000000000b9a T _Z7multvecPiS_S_i
+</span></span><span class="line"><span class="cl">···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>调用可执行程序，会在开始和终止时调用对应的函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ./main_dynamic
+</span></span><span class="line"><span class="cl">void __attribute__<span class="o">((</span>constructor<span class="o">))</span> x_init<span class="o">(</span>void<span class="o">)</span> execute!!
+</span></span><span class="line"><span class="cl"><span class="nv">z</span> <span class="o">=</span> <span class="o">[</span><span class="m">4</span> 6<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">void __attribute__<span class="o">((</span>constructor<span class="o">))</span> x_fini<span class="o">(</span>void<span class="o">)</span> execute!!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注：用于完成共享库的初始化和终止工作的一项较早的技术是在库中创建两个函数 <strong>_init()</strong> 和 <strong>_finit()</strong>。但构建共享库时必须指定<strong>gcc -nostartfiles</strong>选项，或者使用 <strong>-Wl,-init</strong>和 <strong>-Wl,-finit</strong> 链接器选项来指定函数的名称。不过有了gcc的<strong>constructor</strong>和<strong>destructor</strong>特性之后已经不建议使用。</p>
+</blockquote>
+<h2 id="3-动态库相关工具介绍">3 动态库相关工具介绍</h2>
+<h3 id="31-ldd">3.1 ldd</h3>
+<p><em><strong>ldd</strong></em> 内部实现为<strong>shell</strong>命令，用于打印程序或者库文件所依赖的共享库列表。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">$ldd</span> libdynamic.so
+</span></span><span class="line"><span class="cl">linux-vdso.so.1 <span class="o">=</span>&gt;  <span class="o">(</span>0x00007fff9b57b000<span class="o">)</span>
+</span></span><span class="line"><span class="cl">libstdc++.so.6 <span class="o">=</span>&gt; /lib64/libstdc++.so.6 <span class="o">(</span>0x00007f9ec959a000<span class="o">)</span>
+</span></span><span class="line"><span class="cl">libm.so.6 <span class="o">=</span>&gt; /lib64/libm.so.6 <span class="o">(</span>0x00007f9ec9298000<span class="o">)</span>
+</span></span><span class="line"><span class="cl">libgcc_s.so.1 <span class="o">=</span>&gt; /lib64/libgcc_s.so.1 <span class="o">(</span>0x00007f9ec9081000<span class="o">)</span>
+</span></span><span class="line"><span class="cl">libc.so.6 <span class="o">=</span>&gt; /lib64/libc.so.6 <span class="o">(</span>0x00007f9ec8cbe000<span class="o">)</span>
+</span></span><span class="line"><span class="cl">/lib64/ld-linux-x86-64.so.2 <span class="o">(</span>0x0000558c095f8000<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="32-objdump">3.2 objdump</h3>
+<p><strong>objdump</strong> 命令是用查看目标文件或者可执行的目标文件的构成的gcc工具。</p>
+<ul>
+<li><strong>-f</strong> 显示文件头信息。</li>
+<li><strong>-D</strong> 反汇编所有section (-d反汇编特定section)。</li>
+<li><strong>-h</strong> 显示目标文件各个section的头部摘要信息。</li>
+<li><strong>-x</strong> 显示所有可用的头信息，包括符号表、重定位入口。-x 等价于 -a -f -h -r -t 同时指定。</li>
+<li><strong>-i</strong> 显示对于 -b 或者 -m 选项可用的架构和目标格式列表。</li>
+<li><strong>-r</strong> 显示文件的重定位入口。如果和-d或者-D一起使用，重定位部分以反汇编后的格式显示出来。</li>
+<li><strong>-R</strong> 显示文件的动态重定位入口，仅仅对于动态目标文件有意义，比如某些共享库。</li>
+<li><strong>-S</strong> 尽可能反汇编出源代码，尤其当编译的时候指定了-g这种调试参数时，效果比较明显。隐含了-d参数。</li>
+<li><strong>-t</strong> 显示文件的符号表入口。类似于nm -s提供的信息。</li>
+</ul>
+<h3 id="33-readelf">3.3 readelf</h3>
+<p><strong>readelf</strong>命令用来显示一个或者多个elf格式的目标文件的信息。主要参数:</p>
+<ul>
+<li><strong>-a</strong> 全部信息，等价于: -h -l -S -s -r -d -V -A -I</li>
+<li><strong>-h</strong> 文件头信息，显示ELF文件的文件头 Display the ELF file header</li>
+<li><strong>-l</strong> 程序头信息，显示程序的头部信息</li>
+<li><strong>-S</strong> 段头信息，显示段头信息</li>
+<li><strong>-d</strong> 显示动态段，如果存在的话</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 显示可执行程序的头部信息</span>
+</span></span><span class="line"><span class="cl">$ readelf -h main_dynamic
+</span></span><span class="line"><span class="cl">ELF 头:
+</span></span><span class="line"><span class="cl">  Magic:  7f <span class="m">45</span> 4c <span class="m">46</span> <span class="m">02</span> <span class="m">01</span> <span class="m">01</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+</span></span><span class="line"><span class="cl">  Class:                             ELF64
+</span></span><span class="line"><span class="cl">  Data:                              2<span class="err">&#39;</span>s complement, little endian
+</span></span><span class="line"><span class="cl">  Version:                           <span class="m">1</span> <span class="o">(</span>current<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  OS/ABI:                            UNIX - System V
+</span></span><span class="line"><span class="cl">  ABI Version:                       <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Type:                              EXEC <span class="o">(</span>可执行文件<span class="o">)</span>      <span class="c1"># 根据不同类型的文件会显示不同的type</span>
+</span></span><span class="line"><span class="cl">  Machine:                           Advanced Micro Devices X86-64
+</span></span><span class="line"><span class="cl">  Version:                           0x1
+</span></span><span class="line"><span class="cl">  入口点地址:                        0x4009c6
+</span></span><span class="line"><span class="cl">  程序头起点:                        <span class="m">64</span> <span class="o">(</span>bytes into file<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  Start of section headers:          <span class="m">27448</span> <span class="o">(</span>bytes into file<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  标志:                              0x0
+</span></span><span class="line"><span class="cl">  本头的大小:                        <span class="m">64</span> <span class="o">(</span>字节<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  程序头大小:                        <span class="m">56</span> <span class="o">(</span>字节<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  Number of program headers:         <span class="m">9</span>
+</span></span><span class="line"><span class="cl">  节头大小:                          <span class="m">64</span> <span class="o">(</span>字节<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  节头数量:                          <span class="m">37</span>
+</span></span><span class="line"><span class="cl">  字符串表索引节头:                   <span class="m">34</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 显示程序头信息</span>
+</span></span><span class="line"><span class="cl">$ readelf -l main_dynamic
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Elf 文件类型为 EXEC <span class="o">(</span>可执行文件<span class="o">)</span>
+</span></span><span class="line"><span class="cl">入口点 0x4009c6
+</span></span><span class="line"><span class="cl">共有 <span class="m">9</span> 个程序头，开始于偏移量64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">程序头:
+</span></span><span class="line"><span class="cl">  Type           Offset             VirtAddr           PhysAddr           FileSiz            MemSiz              Flags  Align
+</span></span><span class="line"><span class="cl">  PHDR           0x0000000000000040 0x0000000000400040 0x0000000000400040 0x00000000000001f8 0x00000000000001f8  R E    <span class="m">8</span>
+</span></span><span class="line"><span class="cl">  INTERP         0x0000000000000238 0x0000000000400238 0x0000000000400238 0x000000000000001c 0x000000000000001c  R      <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>Requesting program interpreter: /lib64/ld-linux-x86-64.so.2<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  LOAD           0x0000000000000000 0x0000000000400000 0x0000000000400000 0x0000000000000cbc 0x0000000000000cbc  R E    <span class="m">200000</span>
+</span></span><span class="line"><span class="cl">  LOAD           0x0000000000000db8 0x0000000000600db8 0x0000000000600db8 0x00000000000002d4 0x0000000000000408  RW     <span class="m">200000</span>
+</span></span><span class="line"><span class="cl">  DYNAMIC        0x0000000000000dd8 0x0000000000600dd8 0x0000000000600dd8 0x0000000000000220 0x0000000000000220  RW     <span class="m">8</span>
+</span></span><span class="line"><span class="cl">  NOTE           0x0000000000000254 0x0000000000400254 0x0000000000400254 0x0000000000000044 0x0000000000000044  R      <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  GNU_EH_FRAME   0x0000000000000b64 0x0000000000400b64 0x0000000000400b64 0x000000000000003c 0x000000000000003c  R      <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000 0x0000000000000000 0x0000000000000000  RW     <span class="m">10</span>
+</span></span><span class="line"><span class="cl">  GNU_RELRO      0x0000000000000db8 0x0000000000600db8 0x0000000000600db8 0x0000000000000248 0x0000000000000248  R      <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> Section to Segment mapping:
+</span></span><span class="line"><span class="cl">  段节...
+</span></span><span class="line"><span class="cl">   <span class="m">00</span>
+</span></span><span class="line"><span class="cl">   <span class="m">01</span>     .interp
+</span></span><span class="line"><span class="cl">   <span class="m">02</span>     .interp .note.ABI-tag .note.gnu.build-id .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rela.dyn .rela.plt .init .plt .text .fini .rodata .eh_frame_hdr .eh_frame
+</span></span><span class="line"><span class="cl">   <span class="m">03</span>     .init_array .fini_array .jcr .dynamic .got .got.plt .data .bss
+</span></span><span class="line"><span class="cl">   <span class="m">04</span>     .dynamic
+</span></span><span class="line"><span class="cl">   <span class="m">05</span>     .note.ABI-tag .note.gnu.build-id
+</span></span><span class="line"><span class="cl">   <span class="m">06</span>     .eh_frame_hdr
+</span></span><span class="line"><span class="cl">   <span class="m">07</span>
+</span></span><span class="line"><span class="cl">   <span class="m">08</span>     .init_array .fini_array .jcr .dynamic .got
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 显示段头信息</span>
+</span></span><span class="line"><span class="cl">$ readelf -S main_dynamic
+</span></span><span class="line"><span class="cl">共有 <span class="m">37</span> 个节头，从偏移量 0x6b38 开始:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">节头:
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>Nr<span class="o">]</span> Name              Type             Address           Offset       Size              EntSize          Flags  Link  Info  Align
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 0<span class="o">]</span>                   NULL             <span class="m">0000000000000000</span>  <span class="m">00000000</span>     <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>           <span class="m">0</span>     <span class="m">0</span>     <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 1<span class="o">]</span> .interp           PROGBITS         <span class="m">0000000000400238</span>  <span class="m">00000238</span>     000000000000001c  <span class="m">0000000000000000</span>   A       <span class="m">0</span>     <span class="m">0</span>     <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 2<span class="o">]</span> .note.ABI-tag     NOTE             <span class="m">0000000000400254</span>  <span class="m">00000254</span>     <span class="m">0000000000000020</span>  <span class="m">0000000000000000</span>   A       <span class="m">0</span>     <span class="m">0</span>     <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 3<span class="o">]</span> .note.gnu.build-i NOTE             <span class="m">0000000000400274</span>  <span class="m">00000274</span>     <span class="m">0000000000000024</span>  <span class="m">0000000000000000</span>   A       <span class="m">0</span>     <span class="m">0</span>     <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 4<span class="o">]</span> .gnu.hash         GNU_HASH         <span class="m">0000000000400298</span>  <span class="m">00000298</span>     <span class="m">0000000000000028</span>  <span class="m">0000000000000000</span>   A       <span class="m">5</span>     <span class="m">0</span>     <span class="m">8</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 5<span class="o">]</span> .dynsym           DYNSYM           00000000004002c0  000002c0     <span class="m">0000000000000198</span>  <span class="m">0000000000000018</span>   A       <span class="m">6</span>     <span class="m">1</span>     <span class="m">8</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 6<span class="o">]</span> .dynstr           STRTAB           <span class="m">0000000000400458</span>  <span class="m">00000458</span>     00000000000001a4  <span class="m">0000000000000000</span>   A       <span class="m">0</span>     <span class="m">0</span>     <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 7<span class="o">]</span> .gnu.version      VERSYM           00000000004005fc  000005fc     <span class="m">0000000000000022</span>  <span class="m">0000000000000002</span>   A       <span class="m">5</span>     <span class="m">0</span>     <span class="m">2</span>
+</span></span><span class="line"><span class="cl">  ···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="34-nm">3.4 nm</h3>
+<p><strong>nm</strong>命令被用于显示二进制目标文件的符号表。</p>
+<ul>
+<li><strong>-A</strong> 每个符号前显示文件名。</li>
+<li><strong>-D</strong> 显示动态符号。</li>
+<li><strong>-g</strong> 仅显示外部符号。</li>
+<li><strong>-r</strong> 反序显示符号表。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ nm main_dynamic
+</span></span><span class="line"><span class="cl">000000000060108c B __bss_start
+</span></span><span class="line"><span class="cl">00000000006011b0 b completed.6354
+</span></span><span class="line"><span class="cl">                 U __cxa_atexit@@GLIBC_2.2.5
+</span></span><span class="line"><span class="cl"><span class="m">0000000000601078</span> D __data_start
+</span></span><span class="line"><span class="cl"><span class="m">0000000000601078</span> W data_start
+</span></span><span class="line"><span class="cl">00000000004009f0 t deregister_tm_clones
+</span></span><span class="line"><span class="cl">                 U dlclose@@GLIBC_2.2.5
+</span></span><span class="line"><span class="cl">                 U dlerror@@GLIBC_2.2.5
+</span></span><span class="line"><span class="cl">                 U dlopen@@GLIBC_2.2.5
+</span></span><span class="line"><span class="cl">                 U dlsym@@GLIBC_2.2.5
+</span></span><span class="line"><span class="cl">0000000000400a60 t __do_global_dtors_aux 
+</span></span><span class="line"><span class="cl">···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="35-ldconfig">3.5 ldconfig</h3>
+<p><strong>ldconfig</strong>命令的用途主要是在默认搜寻目录/lib和/usr/lib以及动态库配置文件/etc/ld.so.conf内所列的目录下，搜索出可共享的动态链接库(格式如lib*.so*)，进而创建出动态装入程序(ld.so)所需的连接和缓存文件。</p>
+<p>缓存文件默认为 <strong>/etc/ld.so.cache</strong>，此文件保存已排好序的动态链接库名字列表，为了让动态链接库为系统所共享，需运行动态链接库的管理命令ldconfig。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># ldconfig参数说明</span>
+</span></span><span class="line"><span class="cl">$ ldconfig --help
+</span></span><span class="line"><span class="cl">用法: ldconfig <span class="o">[</span>选项...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">Configure Dynamic Linker Run Time Bindings.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  -c, --format<span class="o">=</span>FORMAT        采用的格式:新、旧或兼容<span class="o">(</span>默认<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  -C CACHE                   将 CACHE 用作缓冲区文件
+</span></span><span class="line"><span class="cl">  -f CONF                    将 CONF 用作配置文件
+</span></span><span class="line"><span class="cl">  -i, --ignore-aux-cache     忽略辅助缓存文件
+</span></span><span class="line"><span class="cl">  -l                         手工连接独立的库。
+</span></span><span class="line"><span class="cl">  -n
+</span></span><span class="line"><span class="cl">                             只在命令行中给出了进程目录。未创建缓冲区。
+</span></span><span class="line"><span class="cl">  -N                         不要创建缓冲区
+</span></span><span class="line"><span class="cl">  -p, --print-cache          打印缓冲区
+</span></span><span class="line"><span class="cl">  -r ROOT                    进入 ROOT 目录并将其作为根目录
+</span></span><span class="line"><span class="cl">  -v, --verbose              生成详细消息
+</span></span><span class="line"><span class="cl">  -X                         不要生成连接
+</span></span><span class="line"><span class="cl">  -?, --help                 给出该系统求助列表
+</span></span><span class="line"><span class="cl">      --usage                给出简要的用法信息
+</span></span><span class="line"><span class="cl">  -V, --version              打印程序版本号
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">长选项的强制或可选参数对对应的短选项也是强制或可选的。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4-相关参考">4 相关参考</h2>
+<ul>
+<li><a href="http://lxwei.github.io/posts/262.html">从源代码到可执行文件——编译全过程解析</a></li>
+<li><a href="http://www.cppblog.com/SEMAN/archive/2005/11/30/1440.html">gcc参数详解</a></li>
+<li><a href="http://www.shanghai.ws/gnu/gcc_1.htm">gcc,g++-GNU工程的C和C++编译器(egcs-1.1.2)</a></li>
+<li><a href="http://www.cnblogs.com/ggjucheng/archive/2011/12/14/2287738.html">Linux GCC常用命令</a></li>
+<li><a href="https://github.com/tinyclub/open-c-book/blob/master/zh/chapters/02-chapter4.markdown#toc_23258_14315_6">动态符号链接的细节</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/linux/l-dynamic-libraries/index.html">Linux 动态库剖析</a></li>
+<li><a href="http://www.cplusplus.com/forum/unices/5257/">C++使用dlsym错误解释</a></li>
+<li><a href="https://blog.csdn.net/wzhg0508/article/details/46282973">如何在运行时加载C＋＋函数和类</a></li>
+<li><a href="http://man.linuxde.net">Linux命令查询</a></li>
+<li><a href="https://blog.csdn.net/jiangwei0910410003/article/details/49361281">Android逆向之旅&mdash;Android应用的汉化功能(修改SO中的字符串内容)</a></li>
+<li><a href="https://www.codeproject.com/Articles/70302/Redirecting-functions-in-shared-ELF-libraries#_Toc257815978">Redirecting-functions-in-shared-ELF-libraries</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-18
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/books/">Books</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/">程序员的自我修养</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/elf%E6%96%87%E4%BB%B6/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">程序员的自我修养 - Elf文件</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/django%E8%AE%BA%E5%9D%9B%E9%83%A8%E7%BD%B2/">
+            <span class="next-text nav-default">Django论坛部署</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

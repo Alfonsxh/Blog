@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>sed - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="sed" /><meta name="keywords" content="Linux, Linux命令" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/sed/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">sed</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-23 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/linux/"> Linux </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/linux%E5%91%BD%E4%BB%A4/"> Linux命令 </a>
+            </div>
+          <span class="more-meta"> 604 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#例子">例子</a>
+          <ul>
+            <li><a href="#替换操作s">替换操作s</a></li>
+            <li><a href="#a命令append和i命令insert">a命令(append)和i命令(insert)</a></li>
+            <li><a href="#c命令">c命令</a></li>
+            <li><a href="#d命令">d命令</a></li>
+          </ul>
+        </li>
+        <li><a href="#进阶">进阶</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><strong>sed</strong> 是一种流编辑器，用于处理文本数据。文本数据是以 <strong>行为单位</strong> 进行处理。可以是文件流，也可以是 <strong>STDIN</strong> 管道传入的数据。</p>
+<p>命令格式为： <code>sed [参数] [动作]</code>。</p>
+<p>参数：</p>
+<ul>
+<li><strong>-n</strong>: 使用silent模式，一般情况下，<strong>sed</strong> 默认将输出所有的数据在屏幕上，使用 <strong>-n</strong> 参数后，只有被处理的行才会列出来，通常和 <strong>-p</strong> 一起使用。</li>
+<li><strong>-e</strong>: 允许在一行中执行多条命令，各命令互不干扰。</li>
+<li><strong>-f</strong>: 将sed的动作写在文件中，执行文件中的sed命令对文本数据进行处理</li>
+<li><strong>-r</strong>: 使用扩展型正则表达式语法(默认为基础正则表达式)。</li>
+<li><strong>-i</strong>: 直接修改文件内容，而不是由屏幕输出。</li>
+</ul>
+<p>动作： <code>[n1, n2]动作</code></p>
+<ul>
+<li>n1, n2 表示的是行索引，不一定需要，存在时为 <strong>左闭右闭</strong>。例如 <code>10，20动作</code> 表示的是 <strong>对从第十行到第二十行(包括第十行到第二十行)的数据</strong> 进行操作。</li>
+<li><strong>a</strong>: 新增，<code>n1,n2a str</code> 在第n1行到n2行后面都新增一行，内容为str。</li>
+<li><strong>c</strong>: 替换，<code>n1,n2c str</code> 将第n1行到n2行的内容替换为str，是整个替换，不是一行一行替换！</li>
+<li><strong>d</strong>: 删除，<code>n1,n2d</code> 将第n1行到n2行都删除。</li>
+<li><strong>i</strong>: 插入，<code>n1,n2i str</code> 在第n1行到n2行前面都新增一行，内容为str。</li>
+<li><strong>p</strong>: 打印，<code>n1,n2p</code> 将第n1行到n2行的内容打印出来，通常和 <strong>-n</strong> 参数一起使用。</li>
+<li><strong>s</strong>: 替换，<code>n1,n2s/old/new/g</code> 通常和 <strong>g</strong> 动作一起使用，将第n1行到n2行中的目标old替换成new。可以使用正则表达式进行匹配。</li>
+<li><strong>g</strong>: 行内全替换，<strong>s动作</strong> 不加 <strong>g</strong> 只会替换每行初次匹配到的目标，加了会替换行内的所有目标。</li>
+</ul>
+<h2 id="例子">例子</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ cat pets.txt
+</span></span><span class="line"><span class="cl">This is my cat, my cat<span class="s1">&#39;s name is betty
+</span></span></span><span class="line"><span class="cl"><span class="s1">This is my dog, my dog&#39;</span>s name is frank
+</span></span><span class="line"><span class="cl">This is my fish, my fish<span class="s1">&#39;s name is george
+</span></span></span><span class="line"><span class="cl"><span class="s1">This is my goat, my goat&#39;</span>s name is adam
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="替换操作s">替换操作s</h3>
+<p>替换 <strong>my</strong> &mdash;&gt; <strong>alonfs</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sed <span class="s1">&#39;s/my/alfons/g&#39;</span> test.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>替换单引号为双引号：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 单引号中的语句无法转义双引号，只能在双引号中转义单引号。</span>
+</span></span><span class="line"><span class="cl">sed <span class="s2">&#34;s/&#39;/\&#34;/g&#34;</span> test.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在每行行首添加 ‘#’：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># ^在正则表达式中表示的是开头的意思</span>
+</span></span><span class="line"><span class="cl">sed <span class="s1">&#39;s/^/#/g&#39;</span> test.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 同样在末尾加上标点，使用 $ 标识</span>
+</span></span><span class="line"><span class="cl">sed <span class="s1">&#39;s/$/./g&#39;</span> test.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>替换每一行的第一个 <strong>s</strong> 为 <strong>*</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 语句后面的1表示的是第几个</span>
+</span></span><span class="line"><span class="cl">sed <span class="s1">&#39;s/s/*/1&#39;</span> test.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 替换第二个s使用2代替</span>
+</span></span><span class="line"><span class="cl">sed <span class="s1">&#39;s/s/*/2&#39;</span> test.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>替换一二行的 <strong>my</strong> &mdash;-&gt; <strong>your</strong>，替换三四行的 <strong>This</strong> &mdash;-&gt; <strong>That</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 下面的命令和 sed -e &#39;1,2s/my/your/g&#39; -e &#39;3,4s/This/That/g&#39; test.txt 效果一样</span>
+</span></span><span class="line"><span class="cl">sed <span class="s1">&#39;1,2s/my/your/g; 3,4s/This/That/g&#39;</span> test.txt
+</span></span><span class="line"><span class="cl">This is your cat, your cat<span class="s1">&#39;s name is betty
+</span></span></span><span class="line"><span class="cl"><span class="s1">This is your dog, your dog&#39;</span>s name is frank
+</span></span><span class="line"><span class="cl">That is my fish, my fish<span class="s1">&#39;s name is george
+</span></span></span><span class="line"><span class="cl"><span class="s1">That is my goat, my goat&#39;</span>s name is adam
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将 <strong>my</strong> 用 <strong>『』</strong> 括起来:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 使用 &amp; 来标记前面匹配的内容</span>
+</span></span><span class="line"><span class="cl">sed <span class="s1">&#39;s/my/『&amp;』/g&#39;</span> test.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>简略的表示内容，如第一行 <strong>cat:betty</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 使用 () 表示的是正则表达式匹配的结果，在使用时，使用 \1 \2 表示结果</span>
+</span></span><span class="line"><span class="cl">$ sed <span class="s1">&#39;s/This is my \([^,]*\), .*is \([.*]*\)/\1:\2/g&#39;</span> test.txt
+</span></span><span class="line"><span class="cl">cat:betty
+</span></span><span class="line"><span class="cl">dog:frank
+</span></span><span class="line"><span class="cl">fish:george
+</span></span><span class="line"><span class="cl">goat:adam
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="a命令append和i命令insert">a命令(append)和i命令(insert)</h3>
+<p><strong>a命令</strong> 表示的是在 <strong>目标行的后面</strong> 添加一行，而 <strong>i命令</strong> 则是在 <strong>目标行的前面</strong> 插入一行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 1i 表示在第一行前面插入一行</span>
+</span></span><span class="line"><span class="cl">$ sed <span class="s1">&#39;1i This is first line.&#39;</span> test.txt 
+</span></span><span class="line"><span class="cl">This is first line.
+</span></span><span class="line"><span class="cl">This is my cat, my cat<span class="s1">&#39;s name is betty
+</span></span></span><span class="line"><span class="cl"><span class="s1">This is my dog, my dog&#39;</span>s name is frank
+</span></span><span class="line"><span class="cl">This is my fish, my fish<span class="s1">&#39;s name is george
+</span></span></span><span class="line"><span class="cl"><span class="s1">This is my goat, my goat&#39;</span>s name is adam
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># $表示在最后一行后面添加一行</span>
+</span></span><span class="line"><span class="cl">$ sed <span class="s1">&#39;$a This is last line.&#39;</span> test.txt 
+</span></span><span class="line"><span class="cl">This is my cat, my cat<span class="s1">&#39;s name is betty
+</span></span></span><span class="line"><span class="cl"><span class="s1">This is my dog, my dog&#39;</span>s name is frank
+</span></span><span class="line"><span class="cl">This is my fish, my fish<span class="s1">&#39;s name is george
+</span></span></span><span class="line"><span class="cl"><span class="s1">This is my goat, my goat&#39;</span>s name is adam
+</span></span><span class="line"><span class="cl">This is last line.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="c命令">c命令</h3>
+<p><strong>c命令</strong> 也是替换的意思，和 <strong>s命令</strong> 不同的是，<strong>c命令</strong> 是将 <strong>一至多行替换，并不会根据内容替换</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 将2 至 3 行的内容替换成 ...</span>
+</span></span><span class="line"><span class="cl">$ sed <span class="s1">&#39;2,3c ...&#39;</span> test.txt 
+</span></span><span class="line"><span class="cl">This is my cat, my cat<span class="s1">&#39;s name is betty
+</span></span></span><span class="line"><span class="cl"><span class="s1">...
+</span></span></span><span class="line"><span class="cl"><span class="s1">This is my goat, my goat&#39;</span>s name is adam
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="d命令">d命令</h3>
+<p><strong>d命令</strong> 是删除命令，删除指定的行。</p>
+<p>删除含有 <strong>dog</strong> 的行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># /dog/ 表示的是匹配到含有dog的那一行，和使用行索引是一样的，只不过用 // 来找了一遍。</span>
+</span></span><span class="line"><span class="cl">sed <span class="s1">&#39;/dog/d&#39;</span> test.txt
+</span></span><span class="line"><span class="cl">This is my cat, my cat<span class="s1">&#39;s name is betty
+</span></span></span><span class="line"><span class="cl"><span class="s1">This is my fish, my fish&#39;</span>s name is george
+</span></span><span class="line"><span class="cl">This is my goat, my goat<span class="err">&#39;</span>s name is adam
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="进阶">进阶</h2>
+<p>注释 <strong>dog</strong> 行，及其后三行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sed <span class="s1">&#39;/dog/,+3s/^/# /&#39;</span> test.txt 
+</span></span><span class="line"><span class="cl">This is my cat, my cat<span class="s1">&#39;s name is betty
+</span></span></span><span class="line"><span class="cl"><span class="s1"># This is my dog, my dog&#39;</span>s name is frank
+</span></span><span class="line"><span class="cl"><span class="c1"># This is my fish, my fish&#39;s name is george</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># This is my goat, my goat&#39;s name is adam</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>命令打包：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 使用{}将要执行的命令括起来，可以在同一行执行多条命令</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 在第二行及其后面的行中，找到包含 This 的行</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 其中包含 fish 的行的第二个 my 用 {} 括起来</span>
+</span></span><span class="line"><span class="cl">$ sed <span class="s1">&#39;2,${/This/{/fish/s/my/{&amp;}/2}}&#39;</span> test.txt 
+</span></span><span class="line"><span class="cl">This is my cat, my cat<span class="s1">&#39;s name is betty
+</span></span></span><span class="line"><span class="cl"><span class="s1">This is my dog, my dog&#39;</span>s name is frank
+</span></span><span class="line"><span class="cl">This is my fish, <span class="o">{</span>my<span class="o">}</span> fish<span class="s1">&#39;s name is george
+</span></span></span><span class="line"><span class="cl"><span class="s1">This is my goat, my goat&#39;</span>s name is adam
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://coolshell.cn/articles/9104.html">SED 简明教程</a></li>
+<li><a href="http://man.linuxde.net/sed">sed命令</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-03-23
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/linux/">Linux</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/linux%E5%91%BD%E4%BB%A4/">Linux命令</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%A6%82%E5%BF%B5/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Linux系统编程:概念</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/%E5%8E%BB%E9%99%A4awk%E6%88%AA%E5%8F%96%E5%8F%82%E6%95%B0%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6/">
+            <span class="next-text nav-default">去除awk截取参数中的换行符</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

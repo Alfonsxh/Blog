@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Python GIL - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Python GIL" /><meta name="keywords" content="Python" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/python/gil%E5%85%A8%E5%B1%80%E8%A7%A3%E9%87%8A%E5%99%A8%E9%94%81/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Python GIL</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-01-30 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/python/"> Python </a>
+            </div>
+          <span class="more-meta"> 418 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#gil">GIL</a>
+          <ul>
+            <li><a href="#gil设计原理">GIL设计原理</a></li>
+          </ul>
+        </li>
+        <li><a href="#实验">实验</a></li>
+        <li><a href="#解决方案">解决方案</a>
+          <ul>
+            <li><a href="#使用multiprocessing代替threading">使用multiprocessing代替threading</a></li>
+            <li><a href="#使用c扩展编程技术">使用C扩展编程技术</a></li>
+            <li><a href="#不使用cpython作为解释器">不使用CPython作为解释器</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>对于CPU密集型程序来说，使用Python作为开发工具，是一个失败的尝试，因为 <code>GIL(Global Interpreter Lock)</code>。</p>
+<p><strong>GIL</strong> 译为 <strong>全局解释器锁</strong>。是的，是 <strong>解释器锁</strong>。</p>
+<p>首先要认清的一点是，<strong>GIL</strong> 并不是 <strong>Python</strong> 特性，它是实现Python解释器(CPython)时所引入的一个概念。对于其他的解释器，<strong>JPython解释器</strong> 就没有 <strong>GIL</strong>。但由于历史的原因，大部分情况下，我们默认使用 <strong>CPython</strong> 作为解释器，久而久之，我们就习惯了&mdash;-<strong>Python的GIL</strong>。</p>
+<p>要不要使用 <strong>JPython作为解释器</strong> 呢？可以尝试，但最好不要，如果使用 <strong>JPython作为解释器</strong>，那么许多 <strong>Python</strong> 使用的 <strong>c语言插件</strong> 将无法使用&hellip;</p>
+<h2 id="gil">GIL</h2>
+<p>早期编程是没有多线程的概念的，当时的CPU还只能是单核的。随着多核CPU的出现，为了有效的利用CPU多个核心的性能，多线程编程的方式慢慢的热了起来，但随之也带来了一些问题：<strong>线程间数据一致性和状态同步的困难</strong>。</p>
+<p>最简单的办法就是 <strong>加锁</strong>，于是就有了 <strong>GIL</strong> 这把 <strong>大锁</strong>！</p>
+<p><strong>CPython 设置 GIL</strong> 最大的好处是 &mdash;- <strong>线程安全</strong>。不让多个线程同时执行同一条字节码，避免了可能多个线程同时对某个对象进行操作。</p>
+<h3 id="gil设计原理">GIL设计原理</h3>
+<p>最初设计GIL时，是基于操作系统本身的线程调度，社区认为 <strong>现在操作系统的线程调度方案已经非常成熟稳定了，没必要自己再弄一套</strong>。所以，Python的线程就是 <strong>C语言的一个pthread</strong>。</p>
+<p>为了让各个线程能够平均利用CPU时间，python会计算当前 <strong>已执行的微代码的数量</strong>，达到一定数量后就强制释放GIL。</p>
+<p>伪代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">while</span> <span class="nl">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">acquire</span> <span class="n">GIL</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="mi">1000</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">do</span> <span class="n">something</span>
+</span></span><span class="line"><span class="cl">    <span class="n">release</span> <span class="n">GIL</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* Give Operating System a chance to do thread scheduling */</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到，在获取和释放GIL时，时间间隔十分的短暂。当只有一个CPU核心时，任何一个线程被唤醒，都能成功获得GIL。</p>
+<p>但当有多个CPU核心时，问题就来了：当一个核心上的线程释放了GIL后，另一个核心上的线程来获取时，往往是之前核心上的线程又获取了GIL，后面的线程只能是等待之前的线程执行完毕才能真正的获取到GIL。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/GIL%E5%85%A8%E5%B1%80%E8%A7%A3%E9%87%8A%E5%99%A8%E9%94%81/GIL_with_diff_CPU.jpg" alt="GIL_with_diff_CPU"></p>
+<p>上面的图，是发生在运行 <strong>CPU密集型任务</strong> 时。第一个表示的是，单个CPU核心上运行两个线程，可以看到程序运行的十分流畅。但当使用两个CPU核心运行两个线程时，大部分时间是，GIL获取失败，浪费了大量的CPU时间。</p>
+<p>对于 <strong>I/O密集型</strong> 程序来说，大部分时间是在处理数据的读写，解释器会在进行I/O操作时将GIL释放。但是，<strong>如果在I/O密集型操作的线程中，如果出现了CPU密集型线程，那么在运行CPU密集型线程时，该线程仍然会一直占用CPU！</strong></p>
+<p>现在GIL这种方式被证明是 <strong>蛋疼的也是低效的</strong>，但当我们试图去把 <strong>GIL</strong> 排除时，根据 <strong>CPython解释器</strong> 设计的模块已经太多了，想要去掉GIL将是件浩大的工程。(Python 3.6 版本似乎对 GIL 有了些优化，下面的例子可以看到)</p>
+<h2 id="实验">实验</h2>
+<p>下面分别使用单线程、多线程、多进程在四核CPU上进行 <strong>CPU密集型</strong> 程序测试。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 单线程程序</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">single_thread</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">single_thread</span><span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;use time: </span><span class="si">{}</span><span class="s2">&#39;s.&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在使用python2.7时，所用的时间为： <strong>3.30&rsquo;s</strong>。使用python3.6时，所用的时间为： <strong>1.90&rsquo;s</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 多线程</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">single_thread</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">multi_thread</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">thread_num</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">thread_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">thread_num</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">t</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span> <span class="o">=</span> <span class="n">single_thread</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="n">thread_num</span><span class="p">),))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">thread_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">thread_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">multi_thread</span><span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;use time: </span><span class="si">{}</span><span class="s2">&#39;s.&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在使用python2.7时，所用的时间为： <strong>4.35&rsquo;s</strong>。使用python3.6时，所用的时间为： <strong>1.72&rsquo;s</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 多进程</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">single_thread</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">multi_thread</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">thread_num</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">thread_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">thread_num</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">t</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span> <span class="o">=</span> <span class="n">single_thread</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="n">thread_num</span><span class="p">),))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">thread_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">thread_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">multi_thread</span><span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;use time: </span><span class="si">{}</span><span class="s2">&#39;s.&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在使用python2.7时，所用的时间为： <strong>1.82&rsquo;s</strong>。使用python3.6时，所用的时间为： <strong>1.00&rsquo;s</strong>。</p>
+<p>汇总如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">程序</th>
+<th style="text-align:center">Python版本</th>
+<th style="text-align:center">运行时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>单线程</strong></td>
+<td style="text-align:center"><strong>2.7</strong></td>
+<td style="text-align:center"><strong>3.30&rsquo;s</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>单线程</strong></td>
+<td style="text-align:center"><strong>3.6</strong></td>
+<td style="text-align:center"><strong>1.90&rsquo;s</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>多线程</strong></td>
+<td style="text-align:center"><strong>2.7</strong></td>
+<td style="text-align:center"><strong>4.35&rsquo;s</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>多线程</strong></td>
+<td style="text-align:center"><strong>3.6</strong></td>
+<td style="text-align:center"><strong>1.72&rsquo;s</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>多进程</strong></td>
+<td style="text-align:center"><strong>2.7</strong></td>
+<td style="text-align:center"><strong>1.82&rsquo;s</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>多进程</strong></td>
+<td style="text-align:center"><strong>3.6</strong></td>
+<td style="text-align:center"><strong>1.00&rsquo;s</strong></td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，对于Python2.7版本，<strong>在使用多线程进行CPU密集型计算时，比使用单线程还要慢</strong>！多进程的方式，每个进程单独含有自己的GIL锁，所以不会出现跨进程GIL的问题。</p>
+<p>另外，Python3.2版本开始，社区陆续对GIL做了比较深入的优化，现在使用python3.6版本测试同样的程序，在效率上有了很大的提升。</p>
+<h2 id="解决方案">解决方案</h2>
+<p>如何避免GIL导致的CPU利用效率低下的问题呢？下面有一些方案可供参考。</p>
+<h3 id="使用multiprocessing代替threading">使用multiprocessing代替threading</h3>
+<p>可以从上面的实验看到，在使用多进程的方法后，运行效率均有了很大的提升，这是因为，在使用多进程时，每个进程会单独开启一个解释器，各个进程中的GIL不会相互影响。</p>
+<p>当然，多进程使用时也会有些不同的地方。在使用 <strong>多线程(Thread)</strong> 时，对于共有的变量，我们只需声明一个 <strong>global</strong> 变量就行了，不同线程调用时只需 <strong>加锁解锁</strong> 即可。但对于 <strong>多进程(Process)</strong> 来说，不能通过这种方法来在进程间传递值了，每个子进程会复制一份 <strong>global变量</strong>，改变的变量只对各自的进程有效。</p>
+<h3 id="使用c扩展编程技术">使用C扩展编程技术</h3>
+<p>这种方案的主要思想是，在进行CPU密集型计算时，我们可以 <strong>将CPU密集型计算任务转移到C语言程序上</strong>。</p>
+<p><strong>C扩展最重要的特性是它们和Python解释器是保持独立的</strong>，也就是说，C扩展不会和Python程序竞争GIL。因此，可以将计算密集型程序使用C扩展来计算，而Python程序主要完成 <strong>I/O密集型操作</strong>。</p>
+<p>可以使用下面的方式释放GIL。具体参考：<a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c15/p07_release_the_gil_in_c_extensions.html">从C扩展中释放全局锁</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Python.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">PyObject</span> <span class="o">*</span><span class="nf">pyfunc</span><span class="p">(</span><span class="n">PyObject</span> <span class="o">*</span><span class="n">self</span><span class="p">,</span> <span class="n">PyObject</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="p">...</span>
+</span></span><span class="line"><span class="cl">   <span class="n">Py_BEGIN_ALLOW_THREADS</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">// Threaded C code.  Must not use Python API functions
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="p">...</span>
+</span></span><span class="line"><span class="cl">   <span class="n">Py_END_ALLOW_THREADS</span>
+</span></span><span class="line"><span class="cl">   <span class="p">...</span>
+</span></span><span class="line"><span class="cl">   <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>典型的例子 &mdash;- <strong>Numpy</strong>。</p>
+<h3 id="不使用cpython作为解释器">不使用CPython作为解释器</h3>
+<p>这种方法要慎之又慎，因为大部分Python模块都是基于 <strong>CPyhton解释器</strong> 进行编写的，其他解释器或许没有对应的版本。</p>
+<p>没有GIL的解释器现在已知的解释器：<strong>Jython</strong>、<strong>IronPython</strong>、<strong>PyPy-STM</strong>。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="http://cenalulu.github.io/python/gil-in-python/">Python的GIL是什么鬼，多线程性能究竟如何</a></li>
+<li><a href="http://www.dabeaz.com/GIL/">Understanding the Python GIL</a></li>
+<li><a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c12/p09_dealing_with_gil_stop_worring_about_it.html">12.9 Python的全局锁问题</a></li>
+<li><a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c15/p07_release_the_gil_in_c_extensions.html">15.7 从C扩展中释放全局锁</a></li>
+<li><a href="https://www.quora.com/Is-there-a-Python-implementation-without-the-GIL">Is there a Python implementation without the GIL?</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-01-30
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/python/">Python</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/python/spider/doubanmovie%E7%88%AC%E8%99%AB/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">DoubanMovie爬取</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/python/sqlalchemy/">
+            <span class="next-text nav-default">SqlAlchemy使用</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

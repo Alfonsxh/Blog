@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>struct 二进制编码与解码 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="struct 二进制编码与解码" /><meta name="keywords" content="Python, Python标准库" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/python/stl/02_binary_data/2.1-struct/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">struct 二进制编码与解码</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 0001-01-01 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/python/"> Python </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/python%E6%A0%87%E5%87%86%E5%BA%93/"> Python标准库 </a>
+            </div>
+          <span class="more-meta"> 761 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#一些标识符">一些标识符</a></li>
+        <li><a href="#pack-和-unpack">pack 和 unpack</a></li>
+        <li><a href="#pack_into-和-unpack_fromiter_unpack">pack_into 和 unpack_from、iter_unpack</a></li>
+        <li><a href="#struct类">Struct类</a></li>
+        <li><a href="#一些应用">一些应用</a>
+          <ul>
+            <li><a href="#判断大小端">判断大小端</a></li>
+            <li><a href="#网络流量">网络流量</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><strong>struct</strong> 模块用于二进制数据，常用于处理网络数据。</p>
+<p>struct主要函数包括：</p>
+<ul>
+<li><strong>pack(fmt, *args)</strong> - 根据条件将不同的变量打包在一起。fmt或待打包数据错误，返回异常。</li>
+<li><strong>unpack(fmt, string)</strong> - 根据条件将字符串解包成对应的变量。fmt或待解包字符串错误，返回异常。</li>
+<li><strong>calcsize(fmt)</strong> - 根据fmt返回此fmt处理数据的大小。</li>
+<li><strong>pack_into(fmt, buffer, offset, *args)</strong> - 按照fmt的格式将打包的数据写入可写buffer中。</li>
+<li><strong>unpack_from(fmt, buffer, offset=0)</strong> - 从buffer按照fmt格式读出数据。</li>
+<li><strong>iter_unpack(fmt, buffer)</strong> - 同unpack_from，返回的为迭代器。</li>
+</ul>
+<h2 id="一些标识符">一些标识符</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">符号</th>
+<th style="text-align:left">字符对齐方式</th>
+<th style="text-align:left">字符大小</th>
+<th style="text-align:left">规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">@(默认)</td>
+<td style="text-align:left">本机</td>
+<td style="text-align:left">本机</td>
+<td style="text-align:left">本机,字节对齐</td>
+</tr>
+<tr>
+<td style="text-align:left">=</td>
+<td style="text-align:left">本机</td>
+<td style="text-align:left">标准</td>
+<td style="text-align:left">按原字节数</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;</td>
+<td style="text-align:left">小端</td>
+<td style="text-align:left">标准</td>
+<td style="text-align:left">按原字节数</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;</td>
+<td style="text-align:left">大端</td>
+<td style="text-align:left">标准</td>
+<td style="text-align:left">按原字节数</td>
+</tr>
+<tr>
+<td style="text-align:left">!</td>
+<td style="text-align:left">network(大端)</td>
+<td style="text-align:left">标准</td>
+<td style="text-align:left">按原字节数</td>
+</tr>
+</tbody>
+</table>
+<p>在不同的CPU架构下数据的存储方式会有所不同，有些CPU使用小端存储数据，有些则是使用大端。上面这些符号都是在 <strong>struct表达式</strong> 的开头指明。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">Diff</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">a</span> <span class="o">=</span> <span class="mh">0x12345678</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{msg}</span><span class="s1"> default -&gt; </span><span class="si">{result}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span> <span class="o">=</span> <span class="nb">hex</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">hex</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)])))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{msg}</span><span class="s1"> little endian -&gt; </span><span class="si">{result}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span> <span class="o">=</span> <span class="nb">hex</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">hex</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&lt;i&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)])))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{msg}</span><span class="s1"> big endian -&gt; </span><span class="si">{result}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span> <span class="o">=</span> <span class="nb">hex</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">hex</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;i&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)])))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># output</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mh">0x12345678</span> <span class="n">default</span> <span class="o">-&gt;</span> <span class="mh">0x78</span> <span class="mh">0x56</span> <span class="mh">0x34</span> <span class="mh">0x12</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x12345678</span> <span class="n">little</span> <span class="n">endian</span> <span class="o">-&gt;</span> <span class="mh">0x78</span> <span class="mh">0x56</span> <span class="mh">0x34</span> <span class="mh">0x12</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x12345678</span> <span class="n">big</span> <span class="n">endian</span> <span class="o">-&gt;</span> <span class="mh">0x12</span> <span class="mh">0x34</span> <span class="mh">0x56</span> <span class="mh">0x78</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面的代码，展示了大小端读取数据的不同，可以看见，本机使用的是小端存储。不过按照人类的阅读习惯，还是大端存储比较易读，但对于机器来说，小端存储易于计算。</p>
+<p>字节对齐的方式不同，打包的结果大小也会有所不同。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">Calcsize</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ci -&gt; </span><span class="si">{}</span><span class="s1"> bytes.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">calcsize</span><span class="p">(</span><span class="s1">&#39;ci&#39;</span><span class="p">)))</span>  <span class="c1"># 默认本机，字节补齐</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;@ci -&gt; </span><span class="si">{}</span><span class="s1"> bytes.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">calcsize</span><span class="p">(</span><span class="s1">&#39;@ci&#39;</span><span class="p">)))</span>  <span class="c1"># 本机size大小，字节补齐</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=ci -&gt; </span><span class="si">{}</span><span class="s1"> bytes.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">calcsize</span><span class="p">(</span><span class="s1">&#39;=ci&#39;</span><span class="p">)))</span>  <span class="c1"># byte 顺序为本机，size 为标准字节数</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;ci -&gt; </span><span class="si">{}</span><span class="s1"> bytes.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">calcsize</span><span class="p">(</span><span class="s1">&#39;&lt;ci&#39;</span><span class="p">)))</span>  <span class="c1"># byte 顺序小端，size 为标准字节数</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;ci -&gt; </span><span class="si">{}</span><span class="s1"> bytes.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">calcsize</span><span class="p">(</span><span class="s1">&#39;&gt;ci&#39;</span><span class="p">)))</span>  <span class="c1"># byte 顺序大端，size 为标准字节数</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;!ci -&gt; </span><span class="si">{}</span><span class="s1"> bytes.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">calcsize</span><span class="p">(</span><span class="s1">&#39;!ci&#39;</span><span class="p">)))</span>  <span class="c1"># byte 顺序网络序(大端)，size 为标准字节数</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Calcsize</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># output</span>
+</span></span><span class="line"><span class="cl"><span class="n">ci</span> <span class="o">-&gt;</span> <span class="mi">8</span> <span class="nb">bytes</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@ci</span> <span class="o">-&gt;</span> <span class="mi">8</span> <span class="nb">bytes</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="o">=</span><span class="n">ci</span> <span class="o">-&gt;</span> <span class="mi">5</span> <span class="nb">bytes</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">ci</span> <span class="o">-&gt;</span> <span class="mi">5</span> <span class="nb">bytes</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span><span class="n">ci</span> <span class="o">-&gt;</span> <span class="mi">5</span> <span class="nb">bytes</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="err">!</span><span class="n">ci</span> <span class="o">-&gt;</span> <span class="mi">5</span> <span class="nb">bytes</span><span class="o">.</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>默认情况下，本机的数据有字节对齐的操作，int类型为4字节，char为1字节，但字节对齐后，需要补齐剩下的3字节。</p>
+<h2 id="pack-和-unpack">pack 和 unpack</h2>
+<p><strong>pack</strong> 用于数据的打包，根据struct表达式，打包成对应的二进制数据，如果待打包的数据错误，会出现异常。</p>
+<p><strong>unpack</strong> 用于数据的解包，根据struct表达式，解包成对应的数据，返回值为tuple类型。如果待解包的数据或struct表达式错误，会出现异常。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">Unpack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;unpack </span><span class="si">{string}</span><span class="s2"> use </span><span class="si">{fmt}</span><span class="s2"> -&gt; </span><span class="si">{chars}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="p">,</span> <span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">chars</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="nb">hex</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">])))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">Pack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x11223344</span><span class="p">,</span> <span class="mh">0x55667788</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="o">*</span><span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;pack </span><span class="si">{msg}</span><span class="s2"> use </span><span class="se">\&#34;</span><span class="si">{fmt}</span><span class="se">\&#34;</span><span class="s2"> -&gt; </span><span class="si">{chars}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">chars</span> <span class="o">=</span> <span class="s2">&#34; &#34;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">hex</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]),</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">result</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Unpack</span><span class="p">(</span><span class="s1">&#39;ii&#39;</span><span class="p">,</span> <span class="n">Pack</span><span class="p">(</span><span class="s1">&#39;ii&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">Unpack</span><span class="p">(</span><span class="s1">&#39;&lt;ii&#39;</span><span class="p">,</span> <span class="n">Pack</span><span class="p">(</span><span class="s1">&#39;&lt;ii&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">Unpack</span><span class="p">(</span><span class="s1">&#39;&gt;ii&#39;</span><span class="p">,</span> <span class="n">Pack</span><span class="p">(</span><span class="s1">&#39;&gt;ii&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># output</span>
+</span></span><span class="line"><span class="cl"><span class="n">pack</span> <span class="sa">b</span><span class="s1">&#39;D3&#34;</span><span class="se">\x11\x88</span><span class="s1">wfU&#39;</span> <span class="n">use</span> <span class="s2">&#34;ii&#34;</span> <span class="o">-&gt;</span> <span class="mh">0x44</span> <span class="mh">0x33</span> <span class="mh">0x22</span> <span class="mh">0x11</span> <span class="mh">0x88</span> <span class="mh">0x77</span> <span class="mh">0x66</span> <span class="mh">0x55</span>
+</span></span><span class="line"><span class="cl"><span class="n">unpack</span> <span class="sa">b</span><span class="s1">&#39;D3&#34;</span><span class="se">\x11\x88</span><span class="s1">wfU&#39;</span> <span class="n">use</span> <span class="n">ii</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="s1">&#39;0x11223344&#39;</span><span class="p">,</span> <span class="s1">&#39;0x55667788&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pack</span> <span class="sa">b</span><span class="s1">&#39;D3&#34;</span><span class="se">\x11\x88</span><span class="s1">wfU&#39;</span> <span class="n">use</span> <span class="s2">&#34;&lt;ii&#34;</span> <span class="o">-&gt;</span> <span class="mh">0x44</span> <span class="mh">0x33</span> <span class="mh">0x22</span> <span class="mh">0x11</span> <span class="mh">0x88</span> <span class="mh">0x77</span> <span class="mh">0x66</span> <span class="mh">0x55</span>
+</span></span><span class="line"><span class="cl"><span class="n">unpack</span> <span class="sa">b</span><span class="s1">&#39;D3&#34;</span><span class="se">\x11\x88</span><span class="s1">wfU&#39;</span> <span class="n">use</span> <span class="o">&lt;</span><span class="n">ii</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="s1">&#39;0x11223344&#39;</span><span class="p">,</span> <span class="s1">&#39;0x55667788&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pack</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x11</span><span class="s1">&#34;3DUfw</span><span class="se">\x88</span><span class="s1">&#39;</span> <span class="n">use</span> <span class="s2">&#34;&gt;ii&#34;</span> <span class="o">-&gt;</span> <span class="mh">0x11</span> <span class="mh">0x22</span> <span class="mh">0x33</span> <span class="mh">0x44</span> <span class="mh">0x55</span> <span class="mh">0x66</span> <span class="mh">0x77</span> <span class="mh">0x88</span>
+</span></span><span class="line"><span class="cl"><span class="n">unpack</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x11</span><span class="s1">&#34;3DUfw</span><span class="se">\x88</span><span class="s1">&#39;</span> <span class="n">use</span> <span class="o">&gt;</span><span class="n">ii</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="s1">&#39;0x11223344&#39;</span><span class="p">,</span> <span class="s1">&#39;0x55667788&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="pack_into-和-unpack_fromiter_unpack">pack_into 和 unpack_from、iter_unpack</h2>
+<p><strong>pack_into</strong> 为将数据打包并存放在可读可写的一段内存空间中。</p>
+<p><strong>unpack_from</strong> 为还原内存中的数据。</p>
+<p><strong>iter_unpack</strong> 和 <strong>unpack_from</strong> 作用一样，不过返回的是一个可迭代对象。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">PackInto</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">import</span> <span class="nn">ctypes</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">fmt</span> <span class="o">=</span> <span class="s2">&#34;I</span><span class="si">{len}</span><span class="s2">s&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">create_string_buffer</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">calcsize</span><span class="p">(</span><span class="n">fmt</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Before pack buffer is -&gt; </span><span class="si">{f}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">raw</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">struct</span><span class="o">.</span><span class="n">pack_into</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">s</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;After pack buffer is -&gt; </span><span class="si">{f}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">raw</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">f</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">UnpackFrom</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">buffer</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack_from</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Unpack from </span><span class="se">\&#39;</span><span class="si">{f}</span><span class="se">\&#39;</span><span class="s2"> -&gt; </span><span class="si">{r}</span><span class="s2"> (</span><span class="si">{type}</span><span class="s2">)&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span> <span class="o">=</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">result</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">IterUnpack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">buffer</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">iter_unpack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Unpack from </span><span class="se">\&#39;</span><span class="si">{f}</span><span class="se">\&#39;</span><span class="s2"> -&gt; </span><span class="si">{r}</span><span class="s2"> (</span><span class="si">{type}</span><span class="s2">)&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span> <span class="o">=</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">result</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Unpack result -&gt; &#34;</span><span class="p">,</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">UnpackFrom</span><span class="p">(</span><span class="o">*</span><span class="n">PackInto</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;hello world&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">IterUnpack</span><span class="p">(</span><span class="o">*</span><span class="n">PackInto</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;hello world&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#output</span>
+</span></span><span class="line"><span class="cl"><span class="n">Before</span> <span class="n">pack</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="o">-&gt;</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">After</span> <span class="n">pack</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="o">-&gt;</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x0b\x00\x00\x00</span><span class="s1">hello world&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Unpack</span> <span class="kn">from</span> <span class="s1">&#39;I11s&#39;</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span> <span class="p">(</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">tuple</span><span class="s1">&#39;&gt;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Before</span> <span class="n">pack</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="o">-&gt;</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">After</span> <span class="n">pack</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="o">-&gt;</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x0b\x00\x00\x00</span><span class="s1">hello world&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Unpack</span> <span class="kn">from</span> <span class="s1">&#39;I11s&#39;</span> <span class="o">-&gt;</span> <span class="o">&lt;</span><span class="n">unpack_iterator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f084f61e9d8</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">unpack_iterator</span><span class="s1">&#39;&gt;)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Unpack</span> <span class="n">result</span> <span class="o">-&gt;</span>  <span class="p">[(</span><span class="mi">11</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;hello world&#39;</span><span class="p">)]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="struct类">Struct类</h2>
+<p>和 <strong>re</strong> 模块类似，<strong>struct</strong> 模块中的所有函数都需要创建 <strong>Struct实例</strong> 来执行对应的功能。</p>
+<p>所以，实际上，使用时，先创建 <strong>Struct实例</strong>，然后使用实例的方法速度上会更快一些。</p>
+<h2 id="一些应用">一些应用</h2>
+<h3 id="判断大小端">判断大小端</h3>
+<p>在一些程序中，由于需要跨平台，可能需要进行大小端的判断，否则在一些数值计算时会出现奇怪的问题。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">IsBigEndian</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">a</span> <span class="o">=</span> <span class="mh">0x12345678</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">hex</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="s1">&#39;0x78&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Machine is little endian&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Machine is big endian&#34;</span><span class="p">)</span>  <span class="c1"># human read</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;sys.byteorder -&gt; &#34;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">byteorder</span><span class="p">)</span>  <span class="c1"># use system byteorder</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># output</span>
+</span></span><span class="line"><span class="cl"><span class="n">Machine</span> <span class="ow">is</span> <span class="n">little</span> <span class="n">endian</span>
+</span></span><span class="line"><span class="cl"><span class="n">sys</span><span class="o">.</span><span class="n">byteorder</span> <span class="o">-&gt;</span>  <span class="n">little</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="网络流量">网络流量</h3>
+<p>在使用网络传输数据时，不能够直接传输某些类型，例如int类型。需要使用struct模块进行转换。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">PackNetworkPcap</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;hello world&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>      <span class="c1"># 根据字符串长度格式化表达式</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p_1</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;pack </span><span class="si">{msg}</span><span class="s2"> use </span><span class="se">\&#34;</span><span class="si">{fmt}</span><span class="se">\&#34;</span><span class="s2">  -&gt; </span><span class="si">{chars}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span> <span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">chars</span> <span class="o">=</span> <span class="n">p_1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">p_1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">PackNetworkPcap</span><span class="p">(</span><span class="s1">&#39;&gt;H</span><span class="si">{len}</span><span class="s1">s&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">PackNetworkPcap</span><span class="p">(</span><span class="s1">&#39;&gt;I</span><span class="si">{len}</span><span class="s1">s&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">PackNetworkPcap</span><span class="p">(</span><span class="s1">&#39;&gt;L</span><span class="si">{len}</span><span class="s1">s&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">PackNetworkPcap</span><span class="p">(</span><span class="s1">&#39;&gt;Q</span><span class="si">{len}</span><span class="s1">s&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">PackNetworkPcap</span><span class="p">(</span><span class="s1">&#39;&gt;f</span><span class="si">{len}</span><span class="s1">s&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># output</span>
+</span></span><span class="line"><span class="cl"><span class="n">pack</span> <span class="sa">b</span><span class="s1">&#39;hello world&#39;</span> <span class="n">use</span> <span class="s2">&#34;&gt;H11s&#34;</span>  <span class="o">-&gt;</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x0b</span><span class="s1">hello world&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">pack</span> <span class="sa">b</span><span class="s1">&#39;hello world&#39;</span> <span class="n">use</span> <span class="s2">&#34;&gt;I11s&#34;</span>  <span class="o">-&gt;</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x00\x00\x0b</span><span class="s1">hello world&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">pack</span> <span class="sa">b</span><span class="s1">&#39;hello world&#39;</span> <span class="n">use</span> <span class="s2">&#34;&gt;L11s&#34;</span>  <span class="o">-&gt;</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x00\x00\x0b</span><span class="s1">hello world&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">pack</span> <span class="sa">b</span><span class="s1">&#39;hello world&#39;</span> <span class="n">use</span> <span class="s2">&#34;&gt;Q11s&#34;</span>  <span class="o">-&gt;</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x00\x00\x00\x00\x00\x00\x0b</span><span class="s1">hello world&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">pack</span> <span class="sa">b</span><span class="s1">&#39;hello world&#39;</span> <span class="n">use</span> <span class="s2">&#34;&gt;f11s&#34;</span>  <span class="o">-&gt;</span> <span class="sa">b</span><span class="s1">&#39;A0</span><span class="se">\x00\x00</span><span class="s1">hello world&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        0001-01-01
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/python/">Python</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/python%E6%A0%87%E5%87%86%E5%BA%93/">Python标准库</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.1-string/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">string 字符串常量和模板</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.4-textwrap/">
+            <span class="next-text nav-default">textwrap 字符串段格式化</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

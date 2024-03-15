@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Scrapy(1)-模块介绍 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Scrapy(1)-模块介绍" /><meta name="keywords" content="Python, Scrapy, 爬虫" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/python/spider/scrapy/1_scrapy%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Scrapy(1)-模块介绍</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-12-09 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/python/"> Python </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/scrapy/"> Scrapy </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/%E7%88%AC%E8%99%AB/"> 爬虫 </a>
+            </div>
+          <span class="more-meta"> 1474 words </span>
+          <span class="more-meta"> 7 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#scrapy介绍">Scrapy介绍</a></li>
+        <li><a href="#组件">组件</a>
+          <ul>
+            <li><a href="#spider">Spider</a></li>
+            <li><a href="#item-pipelines">Item Pipelines</a></li>
+            <li><a href="#downloader-middleware">Downloader Middleware</a></li>
+            <li><a href="#spider-middleware">Spider Middleware</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>之前一直使用 <strong>requests + re</strong> 的方式做爬虫……所有的步骤：访问、分析结果、存储结果、多进程、异步等等，都是自己实现的……最大的坑莫过于 <strong>正则匹配</strong>，虽说 <strong>正则</strong> 很强大，但是经常会出现一些异常的数据。另外，爬取不同的网站，又得重新来一套！！</p>
+<h2 id="scrapy介绍">Scrapy介绍</h2>
+<p><strong>Scrapy</strong> 是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/Scrapy/scrapy_architecture.png" alt="scrapy_architecture"></p>
+<p>上图为 <strong>Scrapy</strong> 的整体架构图，各部分组件的主要功能如下：</p>
+<ul>
+<li><strong>Scrapy Engine(引擎)</strong> - 引擎负责 <strong>控制数据流在系统中所有组件中的流动</strong>，并在相应动作发生发生时触发事件。数据流详细的处理流程见下面的 <strong>数据流</strong> 部分。</li>
+<li><strong>Scheduler(调度器)</strong> - 调度器从引擎接受 <strong>request</strong> 并将他们入队，以便之后引擎请求它们时提供给引擎。</li>
+<li><strong>Downloader(下载器)</strong> - 下载器负责获取页面的数据并提供给引擎，然后返回 <strong>response</strong> 经过引擎传递给 <strong>spiders</strong> 处理分析。</li>
+<li><strong>Spiders(结果分析)</strong> - <strong>Spiders</strong> 由 <strong>用户编写</strong>，分析 <strong>下载器</strong> 返回的 <strong>response</strong>，从中提取 <strong>item</strong> 交由 <strong>Item Pipeline</strong> 处理，或者继续跟进 <strong>url</strong>，返回 <strong>request</strong> 给 <strong>Scheduler</strong>。</li>
+<li><strong>Item Pipeline(管道)</strong> - 负责处理 <strong>Spiders</strong> 分析后返回的 <strong>Item</strong>。典型的处理有清理、验证及持久化(存取到数据库中)。</li>
+<li><strong>Downloader middlewares(下载中间件)</strong> - 位于 <strong>引擎</strong> 和 <strong>下载器</strong> 之间，用于处理 <strong>引擎发送给下载器的request</strong> 和 <strong>下载器返回的response</strong>。</li>
+<li><strong>Spider middlewares(爬虫中间件)</strong> - 位于 <strong>引擎</strong> 和 <strong>Spiders</strong> 之间，用于处理 <strong>Spiders的输入(response)和输出(items或request)</strong>。</li>
+</ul>
+<p>数据流解析：</p>
+<ul>
+<li>1、引擎打开一个网站，找到处理该网站的 <strong>Spider</strong>，并向该 <strong>spider</strong> 请求第一个要爬取的 <strong>URL(s)(start_urls参数指定)</strong>。之后引擎从 <strong>Spider</strong> 中获取到第一个要爬取的URL，并在 <strong>调度器(Scheduler)</strong> 以 <strong>request调度</strong>。</li>
+<li>2、引擎向调度器请求下一个要爬取的URL。</li>
+<li>3、调度器返回下一个要爬取的URL给引擎。</li>
+<li>4、引擎将URL通过 <strong>下载中间件(response)</strong> 转发给 <strong>下载器(Downloader)</strong>。</li>
+<li>5、一旦页面下载完毕，下载器生成一个页面的 <strong>response</strong>，并将其通过 <strong>下载中间件(response)</strong> 发送给引擎。</li>
+<li>6、引擎将返回的 <strong>response</strong> 通过 <strong>Spider中间件</strong> 传递给 <strong>Spider</strong> 处理分析。</li>
+<li>7、<strong>Spider</strong> 处理完后通过 <strong>Spider中间件</strong> 返回爬取到的 <strong>Item</strong> 及跟进的新的 <strong>request</strong> 给引擎。</li>
+<li>8、引擎将返回的 <strong>Item</strong> 交由 <strong>Item Pipeline</strong> 处理，返回的 <strong>request</strong> 交给调度器存储。</li>
+<li>9、从第二步开始，重复该过程，知道调度器没有更多的 <strong>request</strong>，引擎关闭该网站。</li>
+</ul>
+<p>整个 <strong>Scrapy</strong> 由非阻塞的方式实现，基于事件驱动网络框架 <a href="https://twistedmatrix.com/trac/">Twisted</a>编写。</p>
+<p>对于简单的应用来说，用户需要只需要在 <strong>spider</strong> 中完成处理引擎发来的 <strong>response</strong> 的功能，以及 <strong>Item Pipeline</strong> 中处理引擎传来的数据即可。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/Scrapy/scrapy_assembly.png" alt="scrapy_assembly"></p>
+<h2 id="组件">组件</h2>
+<p><strong>Scrapy</strong> 的主要组件都在上面的图中了。下面主要结合爬取 <a href="https://www.qidian.com/">起点中文网</a> 介绍可能需要用户实现的部分组件。</p>
+<h3 id="spider">Spider</h3>
+<p><strong>Spider类</strong> 定义了如何爬取网站。包括爬取的动作(是否跟进爬取网站中的链接)，以及如何从网页中提取结构化的数据(item)。<strong>Spider</strong> 就是 <strong>定义爬取的动作及分析网页的地方</strong>。</p>
+<p>整个 <strong>Scrapy</strong> 框架的起点是 <strong>start_requests函数</strong>，它的作用是处理 <strong>start_urls</strong> 中定义的起始url，返回 <strong>request</strong> 给引擎。当然，也可以 <strong>重写start_requests函数</strong>，自己处理。</p>
+<p><strong>start_requests函数</strong> 的代码如下，首先判断是否重写了 <strong>make_requests_from_url函数</strong>，重写了就用它处理 <strong>start_urls列表</strong> 中的url。否则，返回 <strong>Request</strong> 对象给引擎。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">method_is_overridden</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">Spider</span><span class="p">,</span> <span class="s1">&#39;make_requests_from_url&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Spider.make_requests_from_url method is deprecated; it &#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;won&#39;t be called in future Scrapy releases. Please &#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;override Spider.start_requests method instead (see </span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">).&#34;</span> <span class="o">%</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">cls</span><span class="o">.</span><span class="vm">__module__</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
+</span></span><span class="line"><span class="cl">            <span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_urls</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_requests_from_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_urls</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">dont_filter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>parse函数</strong> 是用来处理 <strong>下载器</strong> 下载完网页内容后返回的 <strong>response</strong>。它可以继续爬取 <strong>response</strong> 中的 <strong>嵌套url链接</strong>，此时给引擎返回 <strong>resquest</strong>。也可以返回 <strong>item</strong> 给引擎，进入数据本地化存储流程。</p>
+<p><strong>parse函数</strong> 必须由子类实现！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Spider基类中的parse函数</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.parse callback is not defined&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>所以呢，最开始部分可以有两种实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 1、不重写start_requests方式</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">QidianSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name</span> <span class="o">=</span> <span class="s2">&#34;qidian&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;https://www.qidian.com/all?orderId=&amp;page=1&amp;style=2&amp;pageSize=20&amp;siteid=1&amp;pubflag=0&amp;hiddenField=0&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">max_page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&#34;.lbf-pagination-item&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&#34;./a/text()&#34;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_page</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">page_url</span> <span class="o">=</span> <span class="s2">&#34;https://www.qidian.com/all?orderId=&amp;style=2&amp;pageSize=50&amp;siteid=1&amp;pubflag=0&amp;hiddenField=0&amp;page=</span><span class="si">{page}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="n">page_url</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_page</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">parse_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2、重写start_requests方式</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">QidianSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name</span> <span class="o">=</span> <span class="s2">&#34;qidian&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">begin_url</span> <span class="o">=</span> <span class="s2">&#34;https://www.qidian.com/all?orderId=&amp;page=1&amp;style=2&amp;pageSize=20&amp;siteid=1&amp;pubflag=0&amp;hiddenField=0&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="n">begin_url</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">max_page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&#34;.lbf-pagination-item&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&#34;./a/text()&#34;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_page</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">page_url</span> <span class="o">=</span> <span class="s2">&#34;https://www.qidian.com/all?orderId=&amp;style=2&amp;pageSize=50&amp;siteid=1&amp;pubflag=0&amp;hiddenField=0&amp;page=</span><span class="si">{page}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="n">page_url</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_page</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">parse_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在处理嵌套中的链接时，当下载器返回 <strong>对应链接的response</strong> 时，会调用 <strong>对应链接的回调函数</strong> 进行处理。回调函数的功能和 <strong>parse函数</strong> 的功能类似，只不过 <strong>parse函数</strong> 是此类调用的总入口。</p>
+<h3 id="item-pipelines">Item Pipelines</h3>
+<p>这里其实是分为两部分： <strong>Item</strong> 和 <strong>Pipelines</strong>。</p>
+<h4 id="item">Item</h4>
+<p>爬虫的主要目的就是 <strong>从非结构化的数据源中提取结构性的数据</strong>。虽然也可以使用 <strong>dict</strong> 来返回提取的数据，但其缺少结构性，容易出错。</p>
+<p><strong>Item</strong> 对象是种简单的容器，保存了爬取得到的数据，提供了 <strong>类似于字典</strong> 的API以及用来声明可用字段的简单语法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">scrapy</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ScrapyframetestItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># define the fields for your item here like:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">man_type</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>  <span class="c1"># 主类型</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sub_type</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>  <span class="c1"># 副类型</span>
+</span></span><span class="line"><span class="cl">    <span class="n">novel_name</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>  <span class="c1"># 小说名称</span>
+</span></span><span class="line"><span class="cl">    <span class="n">novel_link</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>  <span class="c1"># 小说链接</span>
+</span></span><span class="line"><span class="cl">    <span class="n">novel_id</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>  <span class="c1"># 小说ID标识</span>
+</span></span><span class="line"><span class="cl">    <span class="n">author_name</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>  <span class="c1"># 作者名称</span>
+</span></span><span class="line"><span class="cl">    <span class="n">author_link</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>  <span class="c1"># 作者链接</span>
+</span></span><span class="line"><span class="cl">    <span class="n">author_id</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>  <span class="c1"># 作者ID标识</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Item</strong> 有点儿类似于 <strong>Django中的Model</strong>，不过没有那么多不同的字段类型(Field type)，更为简单。</p>
+<p>它的存取和字典是一样的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">item</span> <span class="o">=</span> <span class="n">ScrapyframetestItem</span><span class="p">(</span><span class="n">man_type</span> <span class="o">=</span> <span class="s2">&#34;科幻&#34;</span><span class="p">,</span> <span class="n">sub_type</span> <span class="o">=</span> <span class="s2">&#34;机甲&#34;</span><span class="p">,</span> <span class="n">novel_name</span> <span class="o">=</span> <span class="s2">&#34;One pis&#34;</span><span class="p">,</span> <span class="n">novel_link</span> <span class="o">=</span> <span class="s2">&#34;http://1234.com&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">novel_id</span> <span class="o">=</span> <span class="s2">&#34;123&#34;</span><span class="p">,</span> <span class="n">author_name</span> <span class="o">=</span> <span class="s2">&#34;lufei&#34;</span><span class="p">,</span> <span class="n">author_link</span> <span class="o">=</span> <span class="s2">&#34;http://232455.com&#34;</span><span class="p">,</span> <span class="n">author_id</span> <span class="o">=</span> <span class="s2">&#34;321&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;item:</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Old name:</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="s2">&#34;novel_name&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">item</span><span class="p">[</span><span class="s2">&#34;novel_name&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;Dragon Ball&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">New name:</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;novel_name&#34;</span><span class="p">,</span> <span class="s2">&#34;attr not exist!&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">New name:</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;novel&#34;</span><span class="p">,</span> <span class="s2">&#34;attr not exist!&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># output:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># item:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  {&#39;author_id&#39;: &#39;321&#39;,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  &#39;author_link&#39;: &#39;http://232455.com&#39;,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  &#39;author_name&#39;: &#39;lufei&#39;,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  &#39;man_type&#39;: &#39;科幻&#39;,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  &#39;novel_id&#39;: &#39;123&#39;,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  &#39;novel_link&#39;: &#39;http://1234.com&#39;,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  &#39;novel_name&#39;: &#39;One pis&#39;,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  &#39;sub_type&#39;: &#39;机甲&#39;}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Old name:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  One pis</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># New name:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  Dragon Ball</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># New name:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  attr not exist!</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="pipeline">Pipeline</h4>
+<p><strong>Pipeline</strong> 模块用来处理在 <strong>Spider</strong> 中收集的 <strong>Item</strong> 对象。</p>
+<p>用户可以在 <strong>Pipeline</strong> 中</p>
+<ul>
+<li>清理HTML数据</li>
+<li>验证爬取的数据</li>
+<li>查重并丢弃</li>
+<li>将爬取的结果存储到数据库中</li>
+</ul>
+<p>每个 <strong>Pipeline</strong> 都是一个单独的类，它不继承任何其他的基类。在使用时，需要先激活，在 <strong>setting.py</strong> 配置文件中指定 <strong>ITEM_PIPELINES</strong> 参数。后面的数字表示的是运行的优先级，<strong>数字越小优先级越高</strong>，范围为 <strong>0-1000</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;ScrapyFrameTest.QidianPipelines.pipelines.ScrapyframetestPipeline&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="c1"># &#39;ScrapyFrameTest.pipelines.ScrapyframetestPipeline&#39;: 300,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在用户编写的 <strong>Pipeline</strong> 类中必须实现 <em><strong>process_item(self, item, spider)</strong></em> 函数。该函数在处理时，要么返回 <strong>item对象</strong>，要么抛出 <strong>DropItem</strong> 异常。被丢弃的 <strong>item</strong> 将不会被之后的pipeline组件处理。</p>
+<p>如下，实现的是 <strong>pipeline</strong> 处理 <strong>item</strong>，首先判断传入的item是否是指定的类型，如果不是则抛出 <strong>DropItem</strong> 异常。如果是指定类型，则将每部小说的信息从item中取出存入mysql中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">ScrapyframetestItem</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">novel_id</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&#34;novel_id&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">novel_name</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&#34;novel_name&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">novel_link</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&#34;novel_link&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">man_type</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&#34;man_type&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sub_type</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&#34;sub_type&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">author_id</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&#34;author_id&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">author_name</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&#34;author_name&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">author_link</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&#34;author_link&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">QidianDb</span><span class="o">.</span><span class="n">insert_table</span><span class="p">(</span><span class="n">novel_id</span> <span class="o">=</span> <span class="n">novel_id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">novel_name</span> <span class="o">=</span> <span class="n">novel_name</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">novel_link</span> <span class="o">=</span> <span class="n">novel_link</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">man_type</span> <span class="o">=</span> <span class="n">man_type</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">sub_type</span> <span class="o">=</span> <span class="n">sub_type</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">author_id</span> <span class="o">=</span> <span class="n">author_id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">author_name</span> <span class="o">=</span> <span class="n">author_name</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">author_link</span> <span class="o">=</span> <span class="n">author_link</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">item</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">raise</span> <span class="n">DropItem</span><span class="p">(</span><span class="s2">&#34;Item type not allow!&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Pipeline组件</strong> 还有其他的几个函数可以实现：</p>
+<ul>
+<li><strong>open_spider(self, spider)</strong> - 在 <strong>Spider开启时</strong> 被自动调用，用户可以在这里进行一些诸如开启数据库的操作。</li>
+<li><strong>close_spider(self, spider)</strong> - 在 <strong>Spider关闭时</strong> 被自动调用，用户可以在这里做一些收尾工作，如关闭数据库操作。</li>
+<li><strong>from_crawler(cls, crawler)</strong> - 这是一个类方法，需使用 <strong>@classmethod</strong> 装饰。它的传入参数 <strong>crawler</strong> 包含了scrapy的所有核心组件信息。最后需要返回一个 <strong>pipeline</strong> 实例。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">open_spider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Begin Spider!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">QidianDb</span><span class="o">.</span><span class="n">OpenDB</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">close_spider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;End Spider!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">QidianDb</span><span class="o">.</span><span class="n">CloseDB</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="downloader-middleware">Downloader Middleware</h3>
+<p><strong>下载中间件</strong> 位于上图中的 <strong>engine</strong> 和 <strong>downloader</strong> 之间，主要是处理从 <strong>engine</strong> 向 <strong>downloader</strong> 发出的 <strong>request</strong> 请求以及从 <strong>downloader</strong> 返回给 <strong>engine</strong> 的 <strong>response</strong>。</p>
+<p>在使用 <strong>下载中间件</strong> 前，需要在 <strong>settings.py</strong> 中配置对应的下载器中间件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># settings.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">DOWNLOADER_MIDDLEWARES</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;DoubanMovieSpider.DoubanMiddlewares.DoubanMovieInfoDownloadMiddleware.UserAgentMiddleware&#39;</span><span class="p">:</span> <span class="mi">901</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;DoubanMovieSpider.DoubanMiddlewares.DoubanMovieInfoDownloadMiddleware.CookieMiddleware&#39;</span><span class="p">:</span> <span class="mi">902</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;DoubanMovieSpider.DoubanMiddlewares.DoubanMovieInfoDownloadMiddleware.ProxyMiddleware&#39;</span><span class="p">:</span> <span class="mi">903</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;DoubanMovieSpider.DoubanMiddlewares.DoubanMovieInfoDownloadMiddleware.ConnectionMiddleware&#39;</span><span class="p">:</span> <span class="mi">904</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下载器中间件由 <strong>DOWNLOADER_MIDDLEWARES</strong> 字典配置，key为对应下载器中间件的类所在的路径，value为中间件的优先级。由于在 <strong>default_settings.py</strong> 中已经存在了默认的下载器中间件，所以最好自己按要求配置优先级。<strong>数字越小优先级越高</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># default_settings.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">DOWNLOADER_MIDDLEWARES</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">DOWNLOADER_MIDDLEWARES_BASE</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Engine side</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware&#39;</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.useragent.UserAgentMiddleware&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.retry.RetryMiddleware&#39;</span><span class="p">:</span> <span class="mi">550</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.ajaxcrawl.AjaxCrawlMiddleware&#39;</span><span class="p">:</span> <span class="mi">560</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware&#39;</span><span class="p">:</span> <span class="mi">580</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware&#39;</span><span class="p">:</span> <span class="mi">590</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.redirect.RedirectMiddleware&#39;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.cookies.CookiesMiddleware&#39;</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware&#39;</span><span class="p">:</span> <span class="mi">750</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.stats.DownloaderStats&#39;</span><span class="p">:</span> <span class="mi">850</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware&#39;</span><span class="p">:</span> <span class="mi">900</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Downloader side</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>指定完要使用的中间件后，进入编写中间件的步骤。按需求实现下面的一些函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DoubanmoviespiderDownloaderMiddleware</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Not all methods need to be defined. If a method is not defined,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># scrapy acts as if the downloader middleware does not modify the</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># passed objects.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@classmethod</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">from_crawler</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">crawler</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># This method is used by Scrapy to create your spiders.</span>
+</span></span><span class="line"><span class="cl">        <span class="n">s</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">crawler</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">spider_opened</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="n">signals</span><span class="o">.</span><span class="n">spider_opened</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">s</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Called for each request that goes through the downloader</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># middleware.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Must either:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># - return None: continue processing this request</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># - or return a Response object</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># - or return a Request object</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># - or raise IgnoreRequest: process_exception() methods of</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#   installed downloader middleware will be called</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">process_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Called with the response returned from the downloader.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Must either;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># - return a Response object</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># - return a Request object</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># - or raise IgnoreRequest</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">response</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">process_exception</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">exception</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Called when a download handler or a process_request()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># (from other downloader middleware) raises an exception.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Must either:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># - return None: continue processing this exception</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># - return a Response object: stops process_exception() chain</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># - return a Request object: stops process_exception() chain</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">spider_opened</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">spider</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Spider opened: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">spider</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对于下载器中间件而言，主要的两个函数为 <strong>process_request()</strong>、<strong>process_response()</strong>。</p>
+<h4 id="process_request">process_request()</h4>
+<p><strong>process_request()</strong> 用于处理发给 <strong>downloader</strong> 的 <strong>request</strong> 请求，可以在这个函数中对 <strong>request</strong> 请求进行修改，例如添加header、添加cookies、修改代理等。</p>
+<p><strong>process_request()</strong> 有四种返回值:</p>
+<ul>
+<li>如果返回 <strong>None</strong>，则 <strong>scrapy</strong> 将继续调用其他下载器中间件的 <strong>process_request()方法</strong>。</li>
+<li>如果返回 <strong>Request对象</strong>，<strong>scrapy</strong> 会停止调度 <strong>接下来的其他中间件的process_request()方法</strong>，<strong>scrapy</strong> 会将返回的 <strong>Request对象</strong> 重新加入调度任务中，重新开始 <strong>request</strong> 请求。</li>
+<li>如果返回 <strong>Response对象</strong>，<strong>scrapy</strong> 会停止调度 <strong>process_request()和process_exception()方法</strong>，并且不將请求放送至下载器，而是作为下载器返回的 <strong>Response对象</strong> 处理。</li>
+<li>如果产生 <strong>IgnoreRequest异常</strong>，则对应的所有的下载器中间件中的 <strong>process_exception()</strong> 函数将会被调用。如果没有任何下载器中间件来处理这种异常，则会调用 <strong>errback function</strong>。</li>
+</ul>
+<h4 id="process_response">process_response()</h4>
+<p><strong>process_response()</strong> 用于处理下载器返回的 <strong>response</strong>，可以在这里对一些异常进行处理、在返回的 <strong>Response对象</strong> 中添加自定义的一些内容。</p>
+<p><strong>process_response()</strong> 返回值有三种:</p>
+<ul>
+<li>如果返回 <strong>Request对象</strong>，则退出之后的下载器中间件的 <strong>process_response()</strong> 调度，将目标重新加入请求队列，与 <strong>process_request()</strong> 处理方式一样。</li>
+<li>如果返回 <strong>Response对象</strong>，则继续进行剩下的下载器中间件中的 <strong>process_response()</strong> 方法。</li>
+<li>如果产生 <strong>IgnoreRequest异常</strong>，处理方式与 <strong>process_request()</strong> 一样。</li>
+</ul>
+<blockquote>
+<p>注意: process_request()处理是按照优先级顺序进行，而process_response() 和 process_exception() 是按照逆序进行的。这点可以在源码总，添加下载器中间件时看出。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DownloaderMiddlewareManager</span><span class="p">(</span><span class="n">MiddlewareManager</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">component_name</span> <span class="o">=</span> <span class="s1">&#39;downloader middleware&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@classmethod</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">_get_mwlist_from_settings</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">settings</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">build_component_list</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">settings</span><span class="o">.</span><span class="n">getwithbase</span><span class="p">(</span><span class="s1">&#39;DOWNLOADER_MIDDLEWARES&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">_add_middleware</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mw</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 添加process_request方法，使用的是append</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mw</span><span class="p">,</span> <span class="s1">&#39;process_request&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">methods</span><span class="p">[</span><span class="s1">&#39;process_request&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mw</span><span class="o">.</span><span class="n">process_request</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 添加process_response和process_exception方法，使用的是insert</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mw</span><span class="p">,</span> <span class="s1">&#39;process_response&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">methods</span><span class="p">[</span><span class="s1">&#39;process_response&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mw</span><span class="o">.</span><span class="n">process_response</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mw</span><span class="p">,</span> <span class="s1">&#39;process_exception&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">methods</span><span class="p">[</span><span class="s1">&#39;process_exception&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mw</span><span class="o">.</span><span class="n">process_exception</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">download_func</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nd">@defer.inlineCallbacks</span>
+</span></span><span class="line"><span class="cl">        <span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 使用时的方式是一样的，便利列表，从头开始</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">methods</span><span class="p">[</span><span class="s1">&#39;process_request&#39;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">response</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">method</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span> <span class="n">spider</span><span class="o">=</span><span class="n">spider</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">assert</span> <span class="n">response</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="p">(</span><span class="n">Response</span><span class="p">,</span> <span class="n">Request</span><span class="p">)),</span> \
+</span></span><span class="line"><span class="cl">                        <span class="s1">&#39;Middleware </span><span class="si">%s</span><span class="s1">.process_request must return None, Response or Request, got </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> \
+</span></span><span class="line"><span class="cl">                        <span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">get_method_self</span><span class="p">(</span><span class="n">method</span><span class="p">)</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">response</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">defer</span><span class="o">.</span><span class="n">returnValue</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">defer</span><span class="o">.</span><span class="n">returnValue</span><span class="p">((</span><span class="k">yield</span> <span class="n">download_func</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span><span class="n">spider</span><span class="o">=</span><span class="n">spider</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nd">@defer.inlineCallbacks</span>
+</span></span><span class="line"><span class="cl">        <span class="k">def</span> <span class="nf">process_response</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">assert</span> <span class="n">response</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Received None in process_response&#39;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">Request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">defer</span><span class="o">.</span><span class="n">returnValue</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">methods</span><span class="p">[</span><span class="s1">&#39;process_response&#39;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">response</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">method</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                        <span class="n">spider</span><span class="o">=</span><span class="n">spider</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="p">(</span><span class="n">Response</span><span class="p">,</span> <span class="n">Request</span><span class="p">)),</span> \
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;Middleware </span><span class="si">%s</span><span class="s1">.process_response must return Response or Request, got </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> \
+</span></span><span class="line"><span class="cl">                    <span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">get_method_self</span><span class="p">(</span><span class="n">method</span><span class="p">)</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">Request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">defer</span><span class="o">.</span><span class="n">returnValue</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">defer</span><span class="o">.</span><span class="n">returnValue</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nd">@defer.inlineCallbacks</span>
+</span></span><span class="line"><span class="cl">        <span class="k">def</span> <span class="nf">process_exception</span><span class="p">(</span><span class="n">_failure</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">exception</span> <span class="o">=</span> <span class="n">_failure</span><span class="o">.</span><span class="n">value</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">methods</span><span class="p">[</span><span class="s1">&#39;process_exception&#39;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">response</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">method</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span> <span class="n">exception</span><span class="o">=</span><span class="n">exception</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                        <span class="n">spider</span><span class="o">=</span><span class="n">spider</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">assert</span> <span class="n">response</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="p">(</span><span class="n">Response</span><span class="p">,</span> <span class="n">Request</span><span class="p">)),</span> \
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;Middleware </span><span class="si">%s</span><span class="s1">.process_exception must return None, Response or Request, got </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> \
+</span></span><span class="line"><span class="cl">                    <span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">get_method_self</span><span class="p">(</span><span class="n">method</span><span class="p">)</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">response</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">defer</span><span class="o">.</span><span class="n">returnValue</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">defer</span><span class="o">.</span><span class="n">returnValue</span><span class="p">(</span><span class="n">_failure</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">deferred</span> <span class="o">=</span> <span class="n">mustbe_deferred</span><span class="p">(</span><span class="n">process_request</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">deferred</span><span class="o">.</span><span class="n">addErrback</span><span class="p">(</span><span class="n">process_exception</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">deferred</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">process_response</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">deferred</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="spider-middleware">Spider Middleware</h3>
+<p>// todo</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://doc.scrapy.org/en/latest/index.html">Scrapy 1.5 documentation</a></li>
+<li><a href="https://juejin.im/post/5ad41ff7f265da23945ff1a6">Python爬虫之Scrapy学习（基础篇）</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-01-14
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/python/">Python</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/scrapy/">Scrapy</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/algorithms/algorithmsarea/k%E8%B7%AF%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">k路归并排序</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/python/spider/beautifulsoup%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">
+            <span class="next-text nav-default">Beautiful Soup使用手册</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

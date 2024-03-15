@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Redis使用 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Redis使用" /><meta name="keywords" content="Python, Redis" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/redis%E4%BD%BF%E7%94%A8/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Redis使用</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-12-18 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/python/"> Python </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/redis/"> Redis </a>
+            </div>
+          <span class="more-meta"> 1949 words </span>
+          <span class="more-meta"> 10 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#使用">使用</a>
+          <ul>
+            <li><a href="#通用命令格式">通用命令格式</a></li>
+            <li><a href="#string">string</a></li>
+            <li><a href="#hash">hash</a></li>
+            <li><a href="#list">list</a></li>
+            <li><a href="#set">set</a></li>
+            <li><a href="#sorted-set">sorted set</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><strong>Redis</strong> 可以把它当作一个 <strong>存在于内存中、非关系型(nosql)的数据库</strong>。其实现有点儿类似于 <strong>磁盘缓存策略的实现方式</strong>，不过似乎要复杂一点。</p>
+<p><strong>Redis</strong> 具有一些特点：</p>
+<ul>
+<li>完全开源</li>
+<li><strong>数据持久化</strong> - 可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</li>
+<li>不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</li>
+<li>支持数据的备份，即master-slave模式的数据备份。</li>
+<li><strong>性能极高</strong> – Redis能读的速度是110000次/s，写的速度是81000次/s 。</li>
+<li><strong>丰富的数据类型</strong> – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets数据类型操作。</li>
+<li><strong>原子</strong> – Redis的所有操作都是原子性的，同时Redis还支持对几个操作全并后的原子性执行。</li>
+<li><strong>丰富的特性</strong> – Redis还支持 publish/subscribe, 通知, key 过期等等特性。</li>
+</ul>
+<h2 id="安装">安装</h2>
+<p>Ubuntu：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt-get install redis-server
+</span></span><span class="line"><span class="cl">sudo systemctl start redis.service  // 一般安装好以后就会自动启动服务
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="使用">使用</h2>
+<p><em><strong>(这篇记录的只是简单的使用)</strong></em></p>
+<p>下面操作内容会从 <strong>Redis</strong> 所支持的几种常见的数据格式进行记录，包括：<strong>string</strong>、<strong>hash</strong>、<strong>list</strong>、<strong>set</strong>、<strong>sorted set</strong>。</p>
+<p>首先，要进行 <strong>redis</strong> 的存取，得确保 <strong>redis server</strong> 处于开启状态，这点和常用的数据库一样。然后用户通过 <strong>redis-cli</strong> 客户端与 <strong>redis服务器</strong> 进行通信。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ redis-cli
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; ping
+</span></span><span class="line"><span class="cl">PONG
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面的操作都是在 <strong>redis-cli</strong> 上进行的。</p>
+<h3 id="通用命令格式">通用命令格式</h3>
+<p><strong>redis</strong> 命令的基本语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">127.0.0.1:6379&gt; COMMAND KEY_NAME
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>基本的命令如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>del key</strong></td>
+<td style="text-align:left">用于key存在时删除key</td>
+<td style="text-align:left">删除成功返回1，失败返回0。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>dump key</strong></td>
+<td style="text-align:left">序列化给定的key，并返回被序列化的值。</td>
+<td style="text-align:left">失败返回nil</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>exists key</strong></td>
+<td style="text-align:left">检查给定key是否存在</td>
+<td style="text-align:left">若 key 存在返回 1 ，否则返回 0 。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>expire key seconds</strong></td>
+<td style="text-align:left">为给定的key设置过期时间，以秒计算。</td>
+<td style="text-align:left">设置成功返回1，失败返回0</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>expireat key timestamp</strong></td>
+<td style="text-align:left">为给定的key设置过期时间，timestamp为时间戳(单位秒)</td>
+<td style="text-align:left">设置成功返回1，失败返回0</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>pexpire key milliseconds</strong></td>
+<td style="text-align:left">设置key的过期时间，以毫秒计算</td>
+<td style="text-align:left">设置成功返回1，失败返回0</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>pexpireat key milliseconds-timestamp</strong></td>
+<td style="text-align:left">为给定的key设置过期时间，timestamp为时间戳(毫秒级)</td>
+<td style="text-align:left">设置成功返回1，失败返回0</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>keys pattern</strong></td>
+<td style="text-align:left">找出所有给定过滤条件的key</td>
+<td style="text-align:left">成功返回所有符合条件的key值，失败返回(empty list or set)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>move key db</strong></td>
+<td style="text-align:left">将redis中的key移动到指定的数据库中</td>
+<td style="text-align:left">设置成功返回1，失败返回0</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>persist key</strong></td>
+<td style="text-align:left">移除key的过期时间，key将持久保持</td>
+<td style="text-align:left">设置成功返回1，失败返回0</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>pttl key</strong></td>
+<td style="text-align:left">以毫秒为单位返回key的剩余过期时间</td>
+<td style="text-align:left">当key不存在时返回-2，当key存在但未设置过期时间时返回-1.否则，以毫秒为单位，返回key的剩余生存时间。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>ttl key</strong></td>
+<td style="text-align:left">以秒为单位返回key的剩余过期时间</td>
+<td style="text-align:left">当key不存在时返回-2，当key存在但未设置过期时间时返回-1.否则，以秒为单位，返回key的剩余生存时间。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>randomkey</strong></td>
+<td style="text-align:left">随机取出一个key的值</td>
+<td style="text-align:left">返回随机取出的key</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>rename key newkey</strong></td>
+<td style="text-align:left">重命名key的名字为newkey</td>
+<td style="text-align:left">如果key不存在，返回 <strong>(error) ERR no such key</strong>，操作成功返回 <strong>OK</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>renamenx key newkey</strong></td>
+<td style="text-align:left">仅当newkey不存在时，将key改名为newkey</td>
+<td style="text-align:left">设置成功返回1，失败返回0</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>type key</strong></td>
+<td style="text-align:left">返回key所存储的值的类型</td>
+<td style="text-align:left">key存在返回type，不存在返回none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>redis</strong> 中的 <strong>key_name</strong> 要遵循一定的规范：</p>
+<ul>
+<li><strong>太长的key值不推荐</strong> - 不仅消耗内存，而且数据中查找的成本很高。</li>
+<li><strong>太短的key值也不推荐</strong> - 如果key值太短，导致开发的复杂度增加，得不偿失。</li>
+<li><strong>坚持一种命名方式</strong> - 如 <strong>object-type: id: field</strong> 就不错。</li>
+</ul>
+<h3 id="string">string</h3>
+<p><strong>string</strong> 是 <strong>redis</strong> 最基本的的类型，它可以包含任何数据，包括jpg图片或者序列化的对象，最大能存储512MB。</p>
+<p>下面是 <strong>redis</strong> 中 <strong>string类型</strong> 的基本操作命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">// <span class="nb">set</span> key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; <span class="nb">set</span> one_word <span class="s2">&#34;this is a big apple&#34;</span>
+</span></span><span class="line"><span class="cl">OK
+</span></span><span class="line"><span class="cl">// get key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get one_word    // 通过key获取value
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;this is a big apple&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// getrange key start end
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; getrange one_word <span class="m">0</span> <span class="m">5</span>  // 按照范围获取，类似于切片
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;this i&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; getrange one_word <span class="m">0</span> -1
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;this is a big apple&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// setrange key offset value
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; setrange one_word <span class="m">0</span> ww      // 从偏移处替换
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">5</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get one_word
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;wwllo&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; setrange one_word <span class="m">6</span> world
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">11</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get one_word
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;wwllo\x00world&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// getset key value
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; getset one_word <span class="s2">&#34;there are same banans&#34;</span>     // 设置新的值，并返回原先旧的值，如果原值不存在，返回nil
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;this is a big apple&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get one_word
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;there are same banans&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// setex key seconds value
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; setex one_word <span class="m">10</span> hello        // value关联key时，设置过期时间，单位秒
+</span></span><span class="line"><span class="cl">OK
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get one_word        // 10s后
+</span></span><span class="line"><span class="cl"><span class="o">(</span>nil<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// psetex key milliseconds value
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; psetex six_word <span class="m">5000</span> <span class="s2">&#34;6&#34;</span>  // 设置key并指定过期时间，毫秒级
+</span></span><span class="line"><span class="cl">OK
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get six_word    // 5000ms后
+</span></span><span class="line"><span class="cl"><span class="o">(</span>nil<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// setnx key value
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; setnx one_word <span class="s2">&#34;hello&#34;</span>      // 设置key，如果不存在，修改key对应的value，并返回1，否则返回0
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; setnx one_word <span class="s2">&#34;world&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get one_word
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;hello&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// strlen key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; strlen one_word     // 返回value的字符串长度
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">11</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// mset key value <span class="o">[</span>key value...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; mset two_word <span class="s2">&#34;twoword&#34;</span> third_word <span class="s2">&#34;third_word&#34;</span>     // 批量设置
+</span></span><span class="line"><span class="cl">OK
+</span></span><span class="line"><span class="cl">// mget key <span class="o">[</span>key...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; mget one_word two_word third_word       // 批量读取
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;wwllo\x00world&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;twoword&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;third_word&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// msetnx key value <span class="o">[</span>key value...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; msetnx two_word <span class="s2">&#34;2&#34;</span> third_word <span class="s2">&#34;3&#34;</span>      // 批量设置，当key不存在时返回1，key存在返回0
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; msetnx two_word <span class="s2">&#34;2&#34;</span> third_word <span class="s2">&#34;3&#34;</span> four_word <span class="s2">&#34;4&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; msetnx four_word <span class="s2">&#34;4&#34;</span> five_word <span class="s2">&#34;5&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// incr key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; incr five_word      // 将指定key的数字值增加一，只针对整数值
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">6</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get five_word
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;6&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; incr one_word       // 非数字变量返回错误
+</span></span><span class="line"><span class="cl"><span class="o">(</span>error<span class="o">)</span> ERR value is not an integer or out of range
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// incrby key increment
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; incrby five_word <span class="m">10</span>     // 增加指定的数字，只针对整数值
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">16</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get five_word
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;16&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// incrbyfloat key increment
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; incrbyfloat five_word 10.23     // 增加指定的浮点数
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;26.23&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get five_word
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;26.23&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; <span class="nb">set</span> five_word <span class="m">10</span>
+</span></span><span class="line"><span class="cl">OK
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get five_word
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;10&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// decr key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; decr five_word      // 将指定key的数字值减少一，只针对整数值
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">9</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get five_word
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;9&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// decrby key decrement
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; decrby five_word <span class="m">8</span>   // 将指定key的数字值减少指定的整数，只针对整数值
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get five_word
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// append key value
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get one_word
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;wwllo\x00world&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; APPEND one_word <span class="s2">&#34; !!&#34;</span>   // 在指定key的value末尾追加内容
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">14</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get one_word
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;wwllo\x00world !!&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="hash">hash</h3>
+<p><strong>hash类型</strong> 是一个 <strong>string类型的field和value的映射表</strong>。通常被用来 <strong>存储对象类型的数据</strong>。</p>
+<p>下面是 <strong>redis hash类型</strong> 的基本操作：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">// hset key field value
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; hset hash_1 name alfons     // 设置key的field字段为value，字段之前未设置返回1，字段之前存在返回0
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// hget key field
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; hget hash_1 name    // 通过key和field获取对应的value
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// hgetall key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; hgetall hash_1      // 获取指定key的所有的内容，包括field和value
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;name&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// hkeys key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; hkeys hash_1        // 获取指定key的所有field
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;name&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// hvals key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; hvals hash_1        // 获取指定key的所有value
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// hlen key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; hlen hash_1         // 获取指定key的字段数量
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// hexists key field
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; HEXISTS hash_1 name     // 指定key的field是否存在，存在返回1，不存在返回0
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; HEXISTS hash_1 wechat
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// hmset key field vaule <span class="o">[</span>field value...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; hmset hash:user:xh name xh old <span class="m">20</span> tel <span class="m">123456789</span> like ft school cq lastlogin 12.05       // 批量设置指定key的 field与value数据
+</span></span><span class="line"><span class="cl">OK
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// hmget key field <span class="o">[</span>field...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; hmget hash:user:xh name old tel     // 批量获取指定key的多个field的value
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;xh&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;20&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;123456789&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// hdel key field <span class="o">[</span>field...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; hdel hash_1 name tel        // 删除指定key的多个field
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; hkeys hash_1
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;like&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;school&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;lastlogin&#34;</span>
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> <span class="s2">&#34;old&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="list">list</h3>
+<p>说是 <strong>list</strong>，但操作起来类似于 <strong>栈和双端队列</strong>，可以在头和尾插入或删除元素。</p>
+<p>基本操作如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">// lpush key value <span class="o">[</span>value...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lpush booklist c++ java android     // 向key列表头部插入value
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// lpushx key value
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lpushx booklist ios     // 向已存在的key列表头部插入元素，key列表不存在返回0
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// lrange key start stop
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lrange booklist <span class="m">0</span> -1        // 获取key列表切片范围内的元素
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;ios&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;android&#34;</span>
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> <span class="s2">&#34;java&#34;</span>
+</span></span><span class="line"><span class="cl">5<span class="o">)</span> <span class="s2">&#34;c++&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lpushx booklist2 ios
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// rpush key value
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; rpush booklist python       // 向key列表尾部插入value
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// rpushx key value
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; rpushx booklist python3     // 向已存在的key列表尾部插入元素，key列表不存在返回0
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">6</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lrange booklist <span class="m">0</span> -1
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;ios&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;android&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;java&#34;</span>
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> <span class="s2">&#34;c++&#34;</span>
+</span></span><span class="line"><span class="cl">5<span class="o">)</span> <span class="s2">&#34;python&#34;</span>
+</span></span><span class="line"><span class="cl">6<span class="o">)</span> <span class="s2">&#34;python3&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// llen key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; llen booklist       // 查看key列表中元素的个数
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">6</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// lindex key index
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lindex booklist <span class="m">0</span>       // 通过索引值获取元素
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;ios&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// lset key index value
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lset booklist <span class="m">0</span> mac-ios     // 通过索引值修改元素值
+</span></span><span class="line"><span class="cl">OK
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lindex booklist <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;mac-ios&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// lpop key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lpop booklist       // 移除并获取key列表头部的元素
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;mac-ios&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// rpop key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; rpop booklist       // 移除并获取key列表尾部的元素
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;python3&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lrange booklist <span class="m">0</span> -1
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;android&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;java&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;c++&#34;</span>
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> <span class="s2">&#34;python&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// lrem key counts value
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lrem booklist <span class="m">1</span> c++     // 移除列表中counts个value元素，counts未正数表示从头部开始，负数为从尾部开始，为0表示移除所有value元素
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; LPUSH booklist go c++ c
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">6</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lrange booklist <span class="m">0</span> -1
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;c&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;c++&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;go&#34;</span>
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> <span class="s2">&#34;android&#34;</span>
+</span></span><span class="line"><span class="cl">5<span class="o">)</span> <span class="s2">&#34;java&#34;</span>
+</span></span><span class="line"><span class="cl">6<span class="o">)</span> <span class="s2">&#34;python&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// ltrim key start stop
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; ltrim booklist <span class="m">2</span> -1     // 保留指定的切片
+</span></span><span class="line"><span class="cl">OK
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; lrange booklist <span class="m">0</span> -1
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;go&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;android&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;java&#34;</span>
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> <span class="s2">&#34;python&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="set">set</h3>
+<p><strong>set类型</strong> 是String类型的无序集合，里面的内容是唯一的。 <strong>redis</strong> 中 <strong>set</strong> 是通过哈希表实现的，所以它的添加、删除、查找操作的时间复杂度都为 <strong>O(1)</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">// sadd key member
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; sadd nameset Jhon       // 向为key的set中添加元素，成功添加返回1，否则返回0
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// smembers key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; smembers nameset        // 获取为key的set中的元素
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;Jhon&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; sadd nameset Jhon
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SMEMBERS nameset
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;Jhon&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; sadd nameset Tom
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SMEMBERS nameset
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;Jhon&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;Tom&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// srandmeber key counts
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SRANDMEMBER nameset <span class="m">0</span>       // 随机返回规定counts数目的元素
+</span></span><span class="line"><span class="cl"><span class="o">(</span>empty list or <span class="nb">set</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SRANDMEMBER nameset <span class="m">1</span>
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;Jhon&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SRANDMEMBER nameset <span class="m">2</span>
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;Jhon&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;Tom&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// scard key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; scard nameset       // 返回对应key的set中的member个数
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// spop key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; spop nameset        // 移除并获取名为key的set中随机的一个元素
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;Tom&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; sadd footballclub Tom alfons jim jhon petter pom
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">6</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; sadd bickclub maple alfons coco
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// sdiff key1 <span class="o">[</span>key2 key3...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; sdiff footballclub bickclub     // 获取key1与后续keyN的差集，只在key1中有
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;jim&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;petter&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;jhon&#34;</span>
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> <span class="s2">&#34;Tom&#34;</span>
+</span></span><span class="line"><span class="cl">5<span class="o">)</span> <span class="s2">&#34;pom&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; sdiff  bickclub footballclub
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;coco&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;maple&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// sdiffstore destination key1 <span class="o">[</span>key2 key3...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; sdiffstore diffset  bickclub footballclub       // 将差集存储到名为destination的set中
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SMEMBERS diffset
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;coco&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;maple&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// sinter key1 <span class="o">[</span>key2 key3...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; sinter footballclub bickclub        // 返回指定set中的交集
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// sinterstore destination key1 <span class="o">[</span>key2 key3...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; sinterstore interset footballclub bickclub      // 将指定set的交集存储到名为destination的set中
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SMEMBERS interset
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// sunion key1 <span class="o">[</span>key2 key3...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SUNION footballclub bickclub        // 获取指定key之间的交集
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;jhon&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;petter&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> <span class="s2">&#34;Tom&#34;</span>
+</span></span><span class="line"><span class="cl">5<span class="o">)</span> <span class="s2">&#34;coco&#34;</span>
+</span></span><span class="line"><span class="cl">6<span class="o">)</span> <span class="s2">&#34;jim&#34;</span>
+</span></span><span class="line"><span class="cl">7<span class="o">)</span> <span class="s2">&#34;pom&#34;</span>
+</span></span><span class="line"><span class="cl">8<span class="o">)</span> <span class="s2">&#34;maple&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// sunionstore destination key1 <span class="o">[</span>key2 key3...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; sunionstore unionset footballclub bickclub      // 获取指定key之间的交集并存储到destination中
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">8</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SMEMBERS unionset
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;jhon&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;petter&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> <span class="s2">&#34;Tom&#34;</span>
+</span></span><span class="line"><span class="cl">5<span class="o">)</span> <span class="s2">&#34;coco&#34;</span>
+</span></span><span class="line"><span class="cl">6<span class="o">)</span> <span class="s2">&#34;jim&#34;</span>
+</span></span><span class="line"><span class="cl">7<span class="o">)</span> <span class="s2">&#34;pom&#34;</span>
+</span></span><span class="line"><span class="cl">8<span class="o">)</span> <span class="s2">&#34;maple&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// sismember key member
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SISMEMBER interset tom      // 判断指定的member是否是key中的元素，是返回1，不是返回0
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SISMEMBER interset alfons
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// smove <span class="nb">source</span> destination memeber
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; smove bickclub footballclub maple       // 将member从source移动到destination
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SMEMBERS bickclub
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;coco&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SMEMBERS footballclub
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;jhon&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;petter&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> <span class="s2">&#34;Tom&#34;</span>
+</span></span><span class="line"><span class="cl">5<span class="o">)</span> <span class="s2">&#34;jim&#34;</span>
+</span></span><span class="line"><span class="cl">6<span class="o">)</span> <span class="s2">&#34;pom&#34;</span>
+</span></span><span class="line"><span class="cl">7<span class="o">)</span> <span class="s2">&#34;maple&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// srem key member1 <span class="o">[</span>member2 member3...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SREM bickclub coco      // 移除指定key中的若干个元素，失败返回0
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; SMEMBERS bickclub
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="sorted-set">sorted set</h3>
+<p>和 <strong>set类型</strong> 一样， <strong>sorted set</strong> 同样是元素的集合，且不允许出现相同的元素。不同的是，每个元素会关联一个double类型的分数，通过该分数来给集合中的成员进行排序。</p>
+<p>基本操作如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">// zadd key score1 member1 <span class="o">[</span>score2 member2 score3 member3...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; zadd classset <span class="m">1</span> Jhon <span class="m">2</span> Tom <span class="m">3</span> alfons <span class="m">4</span> maple     // 添加多个成员到有序集合中
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">4</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// zcard key
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; zcard classset      // 显示指定key中的元素个数
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">4</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// zcount key min max
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; zcount classset <span class="m">2</span> <span class="m">3</span>         // 获取指定分值之间元素的个数
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// zrange key start stop <span class="o">[</span>withscores<span class="o">]</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; zrange classset <span class="m">0</span> -1    // 获取指定key的切片，withscores为需要打印分值
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;Jhon&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;Tom&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> <span class="s2">&#34;maple&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; zrange classset <span class="m">0</span> -1 withscores
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;Jhon&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;Tom&#34;</span>
+</span></span><span class="line"><span class="cl">4<span class="o">)</span> <span class="s2">&#34;2&#34;</span>
+</span></span><span class="line"><span class="cl">5<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">6<span class="o">)</span> <span class="s2">&#34;3&#34;</span>
+</span></span><span class="line"><span class="cl">7<span class="o">)</span> <span class="s2">&#34;maple&#34;</span>
+</span></span><span class="line"><span class="cl">8<span class="o">)</span> <span class="s2">&#34;4&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// zlexcount key min max
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; ZLEXCOUNT classset <span class="o">[</span>Jhon <span class="o">[</span>maple     // 获取指定string元素的区间的元素数目
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">4</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// zrangebylex key min max
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; ZRANGEBLEX classset <span class="o">[</span>Jhon <span class="o">[</span>alfons       // 通过指定string区间获取元素
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;Jhon&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;Tom&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// zrangebyscore
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; zrangebyscore classset <span class="m">2</span> <span class="m">4</span>      // 通过指定分值区间获取元素
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;Tom&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;alfons&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;maple&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// zscore key member
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; ZSCORE classset maple       // 获取指定成员的分值
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;4&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// zrem key member
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; ZREM classset alfons        // 移除指定元素
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; zrange classset <span class="m">0</span> -1
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;Jhon&#34;</span>
+</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;Tom&#34;</span>
+</span></span><span class="line"><span class="cl">3<span class="o">)</span> <span class="s2">&#34;maple&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// zremrangebylex key min max
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; zremrangebylex classset <span class="o">[</span>Jhon <span class="o">[</span>Tom      // 通过字符串找到指定位置，移除中间的元素
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; zrange classset <span class="m">0</span> -1
+</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;maple&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// zremrangebyrank key start stop
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; zremrangebyrank classset <span class="m">0</span> -1       // 以切片的方式移除元素
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li><a href="http://www.runoob.com/redis/redis-tutorial.html">Redis 教程</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-01-13
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/python/">Python</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/redis/">Redis</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/python/python_pymysql%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Python pymysql连接错误</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/algorithms/algorithmsarea/k%E8%B7%AF%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
+            <span class="next-text nav-default">k路归并排序</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SqlAlchemy on Alfons&#39;s Blog</title>
+    <link>https://alfonsxh.github.io/Blog/categories/sqlalchemy/</link>
+    <description>Recent content in SqlAlchemy on Alfons&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 28 Jan 2019 15:17:03 +0000</lastBuildDate>
+    <atom:link href="https://alfonsxh.github.io/Blog/categories/sqlalchemy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SqlAlchemy使用</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/sqlalchemy/</link>
+      <pubDate>Mon, 28 Jan 2019 14:17:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/sqlalchemy/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;SqlAlchemy(Sql炼金术？)&lt;/strong&gt; 是Python下的一款 &lt;strong&gt;ORM(Object Relational Mapping 对象关系映射)框架&lt;/strong&gt;，框架建立在数据库API之上，使用关系对象映射进行数据库操作。将对象转换为sql，然后调用数据库API执行sql并获取结果。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

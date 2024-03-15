@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Frida使用手册 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Frida使用手册" /><meta name="keywords" content="Python, Frida" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/python/frida/frida_%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Frida使用手册</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-11-29 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/python/"> Python </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/frida/"> Frida </a>
+            </div>
+          <span class="more-meta"> 1558 words </span>
+          <span class="more-meta"> 8 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#0介绍">0、介绍</a></li>
+        <li><a href="#1安装">1、安装</a></li>
+        <li><a href="#2frida-tools">2、frida-tools</a>
+          <ul>
+            <li><a href="#21frida-ps">2.1、frida-ps</a></li>
+            <li><a href="#22frida-discover">2.2、frida-discover</a></li>
+            <li><a href="#23frida-ls-devices">2.3、frida-ls-devices</a></li>
+            <li><a href="#24frida-kill">2.4、frida-kill</a></li>
+            <li><a href="#25frida-trace">2.5、frida-trace</a></li>
+          </ul>
+        </li>
+        <li><a href="#3frida-cli">3、frida-cli</a></li>
+        <li><a href="#4python绑定">4、Python绑定</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="0介绍">0、介绍</h2>
+<p><code>Frida</code> 是一个跨平台的应用分析工具。能够注入JavaScript或者自己库的片段注入到 Windows, macOS, Linux, iOS, Android, and QNX 平台的应用上。支持 Google 的 <code>V8</code> 引擎，从版本9开始，也支持 <code>Duktape</code>。</p>
+<p>代码注入的方式很多。<code>Xposed</code> 会永久修改Android应用程序加载器，每次启动的新进程都运行的时自己的挂钩程序。</p>
+<p><code>Frida</code> 通过将代码直接写入进程内存来实现代码的植入。当附加到正在运行的应用程序时，<code>Frida</code>使用<code>ptrace</code>来劫持正在运行的进程的线程。该线程用于分配一块内存并使用迷你引导程序填充它。引导程序启动一个新线程，连接到设备上运行的<code>Frida</code>调试服务器，并加载包含<code>Frida</code>代理程序和检测代码的动态生成的库文件。被劫持的线程在恢复到其原始状态后恢复，并且流程执行继续照常进行。</p>
+<p><img src="https://raw.githubusercontent.com/OWASP/owasp-mstg/master/Document/Images/Chapters/0x04/frida.png" alt="Frida"></p>
+<p><em><strong>FRIDA Architecture，来源：http：//www.frida.re/docs/hacking/</strong></em></p>
+<p>以下是FRIDA在Android上提供的主要API：</p>
+<ul>
+<li>实例化Java对象并调用静态和非静态类方法</li>
+<li>替换Java方法实现</li>
+<li>通过扫描Java堆枚举特定类的实时实例（仅限Dalvik）</li>
+<li>扫描进程内存以查找字符串</li>
+<li>拦截本机函数调用以在函数入口和出口处运行您自己的代码</li>
+</ul>
+<h2 id="1安装">1、安装</h2>
+<p>Windows或Linux上需要安装python模块以及frida-tools工具包。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="n">frida</span>       <span class="c1"># python 模块</span>
+</span></span><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="n">frida</span><span class="o">-</span><span class="n">tools</span> <span class="c1"># frida 工具</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在Android设备上，需要下载<a href="https://build.frida.re/frida-snapshot/android/arm/bin/frida-server">frida-server</a>，然后将frida-server工具push到设备上，然后添加可执行权限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">alfons&gt;$ adb push ./frida-server /data/local/tmp/frida-server
+</span></span><span class="line"><span class="cl">alfons&gt;$ adb shell
+</span></span><span class="line"><span class="cl">alfons&gt;$ <span class="nb">cd</span>  /data/local/tmp/frida-server
+</span></span><span class="line"><span class="cl">alfons&gt;$ chmod +x frida-server
+</span></span><span class="line"><span class="cl">alfons&gt;$ ./frida-server
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意：Android必须root。</p>
+<h2 id="2frida-tools">2、frida-tools</h2>
+<p>工具包里包含了以下小工具：</p>
+<ul>
+<li><strong>frida-ps</strong></li>
+<li><strong>frida-discover</strong></li>
+<li><strong>frida-ls-devices</strong></li>
+<li><strong>frida-kill</strong></li>
+<li><strong>frida-trace</strong></li>
+</ul>
+<h3 id="21frida-ps">2.1、frida-ps</h3>
+<p>显示特定设备的进程信息，默认为本机的进程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">alfons&gt;$ frida-ps --help
+</span></span><span class="line"><span class="cl">Usage: frida-ps <span class="o">[</span>options<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Options:
+</span></span><span class="line"><span class="cl">  --version             show program<span class="err">&#39;</span>s version number and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">  -D ID, --device<span class="o">=</span>ID    connect to device with the given ID
+</span></span><span class="line"><span class="cl">  -U, --usb             connect to USB device
+</span></span><span class="line"><span class="cl">  -R, --remote          connect to remote frida-server
+</span></span><span class="line"><span class="cl">  -H HOST, --host<span class="o">=</span>HOST  connect to remote frida-server on HOST
+</span></span><span class="line"><span class="cl">  -a, --applications    list only applications
+</span></span><span class="line"><span class="cl">  -i, --installed       include all installed applications
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># -U 显示usb连接的设备</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -a 显示应用的进程</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -i 显示安装的应用</span>
+</span></span><span class="line"><span class="cl">alfons&gt;$ frida-ps -U -a
+</span></span><span class="line"><span class="cl"> PID  Name                                      Identifier
+</span></span><span class="line"><span class="cl">----  ----------------------------------------  ---------------------------------------
+</span></span><span class="line"><span class="cl"><span class="m">1862</span>  Android Services Library                  com.google.android.ext.services
+</span></span><span class="line"><span class="cl"><span class="m">7808</span>  Chrome                                    com.android.chrome
+</span></span><span class="line"><span class="cl"><span class="m">7179</span>  SuperSU                                   eu.chainfire.supersu
+</span></span><span class="line"><span class="cl"><span class="m">4619</span>  Telegram                                  org.telegram.messenger
+</span></span><span class="line"><span class="cl"><span class="m">6919</span>  YouTube                                   com.google.android.youtube
+</span></span><span class="line"><span class="cl"><span class="m">4526</span>  com.qualcomm.atfwd                        com.qualcomm.atfwd
+</span></span><span class="line"><span class="cl"><span class="m">1935</span>  com.quicinc.cne.CNEService.CNEServiceApp  com.quicinc.cne.CNEService
+</span></span><span class="line"><span class="cl"><span class="m">1585</span>  org.codeaurora.ims                        org.codeaurora.ims
+</span></span><span class="line"><span class="cl">···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="22frida-discover">2.2、frida-discover</h3>
+<p>记录一段时间内各线程调⽤用的函数和符号名。(似乎没什么效果)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">alfons&gt;$ frida-discover --help
+</span></span><span class="line"><span class="cl">Usage: frida-discover <span class="o">[</span>options<span class="o">]</span> target
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Options:
+</span></span><span class="line"><span class="cl">  --version             show program<span class="err">&#39;</span>s version number and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">  -D ID, --device<span class="o">=</span>ID    connect to device with the given ID
+</span></span><span class="line"><span class="cl">  -U, --usb             connect to USB device
+</span></span><span class="line"><span class="cl">  -R, --remote          connect to remote frida-server
+</span></span><span class="line"><span class="cl">  -H HOST, --host<span class="o">=</span>HOST  connect to remote frida-server on HOST
+</span></span><span class="line"><span class="cl">  -f FILE, --file<span class="o">=</span>FILE  spawn FILE
+</span></span><span class="line"><span class="cl">  -n NAME, --attach-name<span class="o">=</span>NAME
+</span></span><span class="line"><span class="cl">                        attach to NAME
+</span></span><span class="line"><span class="cl">  -p PID, --attach-pid<span class="o">=</span>PID
+</span></span><span class="line"><span class="cl">                        attach to PID
+</span></span><span class="line"><span class="cl">  --debug               <span class="nb">enable</span> the Node.js compatible script debugger
+</span></span><span class="line"><span class="cl">  --enable-jit          <span class="nb">enable</span> JIT
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="23frida-ls-devices">2.3、frida-ls-devices</h3>
+<p>显示连接的终端设备信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">alfons&gt;$ frida-ls-devices --help
+</span></span><span class="line"><span class="cl">Usage: frida-ls-devices <span class="o">[</span>options<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Options:
+</span></span><span class="line"><span class="cl">  --version   show program<span class="err">&#39;</span>s version number and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">  -h, --help  show this <span class="nb">help</span> message and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">alfons&gt;$ frida-ls-devices
+</span></span><span class="line"><span class="cl">Id          Type    Name
+</span></span><span class="line"><span class="cl">----------  ------  ----------------
+</span></span><span class="line"><span class="cl"><span class="nb">local</span>       <span class="nb">local</span>   Local System
+</span></span><span class="line"><span class="cl">ZX1G222TZL  usb     Motorola Nexus <span class="m">6</span>
+</span></span><span class="line"><span class="cl">tcp         remote  Local TCP
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="24frida-kill">2.4、frida-kill</h3>
+<p>杀死特定终端上的指定进程，<strong>名称</strong> 或者 <strong>进程号</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">alfons&gt;$ frida-kill --help
+</span></span><span class="line"><span class="cl">Usage: frida-kill <span class="o">[</span>options<span class="o">]</span> process
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Options:
+</span></span><span class="line"><span class="cl">  --version             show program<span class="err">&#39;</span>s version number and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">  -D ID, --device<span class="o">=</span>ID    connect to device with the given ID
+</span></span><span class="line"><span class="cl">  -U, --usb             connect to USB device
+</span></span><span class="line"><span class="cl">  -R, --remote          connect to remote frida-server
+</span></span><span class="line"><span class="cl">  -H HOST, --host<span class="o">=</span>HOST  connect to remote frida-server on HOST
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 杀死usb设备上进程ID为23031的进程</span>
+</span></span><span class="line"><span class="cl">alfons&gt;$ frida-kill -U <span class="m">23031</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="25frida-trace">2.5、frida-trace</h3>
+<p><strong>frida-trace</strong> 命令可以跟踪目标应用的使用痕迹。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">alfons&gt;$ frida-trace --help
+</span></span><span class="line"><span class="cl">Usage: frida-trace <span class="o">[</span>options<span class="o">]</span> target
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Options:
+</span></span><span class="line"><span class="cl">  --version             show program<span class="s1">&#39;s version number and exit
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -h, --help            show this help message and exit
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -D ID, --device=ID    connect to device with the given ID
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -U, --usb             connect to USB device
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -R, --remote          connect to remote frida-server
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -H HOST, --host=HOST  connect to remote frida-server on HOST
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -f FILE, --file=FILE  spawn FILE
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -n NAME, --attach-name=NAME
+</span></span></span><span class="line"><span class="cl"><span class="s1">                        attach to NAME
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -p PID, --attach-pid=PID
+</span></span></span><span class="line"><span class="cl"><span class="s1">                        attach to PID
+</span></span></span><span class="line"><span class="cl"><span class="s1">  --debug               enable the Node.js compatible script debugger
+</span></span></span><span class="line"><span class="cl"><span class="s1">  --enable-jit          enable JIT
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -I MODULE, --include-module=MODULE
+</span></span></span><span class="line"><span class="cl"><span class="s1">                        include MODULE
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -X MODULE, --exclude-module=MODULE
+</span></span></span><span class="line"><span class="cl"><span class="s1">                        exclude MODULE
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -i FUNCTION, --include=FUNCTION
+</span></span></span><span class="line"><span class="cl"><span class="s1">                        include FUNCTION
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -x FUNCTION, --exclude=FUNCTION
+</span></span></span><span class="line"><span class="cl"><span class="s1">                        exclude FUNCTION
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -a MODULE!OFFSET, --add=MODULE!OFFSET
+</span></span></span><span class="line"><span class="cl"><span class="s1">                        add MODULE!OFFSET
+</span></span></span><span class="line"><span class="cl"><span class="s1">  -T, --include-imports
+</span></span></span><span class="line"><span class="cl"><span class="s1">                        include program&#39;</span>s imports
+</span></span><span class="line"><span class="cl">  -t MODULE, --include-module-imports<span class="o">=</span>MODULE
+</span></span><span class="line"><span class="cl">                        include MODULE imports
+</span></span><span class="line"><span class="cl">  -m OBJC_METHOD, --include-objc-method<span class="o">=</span>OBJC_METHOD
+</span></span><span class="line"><span class="cl">                        include OBJC_METHOD
+</span></span><span class="line"><span class="cl">  -s DEBUG_SYMBOL, --include-debug-symbol<span class="o">=</span>DEBUG_SYMBOL
+</span></span><span class="line"><span class="cl">                        include DEBUG_SYMBOL
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用 <strong>frida-trace</strong> 能够Hook设备上应用程序的调用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 显示usb设备上微信的使用痕迹</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -f 参数为启动对应的应用程序，不加此参数时，需要设备上对应的程序处于启动状态。</span>
+</span></span><span class="line"><span class="cl">alfons&gt;$ frida-trace -i dlsym -U -f com.tencent.mm
+</span></span><span class="line"><span class="cl">Spawning <span class="sb">`</span>com.tencent.mm<span class="sb">`</span>...
+</span></span><span class="line"><span class="cl">Resolving functions...
+</span></span><span class="line"><span class="cl">Instrumenting functions...
+</span></span><span class="line"><span class="cl">dlsym: Auto-generated handler at <span class="s2">&#34;C:\Users\xiaohui\Desktop\__handlers__\linker\dlsym.js&#34;</span>
+</span></span><span class="line"><span class="cl">Started tracing <span class="m">1</span> <span class="k">function</span>. Press Ctrl+C to stop.
+</span></span><span class="line"><span class="cl">           /* TID 0x437e */
+</span></span><span class="line"><span class="cl">   <span class="m">336</span> ms  dlsym<span class="o">()</span>
+</span></span><span class="line"><span class="cl">   <span class="m">336</span> ms  dlsym<span class="o">()</span>
+</span></span><span class="line"><span class="cl">   <span class="m">337</span> ms  dlsym<span class="o">()</span>
+</span></span><span class="line"><span class="cl">   ···
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 不加-f参数需要手动启动对应的程序，否则会执行失败。</span>
+</span></span><span class="line"><span class="cl">alfons&gt;$ frida-trace -i dlsym -U  com.tencent.mm
+</span></span><span class="line"><span class="cl">Attaching...
+</span></span><span class="line"><span class="cl">Resolving functions...
+</span></span><span class="line"><span class="cl">Instrumenting functions...
+</span></span><span class="line"><span class="cl">dlsym: Loaded handler at <span class="s2">&#34;C:\Users\xiaohui\Desktop\__handlers__\linker\dlsym.js&#34;</span>
+</span></span><span class="line"><span class="cl">Started tracing <span class="m">1</span> <span class="k">function</span>. Press Ctrl+C to stop.
+</span></span><span class="line"><span class="cl">           /* TID 0x464e */
+</span></span><span class="line"><span class="cl"> <span class="m">12301</span> ms  dlsym<span class="o">()</span>
+</span></span><span class="line"><span class="cl"> ···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用 <strong>frida-trace</strong> 命令会在指定目录生成对应的Javascript文件，然后Frida将其注入到进程中，并hook特定调用（libc.so中的dlsym函数）。修改生成的Javascript文件dlsym.js可以输出dlsym函数的调用参数。</p>
+<p>通过修改 <strong>dlsym.js</strong> 的内容可以查看更多关于进程的信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">onEnter: <span class="k">function</span> <span class="o">(</span>log, args, state<span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  log<span class="o">(</span><span class="s2">&#34;dlsym(&#34;</span> + <span class="s2">&#34;pathname=&#34;</span> + Memory.readUtf8String<span class="o">(</span>args<span class="o">[</span>0<span class="o">])</span> + <span class="s2">&#34;, flags=&#34;</span> + Memory.readUtf8String<span class="o">(</span>args<span class="o">[</span>1<span class="o">])</span> + <span class="s2">&#34;)&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>args包含的是对应目标函数的传入参数列表的地址，使用Memory.readUtf8String()函数获取对应的字符串。</p>
+<p>再次运行程序输出如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">alfons&gt;$ frida-trace -i dlsym -U -f com.tencent.mm
+</span></span><span class="line"><span class="cl">Spawning <span class="sb">`</span>com.tencent.mm<span class="sb">`</span>...
+</span></span><span class="line"><span class="cl">Resolving functions...
+</span></span><span class="line"><span class="cl">Instrumenting functions...
+</span></span><span class="line"><span class="cl">dlsym: Loaded handler at <span class="s2">&#34;C:\Users\xiaohui\Desktop\__handlers__\linker\dlsym.js&#34;</span>
+</span></span><span class="line"><span class="cl">Started tracing <span class="m">1</span> <span class="k">function</span>. Press Ctrl+C to stop.
+</span></span><span class="line"><span class="cl">           /* TID 0x3f40 */
+</span></span><span class="line"><span class="cl">   <span class="m">274</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>javalib.odex, <span class="nv">flags</span><span class="o">=</span>oatdata<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">274</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>javalib.odex, <span class="nv">flags</span><span class="o">=</span>oatlastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">274</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>javalib.odex, <span class="nv">flags</span><span class="o">=</span>oatxposed<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">275</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>javalib.odex, <span class="nv">flags</span><span class="o">=</span>oatbss<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">275</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>javalib.odex, <span class="nv">flags</span><span class="o">=</span>oatbsslastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">277</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>base.odex, <span class="nv">flags</span><span class="o">=</span>oatdata<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">278</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>base.odex, <span class="nv">flags</span><span class="o">=</span>oatlastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">278</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>base.odex, <span class="nv">flags</span><span class="o">=</span>oatxposed<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">278</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>base.odex, <span class="nv">flags</span><span class="o">=</span>oatxposedlastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">278</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>base.odex, <span class="nv">flags</span><span class="o">=</span>oatbss<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">279</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>base.odex, <span class="nv">flags</span><span class="o">=</span>oatbsslastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">912</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>javalib.odex, <span class="nv">flags</span><span class="o">=</span>oatdata<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">912</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>javalib.odex, <span class="nv">flags</span><span class="o">=</span>oatlastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">912</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>javalib.odex, <span class="nv">flags</span><span class="o">=</span>oatxposed<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">913</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>javalib.odex, <span class="nv">flags</span><span class="o">=</span>oatbss<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">913</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>javalib.odex, <span class="nv">flags</span><span class="o">=</span>oatbsslastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">915</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>base.odex, <span class="nv">flags</span><span class="o">=</span>oatdata<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">915</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>base.odex, <span class="nv">flags</span><span class="o">=</span>oatlastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">915</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>base.odex, <span class="nv">flags</span><span class="o">=</span>oatxposed<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">915</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>base.odex, <span class="nv">flags</span><span class="o">=</span>oatxposedlastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">915</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>base.odex, <span class="nv">flags</span><span class="o">=</span>oatbss<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">915</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>base.odex, <span class="nv">flags</span><span class="o">=</span>oatbsslastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">958</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>tinker_classN.dex, <span class="nv">flags</span><span class="o">=</span>oatdata<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">959</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>tinker_classN.dex, <span class="nv">flags</span><span class="o">=</span>oatlastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">959</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>tinker_classN.dex, <span class="nv">flags</span><span class="o">=</span>oatxposed<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">959</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>tinker_classN.dex, <span class="nv">flags</span><span class="o">=</span>oatxposedlastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">959</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>tinker_classN.dex, <span class="nv">flags</span><span class="o">=</span>oatbss<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   <span class="m">959</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>tinker_classN.dex, <span class="nv">flags</span><span class="o">=</span>oatbsslastword<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="m">1069</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>libstlport_shared.so, <span class="nv">flags</span><span class="o">=</span>JNI_OnLoad<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="m">1073</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>libc++_shared.so, <span class="nv">flags</span><span class="o">=</span>JNI_OnLoad<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="m">1076</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>libwechatxlog.so, <span class="nv">flags</span><span class="o">=</span>JNI_OnLoad<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="m">1136</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>libc++_shared.so, <span class="nv">flags</span><span class="o">=</span>Java_com_tencent_mars_xlog_Xlog_setConsoleLogOpen<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="m">1136</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>libc++_shared.so, <span class="nv">flags</span><span class="o">=</span>Java_com_tencent_mars_xlog_Xlog_setConsoleLogOpen__Z<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="m">1136</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>libstlport_shared.so, <span class="nv">flags</span><span class="o">=</span>Java_com_tencent_mars_xlog_Xlog_setConsoleLogOpen<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="m">1136</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>libstlport_shared.so, <span class="nv">flags</span><span class="o">=</span>Java_com_tencent_mars_xlog_Xlog_setConsoleLogOpen__Z<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="m">1137</span> ms  dlsym<span class="o">(</span><span class="nv">pathname</span><span class="o">=</span>libwechatxlog.so, <span class="nv">flags</span><span class="o">=</span>Java_com_tencent_mars_xlog_Xlog_setConsoleLogOpen<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  ···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3frida-cli">3、frida-cli</h2>
+<p><strong>Frida</strong> 还提供了shell界面，用户可以使用Frida的<a href="https://www.frida.re/docs/javascript-api/#java">Javascrip API</a>写命令了。不同于hook libc函数，我们可以直接使用Java函数和对象，通过Tab可以查看和补全命令。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">alfons&gt;$ frida --help
+</span></span><span class="line"><span class="cl">Usage: frida <span class="o">[</span>options<span class="o">]</span> target
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Options:
+</span></span><span class="line"><span class="cl">  --version             show program<span class="err">&#39;</span>s version number and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">  -D ID, --device<span class="o">=</span>ID    connect to device with the given ID
+</span></span><span class="line"><span class="cl">  -U, --usb             connect to USB device
+</span></span><span class="line"><span class="cl">  -R, --remote          connect to remote frida-server
+</span></span><span class="line"><span class="cl">  -H HOST, --host<span class="o">=</span>HOST  connect to remote frida-server on HOST
+</span></span><span class="line"><span class="cl">  -f FILE, --file<span class="o">=</span>FILE  spawn FILE
+</span></span><span class="line"><span class="cl">  -n NAME, --attach-name<span class="o">=</span>NAME
+</span></span><span class="line"><span class="cl">                        attach to NAME
+</span></span><span class="line"><span class="cl">  -p PID, --attach-pid<span class="o">=</span>PID
+</span></span><span class="line"><span class="cl">                        attach to PID
+</span></span><span class="line"><span class="cl">  --debug               <span class="nb">enable</span> the Node.js compatible script debugger
+</span></span><span class="line"><span class="cl">  --enable-jit          <span class="nb">enable</span> JIT
+</span></span><span class="line"><span class="cl">  -l SCRIPT, --load<span class="o">=</span>SCRIPT
+</span></span><span class="line"><span class="cl">                        load SCRIPT
+</span></span><span class="line"><span class="cl">  -c CODESHARE_URI, --codeshare<span class="o">=</span>CODESHARE_URI
+</span></span><span class="line"><span class="cl">                        load CODESHARE_URI
+</span></span><span class="line"><span class="cl">  -e CODE, --eval<span class="o">=</span>CODE  evaluate CODE
+</span></span><span class="line"><span class="cl">  -q                    quiet mode <span class="o">(</span>no prompt<span class="o">)</span> and quit after -l and -e
+</span></span><span class="line"><span class="cl">  --no-pause            automatically start main thread after startup
+</span></span><span class="line"><span class="cl">  -o LOGFILE, --output<span class="o">=</span>LOGFILE
+</span></span><span class="line"><span class="cl">                        output to log file
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可选参数和 <strong>frida-trace</strong> 类似。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 启动微信</span>
+</span></span><span class="line"><span class="cl">alfons&gt;$ frida -U --no-pause -f com.tencent.mm
+</span></span><span class="line"><span class="cl">     ____
+</span></span><span class="line"><span class="cl">    / _  <span class="p">|</span>   Frida 12.0.4 - A world-class dynamic instrumentation toolkit
+</span></span><span class="line"><span class="cl">   <span class="p">|</span> <span class="o">(</span>_<span class="p">|</span> <span class="p">|</span>
+</span></span><span class="line"><span class="cl">    &gt; _  <span class="p">|</span>   Commands:
+</span></span><span class="line"><span class="cl">   /_/ <span class="p">|</span>_<span class="p">|</span>       <span class="nb">help</span>      -&gt; Displays the <span class="nb">help</span> system
+</span></span><span class="line"><span class="cl">   . . . .       object?   -&gt; Display information about <span class="s1">&#39;object&#39;</span>
+</span></span><span class="line"><span class="cl">   . . . .       exit/quit -&gt; Exit
+</span></span><span class="line"><span class="cl">   . . . .
+</span></span><span class="line"><span class="cl">   . . . .   More info at http://www.frida.re/docs/home/
+</span></span><span class="line"><span class="cl">Spawning <span class="sb">`</span>com.tencent.mm<span class="sb">`</span>...
+</span></span><span class="line"><span class="cl">Spawned <span class="sb">`</span>com.tencent.mm<span class="sb">`</span>. Resuming main thread!
+</span></span><span class="line"><span class="cl"><span class="o">[</span>Motorola Nexus 6::com.tencent.mm<span class="o">]</span>-&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>打印目标应用所包含的类名。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>Motorola Nexus 6::com.tencent.mm<span class="o">]</span>-&gt; Java.perform<span class="o">(</span><span class="k">function</span><span class="o">(){</span>Java.enumerateLoadedClasses<span class="o">({</span><span class="s2">&#34;onMatch&#34;</span>:function<span class="o">(</span>className<span class="o">){</span> console.log<span class="o">(</span>className<span class="o">)</span> <span class="o">}</span>,<span class="s2">&#34;onComplete&#34;</span>:function<span class="o">(){}})})</span>
+</span></span><span class="line"><span class="cl">···
+</span></span><span class="line"><span class="cl">com.tencent.common.http.MttRequestBase
+</span></span><span class="line"><span class="cl">com.tencent.smtt.webkit.WebViewChromiumExtension<span class="nv">$61</span>
+</span></span><span class="line"><span class="cl">org.chromium.android_webview.ScrollAccessibilityHelper<span class="nv">$HandlerCallback</span>
+</span></span><span class="line"><span class="cl">com.tencent.common.threadpool.ComparableFutureTask
+</span></span><span class="line"><span class="cl">com.tencent.tbs.core.webkit.WebView
+</span></span><span class="line"><span class="cl">com.tencent.mtt.game.export.IGamePlayerPrivateResolver
+</span></span><span class="line"><span class="cl">org.chromium.content_public.browser.LoadUrlParams
+</span></span><span class="line"><span class="cl">com.tencent.tbs.common.lbs.LBS
+</span></span><span class="line"><span class="cl">···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用的脚本内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">Java</span><span class="p">.</span><span class="nx">enumerateLoadedClasses</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;onMatch&#34;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">className</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">className</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;onComplete&#34;</span><span class="o">:</span><span class="kd">function</span><span class="p">(){}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用Fridas API的 <strong>Java.enumerateLoadedClasses</strong> 枚举所有加载的类，并使用console.log将匹配的类输出到控制台。</p>
+<p>我们还可以使用本地的js文件来执行。</p>
+<p>例如mm.js：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">Java</span><span class="p">.</span><span class="nx">perform</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Java</span><span class="p">.</span><span class="nx">enumerateLoadedClasses</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;onMatch&#34;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">className</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">className</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;onComplete&#34;</span><span class="o">:</span><span class="kd">function</span><span class="p">(){}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>运行时通过 <strong>-l</strong> 参数加载对应的javascript脚本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">alfons&gt;$ frida -U --no-pause -l ./mm.js -f com.tencent.mm
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4python绑定">4、Python绑定</h2>
+<p>通过导入 <strong>frida</strong> 模块，可以使用python编写对应的程序，实现相应的功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">frida</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 注入的js代码</span>
+</span></span><span class="line"><span class="cl"><span class="n">jscode</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># message 的回调函数</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;send&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[*] </span><span class="si">{0}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;payload&#39;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">session</span> <span class="o">=</span> <span class="n">frida</span><span class="o">.</span><span class="n">get_usb_device</span><span class="p">()</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="s1">&#39;app full name&#39;</span><span class="p">)</span>  <span class="c1"># 附着的usb设备的对应的程序的进程，返回会话</span>
+</span></span><span class="line"><span class="cl"><span class="n">script</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">create_script</span><span class="p">(</span><span class="n">jscode</span><span class="p">)</span>  <span class="c1"># 创建执行的脚本</span>
+</span></span><span class="line"><span class="cl"><span class="n">script</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="n">on_message</span><span class="p">)</span>  <span class="c1"># 回调函数</span>
+</span></span><span class="line"><span class="cl"><span class="n">script</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>  <span class="c1"># 加载js脚本执行的结果</span>
+</span></span><span class="line"><span class="cl"><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;Press enter to continue...&#34;</span><span class="p">)</span>  <span class="c1"># 此句必须的，防止进程结束而无法展示结果</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面是使用python构造<code>frida</code>脚本的模板，主要包含了<code>Javascript</code>脚本代码，必要的回调函数。</p>
+<p>具体使用见下面代码，打印程序所加载的所有类名。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">frida</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">jscode</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">console.log(&#34;[*] Starting script&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="s2">Java.perform(function () {
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Java.enumerateLoadedClasses(
+</span></span></span><span class="line"><span class="cl"><span class="s2">    {
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;onMatch&#34;: function(className){
+</span></span></span><span class="line"><span class="cl"><span class="s2">            console.log(className)
+</span></span></span><span class="line"><span class="cl"><span class="s2">        },
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;onComplete&#34;:function()</span><span class="si">{}</span><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    });
+</span></span></span><span class="line"><span class="cl"><span class="s2">});
+</span></span></span><span class="line"><span class="cl"><span class="s2">console.log(&#34;[*] Stoping script&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[*]message:&#34;</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[*]data:&#34;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[*]on_message except!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">enumerate_devices</span> <span class="o">=</span> <span class="n">frida</span><span class="o">.</span><span class="n">enumerate_devices</span><span class="p">()</span>  <span class="c1"># 获取所有的设备</span>
+</span></span><span class="line"><span class="cl"><span class="n">get_local_device</span> <span class="o">=</span> <span class="n">frida</span><span class="o">.</span><span class="n">get_local_device</span><span class="p">()</span>  <span class="c1"># 获取本地设备</span>
+</span></span><span class="line"><span class="cl"><span class="n">get_remote_device</span> <span class="o">=</span> <span class="n">frida</span><span class="o">.</span><span class="n">get_remote_device</span><span class="p">()</span>  <span class="c1"># 获取远程设备</span>
+</span></span><span class="line"><span class="cl"><span class="n">device</span> <span class="o">=</span> <span class="n">frida</span><span class="o">.</span><span class="n">get_usb_device</span><span class="p">()</span>  <span class="c1"># 获取usb设备</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 启动应用，并返回对应的进程号</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># processId = device.spawn(&#34;com.tencent.mm&#34;)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># session = device.attach(processId)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 下面两个函数 get_process attach 都需要在设备上启动了程序后，才能获取到进程状态</span>
+</span></span><span class="line"><span class="cl"><span class="n">processInfo</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">get_process</span><span class="p">(</span><span class="s2">&#34;com.tencent.mm&#34;</span><span class="p">)</span>  <span class="c1"># 获取微信的进程信息</span>
+</span></span><span class="line"><span class="cl"><span class="n">attachSession</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">processInfo</span><span class="o">.</span><span class="n">pid</span><span class="p">)</span>  <span class="c1"># 附着微信的进程，并返回进程的会话</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">script</span> <span class="o">=</span> <span class="n">attachSession</span><span class="o">.</span><span class="n">create_script</span><span class="p">(</span><span class="s1">&#39;console.log(&#34;[*] Starting script&#34;);&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># script = attachSession.create_script(jscode)    # 创建一个新的js脚本</span>
+</span></span><span class="line"><span class="cl"><span class="n">script</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&#34;message&#34;</span><span class="p">,</span> <span class="n">on_message</span><span class="p">)</span>    <span class="c1"># 设置 message 回调函数</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[*] Running CTF&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">script</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>       <span class="c1"># 加载js脚本运行结果</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">device</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">processInfo</span><span class="o">.</span><span class="n">pid</span><span class="p">)</span>        <span class="c1"># 杀死对应的进程，参数可以是进程名称或者进程号</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;Press enter to continue...&#34;</span><span class="p">)</span>  <span class="c1"># 此句必须的，防止进程结束而无法展示结果</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面代码会打印目标进程的类名信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Running CTF
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Starting script
+</span></span><span class="line"><span class="cl">org.apache.http.HttpEntityEnclosingRequest
+</span></span><span class="line"><span class="cl">org.apache.http.ProtocolVersion
+</span></span><span class="line"><span class="cl">org.apache.http.HttpResponse
+</span></span><span class="line"><span class="cl">org.apache.http.impl.cookie.DateParseException
+</span></span><span class="line"><span class="cl">org.apache.http.HeaderIterator
+</span></span><span class="line"><span class="cl">···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意：<strong>使用Frida的关键还是在于Javascript脚本的编写！！</strong></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-11-29
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/python/">Python</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/frida/">Frida</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/python/frida/frida_api_%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Frida API</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/python/spider/lxml%E4%B8%AD%E4%BD%BF%E7%94%A8xpath/">
+            <span class="next-text nav-default">Python lxml模块中使用XPath语句</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Docker(四) - 实例: redis主从同步实现 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Docker使用(一)--redis主从同步实现" /><meta name="keywords" content="Docker" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/docker/docker_3_redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E5%AE%9E%E7%8E%B0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Docker(四) - 实例: redis主从同步实现</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-09 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/docker/"> Docker </a>
+            </div>
+          <span class="more-meta"> 410 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#目的">目的</a></li>
+        <li><a href="#实现">实现</a>
+          <ul>
+            <li><a href="#下载redis容器">下载redis容器</a></li>
+            <li><a href="#启动容器">启动容器</a></li>
+            <li><a href="#启动redis-server">启动redis-server</a></li>
+          </ul>
+        </li>
+        <li><a href="#测试">测试</a>
+          <ul>
+            <li><a href="#2019年-02月-19日-星期二-172949-cst-补充">2019年 02月 19日 星期二 17:29:49 CST (补充)</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="目的">目的</h2>
+<p>使用容器，使得一个主机和两个备机实现数据同步。</p>
+<h2 id="实现">实现</h2>
+<h3 id="下载redis容器">下载redis容器</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">xiaohui@ubuntu:~# docker pull redis
+</span></span><span class="line"><span class="cl">Using default tag: latest
+</span></span><span class="line"><span class="cl">latest: Pulling from library/redis
+</span></span><span class="line"><span class="cl">6ae821421a7d: Already exists 
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">Digest: sha256:dd5b84ce536dffdcab79024f4df5485d010affa09e6c399b215e199a0dca38c4
+</span></span><span class="line"><span class="cl">Status: Downloaded newer image <span class="k">for</span> redis:latest
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="启动容器">启动容器</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 启动主机容器</span>
+</span></span><span class="line"><span class="cl">xiaohui@ubuntu:~$ docker run -dit --name redis-master redis bash
+</span></span><span class="line"><span class="cl">e03a8128819651a979d4364129e0128286747843aa12a673d20dfb42c01a444a
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 启动两个备机容器</span>
+</span></span><span class="line"><span class="cl">xiaohui@ubuntu:~$ docker run -dit --name redis-slave1 --link redis-master:master redis bash
+</span></span><span class="line"><span class="cl">832edb162d379e813c736da176c278276ac9bee775f337f4c8277b20fb0e8a19
+</span></span><span class="line"><span class="cl">xiaohui@ubuntu:~$ docker run -dit --name redis-slave2 --link redis-master:master redis bash
+</span></span><span class="line"><span class="cl">026a0599be31493e0eca6ba80722e45e7c2a0673fc4966b2aacd5cceda9eec90
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">xiaohui@ubuntu:~$ docker container ls -a
+</span></span><span class="line"><span class="cl">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+</span></span><span class="line"><span class="cl">026a0599be31        redis               <span class="s2">&#34;docker-entrypoint.s…&#34;</span>   <span class="m">15</span> seconds ago      Up <span class="m">15</span> seconds       6379/tcp            redis-slave2
+</span></span><span class="line"><span class="cl">832edb162d37        redis               <span class="s2">&#34;docker-entrypoint.s…&#34;</span>   <span class="m">21</span> seconds ago      Up <span class="m">20</span> seconds       6379/tcp            redis-slave1
+</span></span><span class="line"><span class="cl">e03a81288196        redis               <span class="s2">&#34;docker-entrypoint.s…&#34;</span>   <span class="m">43</span> seconds ago      Up <span class="m">42</span> seconds       6379/tcp            redis-master
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在启动备机容器时，使用了 <strong>&ndash;link</strong> 参数，这样做的好处是：</p>
+<ul>
+<li>避免容器的IP和端口暴露到外网导致安全问题</li>
+<li>防止容器在重启后IP发生变化导致访问失效</li>
+</ul>
+<p>在备机使用 <strong>&ndash;link</strong> 参数后，查看备机容器的 <strong>/etc/hosts</strong> 文件会发现，已经有对应的主机IP映射了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># redis-slave1 备机的hosts文件</span>
+</span></span><span class="line"><span class="cl">xiaohui@ubuntu:~$ docker <span class="nb">exec</span> -it redis-slave1 bash
+</span></span><span class="line"><span class="cl">root@832edb162d37:/data# cat /etc/hosts
+</span></span><span class="line"><span class="cl">127.0.0.1	localhost
+</span></span><span class="line"><span class="cl">::1	localhost ip6-localhost ip6-loopback
+</span></span><span class="line"><span class="cl">fe00::0	ip6-localnet
+</span></span><span class="line"><span class="cl">ff00::0	ip6-mcastprefix
+</span></span><span class="line"><span class="cl">ff02::1	ip6-allnodes
+</span></span><span class="line"><span class="cl">ff02::2	ip6-allrouters
+</span></span><span class="line"><span class="cl">172.17.0.2	master e03a81288196 redis-master
+</span></span><span class="line"><span class="cl">172.17.0.3	832edb162d37
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="启动redis-server">启动redis-server</h3>
+<p>在容器中，为了精简，没有文本编辑的命令，如：vi、nano等。需要使用 <strong>volume</strong> 共享卷的方式，在 <strong>实体机</strong> 上对配置文件进行编辑，然后在容器中从 <strong>/data</strong> 目录下拷贝到指定位置。</p>
+<h4 id="查找volume路径">查找volume路径</h4>
+<p>首先需要查找容器的 <strong>volume</strong> 位置，<strong>docker inspect</strong> 可以显示目标容器的低等级的配置信息，配合 <strong>&ndash;format</strong> 参数可以查看指定的配置项内容。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/docker/volume_format_1.png" alt="volume_format_1"></p>
+<p>使用上面的方式可能没法找到对应的 <strong>Volume</strong> 的位置，可以查找 <strong>Source</strong> 变量。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/docker/volume_format_2.png" alt="volume_format_2"></p>
+<p><strong>&ndash;format</strong> 需要有Go模板相关的知识，如果不熟悉的话，可以使用 <strong>grep</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@ubuntu:~# docker container inspect redis-master <span class="p">|</span> grep Source
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Source&#34;</span>: <span class="s2">&#34;/var/lib/docker/volumes/504da9723a3b47b4b3d3423a52540e9dad5e55b9bb05beb40fc2591abf42d1a9/_data&#34;</span>,
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>(虽然不优雅，但是很高效。)</p>
+<h4 id="拷贝配置文件并修改">拷贝配置文件并修改</h4>
+<p>接下来的步骤就是拷贝配置文件，并修改相关配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># cd /var/lib/docker/volumes/504da9723a3b47b4b3d3423a52540e9dad5e55b9bb05beb40fc2591abf42d1a9/_data/</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># cp &lt;your-own-redis-dir&gt;/redis-master.conf ./</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># nano redis-master.conf</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>注意：上面的步骤可能需要root权限。</code></p>
+<p>经过拷贝之后，可以在容器的 <strong>/data</strong> 目录下看见相应的配置文件，但配置文件需要经过一些修改才能使用。</p>
+<p>对于 <strong>主机</strong> 来说，配置文件需要修改下面几项内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># bind 127.0.0.1 ::1</span>
+</span></span><span class="line"><span class="cl">protected-mode no
+</span></span><span class="line"><span class="cl">daemonize yes
+</span></span><span class="line"><span class="cl">pidfile /var/run/redis.pid
+</span></span><span class="line"><span class="cl">logfile /usr/local/bin/redis-server.log
+</span></span><span class="line"><span class="cl">dir /usr/local/bin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对于 <strong>备机</strong> 来说，除了上面的内容之外，还需要加上 <strong>slaveof master 6379</strong> 这一条。</p>
+<h4 id="启动redis服务">启动redis服务</h4>
+<p>接下来的步骤 <strong>主机和备机</strong> 一样。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># cd /usr/local/bin/</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># cp /data/redis.conf ./</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># redis-server redis.conf</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在备机启动后，可以在主机查看备机的连接情况。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@e03a81288196:/usr/local/bin# redis-cli
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; info replication
+</span></span><span class="line"><span class="cl"><span class="c1"># Replication</span>
+</span></span><span class="line"><span class="cl">role:master
+</span></span><span class="line"><span class="cl">connected_slaves:2
+</span></span><span class="line"><span class="cl">slave0:ip<span class="o">=</span>172.17.0.3,port<span class="o">=</span>6379,state<span class="o">=</span>online,offset<span class="o">=</span>70,lag<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl">slave1:ip<span class="o">=</span>172.17.0.4,port<span class="o">=</span>6379,state<span class="o">=</span>online,offset<span class="o">=</span>56,lag<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl">master_replid:a5f528e0c25167ec110820c68ad4d709eff27f08
+</span></span><span class="line"><span class="cl">master_replid2:0000000000000000000000000000000000000000
+</span></span><span class="line"><span class="cl">master_repl_offset:70
+</span></span><span class="line"><span class="cl">second_repl_offset:-1
+</span></span><span class="line"><span class="cl">repl_backlog_active:1
+</span></span><span class="line"><span class="cl">repl_backlog_size:1048576
+</span></span><span class="line"><span class="cl">repl_backlog_first_byte_offset:1
+</span></span><span class="line"><span class="cl">repl_backlog_histlen:70
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到，已经有两台备机连上了。在备机上也可以通过同样的命令查看主机的信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@832edb162d37:/usr/local/bin# redis-cli
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; INFO replication
+</span></span><span class="line"><span class="cl"><span class="c1"># Replication</span>
+</span></span><span class="line"><span class="cl">role:slave
+</span></span><span class="line"><span class="cl">master_host:master
+</span></span><span class="line"><span class="cl">master_port:6379
+</span></span><span class="line"><span class="cl">master_link_status:up
+</span></span><span class="line"><span class="cl">master_last_io_seconds_ago:7
+</span></span><span class="line"><span class="cl">master_sync_in_progress:0
+</span></span><span class="line"><span class="cl">slave_repl_offset:56
+</span></span><span class="line"><span class="cl">slave_priority:100
+</span></span><span class="line"><span class="cl">slave_read_only:1
+</span></span><span class="line"><span class="cl">connected_slaves:0
+</span></span><span class="line"><span class="cl">master_replid:a5f528e0c25167ec110820c68ad4d709eff27f08
+</span></span><span class="line"><span class="cl">master_replid2:0000000000000000000000000000000000000000
+</span></span><span class="line"><span class="cl">master_repl_offset:56
+</span></span><span class="line"><span class="cl">second_repl_offset:-1
+</span></span><span class="line"><span class="cl">repl_backlog_active:1
+</span></span><span class="line"><span class="cl">repl_backlog_size:1048576
+</span></span><span class="line"><span class="cl">repl_backlog_first_byte_offset:1
+</span></span><span class="line"><span class="cl">repl_backlog_histlen:56
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>显示连接的主机 <strong>host为master， 端口为6379</strong>，与配置文件中配置的一致。</p>
+<h2 id="测试">测试</h2>
+<p>在开始时，主机和备机上都不含有数据。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/docker/get_master_nil.jpg" alt="get_master_nil"></p>
+<p>在主机上设置后，可以在备机上看到已经同步数据。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/docker/get_master_success.jpg" alt="get_master_success"></p>
+<hr>
+<h3 id="2019年-02月-19日-星期二-172949-cst-补充">2019年 02月 19日 星期二 17:29:49 CST (补充)</h3>
+<p>上面的实验也可以通过从新打包redis镜像文件的方式来实现，对应的 <strong>Dockerfile</strong> 内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> redis</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> redis-master.conf /usr/local/bin<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="nb">cd</span> /usr/local/bin <span class="o">&amp;&amp;</span> redis-server redis-master.conf <span class="o">&amp;&amp;</span> bash<span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>build完镜像文件后，只需创建对应的容器就行。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="http://blog.51cto.com/crfsz/1878137">Redis protected mode</a></li>
+<li><a href="https://blog.csdn.net/qmhball/article/details/52351755">redis主备同步配置方法</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-03-22
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/docker/">Docker</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC3%E7%AB%A0-%E5%AD%97%E5%85%B8%E5%92%8C%E9%9B%86%E5%90%88/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">流畅的Python - 第3章-字典和集合</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/docker/docker_2_dockerfile%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F/">
+            <span class="next-text nav-default">Docker(三) - Dockerfile 创建镜像</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Linux系统编程:概念 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Linux系统编程:概念" /><meta name="keywords" content="Linux, Linux系统编程" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%A6%82%E5%BF%B5/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Linux系统编程:概念</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-23 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/linux/"> Linux </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"> Linux系统编程 </a>
+            </div>
+          <span class="more-meta"> 282 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#内核">内核</a></li>
+        <li><a href="#系统调用">系统调用</a></li>
+        <li><a href="#课后习题">课后习题</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本篇文章主要记录了《Linux/Unix系统编程手册》第1-3章的学习笔记。</p>
+<h2 id="内核">内核</h2>
+<p><strong>操作系统</strong> 有两个不同的含义:</p>
+<ul>
+<li>广义上是指 <strong>完整的软件包</strong>，包括 <strong>用来管理计算机资源的核心层软件</strong>，以及附带的带有标准的软件工具: 命令行解释器、图形用户界面、文件操作工具和文本编辑器等。</li>
+<li>狭义上，是指 <strong>管理和分配计算机资源(CPU、RAM和设备)的核心层软件</strong>。</li>
+</ul>
+<p>虽然没有内核，计算机也能运行，但有了内核会极大的简化其他程序的编写和使用。</p>
+<p>内核的职责：</p>
+<ul>
+<li><strong>进程调度</strong>：和Unix一样，Linux属于 <strong>抢占式多任务操作系统</strong>。
+<ul>
+<li><strong>多任务</strong> 指多个任务同时驻留在内存，且每个进程都能获得对CPU的使用权。</li>
+<li><strong>抢占</strong> 是指一组规则，这组规则控制着哪些进程获得对CPU的使用，以及每个进程能使用的时长。</li>
+<li>上面两者都由 <strong>内核进程调度程序决定</strong>。</li>
+</ul>
+</li>
+<li><strong>内存管理</strong>：物理内存(RAM)现在仍是计算机系统中的有限资源，内核必须以 <strong>公平、高效</strong> 的方式在进程间共享这一资源。为此，Linux采用了虚拟内存管理机制。
+<ul>
+<li><strong>资源隔离</strong>：进程与进程之间、进程与内核之间彼此隔离，一个进程无法读取或修改内核或其他进程的内存内容。</li>
+<li><strong>资源限制</strong>：采用虚拟内存机制，只需在物理内存中保留进程的一部分内容，降低了每个进程对物理内存的需求量，而且能在RAM中同时加载更多的进程。</li>
+</ul>
+</li>
+<li><strong>提供文件系统</strong>：内核在磁盘上提供有文件系统，允许文件执行创建、获取、更新以及删除等操作。</li>
+<li><strong>进程管理</strong>：内核可以将新程序载入内存，并为其提供所需的资源，等待进程结束之后，内核还要负责回收程序所使用的资源。</li>
+<li><strong>对设备的访问</strong>：计算机外接设备可实现计算机与外界的通信，内核为 <strong>程序访问设备</strong> 提供了简化版的标准接口，同时还要管理多个进程对每一个设备的访问。</li>
+<li><strong>联网</strong>：内核以用户进程的名义收发网络消息。</li>
+<li><strong>提供系统调用应用标称接口</strong>：进程可以利用 <strong>系统调用</strong> 请求内核去执行各种任务。(此书的关键内容)</li>
+</ul>
+<p>现在处理器架构至少允许CPU在 <strong>内核态</strong> 和 <strong>用户态</strong> 下运行，执行硬件指令可使CPU在两种状态之间切换，虚拟内存部分也可以分为 <strong>内核空间</strong> 和 <strong>用户空间</strong>，在用户态，CPU只能访问用户空间内存，而处于内核态时，CPU可以访问两部分内存空间。</p>
+<p>在进程角度上看，它并不知自己合适会调用CPU执行任务，也不知道自己在内存中的具体位置，进程与进程之间也不能直接通信，仿佛活在虚拟之中。</p>
+<p>而 <strong>内核</strong> 则是运行系统的中枢，管理着系统中进程的所依赖的资源，进程的生死也由内核完成。<strong>进程调用的系统资源都是通过系统调用接口由内核完成的</strong>。</p>
+<h2 id="系统调用">系统调用</h2>
+<p>内核可以做很多事情，但用户如果被赋予的内核的权限，某些不规范的操作会导致系统的不稳定。如果用户需要使用到内核的权限去进行某些操作，而又没有相关的权限，那又怎么办呢？</p>
+<p>在内核和用户之间，有一 <strong>中间层&ndash;系统调用(system call)</strong>。</p>
+<p>系统调用是受控的内核入口，进程可以请求内核以自己的名义去执行某些动作，但 <strong>这些动作都是受到一定限制的</strong>，以防止用户的不规范操作导致系统的不稳定，如 <strong>创建新进程</strong>、<strong>执行I/O</strong>、<strong>进程间通信创建管道等</strong>。</p>
+<ul>
+<li>系统调用将处理器从用户态切换到内核态，以便CPU访问收到保护的内核内存。</li>
+<li>系统调用的组成是固定的，每个系统调用都有唯一一个数字来标识，程序通过名称映射来标识系统调用。</li>
+<li>每个系统调用可辅之以一套参数，对用户空间与内核空间传递的消息加以规范。</li>
+</ul>
+<p>进程通过系统调用的流程如下：</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Linux/Chapter03/3_system_call_step.png" alt="3_system_call_step"></p>
+<ul>
+<li><strong>1</strong> - 进程调用 <strong>库函数</strong>。</li>
+<li><strong>2</strong> - 库函数执行中断指令(0x80)，使处理器由用户态转变为内核态。</li>
+<li><strong>3</strong> - 内核调用 <strong>system_call()</strong> 例程来处理这次中断。</li>
+<li><strong>4</strong> - 以系统调用编号(__NR_execve)在 <strong>调用服务例程的列表(system_call_table)</strong> 进行检索，发现并调用相应的 <strong>系统调用服务例程</strong>。</li>
+<li><strong>5</strong> - 服务例程结束后，返回执行结果，同时将处理器切换回用户态。如果调用服务例程出现错误，库函数会用返回的错误值来设置全局变量 <strong>errno</strong>。一般调用成功返回的为非负值，失败返回的为负值。</li>
+</ul>
+<p>为什么不直接让进程调用系统调用接口？设计库函数的目的是 <strong>为了提供比底层系统调用更为方便的调用接口</strong>，同时 <strong>库函数的功能比底层系统调用函数的功能更强大</strong>。例如，与 <strong>brk()</strong> 系统调用相比，<strong>malloc()和free()</strong> 函数还执行了各种登记管理工作，内存的释放和分配也因此而容易很多。</p>
+<p>系统调用允许进程向内核请求服务，但系统调用的开销会大很多，为了执行系统调用，系统需要临时性的切换到内核态。</p>
+<p>PS：<strong>POSIX(可移植操作系统接口Protable Operating System Interface)</strong>。</p>
+<h2 id="课后习题">课后习题</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="mi">3</span><span class="o">-</span><span class="mi">1</span> <span class="err">解</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">代码如下</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Reboot system call: for obvious reasons only root may call it,
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * and even root needs to set up some magic numbers in the registers
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * so that some mistake won&#39;t make this reboot the whole machine.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * You can also set the meaning of the ctrl-alt-del-key here.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * reboot doesn&#39;t sync: do that yourself before calling this.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="n">SYSCALL_DEFINE4</span><span class="p">(</span><span class="n">reboot</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">magic1</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">magic2</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="cm">/* We only trust the superuser with rebooting the system. */</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">capable</span><span class="p">(</span><span class="n">CAP_SYS_BOOT</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="n">EPERM</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="cm">/* For safety, we require &#34;magic&#34; arguments. */</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">magic1</span> <span class="o">!=</span> <span class="n">LINUX_REBOOT_MAGIC1</span> <span class="o">||</span>
+</span></span><span class="line"><span class="cl">	    <span class="p">(</span><span class="n">magic2</span> <span class="o">!=</span> <span class="n">LINUX_REBOOT_MAGIC2</span> <span class="o">&amp;&amp;</span>
+</span></span><span class="line"><span class="cl">	                <span class="n">magic2</span> <span class="o">!=</span> <span class="n">LINUX_REBOOT_MAGIC2A</span> <span class="o">&amp;&amp;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">magic2</span> <span class="o">!=</span> <span class="n">LINUX_REBOOT_MAGIC2B</span> <span class="o">&amp;&amp;</span>
+</span></span><span class="line"><span class="cl">	                <span class="n">magic2</span> <span class="o">!=</span> <span class="n">LINUX_REBOOT_MAGIC2C</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">magic2的范围是</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">LINUX_REBOOT_MAGIC2</span>  <span class="mi">672274793</span> <span class="mh">0x28121969</span>
+</span></span><span class="line"><span class="cl"><span class="n">LINUX_REBOOT_MAGIC2A</span> <span class="mi">85072278</span>  <span class="mh">0x05121996</span>
+</span></span><span class="line"><span class="cl"><span class="n">LINUX_REBOOT_MAGIC2B</span> <span class="mi">369367448</span> <span class="mh">0x16041998</span>
+</span></span><span class="line"><span class="cl"><span class="n">LINUX_REBOOT_MAGIC2C</span> <span class="mi">537993216</span> <span class="mh">0x20112000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">reboot</span><span class="p">()</span> <span class="err">系统调用的</span><span class="n">magic2必须为上面的数字之一</span><span class="err">，这些数字是个彩蛋，代表的是</span> <span class="n">Linus</span> <span class="err">以及他三个孩子的生日</span><span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://syscalls.kernelgrok.com/">Linux Systemcall Reference</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-03-30
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/linux/">Linux</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/">Linux系统编程</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/find/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Linux命令find</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/sed/">
+            <span class="next-text nav-default">sed</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>红黑树 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="红黑树" /><meta name="keywords" content="Algorithms" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/algorithms/algorithmsarea/%E7%BA%A2%E9%BB%91%E6%A0%91/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">红黑树</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-11-27 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/algorithms/"> Algorithms </a>
+            </div>
+          <span class="more-meta"> 954 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#红黑树修正">红黑树修正</a>
+          <ul>
+            <li><a href="#变色">变色</a></li>
+            <li><a href="#左旋">左旋</a></li>
+            <li><a href="#右旋">右旋</a></li>
+          </ul>
+        </li>
+        <li><a href="#插入">插入</a>
+          <ul>
+            <li><a href="#找到插入的位置">找到插入的位置</a></li>
+            <li><a href="#插入后的修正">插入后的修正</a></li>
+          </ul>
+        </li>
+        <li><a href="#删除">删除</a>
+          <ul>
+            <li><a href="#删除后的修正">删除后的修正</a></li>
+            <li><a href="#情况一n-为新的根结点">情况一：N 为新的根结点</a></li>
+            <li><a href="#情况二s-为红色其他节点为黑色">情况二：S 为红色，其他节点为黑色</a></li>
+            <li><a href="#情况三所有节点都为黑色">情况三：所有节点都为黑色</a></li>
+            <li><a href="#情况四p-为红色其他节点为黑色">情况四：P 为红色，其他节点为黑色</a></li>
+            <li><a href="#情况五sr-为红色p可黑可红其他节点为黑色">情况五：Sr 为红色，P可黑可红，其他节点为黑色</a></li>
+            <li><a href="#情况六sl-为红色p可黑可红其他节点为黑色">情况六：Sl 为红色，P可黑可红，其他节点为黑色</a></li>
+            <li><a href="#删除修正总结">删除修正总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><code>红黑树(Red–black tree)</code>是一种<a href="https://zh.wikipedia.org/wiki/%E5%B9%B3%E8%A1%A1%E6%A0%91">自平衡二叉查找树</a>，支持集合、查找、上一元素、下一元素、最大、最小、插入、删除等操作。</p>
+<p><strong>红黑树</strong> 有着最坏情况运行时间，它可以在 <strong>O(logn)</strong> 时间内做查找，插入和删除操作。</p>
+<p><strong>红黑树</strong> 是每个节点都带有颜色属性的二叉查找树，颜色为红色或黑色。它有以下性质和要求：</p>
+<ul>
+<li>1.树内的每个节点非红即黑。</li>
+<li>2.根节点和leaf节点(NIL节点，非叶节点)均为黑色。</li>
+<li>3.红色节点的子节点均为黑色。</li>
+<li>4.任一节点到其每个leaf节点的简单路径都包含相同数量的黑色节点。</li>
+</ul>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/Red-black_tree_example.png" alt="Red-black_tree_example"></p>
+<p><code>红黑树</code>的每个节点都必须满足上述的条件，其中叶节点的下一层&mdash;- <strong>NIL节点</strong>，称之为 <strong>外部节点</strong>，其余的称之为 <strong>内部节点</strong>。</p>
+<p>正因为 <strong>红黑树</strong> 拥有上述严格的条件，才能使得其 <strong>插入</strong>、<strong>删除</strong>、<strong>查找</strong>的操作在最坏的情况下的时间复杂度为 <strong>O(logn)</strong>。</p>
+<h2 id="红黑树修正">红黑树修正</h2>
+<p>在做 <strong>插入</strong> 和 <strong>删除</strong>操作时，可能会违背 <strong>红黑树</strong>的上述规则，这时候需要对红黑树进行修正。</p>
+<p><strong>红黑树</strong>的修正方式有 <strong>变色</strong>、<strong>左旋</strong>、<strong>右旋</strong>。</p>
+<h3 id="变色">变色</h3>
+<p>但进行 <strong>插入</strong>或 <strong>删除</strong>操作时，如果违背的规则三，则需要对树内节点进行变换颜色的操作。<strong>黑节点 &mdash;&gt; 红节点</strong>。</p>
+<h3 id="左旋">左旋</h3>
+<p>进行左旋时，将子树进行逆时针旋转，保证前后的 <strong>先序遍历</strong>结果一致。</p>
+<p>具体操作如下：</p>
+<ul>
+<li>1.将x的左子树赋值给h，作为h的右子树，同时指定x的左子树的父亲节点为h。</li>
+<li>2.将h的父节点(非空时)赋值给x，同时更新父节点的子节点为x。</li>
+<li>3.将h的父节点设置为x，x的左子节点设置为h。</li>
+</ul>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/left-rotation.gif" alt="left-rotation"></p>
+<p>如上所示，左旋之前子树的 <strong>先序遍历</strong>结果是 <strong>h.left &ndash;&gt; h &ndash;&gt; x.left &ndash;&gt; x &ndash;&gt; x.right</strong>。在经过 <strong>左旋</strong>操作后，结果仍是 <strong>h.left &ndash;&gt; h &ndash;&gt; x.left &ndash;&gt; x &ndash;&gt; x.right</strong>。</p>
+<p>伪代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">h</span><span class="p">.</span><span class="n">right</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 1.将x的左子树赋值给h，作为h的右子树，同时指定x的左子树的父亲节点为h。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">h</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">left</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">left</span> <span class="o">!=</span> <span class="n">NIL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">h</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 2.将h的父节点(非空时)赋值给x，同时更新父节点的子节点为x。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">x</span><span class="p">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">h</span><span class="p">.</span><span class="n">parent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="n">parent</span> <span class="o">==</span> <span class="n">NIL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">root</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">elif</span><span class="p">(</span><span class="n">h</span> <span class="o">==</span> <span class="n">h</span><span class="p">.</span><span class="n">parent</span><span class="p">.</span><span class="n">left</span><span class="p">)</span>    <span class="c1">// 如果父节点不为NIL，则根据h为左右子树的位置，确定x的位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">h</span><span class="p">.</span><span class="n">parent</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="n">h</span><span class="p">.</span><span class="n">parent</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span><span class="n">shan</span> <span class="n">chu</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 3.将h的父节点设置为x，x的左子节点设置为h。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">h</span><span class="p">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">h</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="右旋">右旋</h3>
+<p>右旋的过程和左旋的正好相反。</p>
+<ul>
+<li>1.将x的右子树赋值给h，作为h的左子树，同时指定x的右子树的父节点为h。</li>
+<li>2.将h的父节点(非空时)赋值给x，同时更新父节点的子节点为x。</li>
+<li>3.将h的父节点设置为x，x的右子节点设置为h。</li>
+</ul>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/right-rotation.gif" alt="right-rotation"></p>
+<p>伪代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">h</span><span class="p">.</span><span class="n">right</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 1.将x的右子树赋值给h，作为h的左子树，同时指定x的右子树的父节点为h。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">h</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">right</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">right</span> <span class="o">!=</span> <span class="n">NIL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">h</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 2.将h的父节点(非空时)赋值给x，同时更新父节点的子节点为x。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">x</span><span class="p">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">h</span><span class="p">.</span><span class="n">parent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="n">parent</span> <span class="o">==</span> <span class="n">NIL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">root</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">elif</span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="n">parent</span><span class="p">.</span><span class="n">left</span> <span class="o">==</span> <span class="n">h</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">h</span><span class="p">.</span><span class="n">parent</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="n">h</span><span class="p">.</span><span class="n">parent</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 3.将h的父节点设置为x，x的右子节点设置为h。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">h</span><span class="p">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">h</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="插入">插入</h2>
+<h3 id="找到插入的位置">找到插入的位置</h3>
+<p>首先找到插入的位置，然后针对红黑树的规则条件，对插入位置进行修正。</p>
+<p>根据key值，查找插入的位置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">RBTree</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">insert</span><span class="p">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*&amp;</span><span class="n">root</span><span class="p">,</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 找到插入父节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">rightChild</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">leftChild</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">node</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 插入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">root</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">y</span><span class="o">-&gt;</span><span class="n">leftChild</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">y</span><span class="o">-&gt;</span><span class="n">rightChild</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">node</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 修正
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">this</span><span class="o">-&gt;</span><span class="n">insertFixUp</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">node</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">RBTree</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">insert</span><span class="p">(</span><span class="n">T</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span> <span class="n">z</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">z</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">RED</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">))</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">m_root</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="插入后的修正">插入后的修正</h3>
+<p>修正需要根据插入点的及其周边点的情况进行修正。</p>
+<ul>
+<li>如果插入的点为根节点，表示红黑树为空，只需把插入点的颜色修改为红色，然后设置根节点指向插入节点即可。</li>
+<li>如果插入节点的父节点为黑色，则无需任何操作。</li>
+<li>如果插入节点的父节点为红色，则需要考虑三种情况：
+<ul>
+<li>插入节点的父节点及其父节点的兄弟节点均为红色；</li>
+<li>插入节点的父节点为红色，父节点的兄弟节点为黑色，且插入节点为父节点的右孩子；</li>
+<li>插入节点的父节点为红色，父节点的兄弟节点为黑色，且插入节点为父节点的左孩子；</li>
+</ul>
+</li>
+</ul>
+<p>对于第一种情况： <strong>插入节点的父节点及其父节点的兄弟节点均为红色</strong>。我们讨论插入节点为左孩子的情况，右孩子类似。</p>
+<p>首先 <strong>将父节点及父节点的兄弟节点涂黑，祖父节点涂红</strong>，然后将当前节点指向其祖父节点，以新的节点从新开始判断。如下图所示：</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/parent_red_uncle_red.png" alt="parent_red_uncle_red"></p>
+<p>对于第二种情况：<strong>插入节点的父节点为红色，父节点的兄弟节点为黑色，且插入节点为父节点的右孩子</strong>。</p>
+<p>将当前节点指向其父亲节点，以父亲节点进行 <strong>左旋</strong>。如下图所示：</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/parent_red_uncle_black_rightchild.png" alt="parent_red_uncle_black_rightchild"></p>
+<p>对于第三种情况：<strong>插入节点的父节点为红色，父节点的兄弟节点为黑色，且插入节点为父节点的左孩子</strong>。</p>
+<p>将父节点涂黑，祖父节点涂红，当前节点指向其 <strong>祖父节点</strong>，以 <strong>祖父节点</strong> 进行 <strong>右旋</strong>，并将根结点颜色涂黑。如下图所示：</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/parent_red_uncle_black_leftchild.png" alt="parent_red_uncle_black_leftchild"></p>
+<p>修正过程始终会走到情况三！步骤可以简单的记为： <strong>变色-&gt;左旋-&gt;右旋</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">RBTree</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">insert</span><span class="p">(</span><span class="n">Tchild</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">z</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">z</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">RED</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">))</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">RBTree</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">insert</span><span class="p">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">m_root</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 找到插入父节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">rightChild</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">leftChild</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">node</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 插入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">-&gt;</span><span class="n">m_root</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">y</span><span class="o">-&gt;</span><span class="n">leftChild</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">y</span><span class="o">-&gt;</span><span class="n">rightChild</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">node</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 修正
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">this</span><span class="o">-&gt;</span><span class="n">insertFixUp</span><span class="p">(</span><span class="n">node</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">RBTree</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">insertFixUp</span><span class="p">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">grandparent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">((</span><span class="n">parent</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">)</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">parent</span><span class="o">-&gt;</span><span class="n">isred</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">grandparent</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">grandParent</span><span class="p">();</span>  <span class="c1">// 这里不可能出现祖父节点为空的情况，因为根结点一定为黑色，所以如果父节点为根节点会跳出循环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">parent</span> <span class="o">==</span> <span class="n">grandparent</span><span class="o">-&gt;</span><span class="n">leftChild</span><span class="p">)</span> <span class="p">{</span>     <span class="c1">// 父节点是祖父节点的左孩子的情况
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">uncle</span> <span class="o">=</span> <span class="n">grandparent</span><span class="o">-&gt;</span><span class="n">rightChild</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// case1: 父节点和叔父节点都为红色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="n">uncle</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">uncle</span><span class="o">-&gt;</span><span class="n">isred</span><span class="p">())</span> <span class="p">{</span>   <span class="c1">// 叔父节点不为空，并且叔父节点为红色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">parent</span><span class="o">-&gt;</span><span class="n">setblack</span><span class="p">();</span>     <span class="c1">// 将父节点设置为黑色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">uncle</span><span class="o">-&gt;</span><span class="n">setblack</span><span class="p">();</span>      <span class="c1">// 叔父节点也设置为黑色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">grandparent</span><span class="o">-&gt;</span><span class="n">setred</span><span class="p">();</span>  <span class="c1">// 祖父节点设置为红色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">node</span> <span class="o">=</span> <span class="n">grandparent</span><span class="p">;</span>     <span class="c1">// 当前节点指向祖父节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// case2: 叔父节点为黑色，并且当前节点为右孩子
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="n">node</span> <span class="o">==</span> <span class="n">parent</span><span class="o">-&gt;</span><span class="n">rightChild</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">this</span><span class="o">-&gt;</span><span class="n">leftRotate</span><span class="p">(</span><span class="n">parent</span><span class="p">);</span>   <span class="c1">// 以父节点为中心进行左旋
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">parent</span><span class="p">;</span>      <span class="c1">// 交换当前节点和父节点，为下一步做准备
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">parent</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">node</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// case3: 叔父节点为黑色，并且当前节点为左孩子
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">parent</span><span class="o">-&gt;</span><span class="n">setblack</span><span class="p">();</span>     <span class="c1">// 将父节点设置为黑色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">grandparent</span><span class="o">-&gt;</span><span class="n">setred</span><span class="p">();</span>  <span class="c1">// 祖父节点设置为红色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">this</span><span class="o">-&gt;</span><span class="n">rightRotate</span><span class="p">(</span><span class="n">grandparent</span><span class="p">);</span>     <span class="c1">// 以祖父节点为中心进行右旋
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>    <span class="c1">// 父节点是祖父节点的右孩子的情况
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">uncle</span> <span class="o">=</span> <span class="n">grandparent</span><span class="o">-&gt;</span><span class="n">leftChild</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// case1: 父节点和叔父节点都为红色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="n">uncle</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">uncle</span><span class="o">-&gt;</span><span class="n">isred</span><span class="p">())</span> <span class="p">{</span>   <span class="c1">// 叔父节点不为空，并且叔父节点为红色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">parent</span><span class="o">-&gt;</span><span class="n">setblack</span><span class="p">();</span>     <span class="c1">// 将父节点设置为黑色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">uncle</span><span class="o">-&gt;</span><span class="n">setblack</span><span class="p">();</span>      <span class="c1">// 叔父节点也设置为黑色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">grandparent</span><span class="o">-&gt;</span><span class="n">setred</span><span class="p">();</span>  <span class="c1">// 祖父节点设置为红色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">node</span> <span class="o">=</span> <span class="n">grandparent</span><span class="p">;</span>     <span class="c1">// 当前节点指向祖父节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// case2: 叔父节点为黑色，并且当前节点为左孩子
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="n">node</span> <span class="o">==</span> <span class="n">parent</span><span class="o">-&gt;</span><span class="n">leftChild</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">this</span><span class="o">-&gt;</span><span class="n">rightRotate</span><span class="p">(</span><span class="n">parent</span><span class="p">);</span>  <span class="c1">// 以父节点为中心进行右旋
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">parent</span><span class="p">;</span>      <span class="c1">// 交换当前节点和父节点，为下一步做准备
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">parent</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">node</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// case3: 叔父节点为黑色，并且当前节点为右孩子
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">parent</span><span class="o">-&gt;</span><span class="n">setblack</span><span class="p">();</span>     <span class="c1">// 将父节点设置为黑色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">grandparent</span><span class="o">-&gt;</span><span class="n">setred</span><span class="p">();</span>  <span class="c1">// 祖父节点设置为红色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">this</span><span class="o">-&gt;</span><span class="n">leftRotate</span><span class="p">(</span><span class="n">grandparent</span><span class="p">);</span>      <span class="c1">// 以祖父节点为中心进行左旋
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="o">-&gt;</span><span class="n">m_root</span><span class="o">-&gt;</span><span class="n">setblack</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="删除">删除</h2>
+<p>在插入时，我们需要考虑的是 <strong>插入节点及其父亲节点都为红色</strong>，即 <strong>双红</strong> 的情况。在删除时，我们需要考虑的是 <strong>删除节点及其父节点都为黑色</strong>，即 <strong>双黑</strong> 的情况。</p>
+<p>如果是 <strong>删除节点有两个孩子，并且孩子节点不为叶子节点</strong> 的情况，可以通过 <strong>先序遍历</strong> 的方式寻找其 <strong>前驱或者后继节点(叶子节点)</strong> 进行替换。</p>
+<blockquote>
+<p>假设要删除的节点为 <strong>N</strong>，根据 <strong>先序遍历的结果</strong>： <code>A &lt; N &lt; B</code>。那么可以用 <strong>B</strong> 也就是整个树中 <strong>大于N的最小的节点</strong> 对 <strong>N</strong> 进行替换，将 <strong>节点B</strong> 中的key与 <strong>N</strong> 中的key进行互换，然后删除 <strong>节点B</strong>。此时，只需要思考删除 <strong>节点B</strong> 所面临的不符合规则的问题。由于 <strong>节点B</strong> 是 <strong>节点N</strong> 的 <strong>后继节点</strong>，所以 <strong>节点B</strong> <strong>最多只有一个子节点</strong>！！这样就将问题从 <strong>两个孩子变为一个孩子</strong>。</p>
+</blockquote>
+<p>删除的步骤如下：</p>
+<ul>
+<li><strong>被删除节点没有子节点</strong> - 直接删除，此时，由于没有子节点，所以以该节点为叶结点的树就不存在了，不会违背红黑树的规则。</li>
+<li><strong>被删除节点有一个孩子节点</strong> - 用它的孩子节点对它进行替换，删除孩子节点，然后根据孩子节点的颜色进行修正。</li>
+<li><strong>被删除的节点有两个孩子</strong> - 找到被删除节点的 <strong>后继节点</strong>，使用后继节点的key替换被删除节点的key。删除 <strong>后继节点</strong>，由于 <strong>后继节点最多只有一个孩子节点</strong>，问题就转换成了上面的两种情况。</li>
+</ul>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/RB_tree_delete_double_child.png" alt="RB_tree_delete_double_child"></p>
+<h3 id="删除后的修正">删除后的修正</h3>
+<p>和插入的情况一样，删除完节点后，可能会出现违背 <strong>红黑树特性</strong> 的问题，这时候需要对红黑树进行修正。由于在删除的时候，已经将双孩子节点的情况转变为 <strong>最多只有一个孩子节点</strong> 的情况，所有需要修正的情况只需考虑 <strong>最多只有一个孩子节点</strong>。</p>
+<p>删除后的修正比插入后的修正要复杂很多，分为以下一些情况需要考虑。当然，现在只需要考虑 <strong>被删除节点的子节点最多有一个孩子</strong> 的情况。</p>
+<p>在做删除后的修正之前，先假设真正要删除的节点为 <strong>X</strong>，被代替删除的节点为 <strong>N</strong>， <strong>X</strong> 的父节点为 <strong>P</strong>，兄弟节点为 <strong>S</strong>，兄弟节点的孩子节点分别为 <strong>Sl</strong>、 <strong>Sr</strong>。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/RB_Tree_delete_replace.png" alt="RB_Tree_delete_replace"></p>
+<blockquote>
+<p>注意：以下情况都是在 <strong>X 为黑色，最多有一个孩子</strong>，并且 <strong>N</strong> 为 <strong>X</strong> 的后继节点的情况下讨论的。</p>
+</blockquote>
+<h3 id="情况一n-为新的根结点">情况一：N 为新的根结点</h3>
+<p>即 <strong>X</strong> 为根结点，此时整棵树只有一条分支，所以直接替换即可。</p>
+<h3 id="情况二s-为红色其他节点为黑色">情况二：S 为红色，其他节点为黑色</h3>
+<p>以 <strong>P</strong> 为中心右旋，并交换 <strong>S</strong> 和 <strong>P</strong> 的颜色。此时，由于 <strong>X</strong> 为黑色，所以 <code>S -&gt; P -&gt; N</code> 这条路径上的黑阶较另外几条路径上的黑阶要少一个，整棵树并不平衡。接下来就变成了 <strong>情况四</strong>、<strong>情况五</strong>、<strong>情况六</strong> 了。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/RB_Tree_delete-Delete_2.png" alt="RB_Tree_delete-Delete_2"></p>
+<h3 id="情况三所有节点都为黑色">情况三：所有节点都为黑色</h3>
+<p>将 <strong>S</strong> 涂成红色，此时以 <strong>P</strong> 为根的子树处于平衡状态，但是由于 <strong>黑阶</strong> 减少了一个，所以通过 <strong>P</strong> 的路径上的 <strong>黑阶都减少了</strong>。需要将 <strong>N</strong> 指向 <strong>P</strong>，以 <strong>P</strong> 为对象从 <strong>情况一</strong> 开始进行删除后的修正。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/RB_Tree_delete-Delete_3.png" alt="RB_Tree_delete-Delete_3"></p>
+<h3 id="情况四p-为红色其他节点为黑色">情况四：P 为红色，其他节点为黑色</h3>
+<p>将 <strong>P</strong> 和 <strong>S</strong> 的颜色互换，此时 <code>P -&gt; S -&gt; Sl(Sr)</code> 的路径上的 <strong>黑阶不变</strong>， <code>P -&gt; N</code> 路径上的 <strong>黑阶增加一</strong>，通过 <strong>P</strong> 的路径上的 <strong>黑阶并没有改变</strong>，整棵树达到平衡状态，结束。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/RB_Tree_delete-Delete_4.png" alt="RB_Tree_delete-Delete_4"></p>
+<h3 id="情况五sr-为红色p可黑可红其他节点为黑色">情况五：Sr 为红色，P可黑可红，其他节点为黑色</h3>
+<p>以 <strong>S</strong> 为中心进行左旋，并交换 <strong>S</strong> 和 <strong>Sr</strong> 的颜色。由于之前通过 <code>P -&gt; S</code> 的子树已经是平衡的了，此时通过 <code>P -&gt; Sr</code> 的子树也是平衡的。接下来进行 <strong>情况六</strong> 的分析。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/RB_Tree_delete-Delete_5.png" alt="RB_Tree_delete-Delete_5"></p>
+<h3 id="情况六sl-为红色p可黑可红其他节点为黑色">情况六：Sl 为红色，P可黑可红，其他节点为黑色</h3>
+<p>我们用 <strong>情况五</strong> 的结果来进行考虑。首先要了解的是，节点1、2、5、6的黑阶相同，节点3、4的黑阶要比前面四个节点的黑阶多一，黑阶的数量与节点 <strong>Sl</strong> 和 <strong>N</strong> 相同！</p>
+<p>假设情况五变换前，<strong>S</strong> 的黑阶为 <strong>Lps</strong>，那么 <strong>Sr</strong>的黑阶为 <strong>Lps</strong>，<strong>N</strong> 和 <strong>Sl</strong> 的黑阶为 <strong>Lps - 1</strong>，节点3、4的黑阶为 <strong>Lps - 1</strong>，节点1、2、5、6的黑阶为 <strong>Lps - 2</strong>。</p>
+<p>以 <strong>P</strong> 为中心进行右旋，并将 <strong>S</strong> 涂黑。</p>
+<p>经过上述的转换，在新的子树中， <strong>S</strong> 和 <strong>P</strong> 的黑阶为 <strong>Lps</strong>，达到平衡，结束。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/RB_Tree_delete-Delete_6.png" alt="RB_Tree_delete-Delete_6"></p>
+<h3 id="删除修正总结">删除修正总结</h3>
+<p>删除修正部分，分析起来确实有点头晕，需要静下心来。最后将各个情况串起来，会好很多。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Algorithms/AlgorithmsArea/Red-Black-Tree/RB_Tree_delete-Delete_all.png" alt="RB_Tree_delete-Delete_all"></p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://sandbox.runjs.cn/show/2nngvn8w">在线生成红黑树</a></li>
+<li><a href="http://www.cnblogs.com/skywang12345/p/3624291.html">红黑树(四)之 C++的实现</a>(代码不太简洁)</li>
+<li><a href="https://blog.csdn.net/eson_15/article/details/51144079">【数据结构和算法05】 红-黑树</a> (删除部分缺失)</li>
+<li><a href="https://blog.csdn.net/v_JULY_v/article/details/6285620">红黑树的C++完整实现源码</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%BA%A2%E9%BB%91%E6%A0%91">红黑树wiki</a></li>
+<li><a href="http://www.cnblogs.com/skywang12345/p/3245399.html">红黑树(一)之 原理和算法详细介绍</a></li>
+<li><a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">数据结构可视化</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-12-02
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/algorithms/">Algorithms</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1-iterator%E6%A8%A1%E5%BC%8F/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">图解设计模式 - 1-Iterator模式</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/2_django_urlconf/">
+            <span class="next-text nav-default">Django--URLconf</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

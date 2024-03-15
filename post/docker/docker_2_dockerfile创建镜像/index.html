@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Docker(三) - Dockerfile 创建镜像 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Dockerfile 创建镜像" /><meta name="keywords" content="Docker, Dockerfile" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/docker/docker_2_dockerfile%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Docker(三) - Dockerfile 创建镜像</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-08 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/docker/"> Docker </a>
+            </div>
+          <span class="more-meta"> 535 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#镜像创建">镜像创建</a></li>
+        <li><a href="#基础镜像信息">基础镜像信息</a></li>
+        <li><a href="#镜像操作指令">镜像操作指令</a></li>
+        <li><a href="#容器启动时执行指令">容器启动时执行指令</a>
+          <ul>
+            <li><a href="#entrypoint和cmd">ENTRYPOINT和CMD</a></li>
+            <li><a href="#总结entrypoint和cmd">总结ENTRYPOINT和CMD</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><strong>Dockerfile</strong> 是一个文本格式的配置文件，用户可以通过使用 <strong>Dockerfile</strong> 文件快速自定义需要的镜像。</p>
+<p><strong>Dockerfile</strong> 由一行一行的命令构成，主体部分包括：<strong>基础镜像信息</strong>、<strong>镜像操作指令</strong>、<strong>容器启动时执行指令</strong>。</p>
+<h2 id="镜像创建">镜像创建</h2>
+<p>创建镜像指令：<code>docker build -t imagename .</code>。<strong>.</strong> 表示的是 <strong>Dockerfile</strong> 文件所在的那个目录。</p>
+<p>由于docker是 <strong>C/S</strong> 模式的，所以当我们运行 <strong>build</strong> 时，会将 <strong>Dockerfile</strong> 及其上下文发送给服务端，因此不建议将无关的内容和 <strong>Docekrfile</strong> 文件放置在一起。</p>
+<h2 id="基础镜像信息">基础镜像信息</h2>
+<p>使用 <strong>FROM &lt;image&gt;</strong> 指令来指定基础镜像，这一条是必须的，并且docker是严格按照顺序执行 <strong>Dockerfile</strong> 中的指令的，<strong>FROM</strong> 指令必须放在所有指令的第一条。</p>
+<p><strong>image</strong> 表示的是基础镜像的位置和名称，默认会先在本地仓库搜索对应镜像，本地没有则会从远程仓库拉取相关镜像。</p>
+<p>镜像地址：<a href="https://hub.docker.com/search?q=&amp;type=image">https://hub.docker.com/search?q=&amp;type=image</a>。</p>
+<p>可以先从远程仓库pull基础镜像到本地，也可以在build时直接远程仓库下载。</p>
+<p>一些有趣的镜像：</p>
+<ul>
+<li><strong>scratch</strong> - 空镜像，什么都没有，无法pull下来，所有镜像的最基础镜像。</li>
+<li><strong>busybox</strong> - 临时系统镜像，体积很小，里面包含了大部分的Linux基础命令，测试使用。</li>
+<li><strong>alpine</strong> - 系统镜像，体积很小，许多应用镜像都使用它作为基础镜像。</li>
+<li><strong>centos</strong> - 系统镜像，用于生产环境，稳定性强，不过镜像的体积较大。</li>
+<li><strong>ubuntu</strong> - 系统镜像，用于生产环境，常用于人工智能计算和企业应用。</li>
+<li><strong>debian</strong> - 系统镜像，用于生产环境。</li>
+</ul>
+<h2 id="镜像操作指令">镜像操作指令</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ARG</td>
+<td style="text-align:center">定义创建镜像过程中所使用的变量，镜像编译完成后，ARG指定的变量的生存期结束。ENV指定的变量不会消失。</td>
+</tr>
+<tr>
+<td style="text-align:center">VOLUME</td>
+<td style="text-align:center">创建启动容器时的数据卷挂载点，运行容器时可以从本地或其他容器挂载数据卷到此参数指定的数据卷挂载点上。</td>
+</tr>
+<tr>
+<td style="text-align:center">ONBUILD</td>
+<td style="text-align:center">指定当该镜像作为基础镜像生成子镜像时，自动执行的操作指令。</td>
+</tr>
+<tr>
+<td style="text-align:center">RUN</td>
+<td style="text-align:center">在编译镜像时执行的指令。</td>
+</tr>
+<tr>
+<td style="text-align:center">ADD</td>
+<td style="text-align:center">添加内容到镜像，能够自动解压tar文件。</td>
+</tr>
+<tr>
+<td style="text-align:center">COPY</td>
+<td style="text-align:center">拷贝文件到镜像。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ARG</strong> 指令和 <strong>ENV</strong> 指令最大的不同在于，<strong>ARG指定的变量</strong>  在镜像编译完成后就消失了，而 <strong>ENV</strong> 指令指定的镜像可以作为 <strong>环境变量</strong> 在运行容器时使用。</p>
+<p><strong>RUN</strong> 指令用于生成镜像时对基础镜像的操作，例如大部分应用的镜像，会以某个系统镜像为基础，通过拷贝或者下载对应程序的方式，打包镜像。一般通过 <strong>RUN</strong> 指令进行下载更新软件时，需要注意将下载软件后的残余二进制文件进行清理。</p>
+<p>另外大部分镜像使用的字体和时间都不是国内的标准，在制作镜像时，可以将这部分改过来。</p>
+<p><strong>ADD</strong> 指令的功能比 <strong>COPY</strong> 指令要强大，<strong>ADD</strong> 可以将url地址的文件添加到镜像中，也可以在添加完tar文件后，在镜像中自动解压tar文件。而 <strong>COPY</strong> 指令都不支持这两种方式，只能是 <strong>拷贝文件或文件夹到镜像的指定路径</strong>。</p>
+<p>那该使用哪一个指令比较好呢？</p>
+<p><strong>ADD</strong> 指令有些时候会令人费解，有时会解压tar文件，有时候又不会。现在推荐的是使用 <strong>COPY</strong> 指令，在一种情况下可以使用 <strong>ADD</strong> 指令：将本地的tar文件打入镜像并解压。例如大部分系统镜像都是这么做的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> scratch</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ADD</span> alpine-minirootfs-20190228-ppc64le.tar.gz /<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;/bin/sh&#34;</span><span class="p">]</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="容器启动时执行指令">容器启动时执行指令</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">EXPOSE</td>
+<td style="text-align:center">声明镜像内监听的端口，并不会完成端口映射。</td>
+</tr>
+<tr>
+<td style="text-align:center">ENV</td>
+<td style="text-align:center">指定环境变量，可以在RUN指令中使用，也可以在容器运行时使用。</td>
+</tr>
+<tr>
+<td style="text-align:center">WORKDIR</td>
+<td style="text-align:center">指定工作路径。</td>
+</tr>
+<tr>
+<td style="text-align:center">ENTRYPOINT</td>
+<td style="text-align:center">指定镜像文件的默认入口命令。如有多条，最后一条生效。</td>
+</tr>
+<tr>
+<td style="text-align:center">CMD</td>
+<td style="text-align:center">指定启动容器时的默认执行的命令，如有多条，最后一条生效。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>EXPOSE</strong> 指令声明容器启动后的开放端口，似乎没有什么作用，需要暴露端口时，还是需要使用 <strong>-P或者-p</strong> 参数在运行容器时指定。</p>
+<p><strong>ENV</strong> 和 <strong>ARG</strong> 指令最大的区别在于 <strong>ENV</strong> 指定的环境变量可以在容器运行时使用。在运行时使用 <strong>-e</strong> 参数指定环境变量，相同的环境变量会被替换。</p>
+<h3 id="entrypoint和cmd">ENTRYPOINT和CMD</h3>
+<p>在谈及 <strong>ENTRYPOINT</strong> 和 <strong>CMD</strong> 指令之前，要先了解 <strong>exec和shell两种模式</strong>。</p>
+<h4 id="exec模式">exec模式</h4>
+<p>对于 <strong>exec模式</strong>，命令执行在容器内的任务进程就是容器内的 <strong>1号进程</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> ubuntu</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;top&#34;</span><span class="p">]</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker build -t <span class="nb">test</span> .
+</span></span><span class="line"><span class="cl">$ docker container run -dit --rm <span class="nb">test</span>
+</span></span><span class="line"><span class="cl">$ docker container <span class="nb">exec</span> -it sleepy_northcutt ps aux
+</span></span><span class="line"><span class="cl">USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+</span></span><span class="line"><span class="cl">root          <span class="m">1</span>  0.5  0.0  <span class="m">36596</span>  <span class="m">3176</span> pts/0    Ss+  06:45   0:00 top
+</span></span><span class="line"><span class="cl">root          <span class="m">6</span>  0.0  0.0  <span class="m">34400</span>  <span class="m">2904</span> pts/1    Rs+  06:46   0:00 ps aux
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用 <code>CMD/ENTRYPOINT [&quot;cmd1&quot;, &quot;cmd2&quot;]</code> 的方式为 <strong>exec模式</strong>。</p>
+<p>另外，在 <strong>exec模式</strong> 中，无法使用系统的环境变量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> ubuntu</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;echo&#34;</span><span class="p">,</span> <span class="s2">&#34;$PATH&#34;</span><span class="p">]</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker build -t <span class="nb">test</span> .
+</span></span><span class="line"><span class="cl">$ docker container run -it --rm <span class="nb">test</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$PATH</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="shell模式">shell模式</h4>
+<p>对于 <strong>shell模式</strong> 来说，命令执行在容器中的任务进程就不是 <strong>1号进程</strong> 了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> ubuntu</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> top<span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker build -t <span class="nb">test</span> .
+</span></span><span class="line"><span class="cl">$ docker container run -dit --rm <span class="nb">test</span>
+</span></span><span class="line"><span class="cl">$ docker container <span class="nb">exec</span> -it epic_neumann ps aux
+</span></span><span class="line"><span class="cl">USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+</span></span><span class="line"><span class="cl">root          <span class="m">1</span>  0.5  0.0   <span class="m">4628</span>   <span class="m">924</span> pts/0    Ss+  06:46   0:00 /bin/sh -c top
+</span></span><span class="line"><span class="cl">root          <span class="m">6</span>  0.0  0.0  <span class="m">36596</span>  <span class="m">3172</span> pts/0    S+   06:46   0:00 top
+</span></span><span class="line"><span class="cl">root          <span class="m">7</span>  0.0  0.0  <span class="m">34400</span>  <span class="m">2856</span> pts/1    Rs+  06:47   0:00 ps aux
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用 <strong>shell模式</strong> 时，docker会以 <code>/bin/sh -c &quot;task command&quot;</code> 的方式来执行任务命令，也就是说，容器启动时时先起了一个bash进程，然后才启动我们的任务进程。</p>
+<p>在 <strong>shell模式</strong> 中，就可以使用系统的环境变量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> ubuntu</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="nb">echo</span> <span class="nv">$PATH</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker build -t <span class="nb">test</span> .
+</span></span><span class="line"><span class="cl">$ docker container run -it --rm <span class="nb">test</span>
+</span></span><span class="line"><span class="cl">/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="entrypoint和cmd指令使用">ENTRYPOINT和CMD指令使用</h4>
+<p><strong>ENTRYPOINT指令</strong> 指向的是容器启动时，默认的执行程序，任务执行的优先级大于 <strong>CMD指令</strong>。</p>
+<p>指令的使用方式有两种：</p>
+<ul>
+<li><strong>exec模式</strong>: <code>ENTRYPOINT [&quot;command&quot;, &quot;param1&quot;, &quot;param2&quot;]</code></li>
+<li><strong>shell模式</strong>: <code>ENTRYPOINT command param1 param2</code></li>
+</ul>
+<p><strong>CMD指令</strong> 指向的是容器启动时，执行的程序，不是默认程序。</p>
+<p>指令的使用方式有三种：</p>
+<ul>
+<li><strong>exec模式</strong>: <code>CMD [&quot;command&quot;, &quot;param1&quot;, &quot;param2&quot;]</code></li>
+<li><strong>shell模式</strong>: <code>CMD command param1 param2</code></li>
+<li><strong>作为ENTRYPOINT指令的参数</strong>: <code>CMD [&quot;param1&quot;, &quot;param2&quot;]</code></li>
+</ul>
+<p>当 <strong>CMD指令</strong> 使用 <strong>exec模式</strong> 时，如果不存在 <strong>ENTRYPOINT指令</strong>，则它作为独立的任务命令执行。当存在 <strong>ENTRYPOINT指令使用exec模式</strong>*，它只能作为 <strong>ENTRYPOINT指令</strong> 的任务参数使用。</p>
+<p>当 <strong>ENTRYPOINT指令使用shell模式</strong> 时， <strong>CMD指令的内容会被忽略掉</strong>。</p>
+<p>例如下面的镜像：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> ubuntu</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> entrypoint.sh /<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;./entrypoint.sh&#34;</span><span class="p">]</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;echo&#34;</span><span class="p">,</span> <span class="s2">&#34;hello&#34;</span><span class="p">]</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用的 <strong>entrypoint.sh</strong> 脚本如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/sh
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in <span class="nv">$@</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$i</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker build -t <span class="nb">test</span> .
+</span></span><span class="line"><span class="cl">$ docker container run -it --rm <span class="nb">test</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span>
+</span></span><span class="line"><span class="cl">hello
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到，执行的结果是 <strong>将CMD指令的内容作为参数传递给了ENTRYPOINT指令</strong>。</p>
+<h3 id="总结entrypoint和cmd">总结ENTRYPOINT和CMD</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center">No ENTRYPOINT</th>
+<th style="text-align:center">ENTRYPOINT exec_entry p1_entry</th>
+<th style="text-align:center">ENTRYPOINT [&ldquo;exec_entry&rdquo;, &ldquo;p1_entry&rdquo;]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">No CMD</td>
+<td style="text-align:center"><strong>error</strong></td>
+<td style="text-align:center">/bin/sh -C exec_entry p1_entry</td>
+<td style="text-align:center">exec_entry p1_entry</td>
+</tr>
+<tr>
+<td style="text-align:left">CMD [&ldquo;exec_cmd&rdquo;, &ldquo;p1_cmd&rdquo;]</td>
+<td style="text-align:center">exec_cmd p1_cmd</td>
+<td style="text-align:center">/bin/sh -C exec_entry p1_entry</td>
+<td style="text-align:center">exec_entry p1_entry exec_cmd p1_cmd</td>
+</tr>
+<tr>
+<td style="text-align:left">CMD [&ldquo;p1_cmd&rdquo;, &ldquo;p2_cmd&rdquo;]</td>
+<td style="text-align:center">p1_cmd p2_cmd</td>
+<td style="text-align:center">/bin/sh -C exec_entry p1_entry</td>
+<td style="text-align:center">exec_entry p1_entry p1_cmd p2_cmd</td>
+</tr>
+<tr>
+<td style="text-align:left">CMD exec_cmd p1_cmd</td>
+<td style="text-align:center">/bin/sh -C exec_cmd p1_cmd</td>
+<td style="text-align:center">/bin/sh -C exec_entry p1_entry</td>
+<td style="text-align:center">exec_entry p1_entry /bin/sh -C exec_cmd p1_cmd</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://www.cnblogs.com/sparkdev/p/8461576.html">Dockerfile 中的 CMD 与 ENTRYPOINT</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-03-22
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/docker/">Docker</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/dockerfile/">Dockerfile</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/docker/docker_3_redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E5%AE%9E%E7%8E%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Docker(四) - 实例: redis主从同步实现</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/docker/docker_1_container%E5%92%8Cimage%E5%91%BD%E4%BB%A4/">
+            <span class="next-text nav-default">Docker(二) - Cli命令: container和image</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

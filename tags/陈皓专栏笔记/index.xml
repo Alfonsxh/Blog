@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>陈皓专栏笔记 on Alfons&#39;s Blog</title>
+    <link>https://alfonsxh.github.io/Blog/tags/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 陈皓专栏笔记 on Alfons&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 17 Apr 2019 22:46:17 +0000</lastBuildDate>
+    <atom:link href="https://alfonsxh.github.io/Blog/tags/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>泛型编程</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/1_%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Wed, 17 Apr 2019 22:46:17 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/1_%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/</guid>
+      <description>&lt;h2 id=&#34;泛型编程的含义&#34;&gt;泛型编程的含义&lt;/h2&gt;&#xA;&lt;p&gt;在编程的时候，总会遇到 &lt;strong&gt;同样的逻辑但是所需的类型不同&lt;/strong&gt; 的问题。理想情况下，&lt;strong&gt;算法应是和数据结构和类型无关的，各种特殊的数据类型理应做好自己分内的工作&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>编程的本质</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/2_%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8/</link>
+      <pubDate>Wed, 17 Apr 2019 22:46:17 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/2_%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8/</guid>
+      <description>&lt;p&gt;之前一直有听说这么一句话：&lt;code&gt;Programs = Algorithms + Data Structures&lt;/code&gt;。但要具体点描述就说不出什么了。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

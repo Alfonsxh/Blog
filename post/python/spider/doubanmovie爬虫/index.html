@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>DoubanMovie爬取 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="DoubanMovie爬取" /><meta name="keywords" content="Python, 爬虫" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/python/spider/doubanmovie%E7%88%AC%E8%99%AB/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">DoubanMovie爬取</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-02-17 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/python/"> Python </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/%E7%88%AC%E8%99%AB/"> 爬虫 </a>
+            </div>
+          <span class="more-meta"> 147 words </span>
+          <span class="more-meta"> 1 min read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#待爬取的站点信息">待爬取的站点信息</a></li>
+        <li><a href="#爬取每部电影的信息">爬取每部电影的信息</a></li>
+        <li><a href="#反爬策略">反爬策略</a>
+          <ul>
+            <li><a href="#更换user-agent">更换User-Agent</a></li>
+            <li><a href="#使用代理">使用代理</a></li>
+            <li><a href="#更换cookie">更换Cookie</a></li>
+            <li><a href="#不要按电影id顺序访问并控制访问频率">不要按电影ID顺序访问，并控制访问频率</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>对豆瓣上的电影详细信息进行爬取，使用到的框架是 <strong>Scrapy</strong>。效率为24h爬取十万多部(效率可能不太高&hellip;)。记录一下爬取的过程和遇到的问题。</p>
+<p>代码放在github：<a href="https://github.com/Alfonsxh/Spider">https://github.com/Alfonsxh/Spider</a></p>
+<h2 id="待爬取的站点信息">待爬取的站点信息</h2>
+<p>在 <strong>选影视</strong> 的这个页面：<a href="https://movie.douban.com/tag">https://movie.douban.com/tag</a>，最下面的 <strong>加载更多</strong>，点击后会出现新的电影信息。</p>
+<p>F12打开chrome调试，在NetWork信息中，会发现每次触发了加载选项，会向服务器发送类似的请求，并且返回回来的电影信息为json格式！其中包含了具体电影信息的地址。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/DoubanMovie%E7%88%AC%E8%99%AB/1_new_search_subjects.jpg" alt="1_new_search_subjects"></p>
+<p>对应的请求响应地址为：<a href="https://movie.douban.com/j/new_search_subjects?sort=U&amp;range=0,10&amp;tags=&amp;start=20">https://movie.douban.com/j/new_search_subjects?sort=U&amp;range=0,10&amp;tags=&amp;start=20</a></p>
+<p>每次只改变了start后面跟着的索引号。于是，可以通过改变start索引的方式将大部分的影片的详细地址找出来。</p>
+<p>不过，值得注意的是，start的值也是被限制的，大于一定值时，将不会返回结果。通过添加不同的过滤条件，可以将爬取到的电影数量尽可能的增多。</p>
+<p>还有另外一种方式就比较暴力了。由于每部电影的详细信息地址都是下面的信息：<a href="https://movie.douban.com/subject/26636712/">https://movie.douban.com/subject/26636712/</a>。末尾的数字ID即为电影的ID号，每部电影的ID号唯一。通过测试电影类型的ID号范围，遍历爬取这些ID号也可以。</p>
+<p>与前一种方式相比，后一种方式能够爬取的电影信息数会更多，但不大推荐，毕竟是在爬取别人的服务器，互相理解。</p>
+<h2 id="爬取每部电影的信息">爬取每部电影的信息</h2>
+<p>爬取的信息存储在mysql中，表结构如下：</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/DoubanMovie%E7%88%AC%E8%99%AB/3_movie_info_table_structures.png" alt="3_movie_info_table_structures"></p>
+<p>信息的来源有两处：</p>
+<ul>
+<li>给google等搜索引擎提供的搜索js</li>
+<li>html页面</li>
+</ul>
+<p>给google的搜索引擎提供搜索的js中包含了大部分有用的信息，入库的大部分数据也是这里取到的。这部分数据只要找到对应的json字符串，再转变一下，就很好取了。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/DoubanMovie%E7%88%AC%E8%99%AB/2_single_movie_js_info.png" alt="2_single_movie_js_info"></p>
+<p>另一部分数据来源于html页面，需要编辑相应的xpath规则取得。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/DoubanMovie%E7%88%AC%E8%99%AB/4_single_movie_html_info.png" alt="4_single_movie_html_info"></p>
+<h2 id="反爬策略">反爬策略</h2>
+<p>豆瓣的反爬策略还是很有效果的，同一ID一段时间内多次访问就会被屏蔽，需要输入账号密码后才能继续访问。</p>
+<p>针对反爬策略有以下几点可以缓解。</p>
+<h3 id="更换user-agent">更换User-Agent</h3>
+<p>更换 <strong>User-Agent</strong> 最基础了，可以在 <strong>setting.py</strong> 中设置参数 <strong>DEFAULT_REQUEST_HEADERS</strong> 方式实现，不过不推荐，同一个 <strong>User-Agent</strong> 被使用多次也会被封。</p>
+<p>在 <strong>下载中间件</strong> 中，每次有新的 <strong>request</strong> 使用新的 <strong>User-Agent</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_agents</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="使用代理">使用代理</h3>
+<p>相同IP的频繁访问服务器也容易被封，在 <strong>下载中间件</strong> 中，每次有新的 <strong>request</strong> 使用新的代理IP。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">proxy</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">proxy_url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;proxy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;http://</span><span class="si">{proxy}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">proxy</span><span class="o">=</span><span class="n">proxy</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>代理服务器选择了开源的一个: <a href="https://github.com/jhao104/proxy_pool">https://github.com/jhao104/proxy_pool</a>。</p>
+<h3 id="更换cookie">更换Cookie</h3>
+<p><strong>Cookie</strong> 中包含了一些关键字段，比如 <strong>bid</strong>。一段时间内频繁访问就有可能被要求验证登陆。</p>
+<p>登陆又被分成了两种情况：<strong>无验证码登陆</strong>、<strong>有验证码处理</strong>。</p>
+<h4 id="无验证码登陆">无验证码登陆</h4>
+<p>无验证码登陆简单些，只需向验证服务器：<a href="https://accounts.douban.com/login">https://accounts.douban.com/login</a>，发送下面的form表单数据即可。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">login_form</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;movie&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;redir&#39;</span><span class="p">:</span> <span class="s1">&#39;https://movie.douban.com/&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;form_email&#39;</span><span class="p">:</span> <span class="n">your_login_username</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;form_password&#39;</span><span class="p">:</span> <span class="n">your_login_password</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;remember&#39;</span><span class="p">:</span> <span class="s1">&#39;on&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;login&#39;</span><span class="p">:</span> <span class="s1">&#39;登录&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="有验证码处理">有验证码处理</h4>
+<p>对于有验证码的服务处理起来就麻烦了一点，不过最关键的还是将验证码解出。</p>
+<p>用了一种比较笨的方式：将验证码下载下来，人工判断。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ParseCaptchaImg</span><span class="p">(</span><span class="n">root_node</span><span class="p">,</span> <span class="n">form_data</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">captcha_url</span> <span class="o">=</span> <span class="n">root_node</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//img[@id=&#34;captcha_image&#34;]/@src&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">captcha_id</span> <span class="o">=</span> <span class="n">root_node</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@class=&#34;captcha_block&#34;]/input[@name=&#34;captcha-id&#34;]/@value&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;captcha.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">captcha_request</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">captcha_url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">captcha_request</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;captcha.jpg&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">captcha_solution</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">form_data</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;captcha-solution&#39;</span><span class="p">:</span> <span class="n">captcha_solution</span><span class="p">,</span> <span class="s1">&#39;captcha-id&#39;</span><span class="p">:</span> <span class="n">captcha_id</span><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一种更为省力的方式为 <strong>通过机器学习</strong>，现在已经有了一些很好的模型，相对于豆瓣的验证码来说，准确度还是很高的。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Python/DoubanMovie%E7%88%AC%E8%99%AB/5_captcha.jpg" alt="5_captcha"></p>
+<h3 id="不要按电影id顺序访问并控制访问频率">不要按电影ID顺序访问，并控制访问频率</h3>
+<p>按照上面的做法，有时候仍然被封。通过随机访问电影网址，并控制访问频率的方式，能够降低被封的概率。</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-02-20
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/python/">Python</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/otherbooks/%E4%BB%8A%E6%97%A5%E7%AE%80%E5%8F%B2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">《今日简史》</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/python/gil%E5%85%A8%E5%B1%80%E8%A7%A3%E9%87%8A%E5%99%A8%E9%94%81/">
+            <span class="next-text nav-default">Python GIL</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

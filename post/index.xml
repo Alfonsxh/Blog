@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Alfons&#39;s Blog</title>
+    <link>https://alfonsxh.github.io/Blog/post/</link>
+    <description>Recent content in Posts on Alfons&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 07 Feb 2024 14:38:49 +0800</lastBuildDate>
+    <atom:link href="https://alfonsxh.github.io/Blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python虚拟环境</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Wed, 07 Feb 2024 14:38:49 +0800</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
+      <description>&lt;p&gt;虚拟环境为运行Python项目的理想环境，可以有效的与系统Python环境进行隔离，每个项目都可以有一个干净的环境运行。&lt;/p&gt;&#xA;&lt;p&gt;但是对于国内一些企业，客户现场环境复杂，甚至无法连接外网。对于这种场景，任何虚拟环境创建的手段都无法实现。&lt;/p&gt;&#xA;&lt;p&gt;虽然 Pyinstaller 可以实现，但跨多个 Linux 操作系统，想要实现 &amp;ldquo;&lt;strong&gt;一包通用&lt;/strong&gt;&amp;quot;，仍没有办法实现。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>node_exporter</title>
+      <link>https://alfonsxh.github.io/Blog/post/prometheus/node_exporter/</link>
+      <pubDate>Mon, 05 Feb 2024 17:32:58 +0800</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/prometheus/node_exporter/</guid>
+      <description>&lt;p&gt;node_exporter 是 Prometheus 官方提供的一个用于采集计算机硬件信息的 Exporter。几乎所有的指标都来源于文件系统：&lt;code&gt;/proc&lt;/code&gt;、&lt;code&gt;/sys&lt;/code&gt;。这么做的好处显而易见，指标采集的效率非常的高。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Exporter简单入门</title>
+      <link>https://alfonsxh.github.io/Blog/post/prometheus/exporter%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sun, 04 Feb 2024 18:16:45 +0800</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/prometheus/exporter%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8/</guid>
+      <description>&lt;p&gt;各个采集端(Exporter)是 Prometheus 的数据来源，在看了多个官方的 exporter 后，总结了一下。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Gost科学上网</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/gost%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</link>
+      <pubDate>Sat, 03 Sep 2022 11:52:06 +0800</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/gost%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</guid>
+      <description>&lt;p&gt;在一个月内经历两次 VPS 被墙后，痛定思痛，决定放弃 Shadowsocks 的连接方式，转向 &lt;code&gt;Gost + Https&lt;/code&gt; 的方式。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python argparse 模块 hook 输入参数的几种方式</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python_argparse%E6%A8%A1%E5%9D%97hook%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Tue, 25 Aug 2020 16:35:40 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python_argparse%E6%A8%A1%E5%9D%97hook%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;需求描述：&lt;/p&gt;&#xA;&lt;p&gt;用户输入size参数值，如果未给定单位，需要指定默认的size单位。&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>Python pyconcrete加解密py文件</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python_pyconcrete%E5%8A%A0%E8%A7%A3%E5%AF%86py%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Wed, 03 Jun 2020 22:53:48 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python_pyconcrete%E5%8A%A0%E8%A7%A3%E5%AF%86py%E6%96%87%E4%BB%B6/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;pyconcrete&lt;/strong&gt; 是一个加密模块，可以将py文件，通过AES加密的方式，将py文件编译过后的pyc文件转换成家秘密后的pye文件，在使用时，再通过AES解密出pyc源码，直接加载到内存中，进行执行。&lt;/p&gt;&#xA;&lt;p&gt;这种方式可以暂时保证源码不被泄漏，但是，加密的方式为对称加密，只要知道密钥，就能解密出pyc源码，再通过其他方式，就能还原出py文件。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python 性能分析</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</link>
+      <pubDate>Wed, 03 Jun 2020 22:53:48 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</guid>
+      <description>参考几种性能分析的方式。事例代码如下：&#xA;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 import sys def fib(n): if n == 0: return 0 elif n == 1: return 1 else: return fib(n - 1) + fib(n - 2) def fib_seq(n): seq = [] if n &amp;gt; 0: seq.extend(fib_seq(n - 1)) seq.append(fib(n)) return seq if __name__ == &amp;#39;__main__&amp;#39;: print fib_seq(int(sys.argv[1])) 暴力(time)性能分析 最简单的性能分析方式，使用系统命令 time，或者python中的 timeit、time 模块。</description>
+    </item>
+    <item>
+      <title>Linux服务器负载均衡</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
+      <pubDate>Tue, 03 Sep 2019 08:23:26 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid>
+      <description>&lt;p&gt;这篇主要是了解一下早年前辈们 &lt;strong&gt;如何设计服务器，应对高并发网络请求&lt;/strong&gt;，实际上可能不是这样操作，但是 &lt;strong&gt;这种解决问题的思路十分重要&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>深入理解Python特性 - 1-Python简洁之道</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/1-python%E7%AE%80%E6%B4%81%E4%B9%8B%E9%81%93/</link>
+      <pubDate>Sun, 11 Aug 2019 14:35:42 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/1-python%E7%AE%80%E6%B4%81%E4%B9%8B%E9%81%93/</guid>
+      <description>&lt;h2 id=&#34;断言assert&#34;&gt;断言(assert)&lt;/h2&gt;&#xA;&lt;p&gt;断言是python程序中用于内部自检的方式之一，如声明一些代码中不可能出现的条件。如果触发了某个条件，即意味着程序中存在相应的bug。&lt;/p&gt;&#xA;&lt;p&gt;语法规则为：&lt;code&gt;assert 判断语句, 异常提示&lt;/code&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>深入理解Python特性 - 2-高效的函数</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/2-%E9%AB%98%E6%95%88%E7%9A%84%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Sun, 11 Aug 2019 14:35:42 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3python%E7%89%B9%E6%80%A7/2-%E9%AB%98%E6%95%88%E7%9A%84%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;h2 id=&#34;函数是对象&#34;&gt;函数是对象&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Python中一切皆对象，函数也如此。可以将函数分配给变量或者存储在数据结构中。作为头等对象，函数还可以被传递给其他函数或作为其他函数的返回值。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;能够接收其他函数作为参数的函数称之为高阶函数&lt;/strong&gt;。如map、reduce、filter等等。&lt;/li&gt;&#xA;&lt;li&gt;函数可以嵌套，并且可以捕获并携带父函数的一些状态。具有这种行为的函数成为闭包。&lt;/li&gt;&#xA;&lt;li&gt;对象可以被设置成可调用的，因此很多情况下可以将其作为函数对待。(类中需实现 &lt;code&gt;_call__&lt;/code&gt; 方法)&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Linux系统编程:进程_虚拟内存</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/3_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E8%BF%9B%E7%A8%8B_%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</link>
+      <pubDate>Sat, 20 Jul 2019 12:05:56 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/3_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E8%BF%9B%E7%A8%8B_%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</guid>
+      <description>&lt;p&gt;引用一下wiki上的话：&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;虚拟内存&lt;/strong&gt; 是计算机内存管理的一种技术。它使得应用程序认为它拥有连续可用的内存（一个连续完整的地址空间），而实际上，它通常是被分隔成多个物理内存碎片，还有部分暂时存储在外部磁盘存储器上，在需要时进行数据交换。与没有使用虚拟内存技术的系统相比，使用这种技术的系统使得大型程序的编写变得更容易，对真正的物理内存（例如RAM）的使用也更有效率。&lt;/p&gt;&#xA;&lt;p&gt;注意：&lt;strong&gt;虚拟内存不只是“用磁盘空间来扩展物理内存”的意思&lt;/strong&gt; ——这只是扩充内存级别以使其包含硬盘驱动器而已。把内存扩展到磁盘只是使用虚拟内存技术的一个结果，它的作用也可以通过覆盖或者把处于不活动状态的程序以及它们的数据全部交换到磁盘上等方式来实现。对虚拟内存的定义是基于对地址空间的重定义的，即 &lt;strong&gt;把地址空间定义为“连续的虚拟内存地址”，以借此“欺骗”程序，使它们以为自己正在使用一大块的“连续”地址&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>Linux系统编程:进程_基础部分</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/3_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E8%BF%9B%E7%A8%8B_%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</link>
+      <pubDate>Thu, 04 Jul 2019 23:06:17 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/3_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E8%BF%9B%E7%A8%8B_%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</guid>
+      <description>&lt;h2 id=&#34;进程和程序&#34;&gt;进程和程序&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;进程(process)&lt;/strong&gt; 是一个可执行 &lt;strong&gt;程序(program)&lt;/strong&gt; 的实例。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python中的下划线</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python%E4%B8%AD%E7%9A%84%E4%B8%8B%E5%88%92%E7%BA%BF/</link>
+      <pubDate>Thu, 04 Jul 2019 23:06:17 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python%E4%B8%AD%E7%9A%84%E4%B8%8B%E5%88%92%E7%BA%BF/</guid>
+      <description>&lt;p&gt;python中的变量命名可以是：&lt;strong&gt;var&lt;/strong&gt;、&lt;strong&gt;_var&lt;/strong&gt;、&lt;strong&gt;__var&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python中一种单例无效的情况</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python%E4%B8%AD%E4%B8%80%E7%A7%8D%E5%8D%95%E4%BE%8B%E6%97%A0%E6%95%88%E7%9A%84%E6%83%85%E5%86%B5/</link>
+      <pubDate>Wed, 26 Jun 2019 22:24:42 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python%E4%B8%AD%E4%B8%80%E7%A7%8D%E5%8D%95%E4%BE%8B%E6%97%A0%E6%95%88%E7%9A%84%E6%83%85%E5%86%B5/</guid>
+      <description>&lt;p&gt;在Python中，如果要创建一个单例，通常有两种方式。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python中的进程池和线程池</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B%E6%B1%A0%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0/</link>
+      <pubDate>Wed, 26 Jun 2019 22:24:42 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B%E6%B1%A0%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0/</guid>
+      <description>&lt;p&gt;最近有用Python标准模板库里的线程池实现一些东西，发现非常好用，记录一下。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux系统编程:网络_基础部分</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/4_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E7%BD%91%E7%BB%9C_%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</link>
+      <pubDate>Sun, 16 Jun 2019 17:25:21 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/4_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E7%BD%91%E7%BB%9C_%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</guid>
+      <description>&lt;p&gt;网络是多台计算机之间的互联互通形成的信息交互通道。现在的网络世界看似复杂，却遵从着一些基本设计原则。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>网络</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/07_%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Sun, 16 Jun 2019 17:25:21 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/07_%E7%BD%91%E7%BB%9C/</guid>
+      <description>&lt;p&gt;网络是多台计算机之间的互联互通形成的信息交互通道。现在的网络世界看似复杂，却遵从着一些基本设计原则。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>需求分析</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/08_%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/</link>
+      <pubDate>Sun, 16 Jun 2019 17:25:21 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/08_%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PCIE</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E8%BF%90%E7%BB%B4/pcie/</link>
+      <pubDate>Mon, 10 Jun 2019 22:15:49 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E8%BF%90%E7%BB%B4/pcie/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;PCIE(Peripheral Component Interconnect Express，快捷外设互联标准)&lt;/strong&gt; 仅应用于内部互连，相当于CPU与各硬件设备数据传输的高速公路。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RAID</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E8%BF%90%E7%BB%B4/raid/</link>
+      <pubDate>Mon, 10 Jun 2019 22:15:49 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E8%BF%90%E7%BB%B4/raid/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;独立硬盘冗余阵列(RAID, Redundant Array of Independent Disks)&lt;/strong&gt;，利用虚拟化技术将多个磁盘组合起来，成为一个多个硬盘的阵列，从而提升效率或者资料冗余。&lt;/p&gt;&#xA;&lt;p&gt;根据RAID的层级不同，资料会以多种形式放置在多个磁盘上。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux系统编程:文件_文件的挂载</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_5_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E6%8C%82%E8%BD%BD/</link>
+      <pubDate>Sun, 26 May 2019 16:53:28 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_5_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E6%8C%82%E8%BD%BD/</guid>
+      <description>&lt;p&gt;在Linux中，文件的目录层次是一个树状的形式，根路径为 &lt;code&gt;/&lt;/code&gt;。如果需要 &lt;strong&gt;使用磁盘上的新的分区&lt;/strong&gt;，就需要将分区通过 &lt;strong&gt;挂载的方式挂上目录树&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://alfonsxh.github.io/Blog/images/Linux/Chapter14/14_linux_dir_tree.png&#34; alt=&#34;14_linux_dir_tree&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>进程、线程与协程</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/06_%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/</link>
+      <pubDate>Sun, 26 May 2019 16:53:28 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/06_%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/</guid>
+      <description>&lt;h2 id=&#34;进程和线程&#34;&gt;进程和线程&lt;/h2&gt;&#xA;&lt;p&gt;在操作系统中，进程是操作系统中资源调度的最小单位，&lt;strong&gt;每一个可执行程序都是一个进程&lt;/strong&gt;，在这个 &lt;strong&gt;主进程&lt;/strong&gt; 下面，可以有 &lt;strong&gt;多个子进程或者线程&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;p&gt;在Linux中，每一个主进程又是属于 &lt;strong&gt;pid为1&lt;/strong&gt; 的祖先进程的子进程。操作系统在开机启动时，会启动一个 &lt;strong&gt;pid为0的进程idle&lt;/strong&gt;：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python json解析双斜杠字符串</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python_json%E8%A7%A3%E6%9E%90%E5%8F%8C%E6%96%9C%E6%9D%A0%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+      <pubDate>Sat, 25 May 2019 23:58:22 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python_json%E8%A7%A3%E6%9E%90%E5%8F%8C%E6%96%9C%E6%9D%A0%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
+      <description>&lt;p&gt;有时候在处理requests返回的结果时，会出现中文unicode编码为双斜杠的情况。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>冯诺依曼体系</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/02_%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB/</link>
+      <pubDate>Sat, 25 May 2019 23:58:22 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/02_%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB/</guid>
+      <description>&lt;p&gt;冯诺依曼体系结构是计算机发展的基石，它将计算机的的物理结构抽象成了三个模块(大致)：&lt;strong&gt;处理器&lt;/strong&gt;、&lt;strong&gt;存储&lt;/strong&gt;、&lt;strong&gt;输入输出设备&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>操作系统</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/04_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Sat, 25 May 2019 23:58:22 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/04_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
+      <description>&lt;p&gt;操作系统是用户与计算机交互的窗口，现代计算机离开了操作系统的支持，将无法进行正常使用。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>编程语言</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/03_%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</link>
+      <pubDate>Sat, 25 May 2019 23:58:22 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/03_%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</guid>
+      <description>&lt;p&gt;从 &lt;strong&gt;0101打孔纸带&lt;/strong&gt; 到 &lt;strong&gt;汇编语言&lt;/strong&gt;，再到现在的 &lt;strong&gt;高级语言&lt;/strong&gt;，编程方式的每一次改变，都会对计算机带来很大的变化。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>输入与输出</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/05_%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/</link>
+      <pubDate>Sat, 25 May 2019 23:58:22 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/05_%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/</guid>
+      <description>&lt;p&gt;在早期，打卡机是唯一的人与计算机交互的途径。&lt;/p&gt;&#xA;&lt;p&gt;现在，输入输出设备的样式层出不穷，只有你想不到，没有厂商做不到。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Docker(五) - 创建私有镜像仓库</title>
+      <link>https://alfonsxh.github.io/Blog/post/docker/docker_4_%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/docker/docker_4_%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/</guid>
+      <description>&lt;p&gt;默认情况下，我们下载镜像的位置都是 &lt;a href=&#34;https://hub.docker.com&#34;&gt;https://hub.docker.com&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;在国内，使用上面的仓库地址可能会下载得很慢，使用国内的镜像源在很大程度上会加快下载速度。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux系统编程:文件_IO缓存</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_4_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_io%E7%BC%93%E5%AD%98/</link>
+      <pubDate>Tue, 23 Apr 2019 23:19:09 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_4_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_io%E7%BC%93%E5%AD%98/</guid>
+      <description>&lt;h2 id=&#34;io缓存概览&#34;&gt;I/O缓存概览&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://alfonsxh.github.io/Blog/images/Linux/Chapter13/13_io_cache.png&#34; alt=&#34;I/O_cache&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Linux系统中的 &lt;strong&gt;文件I/O缓存&lt;/strong&gt; 操作大致如上图所示：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux系统编程:文件_深入理解文件描述符</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_3_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/</link>
+      <pubDate>Tue, 23 Apr 2019 23:19:09 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_3_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/</guid>
+      <description>&lt;p&gt;每个进程中都维护着一张文件描述符表，里面存放的是 &lt;strong&gt;文件描述符&lt;/strong&gt; 以及 &lt;strong&gt;指向内核维护的一张文件表中的一项的指针&lt;/strong&gt;。（文件表中的一项，在 &lt;strong&gt;《Linux/Unix系统编程手册》&lt;/strong&gt; 中称为 &lt;strong&gt;文件句柄&lt;/strong&gt;，在 &lt;strong&gt;《Unix环境高级编程》&lt;/strong&gt; 中称为 &lt;strong&gt;文件表项&lt;/strong&gt;）&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>架构师的宏观视角</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/01_%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E5%AE%8F%E8%A7%82%E8%A7%86%E8%A7%92/</link>
+      <pubDate>Wed, 17 Apr 2019 22:46:17 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E8%AE%B8%E5%BC%8F%E4%BC%9F%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%BE/01_%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E5%AE%8F%E8%A7%82%E8%A7%86%E8%A7%92/</guid>
+      <description>&lt;p&gt;计算机的世界里，所有的复杂的东西都是由简单的东西一步一步搭建起来的，归根结底，程序最终还是翻译成指令集的不同组合，这些组合不同的顺序以及数量，组成了我们现在的计算机世界。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>泛型编程</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/1_%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Wed, 17 Apr 2019 22:46:17 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/1_%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/</guid>
+      <description>&lt;h2 id=&#34;泛型编程的含义&#34;&gt;泛型编程的含义&lt;/h2&gt;&#xA;&lt;p&gt;在编程的时候，总会遇到 &lt;strong&gt;同样的逻辑但是所需的类型不同&lt;/strong&gt; 的问题。理想情况下，&lt;strong&gt;算法应是和数据结构和类型无关的，各种特殊的数据类型理应做好自己分内的工作&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>编程的本质</title>
+      <link>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/2_%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8/</link>
+      <pubDate>Wed, 17 Apr 2019 22:46:17 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/%E9%99%88%E7%9A%93%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/2_%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8/</guid>
+      <description>&lt;p&gt;之前一直有听说这么一句话：&lt;code&gt;Programs = Algorithms + Data Structures&lt;/code&gt;。但要具体点描述就说不出什么了。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux系统编程:文件_高级文件IO调用</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_2_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E9%AB%98%E7%BA%A7%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/</link>
+      <pubDate>Sun, 31 Mar 2019 22:52:56 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_2_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E9%AB%98%E7%BA%A7%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/</guid>
+      <description>&lt;h2 id=&#34;原子操作&#34;&gt;原子操作&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;原子操作(atomicity)&lt;/strong&gt; —— 将某一系统调用所要完成的各个动作作为不可中断的操作，一次性加以执行。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux系统编程:文件_基础文件IO调用</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E5%9F%BA%E7%A1%80%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/</link>
+      <pubDate>Sat, 30 Mar 2019 23:40:30 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E5%9F%BA%E7%A1%80%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/</guid>
+      <description>&lt;p&gt;本篇文章主要记录了《Linux/Unix系统编程手册》第4章的学习笔记。&lt;/p&gt;&#xA;&lt;p&gt;在Linux系统中，一切都是文件！我们可以用操作文件的方式，操作Linux上的一切。文件I/O对于Linux系统来说，非常重要！&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux系统编程:文件_文件系统</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Sat, 30 Mar 2019 23:40:30 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid>
+      <description>&lt;p&gt;本篇文章主要记录了《Linux/Unix系统编程手册》第14章的学习笔记。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>awk</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/awk/</link>
+      <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/awk/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;awk命令&lt;/strong&gt; 输入的数据为 &lt;strong&gt;行数据&lt;/strong&gt;，经过一些判别处理后，按对应的格式输出。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux命令find</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/find/</link>
+      <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/find/</guid>
+      <description>&lt;p&gt;通过 &lt;strong&gt;find命令&lt;/strong&gt;，可以很方便的查找符合目标类型的文件，例如多长时间内修改过的文件，大小范围内的文件等，配合一些其他的操作，例如删除操作。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;find命令&lt;/strong&gt; 基本语法： &lt;code&gt;find [path] [option] [expression]&lt;/code&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux系统编程:概念</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%A6%82%E5%BF%B5/</guid>
+      <description>&lt;p&gt;本篇文章主要记录了《Linux/Unix系统编程手册》第1-3章的学习笔记。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>sed</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/sed/</link>
+      <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/sed/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;sed&lt;/strong&gt; 是一种流编辑器，用于处理文本数据。文本数据是以 &lt;strong&gt;行为单位&lt;/strong&gt; 进行处理。可以是文件流，也可以是 &lt;strong&gt;STDIN&lt;/strong&gt; 管道传入的数据。&lt;/p&gt;&#xA;&lt;p&gt;命令格式为： &lt;code&gt;sed [参数] [动作]&lt;/code&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>去除awk截取参数中的换行符</title>
+      <link>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/%E5%8E%BB%E9%99%A4awk%E6%88%AA%E5%8F%96%E5%8F%82%E6%95%B0%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6/</link>
+      <pubDate>Sat, 23 Mar 2019 20:16:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/%E5%8E%BB%E9%99%A4awk%E6%88%AA%E5%8F%96%E5%8F%82%E6%95%B0%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6/</guid>
+      <description>&lt;p&gt;事情是这样的：&lt;/p&gt;&#xA;&lt;p&gt;有一个配置文件，里面有数据库的账号密码，需要读出来，然后对数据库进行初始化。&lt;/p&gt;&#xA;&lt;p&gt;可是搞了半天，用户名和密码用awk是读出来了，打印出来看着是正常的，但是初始化数据库时总是出错。&lt;/p&gt;&#xA;&lt;p&gt;最后发现是文件的问题，用010打开，在windows下的文件换行符为 &lt;strong&gt;\r&lt;/strong&gt;，awk取出来时，账号名和密码都包含这个特殊的字符，导致初始化未能成功。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第1章-Python数据模型</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC1%E7%AB%A0-python%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Sat, 09 Mar 2019 22:05:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC1%E7%AB%A0-python%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;魔术方法(magic method)&lt;/strong&gt; 是python特殊方法的昵称，形如 &lt;code&gt;__gititem__&lt;/code&gt; 这样的方法成为特殊方法。&lt;/p&gt;&#xA;&lt;p&gt;在python的风格中，通常没有 &lt;strong&gt;collection.len()&lt;/strong&gt;，取而代之的是 &lt;strong&gt;len(collection)&lt;/strong&gt;。关键是collection对象中实现了 &lt;code&gt;__len__&lt;/code&gt; 方法。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第2章-序列构成的数组</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC2%E7%AB%A0-%E5%BA%8F%E5%88%97%E6%9E%84%E6%88%90%E7%9A%84%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Sat, 09 Mar 2019 22:05:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC2%E7%AB%A0-%E5%BA%8F%E5%88%97%E6%9E%84%E6%88%90%E7%9A%84%E6%95%B0%E7%BB%84/</guid>
+      <description>&lt;h2 id=&#34;内置序列类型&#34;&gt;内置序列类型&lt;/h2&gt;&#xA;&lt;p&gt;Python标准库用C实现了丰富的序列类型。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;容器序列&lt;/strong&gt;: list、tuple和collections.deque能存放不同类型的数据。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;扁平序列&lt;/strong&gt;: str、bytearray、memoryview和array.array，这类序列只能容纳一种类型。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第3章-字典和集合</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC3%E7%AB%A0-%E5%AD%97%E5%85%B8%E5%92%8C%E9%9B%86%E5%90%88/</link>
+      <pubDate>Sat, 09 Mar 2019 22:05:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC3%E7%AB%A0-%E5%AD%97%E5%85%B8%E5%92%8C%E9%9B%86%E5%90%88/</guid>
+      <description>&lt;p&gt;标准库中的所有映射类型都是利用dict来实现的，因此它们有个共同的限制&amp;ndash;&lt;strong&gt;只有可散列的数据类型才能用作这些映射里的键(只有键key有这个要求，值value不需要是散列形式)&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;p&gt;可散列类型：如果一个对象是可散列的，那么在这个对象的生命周期中，它的散列值是不变的，而且这个对象需要实现 &lt;code&gt;__hash__()&lt;/code&gt; 方法。如果需要和其他的对象对比的话，还需要实现 &lt;code&gt;__eq__()&lt;/code&gt; 方法。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Docker(四) - 实例: redis主从同步实现</title>
+      <link>https://alfonsxh.github.io/Blog/post/docker/docker_3_redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/docker/docker_3_redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&lt;h2 id=&#34;目的&#34;&gt;目的&lt;/h2&gt;&#xA;&lt;p&gt;使用容器，使得一个主机和两个备机实现数据同步。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Docker(三) - Dockerfile 创建镜像</title>
+      <link>https://alfonsxh.github.io/Blog/post/docker/docker_2_dockerfile%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F/</link>
+      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/docker/docker_2_dockerfile%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Dockerfile&lt;/strong&gt; 是一个文本格式的配置文件，用户可以通过使用 &lt;strong&gt;Dockerfile&lt;/strong&gt; 文件快速自定义需要的镜像。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dockerfile&lt;/strong&gt; 由一行一行的命令构成，主体部分包括：&lt;strong&gt;基础镜像信息&lt;/strong&gt;、&lt;strong&gt;镜像操作指令&lt;/strong&gt;、&lt;strong&gt;容器启动时执行指令&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Docker(二) - Cli命令: container和image</title>
+      <link>https://alfonsxh.github.io/Blog/post/docker/docker_1_container%E5%92%8Cimage%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/docker/docker_1_container%E5%92%8Cimage%E5%91%BD%E4%BB%A4/</guid>
+      <description>&lt;p&gt;主要记录一些常见的命令使用，避免遗忘。命令行操作的话，个人比较喜欢 &lt;code&gt;docker image rm xxx&lt;/code&gt; 的方式，不太喜欢直接使用精简命令的方式，例如 &lt;code&gt;docker rmi xxxx&lt;/code&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Docker(一) - 概述</title>
+      <link>https://alfonsxh.github.io/Blog/post/docker/docker_0_docker%E6%A6%82%E8%BF%B0/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/docker/docker_0_docker%E6%A6%82%E8%BF%B0/</guid>
+      <description>&lt;h2 id=&#34;从init谈起&#34;&gt;从init谈起&lt;/h2&gt;&#xA;&lt;p&gt;Linux系统下有3个特殊的进程:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;idle进程&lt;/strong&gt;: 由 &lt;strong&gt;操作系统自动创建&lt;/strong&gt;，运行在内核态，&lt;strong&gt;pid为0&lt;/strong&gt;。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;init进程&lt;/strong&gt;: 由 &lt;strong&gt;idle通过kernel_thread创建&lt;/strong&gt;，&lt;strong&gt;pid为1&lt;/strong&gt;，在内核空间完成初始化后，加载init程序(现在大多系统使用的是systemd程序，稍早的系统使用sysvinit或者upstart程序)，并最终在用户空间运行。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;kthreadd进程&lt;/strong&gt;: 由 &lt;strong&gt;idle通过kernel_thread创建&lt;/strong&gt;，&lt;strong&gt;pid为2&lt;/strong&gt;，始终运行在内核空间，负责所有内核线程的调度和管理。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>《今日简史》</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/otherbooks/%E4%BB%8A%E6%97%A5%E7%AE%80%E5%8F%B2/</link>
+      <pubDate>Wed, 20 Feb 2019 23:23:59 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/otherbooks/%E4%BB%8A%E6%97%A5%E7%AE%80%E5%8F%B2/</guid>
+      <description>2019年 02月 19日 星期二 22:25:53 CST&#xA;以后的就业会是怎样？按照现在的计算机科学的发展，现在的很多职业的存在其实是没有必要的，例如司机，等待自动驾驶技术的成熟，或许这一职业将会成为历史。&#xA;从历史上来看，当初汽车出现的时候，也出现过类似的声音：“马车车夫将会被淘汰！”。但结果是什么？马车虽然被淘汰了，但车夫却可以经过练习后驾驶汽车，只是减少了一个工种，增加了一个工种。&#xA;这样的改变在历史的进程中随处可见。随着工业革命的开始，农业和工业迈向自动化，就出现了新的服务行业，消化了大量的失业人口。1920年，因为农业机械化而失业的人可以去生产拖拉机的工厂里找到新的工作。1980年，工厂工人失业后，可以在服务行业找到工作。这些转变只需稍加培训，便能胜任。&#xA;可是，以后，如果人工智能取代了人类，那又会是怎样的情况呢？你不可能指望卡车司机在短时间内通过培训就能分析自动驾驶产生的数据，这不切合实际。&#xA;有一点是十分可怕的。今天看起来我们的生活似乎比上个世纪要好很多了，贫富差距似乎也没以前的巨大了。可事实情况又是如何呢？现在世界上 1% 的人掌握着世界一半的财富，前100个富豪手中的财富已经是最不富裕的40亿人的总和。贫富差距仍在扩大！&#xA;贫富差距正慢慢改变着穷人和富人的生命形式。随着生物技术的发展，未来改造人体或许将不再是梦想。这时，你会发现，穷人和富人的差距开始明显。富裕的人能够拥有更多的天赋、更具创意、更为聪明，等到这些真的成为现实，贫富的差距将无法被拉近！这样的差距只会越来越大！到最后，人类或许真的会分化成不同的物种。&#xA;科幻小说《赡养人类》中有过类似的桥段，当一个人拥有了全球所有的财富后，将其他人赶到别的星球上，占领其他星球。</description>
+    </item>
+    <item>
+      <title>DoubanMovie爬取</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/spider/doubanmovie%E7%88%AC%E8%99%AB/</link>
+      <pubDate>Sun, 17 Feb 2019 22:45:16 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/spider/doubanmovie%E7%88%AC%E8%99%AB/</guid>
+      <description>&lt;p&gt;对豆瓣上的电影详细信息进行爬取，使用到的框架是 &lt;strong&gt;Scrapy&lt;/strong&gt;。效率为24h爬取十万多部(效率可能不太高&amp;hellip;)。记录一下爬取的过程和遇到的问题。&lt;/p&gt;&#xA;&lt;p&gt;代码放在github：&lt;a href=&#34;https://github.com/Alfonsxh/Spider&#34;&gt;https://github.com/Alfonsxh/Spider&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python GIL</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/gil%E5%85%A8%E5%B1%80%E8%A7%A3%E9%87%8A%E5%99%A8%E9%94%81/</link>
+      <pubDate>Wed, 30 Jan 2019 13:32:21 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/gil%E5%85%A8%E5%B1%80%E8%A7%A3%E9%87%8A%E5%99%A8%E9%94%81/</guid>
+      <description>&lt;p&gt;对于CPU密集型程序来说，使用Python作为开发工具，是一个失败的尝试，因为 &lt;code&gt;GIL(Global Interpreter Lock)&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;GIL&lt;/strong&gt; 译为 &lt;strong&gt;全局解释器锁&lt;/strong&gt;。是的，是 &lt;strong&gt;解释器锁&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>SqlAlchemy使用</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/sqlalchemy/</link>
+      <pubDate>Mon, 28 Jan 2019 14:17:43 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/sqlalchemy/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;SqlAlchemy(Sql炼金术？)&lt;/strong&gt; 是Python下的一款 &lt;strong&gt;ORM(Object Relational Mapping 对象关系映射)框架&lt;/strong&gt;，框架建立在数据库API之上，使用关系对象映射进行数据库操作。将对象转换为sql，然后调用数据库API执行sql并获取结果。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python装饰器----Decorator</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python%E8%A3%85%E9%A5%B0%E5%99%A8/</link>
+      <pubDate>Sat, 26 Jan 2019 11:00:55 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python%E8%A3%85%E9%A5%B0%E5%99%A8/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Python&lt;/strong&gt; 的装饰器模式通过 &lt;strong&gt;语法糖&lt;/strong&gt; 实现，相较于其他语言的装饰器模式，十分的优雅。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python   slots  和  all  </title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python__slots__%E5%92%8C__all__/</link>
+      <pubDate>Fri, 25 Jan 2019 22:35:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python__slots__%E5%92%8C__all__/</guid>
+      <description>&lt;h2 id=&#34;__slots__&#34;&gt;__slots__&lt;/h2&gt;&#xA;&lt;p&gt;在python中，我们可以在实例化对象后绑定对象的方法或属性：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>2_Scrapy模块使用及调试</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/spider/scrapy/2_scrapy%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8%E5%8F%8A%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Mon, 14 Jan 2019 16:25:42 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/spider/scrapy/2_scrapy%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8%E5%8F%8A%E8%B0%83%E8%AF%95/</guid>
+      <description>&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install scrapy&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Python json解析错误处理</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python_json%E8%A7%A3%E6%9E%90%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</link>
+      <pubDate>Sat, 05 Jan 2019 15:07:21 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python_json%E8%A7%A3%E6%9E%90%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</guid>
+      <description>&lt;p&gt;在处理Json字符串时，当在Json原始数据中出现某些 &lt;strong&gt;空格&lt;/strong&gt; 时，可能会出现 &lt;strong&gt;json.decoder.JSONDecodeError&lt;/strong&gt; 的错误。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python pymysql连接错误</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python_pymysql%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF/</link>
+      <pubDate>Sat, 05 Jan 2019 15:07:21 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python_pymysql%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF/</guid>
+      <description>&lt;p&gt;在使用pymysql模块与数据库进行交互时，如果长时间进行连接，可能会出现连接中断，导致无法操作数据库的问题。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Redis使用</title>
+      <link>https://alfonsxh.github.io/Blog/post/redis%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 18 Dec 2018 21:21:48 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/redis%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Redis&lt;/strong&gt; 可以把它当作一个 &lt;strong&gt;存在于内存中、非关系型(nosql)的数据库&lt;/strong&gt;。其实现有点儿类似于 &lt;strong&gt;磁盘缓存策略的实现方式&lt;/strong&gt;，不过似乎要复杂一点。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>k路归并排序</title>
+      <link>https://alfonsxh.github.io/Blog/post/algorithms/algorithmsarea/k%E8%B7%AF%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Sun, 09 Dec 2018 21:43:03 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/algorithms/algorithmsarea/k%E8%B7%AF%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</guid>
+      <description>&lt;p&gt;题目：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;23.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Merge&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Sorted&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Lists&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Merge&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sorted&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;linked&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lists&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;it&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;one&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sorted&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Analyze&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;describe&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;its&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;complexity&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nl&#34;&gt;Example&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nl&#34;&gt;Input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nl&#34;&gt;Output&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Scrapy(1)-模块介绍</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/spider/scrapy/1_scrapy%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Sun, 09 Dec 2018 21:43:03 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/spider/scrapy/1_scrapy%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/</guid>
+      <description>&lt;p&gt;之前一直使用 &lt;strong&gt;requests + re&lt;/strong&gt; 的方式做爬虫……所有的步骤：访问、分析结果、存储结果、多进程、异步等等，都是自己实现的……最大的坑莫过于 &lt;strong&gt;正则匹配&lt;/strong&gt;，虽说 &lt;strong&gt;正则&lt;/strong&gt; 很强大，但是经常会出现一些异常的数据。另外，爬取不同的网站，又得重新来一套！！&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Beautiful Soup使用手册</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/spider/beautifulsoup%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
+      <pubDate>Thu, 29 Nov 2018 19:29:58 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/spider/beautifulsoup%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Beautiful Soup&lt;/strong&gt;作用是处理从网页爬下来的数据，如果说 &lt;strong&gt;scrapy&lt;/strong&gt;是辆车，那么 &lt;strong&gt;Beautiful Soup&lt;/strong&gt;就是车轮。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Frida API</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/frida/frida_api_%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E/</link>
+      <pubDate>Thu, 29 Nov 2018 19:29:58 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/frida/frida_api_%E4%B8%8D%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E/</guid>
+      <description>&lt;h2 id=&#34;python-api&#34;&gt;Python API&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;Frida Python端&lt;/code&gt;调用的&lt;code&gt;API&lt;/code&gt;主要用于启动程序，并将&lt;code&gt;JavaScript 脚本&lt;/code&gt;注入到对应进程的内存。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Frida使用手册</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/frida/frida_%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
+      <pubDate>Thu, 29 Nov 2018 19:29:58 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/frida/frida_%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
+      <description>&lt;h2 id=&#34;0介绍&#34;&gt;0、介绍&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;Frida&lt;/code&gt; 是一个跨平台的应用分析工具。能够注入JavaScript或者自己库的片段注入到 Windows, macOS, Linux, iOS, Android, and QNX 平台的应用上。支持 Google 的 &lt;code&gt;V8&lt;/code&gt; 引擎，从版本9开始，也支持 &lt;code&gt;Duktape&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;代码注入的方式很多。&lt;code&gt;Xposed&lt;/code&gt; 会永久修改Android应用程序加载器，每次启动的新进程都运行的时自己的挂钩程序。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;Frida&lt;/code&gt; 通过将代码直接写入进程内存来实现代码的植入。当附加到正在运行的应用程序时，&lt;code&gt;Frida&lt;/code&gt;使用&lt;code&gt;ptrace&lt;/code&gt;来劫持正在运行的进程的线程。该线程用于分配一块内存并使用迷你引导程序填充它。引导程序启动一个新线程，连接到设备上运行的&lt;code&gt;Frida&lt;/code&gt;调试服务器，并加载包含&lt;code&gt;Frida&lt;/code&gt;代理程序和检测代码的动态生成的库文件。被劫持的线程在恢复到其原始状态后恢复，并且流程执行继续照常进行。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python lxml模块中使用XPath语句</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/spider/lxml%E4%B8%AD%E4%BD%BF%E7%94%A8xpath/</link>
+      <pubDate>Thu, 29 Nov 2018 19:29:58 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/spider/lxml%E4%B8%AD%E4%BD%BF%E7%94%A8xpath/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;lxml模块&lt;/strong&gt; 有很多种功能，不单只有 &lt;strong&gt;XPath&lt;/strong&gt; 的方式解析 &lt;strong&gt;xml文档&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解设计模式 - 0-关于UML</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/0-%E5%85%B3%E4%BA%8Euml/</link>
+      <pubDate>Tue, 27 Nov 2018 21:07:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/0-%E5%85%B3%E4%BA%8Euml/</guid>
+      <description>&lt;p&gt;&lt;code&gt;UML(Unified Modeling Language)统一建模语言&lt;/code&gt;，是让系统可视化、让规格和设计文档化的表现方式。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解设计模式 - 1-Iterator模式</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1-iterator%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Tue, 27 Nov 2018 21:07:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1-iterator%E6%A8%A1%E5%BC%8F/</guid>
+      <description>&lt;p&gt;&lt;code&gt;迭代器模式&lt;/code&gt;用于在数据集合中按照顺序遍历集合，遍历的顺序可以自定义，&lt;code&gt;从前往后&lt;/code&gt;、&lt;code&gt;从后往前&lt;/code&gt;、&lt;code&gt;跳跃式遍历&lt;/code&gt;都可以。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;迭代器模式&lt;/code&gt;是一种对接口编程的思想，迭代的过程不依赖于迭代目标的实现，而是通过迭代器来实现遍历，减少了类与类之间的耦合性。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>红黑树</title>
+      <link>https://alfonsxh.github.io/Blog/post/algorithms/algorithmsarea/%E7%BA%A2%E9%BB%91%E6%A0%91/</link>
+      <pubDate>Tue, 27 Nov 2018 21:07:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/algorithms/algorithmsarea/%E7%BA%A2%E9%BB%91%E6%A0%91/</guid>
+      <description>&lt;p&gt;&lt;code&gt;红黑树(Red–black tree)&lt;/code&gt;是一种&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%B9%B3%E8%A1%A1%E6%A0%91&#34;&gt;自平衡二叉查找树&lt;/a&gt;，支持集合、查找、上一元素、下一元素、最大、最小、插入、删除等操作。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;红黑树&lt;/strong&gt; 有着最坏情况运行时间，它可以在 &lt;strong&gt;O(logn)&lt;/strong&gt; 时间内做查找，插入和删除操作。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;红黑树&lt;/strong&gt; 是每个节点都带有颜色属性的二叉查找树，颜色为红色或黑色。它有以下性质和要求：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1.树内的每个节点非红即黑。&lt;/li&gt;&#xA;&lt;li&gt;2.根节点和leaf节点(NIL节点，非叶节点)均为黑色。&lt;/li&gt;&#xA;&lt;li&gt;3.红色节点的子节点均为黑色。&lt;/li&gt;&#xA;&lt;li&gt;4.任一节点到其每个leaf节点的简单路径都包含相同数量的黑色节点。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Django--URLconf</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/2_django_urlconf/</link>
+      <pubDate>Tue, 27 Nov 2018 16:24:15 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/2_django_urlconf/</guid>
+      <description>&lt;p&gt;&lt;code&gt;URLconf (URL configuration)&lt;/code&gt;，Django中的 &lt;strong&gt;URL调度器&lt;/strong&gt; 使用的是纯python代码，是 &lt;strong&gt;URL路径&lt;/strong&gt; 解释到 &lt;strong&gt;Python功能函数&lt;/strong&gt; 的映射。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Django--模板</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/3_django_%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Tue, 27 Nov 2018 16:24:15 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/3_django_%E6%A8%A1%E6%9D%BF/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Django&lt;/strong&gt; 中的视图要么返回一个包含被请求页面内容的 &lt;strong&gt;HttpResponse&lt;/strong&gt; 对象，或者抛出一个异常。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Django通用视图</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/4_django_%E9%80%9A%E7%94%A8%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Tue, 27 Nov 2018 16:24:15 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/4_django_%E9%80%9A%E7%94%A8%E8%A7%86%E5%9B%BE/</guid>
+      <description>&lt;p&gt;使用通用视图的好处在于，能够最大程度的重复利用代码，减少代码量，并且方便扩展。&lt;/p&gt;&#xA;&lt;p&gt;使用 &lt;strong&gt;函数&lt;/strong&gt; 的方式实现：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CMake使用(一)-格式规范</title>
+      <link>https://alfonsxh.github.io/Blog/post/c&#43;&#43;/cmake/1_cmake%E4%BD%BF%E7%94%A8-%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Sat, 10 Nov 2018 23:27:53 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/c&#43;&#43;/cmake/1_cmake%E4%BD%BF%E7%94%A8-%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/</guid>
+      <description>&lt;p&gt;一个cmake文件至少包含以下内容&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;cmake_minimum_required&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;VERSION&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;所需的cmake最低版本&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;project&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Tutorial&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;工程名&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;add_executable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Tutorial&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;tutorial&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cxx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;可执行程序的名称&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;以及项目可执行程序的编译文件&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>CMake使用(二)-预编译选项添加</title>
+      <link>https://alfonsxh.github.io/Blog/post/c&#43;&#43;/cmake/2_cmake%E4%BD%BF%E7%94%A8-%E9%A2%84%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9%E6%B7%BB%E5%8A%A0/</link>
+      <pubDate>Sat, 10 Nov 2018 23:27:53 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/c&#43;&#43;/cmake/2_cmake%E4%BD%BF%E7%94%A8-%E9%A2%84%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9%E6%B7%BB%E5%8A%A0/</guid>
+      <description>&lt;p&gt;分两种情况，一种是添加宏定义选项，一种是添加编译选项。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Django入门篇1-模型和admin用户</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/1_diango%E5%85%A5%E9%97%A8%E7%AF%87/</link>
+      <pubDate>Fri, 09 Nov 2018 00:26:41 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/1_diango%E5%85%A5%E9%97%A8%E7%AF%87/</guid>
+      <description>&lt;h2 id=&#34;项目与应用&#34;&gt;项目与应用&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;code&gt;项目&lt;/code&gt;是一个网站使用的配置和应用的集合。项目可以包含很多个应用。应用可以被很多个项目使用。&#xA;&lt;code&gt;应用&lt;/code&gt;是一个专门做某件事的网络应用程序——比如博客系统，或者公共记录的数据库，或者简单的投票程序。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;在Django中，使用&lt;code&gt;startproject&lt;/code&gt;来创建项目，使用&lt;code&gt;startapp&lt;/code&gt;来创建应用。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>元素去重</title>
+      <link>https://alfonsxh.github.io/Blog/post/algorithms/algorithmsarea/%E5%85%83%E7%B4%A0%E5%8E%BB%E9%87%8D/</link>
+      <pubDate>Fri, 09 Nov 2018 00:26:41 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/algorithms/algorithmsarea/%E5%85%83%E7%B4%A0%E5%8E%BB%E9%87%8D/</guid>
+      <description>&lt;h2 id=&#34;问题描述&#34;&gt;问题描述&lt;/h2&gt;&#xA;&lt;p&gt;给一个很多数(含重复元素)的集合，如何快速的对集合进行汇总，找出每个元素对应的个数？&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>最短路径</title>
+      <link>https://alfonsxh.github.io/Blog/post/algorithms/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/</link>
+      <pubDate>Fri, 09 Nov 2018 00:26:41 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/algorithms/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/</guid>
+      <description>&lt;p&gt;最短路径问题是图论研究中的一个经典算法问题，旨在寻找图（由结点和路径组成的）中两结点之间的最短路径。根据不同要求有不同的算法可供选择。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>《未来简史》</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/otherbooks/%E6%9C%AA%E6%9D%A5%E7%AE%80%E5%8F%B2/</link>
+      <pubDate>Mon, 05 Nov 2018 22:03:45 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/otherbooks/%E6%9C%AA%E6%9D%A5%E7%AE%80%E5%8F%B2/</guid>
+      <description>&lt;div align=center&gt;&#xA;&lt;img src=&#34;https://alfonsxh.github.io/Blog/Image/Books/OtherBooks/未来简史.jpg&#34; width=30% /&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>MySQL必知必会 - 使用索引</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/8_mysql%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95/</link>
+      <pubDate>Mon, 05 Nov 2018 22:03:45 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/8_mysql%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95/</guid>
+      <description>&lt;p&gt;在数据库中使用索引的目的是为了在查询大数量数据的时候，提升查询效率。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;索引也是一种表，保存着主键或索引字段，以及一个能将每个记录指向实际表的指针。&lt;/li&gt;&#xA;&lt;li&gt;数据库用户是看不到索引的，它们只是用来加速查询的。&lt;/li&gt;&#xA;&lt;li&gt;数据库搜索引擎使用索引来快速定位记录。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>MySQL必知必会 - MySQL</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/2_mysql%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Mon, 29 Oct 2018 21:21:59 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/2_mysql%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
+      <description>&lt;p&gt;DBMS可以分为两类&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;一类为基于共享文件系统的DBMS，包括 &lt;code&gt;Microsoft Access&lt;/code&gt; 和 &lt;code&gt;FileMaker&lt;/code&gt;用于桌面用途。&lt;/li&gt;&#xA;&lt;li&gt;一类为基于客户机-服务器的数据库。服务器部分是负责所有数据访问和处理的软件，运行在数据库服务器的计算机上。关于数据的添加、删除和更新的所有请求都是由服务器软件完成。客户机是与用户打交道的软件。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>MySQL必知必会 - 使用存储过程</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/7_mysql%E4%BD%BF%E7%94%A8%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Mon, 29 Oct 2018 21:21:59 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/7_mysql%E4%BD%BF%E7%94%A8%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</guid>
+      <description>&lt;p&gt;&lt;code&gt;存储过程(Stored Procedure)&lt;/code&gt;：一组可编程的函数，是为了完成特定功能的SQL语句集，经&lt;code&gt;编译&lt;/code&gt;创建并&lt;code&gt;保存在数据库中&lt;/code&gt;，用户可通过指定存储过程的名字并给定参数(需要时)来调用执行。&lt;/p&gt;&#xA;&lt;p&gt;为什么需要使用存储过程：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;简单、安全、高性能。&lt;/li&gt;&#xA;&lt;li&gt;将重复性很高的一些操作，封装到一个存储过程中，简化了对这些SQL的调用。&lt;/li&gt;&#xA;&lt;li&gt;不要求反复建立一系列处理步骤，保证了数据的完整性。&lt;/li&gt;&#xA;&lt;li&gt;批量处理&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>MySQL必知必会 - 使用视图</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/6_mysql%E4%BD%BF%E7%94%A8%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Mon, 29 Oct 2018 21:21:59 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/6_mysql%E4%BD%BF%E7%94%A8%E8%A7%86%E5%9B%BE/</guid>
+      <description>&lt;p&gt;视图是虚拟的表，仅仅是用来查看存储在别处的数据的一种设施，视图本身不包含数据，它们返回的数据是从其他表中检索出来的，在添加或更改这些表中的数据时，视图将返回改变后的数据。&lt;/p&gt;&#xA;&lt;p&gt;视图的应用：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;主要同于数据检索(select 语句)，而不用于更新(insert、update和delete)&lt;/li&gt;&#xA;&lt;li&gt;重用SQL语句&lt;/li&gt;&#xA;&lt;li&gt;简化复杂的SQL操作。在编写查询后，可以方便地重用它而不必知道它的基本查询细节&lt;/li&gt;&#xA;&lt;li&gt;使用表的组成部分而不是整个表&lt;/li&gt;&#xA;&lt;li&gt;保护数据。可以给用户授予表的特定部分的访问权限而不是整个表的访问权限&lt;/li&gt;&#xA;&lt;li&gt;更改数据格式和表时。视图可返回与底层表的表示和格式不同的数据&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;性能问题：每次使用视图时，都必须处理查询执行时所需的任一个检索。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>MySQL必知必会 - 基础入门</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/1_sql%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Mon, 29 Oct 2018 21:21:59 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/1_sql%E5%9F%BA%E7%A1%80/</guid>
+      <description>&lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;数据库(database)&lt;/code&gt;是一个以某种有组织的方式存储的数据集合，保存有组织数据的容器(通常是一个文件或一组文件)&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;数据库软件DBMS(data base management system)&lt;/code&gt;创建和操纵数据库。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;表(table)&lt;/code&gt;某种特定类型数据的结构化清单。表具有一些特征，这些特征定义了数据在表中如何存储：可以存储什么样的数据，数据如何分解，各部分信息如何命名，等等。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;模式(schema)&lt;/code&gt;用于描述表中各部分信息，模式可以用来描述数据库中特定的表和整个数据库(和其中表的关系)。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;列(column)&lt;/code&gt;表中的一个字段，所有表都是由一个或多个列组成。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;数据类型(datatype)&lt;/code&gt;所容许的数据的类型。每个表列都有相应的数据类型，它限制该列中存储的数据。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;行(row)&lt;/code&gt;表中的一个记录。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;主键(primary key)&lt;/code&gt;一列(或一组列)，其值能够唯一区分表中每个行。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>MySQL必知必会 - 增删改</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/5_mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C_%E5%A2%9E%E5%88%A0%E6%94%B9/</link>
+      <pubDate>Mon, 29 Oct 2018 21:21:59 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/5_mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C_%E5%A2%9E%E5%88%A0%E6%94%B9/</guid>
+      <description>&lt;h2 id=&#34;创建和删除数据库&#34;&gt;创建和删除数据库&lt;/h2&gt;&#xA;&lt;p&gt;创建数据库的方式有两种，一种登陆后创建，一种使用mysqladmin创建。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;CREATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;DATABASE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;数据库名&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysqladmin&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RUNOOB&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;删除数据库使用&lt;code&gt;drop databse&lt;/code&gt;命令。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>MySQL必知必会 - 联结查询</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/4_mysql%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C_%E8%81%94%E7%BB%93%E6%9F%A5%E8%AF%A2/</link>
+      <pubDate>Mon, 29 Oct 2018 21:21:59 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/4_mysql%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C_%E8%81%94%E7%BB%93%E6%9F%A5%E8%AF%A2/</guid>
+      <description>&lt;h2 id=&#34;子查询&#34;&gt;子查询&lt;/h2&gt;&#xA;&lt;p&gt;SQL允许创建子查询，即嵌套在其他查询中的查询。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MariaDB&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cust_name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cust_contact&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;customers&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cust_id&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cust_id&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;orders&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;order_num&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;order_num&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;orderitems&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prod_id&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;TNT2&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;----------------+--------------+&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cust_name&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cust_contact&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;----------------+--------------+&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Coyote&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Inc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Lee&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Yosemite&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Place&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Sam&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;----------------+--------------+&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;rows&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;子查询还可以根据外部表中的字段对本表进行过滤。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>MySQL必知必会 - 聚集和分组</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/3_mysql%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C_%E8%81%9A%E9%9B%86%E5%92%8C%E5%88%86%E7%BB%84/</link>
+      <pubDate>Mon, 29 Oct 2018 21:21:59 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/3_mysql%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C_%E8%81%9A%E9%9B%86%E5%92%8C%E5%88%86%E7%BB%84/</guid>
+      <description>&lt;h2 id=&#34;创建计算字段&#34;&gt;创建计算字段&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;Concat()&lt;/code&gt;函数用来拼接不同的列。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;as&lt;/code&gt;关键字用来给字段或值取一个别名。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MariaDB&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;concat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vend_name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;(&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vend_country&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;)&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;as&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vend_title&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vendors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;------------------------+&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vend_title&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;             &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;------------------------+&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Anvils&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Us&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;USA&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;       &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;LT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Supplies&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;USA&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;       &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ACME&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;USA&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;              &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Furball&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Inc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;USA&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Jet&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;Set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;England&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;       &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Jouets&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Et&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Ours&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;France&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;------------------------+&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;rows&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Fibonacci数列</title>
+      <link>https://alfonsxh.github.io/Blog/post/algorithms/algorithmsarea/fibonacci/</link>
+      <pubDate>Tue, 09 Oct 2018 21:57:47 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/algorithms/algorithmsarea/fibonacci/</guid>
+      <description>&lt;p&gt;已知 $$F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2}$$&lt;/p&gt;&#xA;&lt;h2 id=&#34;传统递归方式&#34;&gt;传统递归方式&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;FibsRecursion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FibsRecursion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FibsRecursion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;传统递归方式需要计算许多重复的值，时间复杂度为 $O(2^n)$。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>见识</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/otherbooks/%E8%A7%81%E8%AF%86/</link>
+      <pubDate>Fri, 28 Sep 2018 23:55:59 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/otherbooks/%E8%A7%81%E8%AF%86/</guid>
+      <description>&lt;!-- ![见识](/images/Books/OtherBooks/见识.jpg) --&gt;&#xA;&lt;div align=center&gt;&#xA;&lt;img src=&#34;https://alfonsxh.github.io/Blog/Image/Books/OtherBooks/见识.jpg&#34; width=30% /&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Hashcat使用说明</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
+      <pubDate>Fri, 28 Sep 2018 21:51:01 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/hashcat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</guid>
+      <description>&lt;p&gt;&lt;code&gt;hashcat&lt;/code&gt;是目前世界上最快的密码破解工具，能够破译众多类型的密码，可以使用CPU，也可以使用GPU作为计算单元。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>如何杀死Python subprocess.Popen创建的进程</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python%E6%9D%80%E4%B8%8D%E6%AD%BB%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B/</link>
+      <pubDate>Fri, 28 Sep 2018 21:51:01 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python%E6%9D%80%E4%B8%8D%E6%AD%BB%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B/</guid>
+      <description>&lt;p&gt;在使用&lt;code&gt;Popen&lt;/code&gt;模块创建进程执行时，发现启动的进程&lt;code&gt;proc&lt;/code&gt;在使用&lt;code&gt;proc.kill()&lt;/code&gt;后，仍然存在。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第19章-动态属性和特性</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC19%E7%AB%A0-%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E7%89%B9%E6%80%A7/</link>
+      <pubDate>Thu, 30 Aug 2018 22:28:33 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC19%E7%AB%A0-%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E7%89%B9%E6%80%A7/</guid>
+      <description>&lt;p&gt;属性：通过&lt;code&gt;obj.attr&lt;/code&gt;的方式获取，称为属性。&lt;/p&gt;&#xA;&lt;p&gt;特性：有点函数味道的属性。可以通过&lt;code&gt;@property&lt;/code&gt;装饰器，或者&lt;code&gt;property()&lt;/code&gt;函数设置特性。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第20章-属性描述符</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC20%E7%AB%A0-%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6/</link>
+      <pubDate>Thu, 30 Aug 2018 22:28:33 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC20%E7%AB%A0-%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6/</guid>
+      <description>&lt;p&gt;描述符是实现了特定协议的类，这个协议包括&lt;code&gt;__get__&lt;/code&gt;、&lt;code&gt;__set__&lt;/code&gt;、&lt;code&gt;__delete__&lt;/code&gt;方法，&lt;code&gt;property&lt;/code&gt;类实现了完整的描述符协议。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第21章-类元编程</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC21%E7%AB%A0-%E7%B1%BB%E5%85%83%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Thu, 30 Aug 2018 22:28:33 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC21%E7%AB%A0-%E7%B1%BB%E5%85%83%E7%BC%96%E7%A8%8B/</guid>
+      <description>&lt;h2 id=&#34;使用type函数构造类&#34;&gt;使用type函数构造类&lt;/h2&gt;&#xA;&lt;p&gt;在python可以通过type函数构造类。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MyClass&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;MyClass&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;x&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;func&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;lambda&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MyClass2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;以上两种方式的效果是一样的，都构造了&lt;code&gt;MyClass&lt;/code&gt;类，并且含有属性x，以及类方法&lt;code&gt;func&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - PGP</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/13-pgp/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/13-pgp/</guid>
+      <description>&lt;p&gt;&lt;code&gt;PGP(Pretty Good Privacy)&lt;/code&gt;是一款密码软件，里面包含了多种加密算法。本章重点介绍的是多种密码技术的组合。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - 公钥密码</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/5-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/5-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81/</guid>
+      <description>&lt;h2 id=&#34;密钥配送问题&#34;&gt;密钥配送问题&lt;/h2&gt;&#xA;&lt;p&gt;在之前的&lt;code&gt;对称密码&lt;/code&gt;模式中，加密和解密的密钥都是相同的，接收者必须收到密码和与之对应的密钥才能进行解密。在这一过程中，我们不能保证这个过程是否被劫持者劫持。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;密钥必须发送，但又不能发送。&lt;/code&gt;这就是对称密码的&lt;code&gt;密钥配送问题&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;解决方法有以下几种：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;通过事先共享密钥来解决&lt;/li&gt;&#xA;&lt;li&gt;通过密钥分配中心解决&lt;/li&gt;&#xA;&lt;li&gt;通过Diffie-Hellman密钥交换来解决&lt;/li&gt;&#xA;&lt;li&gt;通过公钥密码来解决&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;前面三种方式都有各自的缺点，都不考虑。第四种方式&lt;code&gt;通过公钥密码交换对称密钥&lt;/code&gt;为可行的方式。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - 分组密码的模式</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E7%9A%84%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/4-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E7%9A%84%E6%A8%A1%E5%BC%8F/</guid>
+      <description>&lt;p&gt;本章主要介绍了分组密码的模式，包括ECB、CBC、CFB、OFB、CTR。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - 单向散列函数</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/7-%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/7-%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;h2 id=&#34;单向散列函数的性质&#34;&gt;单向散列函数的性质&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;单向散列函数(one-way hash function)&lt;/code&gt;有一个输入和一个输出，输入称为&lt;code&gt;消息(message)&lt;/code&gt;，输出称为&lt;code&gt;散列值(hash value)&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;单向散列函数&lt;/code&gt;主要的功能是&lt;code&gt;防止文件被篡改&lt;/code&gt;，它用于验证文件的&lt;code&gt;完整性&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;单向散列函数&lt;/code&gt;主要有以下性质：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;能够根据任意长度的消息计算出固定长度的散列值&lt;/li&gt;&#xA;&lt;li&gt;能够快速计算出散列值&lt;/li&gt;&#xA;&lt;li&gt;消息不同散列值也不同&lt;/li&gt;&#xA;&lt;li&gt;具备单向性：无法通过散列值反推出消息。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - 历史上的密码</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/2-%E5%8E%86%E5%8F%B2%E4%B8%8A%E7%9A%84%E5%AF%86%E7%A0%81/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/2-%E5%8E%86%E5%8F%B2%E4%B8%8A%E7%9A%84%E5%AF%86%E7%A0%81/</guid>
+      <description>&lt;p&gt;本章主要介绍了几种著名的密码：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;凯撒密码&lt;/li&gt;&#xA;&lt;li&gt;简单替换密码&lt;/li&gt;&#xA;&lt;li&gt;Enigma&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;以及两种破译密码的方式：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;暴力攻击&lt;/li&gt;&#xA;&lt;li&gt;频率分析&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - 密钥</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/11-%E5%AF%86%E9%92%A5/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/11-%E5%AF%86%E9%92%A5/</guid>
+      <description>&lt;h2 id=&#34;什么是密钥&#34;&gt;什么是密钥&lt;/h2&gt;&#xA;&lt;p&gt;密钥其实就是一个巨大的数字，在使用对称密码、公钥密码(非对称密码)、消息认证码、数字签名等密码技术时，都需要使用密钥。&lt;/p&gt;&#xA;&lt;p&gt;数字本身的大小并不重要，重要的是&lt;code&gt;密钥空间的大小&lt;/code&gt;，也就是可能出现的密钥的总数量，&lt;code&gt;密钥空间越大，进行暴力破解就越难&lt;/code&gt;。另一方面，&lt;code&gt;密钥空间的大小&lt;/code&gt;由&lt;code&gt;密钥的长度&lt;/code&gt;决定。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;密钥和明文&lt;/code&gt;是等价的，攻击者知道密钥、密文和加密方式后，就能知道明文。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;信息的机密性不应该依赖于密码算法本身，而是应该依赖密钥。&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - 对称密码</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/3-%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81/</guid>
+      <description>&lt;p&gt;本章主要介绍几种对称密码算法，包括DES、三重DES、AES以及其他一些密码算法。在这之前，还介绍了比特序列、XOR运算以及一次性密码本。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - 数字签名</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/9-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/9-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</guid>
+      <description>&lt;p&gt;&lt;code&gt;数字签名(Digital Signature)&lt;/code&gt;是一种相当于现实世界中的盖章、签字的功能在计算机世界中实现的技术，使用数字签名可以识别&lt;code&gt;篡改&lt;/code&gt;、&lt;code&gt;伪装&lt;/code&gt;、&lt;code&gt;防止否认&lt;/code&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - 消息认证码</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/8-%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/8-%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81/</guid>
+      <description>&lt;p&gt;&lt;code&gt;消息认证码(Message Authentication Code)&lt;/code&gt;是一种确认完整性并进行认证的技术。&lt;/p&gt;&#xA;&lt;p&gt;对于&lt;code&gt;单向散列函数&lt;/code&gt;来说，主要的作用是为了确保消息的&lt;code&gt;完整性&lt;/code&gt;。但对于&lt;code&gt;消息认证码&lt;/code&gt;，主要作用是&lt;code&gt;认证&lt;/code&gt;，指的是&lt;code&gt;消息来自正确的发送者&lt;/code&gt;这一性质。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;消息认证码&lt;/code&gt;的输入包括任意长度的消息和一个发送者与接收者之间的&lt;code&gt;共享密钥&lt;/code&gt;，输出为一个固定长度的数据，称为&lt;code&gt;MAC值&lt;/code&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - 混合密码系统</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/6-%E6%B7%B7%E5%90%88%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/6-%E6%B7%B7%E5%90%88%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F/</guid>
+      <description>&lt;p&gt;&lt;code&gt;混合密码系统(hybird cryptosystem)&lt;/code&gt;结合了&lt;code&gt;对称密码&lt;/code&gt;和&lt;code&gt;非对称密码&lt;/code&gt;两种加密方式各自的优势，使用&lt;code&gt;对称密码&lt;/code&gt;对数据的明文进行加密，使用&lt;code&gt;非对称密码&lt;/code&gt;对&lt;code&gt;对称密码&lt;/code&gt;的密钥进行加密。&lt;/p&gt;&#xA;&lt;p&gt;这种方式解决了只使用&lt;code&gt;非对称密码&lt;/code&gt;时，处理速度慢的问题，但对于中间人的攻击并无抵御。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - 环游密码世界</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/1-%E7%8E%AF%E6%B8%B8%E5%AF%86%E7%A0%81%E4%B8%96%E7%95%8C/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/1-%E7%8E%AF%E6%B8%B8%E5%AF%86%E7%A0%81%E4%B8%96%E7%95%8C/</guid>
+      <description>&lt;p&gt;本章主要是一些入门知识。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - 证书</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/10-%E8%AF%81%E4%B9%A6/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/10-%E8%AF%81%E4%B9%A6/</guid>
+      <description>&lt;p&gt;&lt;code&gt;公钥证书(Public-Key Certificate，PKC)&lt;/code&gt;记录了公钥所有者的组织、邮箱地址、公钥等信息，并由&lt;code&gt;认证机构(Certification Authority，CA)&lt;/code&gt;施加数字签名&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/10-Produce-CA.png&#34; alt=&#34;10-Produce-CA&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解密码技术 - 随机数</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/12-%E9%9A%8F%E6%9C%BA%E6%95%B0/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/12-%E9%9A%8F%E6%9C%BA%E6%95%B0/</guid>
+      <description>&lt;h2 id=&#34;随机数的作用&#34;&gt;随机数的作用&lt;/h2&gt;&#xA;&lt;p&gt;随机数主要用来：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;生成密钥：用于对称密码和消息认证码&lt;/li&gt;&#xA;&lt;li&gt;生成密钥对：用于非对称密码和数字签名&lt;/li&gt;&#xA;&lt;li&gt;生成初始化向量(IV)：用于对称密码的CBC、CFB、OFB模式&lt;/li&gt;&#xA;&lt;li&gt;生成nonce：用于防御重放攻击以及对称密码CTR模式&lt;/li&gt;&#xA;&lt;li&gt;生成盐&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第17章-使用future处理并发</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC17%E7%AB%A0-%E4%BD%BF%E7%94%A8future%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC17%E7%AB%A0-%E4%BD%BF%E7%94%A8future%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91/</guid>
+      <description>&lt;p&gt;本章主要是列举了几个从网站下载例子，主要涉及到了多线程并发。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第18章-使用asyncio处理并发</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC18%E7%AB%A0-%E4%BD%BF%E7%94%A8asyncio%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Sat, 18 Aug 2018 10:52:18 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC18%E7%AB%A0-%E4%BD%BF%E7%94%A8asyncio%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91/</guid>
+      <description>&lt;h2 id=&#34;线程与协程对比&#34;&gt;线程与协程对比&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;线程&lt;/code&gt;处理任务时，所有的线程争抢CPU的资源；&lt;code&gt;协程&lt;/code&gt;处理任务时，由单线程完成，所有的任务都有序的安排在未来进行执行。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>流畅的Python - 第16章-协程</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC16%E7%AB%A0-%E5%8D%8F%E7%A8%8B/</link>
+      <pubDate>Thu, 26 Jul 2018 23:02:08 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC16%E7%AB%A0-%E5%8D%8F%E7%A8%8B/</guid>
+      <description>&lt;h2 id=&#34;yield关键字&#34;&gt;yield关键字&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;yield&lt;/code&gt;关键字主要有两个使用方式：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;yield item:&lt;/code&gt;会产出一个值，提供给&lt;code&gt;next(...)&lt;/code&gt;的调用方。也可以不产生值，需要&lt;code&gt;yield&lt;/code&gt;后面不跟任何参数，返回值为None&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;i = yield：&lt;/code&gt;从调用方接收数据。调用方通过&lt;code&gt;.send(...)&lt;/code&gt;的方式将数据提供给协程。&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;yield：&lt;/code&gt;既不接收也不发送数据，纯粹作为流程控制使用。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;将&lt;code&gt;yield&lt;/code&gt;作为协程使用时，通常也是将其作为&lt;code&gt;流程控制&lt;/code&gt;的调度器使用。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>程序员的自我修养 - Elf文件</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/elf%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Wed, 18 Jul 2018 23:11:52 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/elf%E6%96%87%E4%BB%B6/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;如果把程序从产生到运行比作做菜的话，那么静态的源程序就相当于是菜谱，操作系统相当于是厨师，系统的各种硬件则是炊具，程序加载到内存中运行的整个过程就相当于是烹饪的整个过程。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;下面介绍一下菜谱本身的结构。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>程序员的自我修养 - 编译</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/</link>
+      <pubDate>Wed, 18 Jul 2018 23:11:52 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;如果把程序从产生到运行比作做菜的话，那么静态的源程序就相当于是菜谱，操作系统相当于是厨师，系统的各种硬件则是炊具，程序加载到内存中运行的整个过程就相当于是烹饪的整个过程。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;下面介绍一下菜谱的制作过程，以及两道特色菜 &lt;strong&gt;静态库&lt;/strong&gt; 和 &lt;strong&gt;动态库&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Django论坛部署</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/django%E8%AE%BA%E5%9D%9B%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Sat, 07 Jul 2018 19:12:47 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/django%E7%AC%94%E8%AE%B0/django%E8%AE%BA%E5%9D%9B%E9%83%A8%E7%BD%B2/</guid>
+      <description>&lt;p&gt;这两天在外部压力的作用下，把之前写的Django框架搭建的留言板部署了一下。本来是觉得，既然代码都已经弄得差不多了，本地运行没什么问题的，部不部署就没什么了。&lt;/p&gt;&#xA;&lt;p&gt;哈哈哈，还是太天真了。&lt;/p&gt;&#xA;&lt;p&gt;查看了一下原教程的&lt;a href=&#34;https://simpleisbetterthancomplex.com/series/2017/10/16/a-complete-beginners-guide-to-django-part-7.html&#34;&gt;部署步骤&lt;/a&gt;，应该问题不大。&lt;/p&gt;&#xA;&lt;p&gt;服务器去年搭梯子时已经买了。私人部署，域名需不需要，感觉关系不大，可以省略。&lt;/p&gt;&#xA;&lt;p&gt;OK，开始部署。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>subprocess中Popen，call的区别</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/subprocess%E4%B8%ADpopencall%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Sat, 07 Jul 2018 19:12:47 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/subprocess%E4%B8%ADpopencall%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>&lt;p&gt;这两天测试的时候，发现使用Popen创建的进程没有把命令执行完毕，导致程序Bug～&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>argparse 处理命令行参数</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/11_generic_operating/11.2-argparse/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/11_generic_operating/11.2-argparse/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;argparse模块&lt;/strong&gt; 主要用来处理传入的命令行参数，之前版本有使用 &lt;strong&gt;optparse模块&lt;/strong&gt; 实现类似的效果，不过 &lt;strong&gt;optparse模块&lt;/strong&gt; 已停止更新，并不推荐使用了。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;argparse模块&lt;/strong&gt; 使用：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;ArgumentParser&lt;/strong&gt; - 创建parser实例。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;add_argument&lt;/strong&gt; - 添加命令行参数。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;parse_args&lt;/strong&gt; - 处理参数。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;其中关键的部分是 &lt;strong&gt;add_argument&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>configparser 配置解析</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/09_file_formats/9.1-configparser/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/09_file_formats/9.1-configparser/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;configparser&lt;/strong&gt; 模块是标准库中用来解析类似 &lt;strong&gt;.ini&lt;/strong&gt; 文件的模块。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>difflib 字符串差异比较</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.3-difflib/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.3-difflib/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;difflib&lt;/strong&gt; 模块用于比较两段字符串的差异，有点类似于github的更新对比功能。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>platform 平台信息模块</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/11_generic_operating/11.1-platform/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/11_generic_operating/11.1-platform/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;platform&lt;/strong&gt; 模块主要功能是，提供平台的一些信息，包括操作系统信息，python版本信息等。不同的平台获取的信息不同。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>re 正则表达式</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.2-re/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.2-re/</guid>
+      <description>&lt;p&gt;正则表达式在各种语言上都有实现，使用相同的语法可以得到相同的效果。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>string 字符串常量和模板</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.1-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.1-string/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;string&lt;/strong&gt; 模块大部分功能已被 &lt;strong&gt;str对象&lt;/strong&gt; 实现，但一些字符常量人保留了下来&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>struct 二进制编码与解码</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/02_binary_data/2.1-struct/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/02_binary_data/2.1-struct/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;struct&lt;/strong&gt; 模块用于二进制数据，常用于处理网络数据。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>textwrap 字符串段格式化</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.4-textwrap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/stl/01_text_processing/1.4-textwrap/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;textwrap&lt;/strong&gt; 模块是一个使字符串按要求排列的模块。主要方式包括以下几种：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;wrap&lt;/strong&gt; - 返回格式化后的字符串列表，每一行为列表的一个元素。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;fill&lt;/strong&gt; - 按指定宽度填充字符串的每一行。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;shorten&lt;/strong&gt; - 略缩显示字符串。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;dedent&lt;/strong&gt; - 反缩进去除每行行首的空白。这方便显示三引号中的内容而不修改其源代码中的缩进。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;indent&lt;/strong&gt; - 添加缩进。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

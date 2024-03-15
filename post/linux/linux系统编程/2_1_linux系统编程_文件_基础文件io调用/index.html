@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Linux系统编程:文件_基础文件IO调用 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Linux系统编程:文件_基础文件IO调用" /><meta name="keywords" content="Linux, Linux系统编程" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_1_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E5%9F%BA%E7%A1%80%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Linux系统编程:文件_基础文件IO调用</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-30 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/linux/"> Linux </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"> Linux系统编程 </a>
+            </div>
+          <span class="more-meta"> 335 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#文件描述符">文件描述符</a></li>
+        <li><a href="#通用文件系统调用">通用文件系统调用</a>
+          <ul>
+            <li><a href="#打开一个文件-open">打开一个文件: open()</a></li>
+            <li><a href="#读取文件内容-read">读取文件内容: read()</a></li>
+            <li><a href="#数据写入文件-write">数据写入文件: write()</a></li>
+            <li><a href="#关闭文件-close">关闭文件: close()</a></li>
+            <li><a href="#改变文件偏移量-lseek">改变文件偏移量: lseek()</a></li>
+            <li><a href="#文件空洞">文件空洞</a></li>
+          </ul>
+        </li>
+        <li><a href="#课后习题">课后习题</a></li>
+        <li><a href="#总结">总结</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本篇文章主要记录了《Linux/Unix系统编程手册》第4章的学习笔记。</p>
+<p>在Linux系统中，一切都是文件！我们可以用操作文件的方式，操作Linux上的一切。文件I/O对于Linux系统来说，非常重要！</p>
+<h2 id="文件描述符">文件描述符</h2>
+<p><strong>文件描述符(File Descriptor)</strong> 是内核为了高效的管理已被打开的文件所创建的索引，<strong>所有执行I/O操作的系统调用都以文件描述符的方式来指代打开的文件</strong>。</p>
+<p>文件描述符是一个非负整数，用来表示 <strong>所有类型的已打开文件</strong>，包括 <strong>管道(pipe)、FIFO、socket、终端、设备和普通文件</strong>。</p>
+<p>标准的文件描述符包括三个：<strong>标准输入(0)</strong>、<strong>标准输出(1)</strong>、<strong>标准错误(2)</strong>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">文件描述符</th>
+<th style="text-align:center">用途</th>
+<th style="text-align:center">POSIX名称</th>
+<th style="text-align:center">stdio流</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">标准输入</td>
+<td style="text-align:center">STDIN_FILENO</td>
+<td style="text-align:center">stdin</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">标准输出</td>
+<td style="text-align:center">STDOUT_FILENO</td>
+<td style="text-align:center">stdout</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">标准错误</td>
+<td style="text-align:center">STDERR_FILENO</td>
+<td style="text-align:center">stderr</td>
+</tr>
+</tbody>
+</table>
+<p>所以在终端上输命令时，我们可以用 <strong>1</strong> 代表便准输出，用 <strong>2</strong> 代表错误输出。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Linux/Chapter04/04_file_descriptor_stderr.png" alt="04_file_descriptor_stderr"></p>
+<p>每个进程的文件描述符是有限的，POSIX标准要求每次打开文件时(含socket)必须使用当前进程中最小可用的文件描述符号。在编写需要长期运行并处理大量文件的程序时，比如网络程序，尤其要注意。使用 <code>ulimit -n</code> 可以查看当前系统单个进程最大支持的文件描述符数量。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Linux/Chapter04/04_file_descriptor_limit.png" alt="04_file_descriptor_limit"></p>
+<p>内核维护着三个数据结构来管理文件：(下面的内容，本章的参考书所描绘的比较混淆，建议参考APUE中的描述。2_3还会进一步分析)</p>
+<ul>
+<li><strong>进程级的文件描述符表</strong>：含有文件描述符标识，使得用户可以方便的访问一个文件，指向打开文件表的指针用于连接打开文件表。每当进程open一个文件时，会添加一个表项，对同一个文件开打多次就会有多个表项。使用dup系统调用也会添加表项。(APUE中称为文件表项，本书中为文件句柄)</li>
+<li><strong>系统级的打开文件表</strong>：记录了进程对文件的读写偏移，以及进程对文件的存取权限，如进程以O_RDONLY方式打开文件。</li>
+<li><strong>系统级的i-node表</strong>：包含文件类型，文件所持有的锁的列表指针，以及文件的各种属性，包括大小、不同类型操作相关的时间戳。</li>
+</ul>
+<p><img src="https://alfonsxh.github.io/Blog/images/Linux/Chapter04/04_file_descriptor.png" alt="04_file_descriptor"></p>
+<ul>
+<li><strong>同一进程的不同文件描述符，可以指向不同的文件，也可以指向相同文件</strong>。如上图中的进程A的1号文件描述符和30号文件描述符，同时指向打开文件表中的23号。可能是dup()、dup2()复制了文件描述符导致。</li>
+<li><strong>不同进程的文件描述符可能相同，但可以指向相同的文件，也可以指向不同文件</strong>。如进程A中的2号和进程B中的2号，同时指向打开文件表中73号，两个进程可能是fork子进程的关系。不同的文件描述符指向同一打开的句柄文件，将共享句柄文件的偏移，换句话说，<strong>如果通过其中一个文件描述符对文件进行了更改，改变了文件的偏移量，那么从另一个文件描述符也能观察到变化</strong>，<strong>不管是不是同一个进程</strong>。</li>
+<li>不同的文件描述符可以指向文件系统中的同一个文件。如A进程中的0号和B进程中的3号，这种情况是由于不同的进程打开了相同的文件造成。</li>
+</ul>
+<p>这篇<a href="https://blog.csdn.net/luotuo44/article/details/17474099">文章</a>讲的比较详细。</p>
+<h2 id="通用文件系统调用">通用文件系统调用</h2>
+<p>常见的关于文件I/O操作的系统调用包括：open()、read()、write()、close()。这四个系统调用可以对 <strong>所有类型的文件执行I/O操作</strong>，包括终端之类的设备。</p>
+<h3 id="打开一个文件-open">打开一个文件: open()</h3>
+<p><strong>open()调用</strong> 既可以打开一个已经存在的文件，也能创建并打开一个新的文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">open</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">open</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pathname</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span> <span class="kt">mode_t</span> <span class="n">mode</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>pathname</strong>: 表示文件的名称。</li>
+<li><strong>flags</strong>: 表示文件的访问方式，常用的包括 <strong>O_RDONLY</strong>、<strong>O_WRONLY</strong>、<strong>O_RDWR</strong>。</li>
+<li><strong>mode</strong>: 表示指定文件的访问权限， <strong>rw-rw-rwx</strong> 这种模式。</li>
+</ul>
+<p>当 <strong>open()</strong> 调用成功时，会返回 <strong>进程中未使用过的文件描述符中数值最小的值</strong>。</p>
+<p>几个比较常用的文件访问方式：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">标志</th>
+<th style="text-align:center">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">O_RDONLY</td>
+<td style="text-align:center">以只读方式打开</td>
+</tr>
+<tr>
+<td style="text-align:left">O_WRONLY</td>
+<td style="text-align:center">以只写方式打开</td>
+</tr>
+<tr>
+<td style="text-align:left">O_RDWR</td>
+<td style="text-align:center">以读写方式打开</td>
+</tr>
+<tr>
+<td style="text-align:left">O_APPEND</td>
+<td style="text-align:center">总在文件末尾追加</td>
+</tr>
+<tr>
+<td style="text-align:left">O_CREAT</td>
+<td style="text-align:center">文件不存在则创建文件</td>
+</tr>
+<tr>
+<td style="text-align:left">O_EXCL</td>
+<td style="text-align:center">与O_CREAT一起使用时，当文件已经存在时，使用open调用会返回错误</td>
+</tr>
+<tr>
+<td style="text-align:left">O_DIRECTORY</td>
+<td style="text-align:center">如果pathname参数不是目录，则失败</td>
+</tr>
+<tr>
+<td style="text-align:left">O_TRUNC</td>
+<td style="text-align:center">如果文件已存在且为普通文件，则将文件清空，并将其长度置为0</td>
+</tr>
+</tbody>
+</table>
+<p>早期的UNIX实现中，使用 <strong>creat()</strong> 调用来实现文件爱你的创建任务。当文件不存在，会创建文件并打开，当文件存在时，会清空文件内容，并将长度置为0。</p>
+<p>类似于 <code>fd = open(pathname, O_WRONLY | O_CREAT | O_TRUNC， mode)</code>。</p>
+<h3 id="读取文件内容-read">读取文件内容: read()</h3>
+<p><strong>read()</strong> 调用从文件描述符fd所指代的打开文件中读取数据。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">ssize_t</span> <span class="nf">read</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>fd</strong>: 待读取文件的文件描述符，通常由open()的打开的文件。</li>
+<li><strong>buf</strong>: 提供用来存放读出数据的内存缓冲区地址，<strong>系统调用不会分配内存缓冲区用以返回信息给调用者</strong>，缓冲区必须预先分配。</li>
+<li><strong>count</strong>：指定最多能够读取的字节数。</li>
+</ul>
+<p>调用成功会返回读取的字节数，通常情况下，会和传入的 <strong>count</strong> 参数一致，但当读取的文件偏移位于文件末尾，有可能出现返回的字节数小于 <strong>count参数</strong> 的情况。错误返回-1.</p>
+<p>另外在读取终端字符串时，遇到 <strong>换行符(\n)</strong>，<strong>read()</strong> 调用也会停止，也会出现返回的字节数小于 <strong>count参数</strong> 的情况。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="n">BUF_SIZE</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">ssize_t</span> <span class="n">read_num</span> <span class="o">=</span> <span class="nf">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">BUF_SIZE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">read_num</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">errExit</span><span class="p">(</span><span class="s">&#34;read&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;read(%ld) -&gt; %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">read_num</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://alfonsxh.github.io/Blog/images/Linux/Chapter04/04_read_without_stop.png" alt="04_read_without_stop"></p>
+<p>使用上面的代码读取一个文件时，会出现末尾乱码的情况，这是因为 <strong>read()</strong> 没有遇到终止字符。需要在读取缓冲区中将最后的字符换成 <code>\0</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="n">BUF_SIZE</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">ssize_t</span> <span class="n">read_num</span> <span class="o">=</span> <span class="nf">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">BUF_SIZE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">read_num</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">errExit</span><span class="p">(</span><span class="s">&#34;read&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">buf</span><span class="p">[</span><span class="n">read_num</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;read(%ld) -&gt; %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">read_num</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://alfonsxh.github.io/Blog/images/Linux/Chapter04/04_read_with_stop.png" alt="04_read_with_stop"></p>
+<h3 id="数据写入文件-write">数据写入文件: write()</h3>
+<p><strong>write()</strong> 调用将数据写入一个以打开的文件中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">ssize_t</span> <span class="nf">write</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>fd</strong>: 待写入文件的文件描述符，通常由open()的打开的文件。</li>
+<li><strong>buf</strong>: 提供用来存放待写入数据的内存缓冲区地址。</li>
+<li><strong>count</strong>：指定最多能够写入的字节数。</li>
+</ul>
+<p>调用成功会返回写入的字节数，当 <strong>磁盘已满</strong> 或者 <strong>进程资源对文件大小有限制</strong> 时，会出现返回结果小于 <strong>count参数</strong> 的情况。错误返回 -1。</p>
+<h3 id="关闭文件-close">关闭文件: close()</h3>
+<p><strong>close()</strong> 调用关闭一个已打开ia的文件描述符，并将其释放回调用进程，供该进程继续使用，当进程结束时，会自动关闭其打开的所有的文件描述符。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">close</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>文件描述符属于有限资源，因此文件描述符关闭失败可能会 <strong>导致一个进程的文件描述符资源消耗殆尽</strong>。在编写长时间处理大量文件的程序时，尤其需要注意。</p>
+<h3 id="改变文件偏移量-lseek">改变文件偏移量: lseek()</h3>
+<p><strong>lseek()</strong> 用来改变文件的偏移量。</p>
+<p>对于每一个文件，内核都会在 <strong>打开文件表</strong> 中记录其文件的偏移量，文件偏移量指的是 <strong>下一次read()或write()调用操作的文件的起始位置</strong>，会以相对于文件头部起始点的文件位置来表示。每次 <strong>read()或write()</strong> 将自动对其进行调整。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">off_t</span> <span class="nf">lseek</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">off_t</span> <span class="n">offset</span><span class="p">,</span> <span class="kt">int</span> <span class="n">whence</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>fd</strong>: 已打开的文件描述符。</li>
+<li><strong>offset</strong>: 新的以字节为单位的文件偏移量。</li>
+<li><strong>whence</strong>: 表明应该以哪种方式来解读offset参数。</li>
+</ul>
+<p>whence参数有五种：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">标志</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SEEK_SET</td>
+<td style="text-align:center">从文件头部起始点开始计算</td>
+</tr>
+<tr>
+<td style="text-align:left">SEEK_CUR</td>
+<td style="text-align:center">从当前偏移位置开始计算</td>
+</tr>
+<tr>
+<td style="text-align:left">SEEK_END</td>
+<td style="text-align:center">从文件末尾处开始计算</td>
+</tr>
+<tr>
+<td style="text-align:left">SEEK_DATA</td>
+<td style="text-align:center">从下一个包含数据的偏移开始计算，一般都指向0</td>
+</tr>
+<tr>
+<td style="text-align:left">SEEK_HOLE</td>
+<td style="text-align:center">从下一个空洞的偏移开始计算，一般都指向文件末尾</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">lseek</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">);</span>     <span class="c1">// 文件开始处
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">lseek</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">);</span>     <span class="c1">// 文件结尾处的下一位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">lseek</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">);</span>     <span class="c1">// 文件结尾处前一个字节的位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">lseek</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">SEEK_CUR</span><span class="p">);</span>     <span class="c1">// 当前文件往后是个字节的位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">lseek</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">SEEK_CUR</span><span class="p">);</span>     <span class="c1">// 当前文件往前是个字节的位置
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>和 <strong>find命令</strong> 中设置时间的参数很像，都使用的是 <strong>+-</strong> 符号来表示前后的概念。</p>
+<h3 id="文件空洞">文件空洞</h3>
+<p>空洞文件指的是 <strong>从文件结尾后到新写入数据间的这段空间</strong>，空洞文件不占用任何磁盘空间，知道未来某一时刻，向空洞文件中写入数据，才会给它分配磁盘块。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Linux/Chapter04/04_empty_file.png" alt="04_empty_file"></p>
+<p>空洞文件和以空字节文件相比，占用了较少的磁盘空间。</p>
+<p>迅雷会在下载前，在本地创建空洞文件，用来存放下载的文件。在使用多线程进行下载时，就可以同时在不同的偏移处写入数据。</p>
+<h2 id="课后习题">课后习题</h2>
+<ul>
+<li><a href="https://github.com/Alfonsxh/LinuxProgrammingInterface/blob/master/01_FileSystem/Chapter_04_answer_tee.c">4-1 实现类tee命令</a></li>
+<li><a href="https://github.com/Alfonsxh/LinuxProgrammingInterface/blob/master/01_FileSystem/Chapter_04_answer_cp.c">4-2 实现cp命令，可拷贝包含空洞的文件</a></li>
+</ul>
+<h2 id="总结">总结</h2>
+<ul>
+<li>每个进程都有一张文件描述符表，里面的描述符标识为非负整数，每个标识对应一个打开文件表的指针。</li>
+<li>打开文件表是进程中文件描述符表和inode表的桥梁。</li>
+<li>对文件的操作，最终都是通过indoe表中的数据。</li>
+<li>操作系统在处理文件时，都是通过数字来代替文件名。</li>
+<li>Linux系统对文件的操作具有通用性，open()、read()、write()、close()这四个系统调用可以对所有的文件流进行操作。原因是VFS统一了各类文件系统的接口。</li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://blog.csdn.net/luotuo44/article/details/17474099">文件描述符表、文件表、索引结点表</a></li>
+<li><a href="https://blog.csdn.net/cywosp/article/details/38965239">每天进步一点点——Linux中的文件描述符与打开文件之间的关系</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-04-02
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/linux/">Linux</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/">Linux系统编程</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_2_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E9%AB%98%E7%BA%A7%E6%96%87%E4%BB%B6io%E8%B0%83%E7%94%A8/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Linux系统编程:文件_高级文件IO调用</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+            <span class="next-text nav-default">Linux系统编程:文件_文件系统</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

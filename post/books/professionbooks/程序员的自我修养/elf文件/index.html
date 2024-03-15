@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>程序员的自我修养 - Elf文件 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Elf文件" /><meta name="keywords" content="Books, 程序员的自我修养" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/elf%E6%96%87%E4%BB%B6/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">程序员的自我修养 - Elf文件</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-07-18 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/books/"> Books </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"> 程序员的自我修养 </a>
+            </div>
+          <span class="more-meta"> 2024 words </span>
+          <span class="more-meta"> 10 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-简介">1 简介</a></li>
+        <li><a href="#2-elf文件结构">2 ELF文件结构</a>
+          <ul>
+            <li><a href="#示例代码">示例代码</a></li>
+            <li><a href="#elf头部elf-header">ELF头部(ELF Header)</a></li>
+            <li><a href="#程序头部表program-header-table">程序头部表(Program Header Table)</a></li>
+            <li><a href="#节区头部表section-heade-table-和-节区section">节区头部表(Section Heade Table) 和 节区(Section)</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-链接">3 链接</a>
+          <ul>
+            <li><a href="#静态链接static-linking">静态链接(Static linking)</a></li>
+            <li><a href="#动态链接dynamic-linking">动态链接(Dynamic Linking)</a></li>
+          </ul>
+        </li>
+        <li><a href="#相关参考">相关参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>如果把程序从产生到运行比作做菜的话，那么静态的源程序就相当于是菜谱，操作系统相当于是厨师，系统的各种硬件则是炊具，程序加载到内存中运行的整个过程就相当于是烹饪的整个过程。</p>
+</blockquote>
+<p>下面介绍一下菜谱本身的结构。</p>
+<h2 id="1-简介">1 简介</h2>
+<p><strong>可执行链接格式(Executable and Linking Format)</strong> 最初是由UNIX 系统实验室(UNIX System Laboratories，USL)开发并发布的，作为应用程序二进制接口(Application Binary Interface，ABI)的一部分。</p>
+<p>现在PC平台流行的 <strong>可执行链接格式</strong> 主要是Windows下的 <strong>PE(Portable Executable)</strong> 和Linux的 <strong>ELF(Executable Linking Format)</strong>，它们都是 <strong>COFF(Common file format)</strong> 格式的变种。我们现在只讨论Linux平台的ELF文件。</p>
+<p>ELF 标准的目的是为软件开发人员提供一组二进制接口定义，这些接口可以延伸到多种操作环境，从而减少重新编码、重新编译程序的需要。接口的内容包括目标模块格式、可执行文件格式以及调试记录信息与格式等。</p>
+<p>目标文件有四种类型:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ELF文件类型</th>
+<th>说明</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>可重定位文件(Relocatable File)</strong></td>
+<td>包含适合于与其他目标文件链接来创建可执行文件或者共享目标文件的代码和数据。</td>
+<td>Linux的.o文件，Windows的.obj文件</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>可执行文件(Executable File)</strong></td>
+<td>包含适合于执行的一个程序，此文件规定了exec() 如何创建一个程序的进程映像。</td>
+<td>比如Linux的/bin/bash，Windows的.exe</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>共享目标文件(Shared Object File)</strong></td>
+<td>包含可在两种上下文中链接的代码和数据。首先链接编辑器可以将它和其它可重定位文件和共享目标文件一起处理，生成另外一个目标文件。其次，动态链接器(Dynamic Linker)可能将它与某个可执行文件以及其它共享目标一起组合，创建进程映像。</td>
+<td>Linux的.so文件，Windows的.dll文件</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>核心转储文件(Core Dump File)</strong></td>
+<td>当程序意外终止时，系统将该进程的地址空间的内容及终止时的一些其他信息转出到核心转储文件中</td>
+<td>Linux下的core dump</td>
+</tr>
+</tbody>
+</table>
+<p>目标文件全部是程序的二进制表示，目的是直接在某种处理器上直接执行。</p>
+<blockquote>
+<p>本文不会详细的解释ELF文件的各种参数说明，如想详细了解的话，请查看文末的参考链接，或者查阅elf.h头文件。</p>
+</blockquote>
+<h2 id="2-elf文件结构">2 ELF文件结构</h2>
+<p><strong>ELF</strong> 文件主要由<strong>ELF头部(ELF Header)</strong>、<strong>程序头部表(Program Header Table)</strong>、<strong>节区(Section)</strong>、 <strong>节区头部表(Section Heade Table)</strong> 组成。</p>
+<p><strong>ELF</strong> 文件分 <strong>链接视图</strong> 和 <strong>执行视图</strong> 两种，执行视图是指程序或动态库加载在内存中的视图，主要是将节区(Section)汇总成段区(Segment)。</p>
+<p><img src="../../../Image/Books/ProfessionBooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/ELF%E6%96%87%E4%BB%B6/ELF%E6%96%87%E4%BB%B6%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84.jpg" alt="ELF文件整体结构"></p>
+<ul>
+<li><strong>ELF 头部(ELF Header)</strong> 用来描述整个文件的组织。</li>
+<li><strong>节区部分(Section)</strong> 包含链接视图的大量信息:指令、数据、符号表、重定位信息等等。</li>
+<li><strong>程序头部表(Program Header Table)</strong> 如果存在的话，告诉系统如何创建进程映像。 用来构造进程映像的目标文件必须具有程序头部表，可重定位文件(.o文件)不需要这个表。</li>
+<li><strong>节区头部表(Section Heade Table)</strong> 包含了描述文件节区的信息，每个节区在表中 都有一项，每一项给出诸如节区名称、节区大小这类信息。用于链接的目标文件必须包 含节区头部表，其他目标文件可以有，也可以没有这个表。</li>
+</ul>
+<blockquote>
+<p>注意： 尽管图中显示的各个组成部分是有顺序的，实际上除了 ELF 头部表以外， 其他节区和段都没有规定的顺序</p>
+</blockquote>
+<h3 id="示例代码">示例代码</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">//elfile.c
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">global_init_var</span> <span class="o">=</span> <span class="mi">84</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">global_uninit_var</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">func1</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="kt">int</span> <span class="n">static_var</span> <span class="o">=</span> <span class="mi">85</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="kt">int</span> <span class="n">static_var2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">func1</span><span class="p">(</span><span class="n">static_var</span> <span class="o">+</span> <span class="n">static_var2</span> <span class="o">+</span> <span class="n">a</span><span class="o">+</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>生成动态库</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ gcc -o elfile elfile.c
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="elf头部elf-header">ELF头部(ELF Header)</h3>
+<p>通过readelf命令查看ELF头部</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ readelf -h elfile
+</span></span><span class="line"><span class="cl">ELF Header:
+</span></span><span class="line"><span class="cl">  Magic:   7f <span class="m">45</span> 4c <span class="m">46</span> <span class="m">01</span> <span class="m">01</span> <span class="m">01</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> 
+</span></span><span class="line"><span class="cl">  Class:                             ELF32
+</span></span><span class="line"><span class="cl">  Data:                              2<span class="err">&#39;</span>s complement, little endian
+</span></span><span class="line"><span class="cl">  Version:                           <span class="m">1</span> <span class="o">(</span>current<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  OS/ABI:                            UNIX - System V
+</span></span><span class="line"><span class="cl">  ABI Version:                       <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Type:                              EXEC <span class="o">(</span>Executable file<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  Machine:                           ARM
+</span></span><span class="line"><span class="cl">  Version:                           0x1
+</span></span><span class="line"><span class="cl">  Entry point address:               0x10318
+</span></span><span class="line"><span class="cl">  Start of program headers:          <span class="m">52</span> <span class="o">(</span>bytes into file<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  Start of section headers:          <span class="m">7160</span> <span class="o">(</span>bytes into file<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  Flags:                             0x5000400, Version5 EABI, hard-float ABI
+</span></span><span class="line"><span class="cl">  Size of this header:               <span class="m">52</span> <span class="o">(</span>bytes<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  Size of program headers:           <span class="m">32</span> <span class="o">(</span>bytes<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  Number of program headers:         <span class="m">9</span>
+</span></span><span class="line"><span class="cl">  Size of section headers:           <span class="m">40</span> <span class="o">(</span>bytes<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  Number of section headers:         <span class="m">30</span>
+</span></span><span class="line"><span class="cl">  Section header string table index: <span class="m">29</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到<strong>ELF头部</strong>包含了 <strong>ELF魔数</strong>、 <strong>文件及其字节长度</strong>、 <strong>数据存储方式</strong>、 <strong>版本</strong>、 <strong>运行平台</strong>、 <strong>ABI版本</strong>、 <strong>ELF重定位类型</strong>、 <strong>硬件平台</strong>、 <strong>硬件平台版本</strong>、 <strong>入口地址</strong>、 <strong>程序头入口地址和长度</strong>、 <strong>段表的位置和长度</strong>、 <strong>段的数量</strong>等。</p>
+<p>我们可以通过程序头部的起始偏移<strong>64</strong>，程序头部的数量<strong>7</strong>，每个程序头部的大小<strong>56bytes</strong>，计算得到程序头部的偏移地址范围为<strong>0x0040&mdash;-0x01c8</strong>。</p>
+<p>通过偏移，我们就能计算程序头部、节区头部的偏移位置，再通过这两个头部就能找到函数的偏移位置。所以，我们要找一个函数的起始地址的过程就变成了 <strong>ELF Header-&gt;Program Header-&gt;Symbol Section-&gt;Function address</strong> 这样的四个步骤。</p>
+<p>用一张图表示就是这样。</p>
+<p><img src="../../../Image/Books/ProfessionBooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/ELF%E6%96%87%E4%BB%B6/ELF-Header.png" alt="ELF头部"></p>
+<h3 id="程序头部表program-header-table">程序头部表(Program Header Table)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">// 通过readelf我们可以查看ELF文件头部表的相关信息
+</span></span><span class="line"><span class="cl">$ readelf -W -l elfile
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Elf file <span class="nb">type</span> is EXEC <span class="o">(</span>Executable file<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Entry point 0x10318
+</span></span><span class="line"><span class="cl">There are <span class="m">9</span> program headers, starting at offset <span class="m">52</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Program Headers:
+</span></span><span class="line"><span class="cl">  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+</span></span><span class="line"><span class="cl">  EXIDX          0x000534 0x00010534 0x00010534 0x00008 0x00008 R   0x4
+</span></span><span class="line"><span class="cl">  PHDR           0x000034 0x00010034 0x00010034 0x00120 0x00120 R E 0x4
+</span></span><span class="line"><span class="cl">  INTERP         0x000154 0x00010154 0x00010154 0x00019 0x00019 R   0x1
+</span></span><span class="line"><span class="cl">      <span class="o">[</span>Requesting program interpreter: /lib/ld-linux-armhf.so.3<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  LOAD           0x000000 0x00010000 0x00010000 0x00540 0x00540 R E 0x10000
+</span></span><span class="line"><span class="cl">  LOAD           0x000f0c 0x00020f0c 0x00020f0c 0x00124 0x00130 RW  0x10000
+</span></span><span class="line"><span class="cl">  DYNAMIC        0x000f18 0x00020f18 0x00020f18 0x000e8 0x000e8 RW  0x4
+</span></span><span class="line"><span class="cl">  NOTE           0x000170 0x00010170 0x00010170 0x00044 0x00044 R   0x4
+</span></span><span class="line"><span class="cl">  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0x10
+</span></span><span class="line"><span class="cl">  GNU_RELRO      0x000f0c 0x00020f0c 0x00020f0c 0x000f4 0x000f4 R   0x1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> Section to Segment mapping:
+</span></span><span class="line"><span class="cl">  Segment Sections...
+</span></span><span class="line"><span class="cl">   <span class="m">00</span>     .ARM.exidx 
+</span></span><span class="line"><span class="cl">   <span class="m">01</span>     
+</span></span><span class="line"><span class="cl">   <span class="m">02</span>     .interp 
+</span></span><span class="line"><span class="cl">   <span class="m">03</span>     .interp .note.ABI-tag .note.gnu.build-id .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rel.dyn .rel.plt .init .plt .text .fini .rodata .ARM.exidx .eh_frame 
+</span></span><span class="line"><span class="cl">   <span class="m">04</span>     .init_array .fini_array .jcr .dynamic .got .data .bss 
+</span></span><span class="line"><span class="cl">   <span class="m">05</span>     .dynamic 
+</span></span><span class="line"><span class="cl">   <span class="m">06</span>     .note.ABI-tag .note.gnu.build-id 
+</span></span><span class="line"><span class="cl">   <span class="m">07</span>     
+</span></span><span class="line"><span class="cl">   <span class="m">08</span>     .init_array .fini_array .jcr .dynamic
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>程序头部(Program Header)</strong>，可执行文件或者共享目标文件的程序头部是一个结构数组，每个结构描述了一个 <strong>段(Segment)</strong> 或者系统准备程序执行所必需的其它信息。</p>
+<p>目标文件的 <strong>&ldquo;段&rdquo;</strong> 包含一个或者多个 <strong>&ldquo;节区&rdquo;</strong>，也就是 <strong>&ldquo;段内容(Segment Contents)&rdquo;</strong>。程序头部仅对于可执行文件和共享目标文件有意义。</p>
+<p>从<strong>程序头部表</strong>的信息，可以看到一共包含了九个程序头部。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">段名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>PHDR</strong></td>
+<td>此类型的段表示程序头表的开始，描述了程序头表的起始地址与占用的字节大小。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>INTERP</strong></td>
+<td>此类型的段表示程序<strong>解释器</strong>的位置和长度，通过位置的偏移和长度获取解释器的路径。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>LOAD</strong></td>
+<td>表示可以被装载或者映射到内存中，一个可执行文件可以有多个LOAD类型的段。一个需要动态链接的ELF文件通常会有两个LOAD：一个用来存放程序代码的text，一般设置为可读与可执行权限。另一个用来存放全局变量和动态链接信息的data段，设置为可读可写权限。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>DYNAMIC</strong></td>
+<td>包含了动态链接信息，是描述动态段的程序头。动态段中包含了一些标记值和指针，包括以下内容：运行时需要链接的共享库列表、全局偏移表(GOT)的地址、重定位条目的相关信息等。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>NOTE</strong></td>
+<td>记录程序的一些辅助信息。比如程序的类型，程序的所有者，程序的描述。这些信息不参与程序的执行，只有描述作用。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>GNU_EH_FRAME</strong></td>
+<td>保存了一组数据(array element)。数据是在.eh_frame_hdr节中定义的异常处理信息的位置与大小。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>GNU_STACK</strong></td>
+<td>保存了包含堆栈的段的权限，规定了哪些栈是可以执行的。权限设置方式与p_flag相同，缺少这个段意味着堆栈都是可以执行的。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>GNU_RELRO</strong></td>
+<td>这个段内的数据在重定向后是只读的。这个段通常包括了一些动态链接库，包括了.ctors, .dtors, .dynamic, .got 等节。这个段的区域与第二个LOAD段基本重合，只是LOAD 2 段中多了.got、.plt和.data。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="节区头部表section-heade-table-和-节区section">节区头部表(Section Heade Table) 和 节区(Section)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">// 通过readelf命令查看节区头部表
+</span></span><span class="line"><span class="cl">$ readelf -W -S ab
+</span></span><span class="line"><span class="cl">There are <span class="m">30</span> section headers, starting at offset 0x1bf8:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Section Headers:
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>Nr<span class="o">]</span> Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 0<span class="o">]</span>                   NULL            <span class="m">00000000</span> <span class="m">000000</span> <span class="m">000000</span> <span class="m">00</span>      <span class="m">0</span>   <span class="m">0</span>  <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 1<span class="o">]</span> .interp           PROGBITS        <span class="m">00010154</span> <span class="m">000154</span> <span class="m">000019</span> <span class="m">00</span>   A  <span class="m">0</span>   <span class="m">0</span>  <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 2<span class="o">]</span> .note.ABI-tag     NOTE            <span class="m">00010170</span> <span class="m">000170</span> <span class="m">000020</span> <span class="m">00</span>   A  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 3<span class="o">]</span> .note.gnu.build-id NOTE            <span class="m">00010190</span> <span class="m">000190</span> <span class="m">000024</span> <span class="m">00</span>   A  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 4<span class="o">]</span> .gnu.hash         GNU_HASH        000101b4 0001b4 00002c <span class="m">04</span>   A  <span class="m">5</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 5<span class="o">]</span> .dynsym           DYNSYM          000101e0 0001e0 <span class="m">000050</span> <span class="m">10</span>   A  <span class="m">6</span>   <span class="m">1</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 6<span class="o">]</span> .dynstr           STRTAB          <span class="m">00010230</span> <span class="m">000230</span> <span class="m">000043</span> <span class="m">00</span>   A  <span class="m">0</span>   <span class="m">0</span>  <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 7<span class="o">]</span> .gnu.version      VERSYM          <span class="m">00010274</span> <span class="m">000274</span> 00000a <span class="m">02</span>   A  <span class="m">5</span>   <span class="m">0</span>  <span class="m">2</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 8<span class="o">]</span> .gnu.version_r    VERNEED         <span class="m">00010280</span> <span class="m">000280</span> <span class="m">000020</span> <span class="m">00</span>   A  <span class="m">6</span>   <span class="m">1</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> 9<span class="o">]</span> .rel.dyn          REL             000102a0 0002a0 <span class="m">000008</span> <span class="m">08</span>   A  <span class="m">5</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>10<span class="o">]</span> .rel.plt          REL             000102a8 0002a8 <span class="m">000020</span> <span class="m">08</span>  AI  <span class="m">5</span>  <span class="m">22</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>11<span class="o">]</span> .init             PROGBITS        000102c8 0002c8 00000c <span class="m">00</span>  AX  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>12<span class="o">]</span> .plt              PROGBITS        000102d4 0002d4 <span class="m">000044</span> <span class="m">04</span>  AX  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>13<span class="o">]</span> .text             PROGBITS        <span class="m">00010318</span> <span class="m">000318</span> 00020c <span class="m">00</span>  AX  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>14<span class="o">]</span> .fini             PROGBITS        <span class="m">00010524</span> <span class="m">000524</span> <span class="m">000008</span> <span class="m">00</span>  AX  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>15<span class="o">]</span> .rodata           PROGBITS        0001052c 00052c <span class="m">000008</span> <span class="m">00</span>   A  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>16<span class="o">]</span> .ARM.exidx        ARM_EXIDX       <span class="m">00010534</span> <span class="m">000534</span> <span class="m">000008</span> <span class="m">00</span>  AL <span class="m">13</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>17<span class="o">]</span> .eh_frame         PROGBITS        0001053c 00053c <span class="m">000004</span> <span class="m">00</span>   A  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>18<span class="o">]</span> .init_array       INIT_ARRAY      00020f0c 000f0c <span class="m">000004</span> <span class="m">04</span>  WA  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>19<span class="o">]</span> .fini_array       FINI_ARRAY      00020f10 000f10 <span class="m">000004</span> <span class="m">04</span>  WA  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>20<span class="o">]</span> .jcr              PROGBITS        00020f14 000f14 <span class="m">000004</span> <span class="m">00</span>  WA  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>21<span class="o">]</span> .dynamic          DYNAMIC         00020f18 000f18 0000e8 <span class="m">08</span>  WA  <span class="m">6</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>22<span class="o">]</span> .got              PROGBITS        <span class="m">00021000</span> <span class="m">001000</span> <span class="m">000020</span> <span class="m">04</span>  WA  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>23<span class="o">]</span> .data             PROGBITS        <span class="m">00021020</span> <span class="m">001020</span> <span class="m">000010</span> <span class="m">00</span>  WA  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>24<span class="o">]</span> .bss              NOBITS          <span class="m">00021030</span> <span class="m">001030</span> 00000c <span class="m">00</span>  WA  <span class="m">0</span>   <span class="m">0</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>25<span class="o">]</span> .comment          PROGBITS        <span class="m">00000000</span> <span class="m">001030</span> 00001f <span class="m">01</span>  MS  <span class="m">0</span>   <span class="m">0</span>  <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>26<span class="o">]</span> .ARM.attributes   ARM_ATTRIBUTES  <span class="m">00000000</span> 00104f 00002f <span class="m">00</span>      <span class="m">0</span>   <span class="m">0</span>  <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>27<span class="o">]</span> .symtab           SYMTAB          <span class="m">00000000</span> <span class="m">001080</span> <span class="m">000740</span> <span class="m">10</span>     <span class="m">28</span>  <span class="m">91</span>  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>28<span class="o">]</span> .strtab           STRTAB          <span class="m">00000000</span> 0017c0 00032c <span class="m">00</span>      <span class="m">0</span>   <span class="m">0</span>  <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>29<span class="o">]</span> .shstrtab         STRTAB          <span class="m">00000000</span> 001aec 00010a <span class="m">00</span>      <span class="m">0</span>   <span class="m">0</span>  <span class="m">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从节区头部表中，可以看到一共含有27个节区。如果说 <strong>段(segment)</strong> 描述了程序在内存中的布局，那么 <strong>节(section)</strong> 包含了具体的数据、代码等信息。</p>
+<p>很多节区中包含了程序和控制信息。下面的表中给出了系统使用的节区，以及它们的类型和属性。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>.text</strong></td>
+<td style="text-align:left">此节保存了程序代码指令。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.data</strong></td>
+<td style="text-align:left">已经初始化的全局变量和局部静态变量(虽然默认会初始化为0,或者手动初始化为0，都没有必要在数据段分配空间，直接放在.bss段，就默认值为0了)都保存在.data段。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.bss</strong></td>
+<td style="text-align:left">保存了未进行初始化的全局数据，.bss段只是为未初始化的全局变量和局部静态变量预留位置而已，它并没有内容，所以它在文件中也不占据空间，这样可减少目标文件体积。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.rodata</strong></td>
+<td style="text-align:left">存放只读数据，一般是程序里面的只读变量(如const修饰的变量)，以及字符串常量(不一定，也可能放在.data中)。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.got</strong></td>
+<td style="text-align:left"><strong>GOT(Global Offset Table)全局偏移表</strong>包含了重定向目标的偏移信息，用来保存<strong>全局变量</strong>引用的地址。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.plt</strong></td>
+<td style="text-align:left"><strong>PLT(Procedure Linkage Table)过程链接表</strong>包含了动态链接器调用从共享库导入的函数所必须的相关代码。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.got.plt</strong></td>
+<td style="text-align:left">用来保存<strong>函数</strong>引用的地址</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.rel.plt</strong> <strong>.rel.dyn</strong></td>
+<td style="text-align:left">类型为 <strong>SHT_rel</strong> 的重定位表，保存了与重定位相关的信息，这些信息描述了如何在链接或运行时，对ELF目标文件的某部分内容进行补充或修改。<strong>.rel.dyn</strong> 是对数据引用的修正，它所修正的位置位于 <strong>.got</strong>以及数据段， <strong>.rel.plt</strong> 是对函数引用的修正， 它所修正的位置位于 <strong>.got.plt</strong> 。(使用readelf -r 命令可以查看重定位表相关信息)</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.gnu.hash</strong></td>
+<td style="text-align:left">保存了一个用于查找符号的散列表。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.dynsym</strong></td>
+<td style="text-align:left"><strong>动态符号表(Dynamic Symbol Table)</strong> 只保存与动态链接相关的符号。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.dynstr</strong></td>
+<td style="text-align:left"><strong>动态字符串表(Dynamic String Table)</strong> 保存了动态符号字符串表，表中存了一系列字符串，代表了符号名称，以空字符为结尾。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.symtab</strong></td>
+<td style="text-align:left"><strong>符号表(Symbol Table)</strong> 是一个ElfN_Sym结构(N为32或64，代表不同版本)。 保存了所有的符号，包括了.dynsym中的动态/全局符号。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.strtab</strong></td>
+<td style="text-align:left"><strong>字符串表(String Table)</strong> 保存普通的字符串，比如符号的名字。</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>.shstrtab</strong></td>
+<td style="text-align:left"><strong>段表字符串表(String Header String Table)</strong> 保存段表中用到的字符串，如段名。</td>
+</tr>
+</tbody>
+</table>
+<p>可以简单的表示成下图。</p>
+<p><img src="../../../Image/Books/ProfessionBooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/ELF%E6%96%87%E4%BB%B6/ELF%E6%96%87%E4%BB%B6%E6%AE%B5%E6%98%A0%E5%83%8F%E5%9B%BE%E4%BE%8B.jpg" alt="ELF文件段映像图例"></p>
+<blockquote>
+<p>程序源代码编译后的机器指令放置在代码段中，如图中的 <strong>.text</strong> 段。已初始化的 <strong>全局变量</strong> 和 <strong>局部静态变量</strong> 的数据已放在数据段中，如图中的 <strong>.data</strong> 段。未初始化的  <strong>全局变量</strong> 和 <strong>局部静态变量</strong>  放置在 <strong>.bss</strong> 段中。 <strong>.bss</strong> 段只是预留位置，并不占据空间。</p>
+</blockquote>
+<h2 id="3-链接">3 链接</h2>
+<p>与ELF文件有关的链接有两种：</p>
+<ul>
+<li>将目标文件和源码在编译后链接成成ELF文件，程序运行时不加载其他额外的共享对象，我们称之为 <strong>静态链接(Static Linking)</strong>。</li>
+<li>共享对象在ELF文件被载入内存期间进行链接，我们称之为 <strong>动态链接(Dynamic Linking)</strong>。</li>
+</ul>
+<h3 id="静态链接static-linking">静态链接(Static linking)</h3>
+<p><strong>静态链接</strong> 的作用主要是将多个目标文件通过静态链接器 <strong>ld</strong> 链接起来，形成一个可执行程序的过程。</p>
+<p>我们将使用下面的代码来分析 <strong>静态链接</strong> 的过程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">//a.c
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">extern</span> <span class="kt">int</span> <span class="n">shared</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shared</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//b.c
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">shared</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">b</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">a</span> <span class="o">^=</span> <span class="o">*</span><span class="n">b</span> <span class="o">^=</span> <span class="o">*</span><span class="n">a</span> <span class="o">^=</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>具体操作是，使用 <strong>gcc -c</strong> 命令产生目标文件a.o、b.o，也使用 <strong>ld</strong> 命令将相关的目标文件进行链接。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ gcc -c a.c b.c
+</span></span><span class="line"><span class="cl">$ ld a.o b.o -e main -o ab
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="静态链接过程">静态链接过程</h4>
+<p>静态链接过程主要分两步进行：<strong>空间与地址的分配</strong>、 <strong>符号解析和重定位</strong>。</p>
+<h5 id="空间与地址的分配">空间与地址的分配</h5>
+<p>在这一步主要是扫描所有的输入目标文件，获得它们各段的长度、属性和位置，将它们合并，计算出输出文件中各个段合并后的长度和位置，并建立映射关系。除此之外，还会将所有的输入目标文件中的符号表中所有的符号定义和符号引用统一放到一个全局符号表。</p>
+<p>通过 <strong>objdump -h</strong> 命令可以查看a.o、b.o、ab链接前后的地址分配情况。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ objdump -w -h a.o
+</span></span><span class="line"><span class="cl">节：
+</span></span><span class="line"><span class="cl">Idx Name          Size      VMA               LMA               File off  Algn  标志
+</span></span><span class="line"><span class="cl">  <span class="m">0</span> .text         <span class="m">00000027</span>  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  <span class="m">00000040</span>  2**0  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+</span></span><span class="line"><span class="cl">  <span class="m">1</span> .data         <span class="m">00000000</span>  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  <span class="m">00000067</span>  2**0  CONTENTS, ALLOC, LOAD, DATA
+</span></span><span class="line"><span class="cl">  <span class="m">2</span> .bss          <span class="m">00000000</span>  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  <span class="m">00000067</span>  2**0  ALLOC
+</span></span><span class="line"><span class="cl">  <span class="m">3</span> .comment      0000002e  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  <span class="m">00000067</span>  2**0  CONTENTS, READONLY
+</span></span><span class="line"><span class="cl">  <span class="m">4</span> .note.GNU-stack <span class="m">00000000</span>  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  <span class="m">00000095</span>  2**0  CONTENTS, READONLY
+</span></span><span class="line"><span class="cl">  <span class="m">5</span> .eh_frame     <span class="m">00000038</span>  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  <span class="m">00000098</span>  2**3  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ objdump -w -h b.o
+</span></span><span class="line"><span class="cl">节：
+</span></span><span class="line"><span class="cl">Idx Name          Size      VMA               LMA               File off  Algn  标志
+</span></span><span class="line"><span class="cl">  <span class="m">0</span> .text         0000004a  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  <span class="m">00000040</span>  2**0  CONTENTS, ALLOC, LOAD, READONLY, CODE
+</span></span><span class="line"><span class="cl">  <span class="m">1</span> .data         <span class="m">00000004</span>  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  0000008c  2**2  CONTENTS, ALLOC, LOAD, DATA
+</span></span><span class="line"><span class="cl">  <span class="m">2</span> .bss          <span class="m">00000000</span>  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  <span class="m">00000090</span>  2**0  ALLOC
+</span></span><span class="line"><span class="cl">  <span class="m">3</span> .comment      0000002e  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  <span class="m">00000090</span>  2**0  CONTENTS, READONLY
+</span></span><span class="line"><span class="cl">  <span class="m">4</span> .note.GNU-stack <span class="m">00000000</span>  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  000000be  2**0  CONTENTS, READONLY
+</span></span><span class="line"><span class="cl">  <span class="m">5</span> .eh_frame     <span class="m">00000038</span>  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  000000c0  2**3  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ objdump -w -h ab
+</span></span><span class="line"><span class="cl">节：
+</span></span><span class="line"><span class="cl">Idx Name          Size      VMA               LMA               File off  Algn  标志
+</span></span><span class="line"><span class="cl">  <span class="m">0</span> .text         <span class="m">00000071</span>  00000000004000e8  00000000004000e8  000000e8  2**0  CONTENTS, ALLOC, LOAD, READONLY, CODE
+</span></span><span class="line"><span class="cl">  <span class="m">1</span> .eh_frame     <span class="m">00000058</span>  <span class="m">0000000000400160</span>  <span class="m">0000000000400160</span>  <span class="m">00000160</span>  2**3  CONTENTS, ALLOC, LOAD, READONLY, DATA
+</span></span><span class="line"><span class="cl">  <span class="m">2</span> .data         <span class="m">00000004</span>  <span class="m">0000000000601000</span>  <span class="m">0000000000601000</span>  <span class="m">00001000</span>  2**2  CONTENTS, ALLOC, LOAD, DATA
+</span></span><span class="line"><span class="cl">  <span class="m">3</span> .comment      0000002d  <span class="m">0000000000000000</span>  <span class="m">0000000000000000</span>  <span class="m">00001004</span>  2**0  CONTENTS, READONLY
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到，在目标文件 <strong>a.o</strong> 和 <strong>b.o</strong> 中， <strong>.text</strong> 和 <strong>.data</strong> 等相关节区的初始化地址均为0，在可执行文件 <strong>ab</strong> 中， <strong>.text</strong> 被分配了地址。</p>
+<h5 id="符号解析和重定位">符号解析和重定位</h5>
+<p>在完成空间与地址的分配后，静态链接器就进入了符号解析和重定位步骤。</p>
+<p>在这一步，链接器将使用上一步中收集到的信息，读取输入文件中段的数据、重定位的信息，并且进行符号解析与重定位、调整代码中的地址等。</p>
+<p>使用 <strong>objdump -d</strong> 命令可以查看目标文件的反汇编结果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ objdump -d a.o
+</span></span><span class="line"><span class="cl">Disassembly of section .text:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">0000000000000000</span> &lt;main&gt;:
+</span></span><span class="line"><span class="cl">   0: <span class="m">55</span>                    push   %rbp
+</span></span><span class="line"><span class="cl">   1: <span class="m">48</span> <span class="m">89</span> e5              mov    %rsp,%rbp
+</span></span><span class="line"><span class="cl">   4: <span class="m">48</span> <span class="m">83</span> ec <span class="m">10</span>           sub    <span class="nv">$0</span>x10,%rsp
+</span></span><span class="line"><span class="cl">   8: c7 <span class="m">45</span> <span class="nb">fc</span> <span class="m">64</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>  movl   <span class="nv">$0</span>x64,-0x4<span class="o">(</span>%rbp<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   f: <span class="m">48</span> 8d <span class="m">45</span> <span class="nb">fc</span>           lea    -0x4<span class="o">(</span>%rbp<span class="o">)</span>,%rax
+</span></span><span class="line"><span class="cl">  13: be <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>        mov    <span class="nv">$0</span>x0,%esi
+</span></span><span class="line"><span class="cl">  18: <span class="m">48</span> <span class="m">89</span> c7              mov    %rax,%rdi
+</span></span><span class="line"><span class="cl">  1b: b8 <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>        mov    <span class="nv">$0</span>x0,%eax
+</span></span><span class="line"><span class="cl">  20: e8 <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>        callq  <span class="m">25</span> &lt;main+0x25&gt;
+</span></span><span class="line"><span class="cl">  25: c9                    leaveq
+</span></span><span class="line"><span class="cl">  26: c3                    retq
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ objdump -d ab
+</span></span><span class="line"><span class="cl">Disassembly of section .text:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000004000e8 &lt;main&gt;:
+</span></span><span class="line"><span class="cl">  4000e8: <span class="m">55</span>                    push   %rbp
+</span></span><span class="line"><span class="cl">  4000e9: <span class="m">48</span> <span class="m">89</span> e5              mov    %rsp,%rbp
+</span></span><span class="line"><span class="cl">  4000ec: <span class="m">48</span> <span class="m">83</span> ec <span class="m">10</span>           sub    <span class="nv">$0</span>x10,%rsp
+</span></span><span class="line"><span class="cl">  4000f0: c7 <span class="m">45</span> <span class="nb">fc</span> <span class="m">64</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>  movl   <span class="nv">$0</span>x64,-0x4<span class="o">(</span>%rbp<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  4000f7: <span class="m">48</span> 8d <span class="m">45</span> <span class="nb">fc</span>           lea    -0x4<span class="o">(</span>%rbp<span class="o">)</span>,%rax
+</span></span><span class="line"><span class="cl">  4000fb: be <span class="m">00</span> <span class="m">10</span> <span class="m">60</span> <span class="m">00</span>        mov    <span class="nv">$0</span>x601000,%esi
+</span></span><span class="line"><span class="cl">  400100: <span class="m">48</span> <span class="m">89</span> c7              mov    %rax,%rdi
+</span></span><span class="line"><span class="cl">  400103: b8 <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>        mov    <span class="nv">$0</span>x0,%eax
+</span></span><span class="line"><span class="cl">  400108: e8 <span class="m">02</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>        callq  40010f &lt;swap&gt;
+</span></span><span class="line"><span class="cl">  40010d: c9                    leaveq
+</span></span><span class="line"><span class="cl">  40010e: c3                    retq
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">000000000040010f &lt;swap&gt;:
+</span></span><span class="line"><span class="cl">  40010f: <span class="m">55</span>                    push   %rbp
+</span></span><span class="line"><span class="cl">···
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到在经过链接器重定位后，目标文件 <strong>a.o</strong> 中反汇编的main函数的第六条和第八条指令所执行的地址已经从0重定位成 <strong>可执行文件</strong> 中对应数据的偏移。例如第八条指令跳转swap函数，跳转的位置正好是下面swap函数开始的位置。</p>
+<h3 id="动态链接dynamic-linking">动态链接(Dynamic Linking)</h3>
+<p>早期的一些系统，采用 <strong>静态链接库(Static Shared Library)</strong> 的方式生成可执行文件(注意与 <strong>静态库(Static Library)</strong> 的区别)。 <strong>静态链接库(Static Shared Library)</strong> 的缺点可以简单的用下图表示：</p>
+<p><img src="../../../Image/Books/ProfessionBooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/ELF%E6%96%87%E4%BB%B6/StaticSharedLibrary.jpg" alt="静态链接库"></p>
+<blockquote>
+<p>可以看到 <strong>Program1</strong> 和 <strong>Program2</strong> 分别包含了 <strong>Lib.o</strong> 目标文件，这样会在内存中存在两份 <strong>Lib.o</strong> 的副本，如果关联到 <strong>Lib.o</strong> 的可执行程序很多的话，会造成很严重的空间浪费。并且如果需要更新 <strong>Lib.o</strong> 的话会非常的麻烦。</p>
+</blockquote>
+<p><strong>动态链接</strong> 的出现，主要是为了解决 <strong>静态链接(静态链接库方式)</strong> 时产生的空间浪费和更新困难的问题。</p>
+<p><strong>动态链接</strong> 在编译生成可执行文件时，不会将那些组成程序的目标文件进行链接， <strong>链接共享对象</strong> 的过程发生在ELF文件 <strong>载入到内存期间</strong> ，这个过程主要是通过 <strong>ld.so</strong> 库加载与可执行文件相关的动态库到内存中。</p>
+<p>基本过程如下图所示:</p>
+<p><img src="../../../Image/Books/ProfessionBooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/ELF%E6%96%87%E4%BB%B6/DynamicLinking.jpg" alt="动态链接过程"></p>
+<p>在谈及Linux下程序的动态链接过程之前，先谈一下与之相关的一些话题。</p>
+<h4 id="gotglobal-offset-table">GOT(Global Offset Table)</h4>
+<p>如果我们把共享对象模块中的地址引用按照是否为跨模块分成两类：<strong>模块内部引用</strong> 和 <strong>模块外部引用</strong>，按照不同的引用方式又可以分成 <strong>指令引用</strong> 和 <strong>数据访问</strong>，那么就有四种情况。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:left">指令跳转、调用</th>
+<th style="text-align:left">数据访问</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>模块内部</strong></td>
+<td style="text-align:left">相对跳转和调用</td>
+<td style="text-align:left">相对地址访问</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>模块外部</strong></td>
+<td style="text-align:left">间接跳转和调用(GOT)</td>
+<td style="text-align:left">间接访问(GOT)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>相关详细内容请参考<a href="https://www.amazon.cn/dp/B0027VSA7U">《程序员的自我修养》</a>第七章内容。</p>
+</blockquote>
+<p>从上表我们可以看到，模块外部的指令和数据调用都可以通过GOT表跳转。</p>
+<p><img src="../../../Image/Books/ProfessionBooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/ELF%E6%96%87%E4%BB%B6/DataBetweenDiffMoudle.jpg" alt="模块间数据访问"></p>
+<p>ELF将GOT拆分成两个表 <strong>&quot;.got&quot;</strong>、 <strong>&quot;.got.plt&quot;</strong>。其中 <strong>&quot;.got&quot;</strong> 用来保存全局变量的引用的地址， <strong>&quot;.got.plt&quot;</strong> 用来保存函数引用的地址。</p>
+<p>另外 <strong>&quot;.got.plt&quot;</strong> 的前三项有特殊的意义：</p>
+<ul>
+<li>第一项为 <strong>.dynamic段</strong> 的地址</li>
+<li>第二项为 一个指向内部数据结构的指针，类型是link_map，在动态装载器内部使用，包含了进行符号解析需要的当前ELF对象的信息。</li>
+<li>第三项为 <strong>_dl_runtime_resolve()</strong> 函数的地址</li>
+</ul>
+<h4 id="pltprocedure-linkage-table">PLT(Procedure Linkage Table)</h4>
+<p><strong>过程链接表</strong> 的作用是将位置无关的符号转移到绝对地址。当一个外部符号被调用时，PLT 去引用 GOT 中的其符号对应的绝对地址，然后转入并执行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">// 使用objdump命令查看.plt节的反汇编代码
+</span></span><span class="line"><span class="cl">$ objdump -d -j .plt libdynamic.so
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">libdynamic.so：     文件格式 elf64-x86-64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disassembly of section .plt:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000000006a0 &lt;__gmon_start__@plt-0x10&gt;:
+</span></span><span class="line"><span class="cl"> 6a0:	ff <span class="m">35</span> <span class="m">62</span> <span class="m">09</span> <span class="m">20</span> <span class="m">00</span>    	pushq  0x200962<span class="o">(</span>%rip<span class="o">)</span>        <span class="c1"># 201008 &lt;_GLOBAL_OFFSET_TABLE_+0x8&gt;</span>
+</span></span><span class="line"><span class="cl"> 6a6:	ff <span class="m">25</span> <span class="m">64</span> <span class="m">09</span> <span class="m">20</span> <span class="m">00</span>    	jmpq   *0x200964<span class="o">(</span>%rip<span class="o">)</span>        <span class="c1"># 201010 &lt;_GLOBAL_OFFSET_TABLE_+0x10&gt;</span>
+</span></span><span class="line"><span class="cl"> 6ac:	0f 1f <span class="m">40</span> <span class="m">00</span>          	nopl   0x0<span class="o">(</span>%rax<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000000006b0 &lt;__gmon_start__@plt&gt;:
+</span></span><span class="line"><span class="cl"> 6b0:	ff <span class="m">25</span> <span class="m">62</span> <span class="m">09</span> <span class="m">20</span> <span class="m">00</span>    	jmpq   *0x200962<span class="o">(</span>%rip<span class="o">)</span>        <span class="c1"># 201018 &lt;_GLOBAL_OFFSET_TABLE_+0x18&gt;</span>
+</span></span><span class="line"><span class="cl"> 6b6:	<span class="m">68</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>       	pushq  <span class="nv">$0</span>x0
+</span></span><span class="line"><span class="cl"> 6bb:	e9 e0 ff ff ff       	jmpq   6a0 &lt;_init+0x20&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000000006c0 &lt;_ZNSt8ios_base4InitC1Ev@plt&gt;:
+</span></span><span class="line"><span class="cl"> 6c0:	ff <span class="m">25</span> 5a <span class="m">09</span> <span class="m">20</span> <span class="m">00</span>    	jmpq   *0x20095a<span class="o">(</span>%rip<span class="o">)</span>        <span class="c1"># 201020 &lt;_GLOBAL_OFFSET_TABLE_+0x20&gt;</span>
+</span></span><span class="line"><span class="cl"> 6c6:	<span class="m">68</span> <span class="m">01</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>       	pushq  <span class="nv">$0</span>x1
+</span></span><span class="line"><span class="cl"> 6cb:	e9 d0 ff ff ff       	jmpq   6a0 &lt;_init+0x20&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000000006d0 &lt;__cxa_atexit@plt&gt;:
+</span></span><span class="line"><span class="cl"> 6d0:	ff <span class="m">25</span> <span class="m">52</span> <span class="m">09</span> <span class="m">20</span> <span class="m">00</span>    	jmpq   *0x200952<span class="o">(</span>%rip<span class="o">)</span>        <span class="c1"># 201028 &lt;_GLOBAL_OFFSET_TABLE_+0x28&gt;</span>
+</span></span><span class="line"><span class="cl"> 6d6:	<span class="m">68</span> <span class="m">02</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>       	pushq  <span class="nv">$0</span>x2
+</span></span><span class="line"><span class="cl"> 6db:	e9 c0 ff ff ff       	jmpq   6a0 &lt;_init+0x20&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000000006e0 &lt;__cxa_finalize@plt&gt;:
+</span></span><span class="line"><span class="cl"> 6e0:	ff <span class="m">25</span> 4a <span class="m">09</span> <span class="m">20</span> <span class="m">00</span>    	jmpq   *0x20094a<span class="o">(</span>%rip<span class="o">)</span>        <span class="c1"># 201030 &lt;_GLOBAL_OFFSET_TABLE_+0x30&gt;</span>
+</span></span><span class="line"><span class="cl"> 6e6:	<span class="m">68</span> <span class="m">03</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>       	pushq  <span class="nv">$0</span>x3
+</span></span><span class="line"><span class="cl"> 6eb:	e9 b0 ff ff ff       	jmpq   6a0 &lt;_init+0x20&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>PLT表结构有以下特点：</p>
+<ul>
+<li>PLT表中的第一项为公共表项，剩下的是每个动态库函数为一项(当然每项是由多条指令组成的，jmp *0xXXXXXXXX这条指令是所有plt的开始指令)。</li>
+<li>每项PLT都从对应的GOT表项中读取目标函数地址。</li>
+</ul>
+<h4 id="延迟绑定lazy-binging">延迟绑定(Lazy Binging)</h4>
+<p><strong>动态库</strong> 比 <strong>静态库</strong> 慢的主要原因在于动态库在加载时，对于全局和静态的数据访问都要进行复杂的 <strong>GOT重定位</strong> 操作；对于模块间的调用也要先定位GOT，然后再进行间接跳转。</p>
+<p>如果可执行文件调用的动态库函数很多，那在进程初始化时都会对这些函数做地址解析和重定位工作，大大增加进程的启动时间。</p>
+<p>所以ELF采用了一种 <strong>延迟重绑定</strong> 机制，只有动态库函数在被第一次调用时，才会进行绑定(符号查找、重定位等)，如果没有用到则不进行绑定。</p>
+<h5 id="延迟绑定过程">延迟绑定过程</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">00000000000006e0 &lt;__cxa_finalize@plt&gt;:
+</span></span><span class="line"><span class="cl"> 6e0:	ff <span class="m">25</span> 4a <span class="m">09</span> <span class="m">20</span> <span class="m">00</span>    	jmpq   *<span class="o">(</span>__cxa_finalize@got<span class="o">)</span>        <span class="c1"># 201030 &lt;_GLOBAL_OFFSET_TABLE_+0x30&gt;</span>
+</span></span><span class="line"><span class="cl"> 6e6:	<span class="m">68</span> <span class="m">03</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>       	pushq  <span class="nv">$0</span>x3
+</span></span><span class="line"><span class="cl"> 6eb:	e9 b0 ff ff ff       	jmpq   6a0 &lt;_init+0x20&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>__cxa_finalize@plt</strong> 的第一条指令是通过GOT间接跳转的指令(为了方便讲解，已将地址替换为符号)。<strong>__cxa_finalize@plt</strong> 保存的是函数相应的项。</p>
+<p>为了实现延迟绑定，链接器在初始化阶段并没有将对应的函数地址填入到该项，而是将上述代码中的第二条指令 <strong>&ldquo;pushq  $0x3&rdquo;</strong> 的地址填入到 <strong>__cxa_finalize@plt</strong> 中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">//使用readelf查看本地ELF文件中.got节的内容
+</span></span><span class="line"><span class="cl">$ readelf -x .got libdynamic.so
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">“.got”节的十六进制输出：
+</span></span><span class="line"><span class="cl">  0x00200fd0 <span class="m">00000000</span> <span class="m">00000000</span> <span class="m">00000000</span> <span class="m">00000000</span> ................
+</span></span><span class="line"><span class="cl">  0x00200fe0 <span class="m">00000000</span> <span class="m">00000000</span> <span class="m">00000000</span> <span class="m">00000000</span> ................
+</span></span><span class="line"><span class="cl">  0x00200ff0 <span class="m">00000000</span> <span class="m">00000000</span> <span class="m">00000000</span> <span class="m">00000000</span> ................
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后执行第三条指令，跳转到 <strong><strong>gmon_start</strong>@plt-0x10</strong>，里面实现的是 <strong>_dl_runtime_resolve()</strong> 函数，此函数主要是用来完成符号解析和重定位工作。</p>
+<p>一旦函数被解析完毕，当我们再次调用 <strong>__cxa_finalize@plt</strong> 时，第一条指令就能直接跳转到真正的函数中，而不会在继续往下执行。</p>
+<p>下图展示的是 <strong>延迟绑定</strong> 的执行过程。</p>
+<p><img src="../../../Image/Books/ProfessionBooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/ELF%E6%96%87%E4%BB%B6/%E5%8A%A8%E6%80%81%E9%87%8D%E5%AE%9A%E4%BD%8D%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.jpg" alt="动态重定位执行过程"></p>
+<h5 id="程序执行时的链接过程">程序执行时的链接过程</h5>
+<p>对于通过 <strong>静态链接</strong> 所产生的可执行文件来说，首先操作系统会读取可执行文件的头部，检查文件的合法性，然后从 <strong>Program Header</strong> 中 读取每个 <strong>Segment</strong> 的虚拟地址、文件地址和属性，将它们映射到进程的虚拟地址空间，然后操作系统就可以把控制权转交给可执行文件的入口地址，然后程序开始执行。</p>
+<blockquote>
+<p>操作系统→加载可执行程序→控制权交给可执行程序</p>
+</blockquote>
+<p>对于通过 <strong>动态链接</strong> 产生的可执行文件来说，前半部分与上述内容基本一致，但当操作系统加载完可执行文件后，还有很多外部符号的引用处于无效地址状态。所以，此时操作系统不会将控制权转交给可执行文件，而是先启动一个 <strong>动态链接器(Dynamic Linker)</strong> 。在Linux下，动态链接器为 <strong>ld.so</strong> ，加载完动态链接器后，操作系统将控制权转交给动态链接器。之后，动态链接器开始执行一系列自身的初始化操作，然后对可执行文件和与之关联的共享对象进行链接。当所有的链接工作完成以后，动态链接器再将控制权转交给可执行文件的入口地址，然后程序开始执行。</p>
+<blockquote>
+<p>操作系统→加载可执行程序→控制权交给动态链接器→动态链接器链接共享对象→控制权交给可执行程序</p>
+</blockquote>
+<h2 id="相关参考">相关参考</h2>
+<ul>
+<li><a href="https://github.com/tinyclub/open-c-book/blob/master/zh/chapters/02-chapter2.markdown#toc_27212_14734_14">Gcc 编译的背后</a></li>
+<li><a href="https://github.com/tinyclub/open-c-book/blob/master/zh/chapters/02-chapter4.markdown#toc_23258_14315_6">动态符号链接的细节</a></li>
+<li><a href="http://www.skyfree.org/linux/references/ELF_Format.pdf">Executable and Linkable Format (ELF)</a></li>
+<li><a href="https://download.csdn.net/download/jiangwei0910410003/9204051">Elf文件格式(北京大学实验室出的标准版)</a></li>
+<li><a href="https://blog.csdn.net/linyt/article/details/51893258">聊聊Linux动态链接中的PLT和GOT（4）—— 穿针引线</a></li>
+<li><a href="https://www.amazon.cn/dp/B0027VSA7U">《程序员的自我修养》</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-18
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/books/">Books</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/">程序员的自我修养</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC16%E7%AB%A0-%E5%8D%8F%E7%A8%8B/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">流畅的Python - 第16章-协程</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E7%BC%96%E8%AF%91/">
+            <span class="next-text nav-default">程序员的自我修养 - 编译</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

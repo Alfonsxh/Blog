@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scrapy on Alfons&#39;s Blog</title>
+    <link>https://alfonsxh.github.io/Blog/categories/scrapy/</link>
+    <description>Recent content in Scrapy on Alfons&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 14 Jan 2019 16:25:42 +0000</lastBuildDate>
+    <atom:link href="https://alfonsxh.github.io/Blog/categories/scrapy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2_Scrapy模块使用及调试</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/spider/scrapy/2_scrapy%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8%E5%8F%8A%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Mon, 14 Jan 2019 16:25:42 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/spider/scrapy/2_scrapy%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8%E5%8F%8A%E8%B0%83%E8%AF%95/</guid>
+      <description>&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install scrapy&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Scrapy(1)-模块介绍</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/spider/scrapy/1_scrapy%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Sun, 09 Dec 2018 21:43:03 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/spider/scrapy/1_scrapy%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/</guid>
+      <description>&lt;p&gt;之前一直使用 &lt;strong&gt;requests + re&lt;/strong&gt; 的方式做爬虫……所有的步骤：访问、分析结果、存储结果、多进程、异步等等，都是自己实现的……最大的坑莫过于 &lt;strong&gt;正则匹配&lt;/strong&gt;，虽说 &lt;strong&gt;正则&lt;/strong&gt; 很强大，但是经常会出现一些异常的数据。另外，爬取不同的网站，又得重新来一套！！&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

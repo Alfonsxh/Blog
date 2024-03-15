@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>MySQL必知必会 - 联结查询 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="联结查询" /><meta name="keywords" content="Books, MySQL必知必会" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/4_mysql%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C_%E8%81%94%E7%BB%93%E6%9F%A5%E8%AF%A2/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">MySQL必知必会 - 联结查询</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-10-29 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/books/"> Books </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/"> MySQL必知必会 </a>
+            </div>
+          <span class="more-meta"> 1795 words </span>
+          <span class="more-meta"> 9 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#子查询">子查询</a></li>
+        <li><a href="#联结">联结</a>
+          <ul>
+            <li><a href="#创建联结">创建联结</a></li>
+            <li><a href="#多表联结">多表联结</a></li>
+          </ul>
+        </li>
+        <li><a href="#高级联结">高级联结</a>
+          <ul>
+            <li><a href="#自联结">自联结</a></li>
+            <li><a href="#内部联结与外部联结">内部联结与外部联结</a></li>
+            <li><a href="#组合查询">组合查询</a></li>
+          </ul>
+        </li>
+        <li><a href="#小结">小结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="子查询">子查询</h2>
+<p>SQL允许创建子查询，即嵌套在其他查询中的查询。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">cust_name</span><span class="p">,</span><span class="w"> </span><span class="n">cust_contact</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">customers</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">cust_id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">cust_id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">order_num</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">order_num</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">orderitems</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;TNT2&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">cust_name</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">cust_contact</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">        </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Yosemite</span><span class="w"> </span><span class="n">Place</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Sam</span><span class="w">        </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">2</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>子查询还可以根据外部表中的字段对本表进行过滤。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">cust_name</span><span class="p">,</span><span class="w"> </span><span class="n">cust_state</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w">                                         </span><span class="k">from</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">cust_id</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">orders</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w">          </span><span class="k">from</span><span class="w"> </span><span class="n">customers</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">cust_name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+------------+--------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">cust_name</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">cust_state</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+------------+--------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">MI</span><span class="w">         </span><span class="o">|</span><span class="w">      </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">Fudd</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="n">IL</span><span class="w">         </span><span class="o">|</span><span class="w">      </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Mouse</span><span class="w"> </span><span class="n">House</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">OH</span><span class="w">         </span><span class="o">|</span><span class="w">      </span><span class="mi">0</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Wascals</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="k">IN</span><span class="w">         </span><span class="o">|</span><span class="w">      </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Yosemite</span><span class="w"> </span><span class="n">Place</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">AZ</span><span class="w">         </span><span class="o">|</span><span class="w">      </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+------------+--------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">5</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="联结">联结</h2>
+<p><code>联结</code>是利用sql的select能执行的最重要的操作，很好地理解联结及其语法是学习sql的一个极为重要的组成部分</p>
+<p><code>联结</code>是一种机制，用来在一条select与剧中关联表，使用特殊的语法，可以联结多个表返回一组输出，联结在运行时关联表中正确的行。</p>
+<h3 id="创建联结">创建联结</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">vend_name</span><span class="p">,</span><span class="w"> </span><span class="n">prod_name</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">vendors</span><span class="p">,</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">vendors</span><span class="p">.</span><span class="n">vend_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">products</span><span class="p">.</span><span class="n">vend_id</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">vend_name</span><span class="p">,</span><span class="w"> </span><span class="n">prod_name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-------------+----------------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">vend_name</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">prod_name</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-------------+----------------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">Bird</span><span class="w"> </span><span class="n">seed</span><span class="w">      </span><span class="o">|</span><span class="w">      </span><span class="mi">10</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">Carrots</span><span class="w">        </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">Detonator</span><span class="w">      </span><span class="o">|</span><span class="w">      </span><span class="mi">13</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">Safe</span><span class="w">           </span><span class="o">|</span><span class="w">      </span><span class="mi">50</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">Sling</span><span class="w">          </span><span class="o">|</span><span class="w">       </span><span class="mi">4</span><span class="p">.</span><span class="mi">49</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="n">stick</span><span class="p">)</span><span class="w">  </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="n">sticks</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="mi">10</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Anvils</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Us</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">.</span><span class="mi">5</span><span class="w"> </span><span class="n">ton</span><span class="w"> </span><span class="n">anvil</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">5</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Anvils</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Us</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">ton</span><span class="w"> </span><span class="n">anvil</span><span class="w">    </span><span class="o">|</span><span class="w">       </span><span class="mi">9</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Anvils</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Us</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">ton</span><span class="w"> </span><span class="n">anvil</span><span class="w">    </span><span class="o">|</span><span class="w">      </span><span class="mi">14</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Jet</span><span class="w"> </span><span class="k">Set</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">JetPack</span><span class="w"> </span><span class="mi">1000</span><span class="w">   </span><span class="o">|</span><span class="w">      </span><span class="mi">35</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Jet</span><span class="w"> </span><span class="k">Set</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">JetPack</span><span class="w"> </span><span class="mi">2000</span><span class="w">   </span><span class="o">|</span><span class="w">      </span><span class="mi">55</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">LT</span><span class="w"> </span><span class="n">Supplies</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Fuses</span><span class="w">          </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="p">.</span><span class="mi">42</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">LT</span><span class="w"> </span><span class="n">Supplies</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Oil</span><span class="w"> </span><span class="n">can</span><span class="w">        </span><span class="o">|</span><span class="w">       </span><span class="mi">8</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-------------+----------------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">14</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面的操作是，从vendors中找出厂商的名字与products表中的数据组合。此处需使用完全限定名，否则无法分辨字段属于哪张表。</p>
+<p>在联结两个表时，实际上是将第一个表中的每一行与第二个表中的每一行配对。where子句作为过滤条件，它只包含那些匹配给定条件(这里是联结条件)的行。</p>
+<p>如果没有给定联结条件<code>vendors.vend_id = products.vend_id</code>，将返回两张表的笛卡儿积。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">vend_name</span><span class="p">,</span><span class="w"> </span><span class="n">prod_name</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">vendors</span><span class="p">,</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">vend_name</span><span class="p">,</span><span class="w"> </span><span class="n">prod_name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+----------------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">vend_name</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">prod_name</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+----------------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="p">.</span><span class="mi">5</span><span class="w"> </span><span class="n">ton</span><span class="w"> </span><span class="n">anvil</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">5</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">ton</span><span class="w"> </span><span class="n">anvil</span><span class="w">    </span><span class="o">|</span><span class="w">       </span><span class="mi">9</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">ton</span><span class="w"> </span><span class="n">anvil</span><span class="w">    </span><span class="o">|</span><span class="w">      </span><span class="mi">14</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">Bird</span><span class="w"> </span><span class="n">seed</span><span class="w">      </span><span class="o">|</span><span class="w">      </span><span class="mi">10</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">Carrots</span><span class="w">        </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">Detonator</span><span class="w">      </span><span class="o">|</span><span class="w">      </span><span class="mi">13</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">Fuses</span><span class="w">          </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="p">.</span><span class="mi">42</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">JetPack</span><span class="w"> </span><span class="mi">1000</span><span class="w">   </span><span class="o">|</span><span class="w">      </span><span class="mi">35</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">JetPack</span><span class="w"> </span><span class="mi">2000</span><span class="w">   </span><span class="o">|</span><span class="w">      </span><span class="mi">55</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">Oil</span><span class="w"> </span><span class="n">can</span><span class="w">        </span><span class="o">|</span><span class="w">       </span><span class="mi">8</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">Safe</span><span class="w">           </span><span class="o">|</span><span class="w">      </span><span class="mi">50</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">Sling</span><span class="w">          </span><span class="o">|</span><span class="w">       </span><span class="mi">4</span><span class="p">.</span><span class="mi">49</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="n">stick</span><span class="p">)</span><span class="w">  </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ACME</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="n">sticks</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="mi">10</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Anvils</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Us</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="p">.</span><span class="mi">5</span><span class="w"> </span><span class="n">ton</span><span class="w"> </span><span class="n">anvil</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">5</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Anvils</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Us</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">ton</span><span class="w"> </span><span class="n">anvil</span><span class="w">    </span><span class="o">|</span><span class="w">       </span><span class="mi">9</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Anvils</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Us</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">ton</span><span class="w"> </span><span class="n">anvil</span><span class="w">    </span><span class="o">|</span><span class="w">      </span><span class="mi">14</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Anvils</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Us</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Bird</span><span class="w"> </span><span class="n">seed</span><span class="w">      </span><span class="o">|</span><span class="w">      </span><span class="mi">10</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Anvils</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Us</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Carrots</span><span class="w">        </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Anvils</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Us</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Detonator</span><span class="w">      </span><span class="o">|</span><span class="w">      </span><span class="mi">13</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Anvils</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Us</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Fuses</span><span class="w">          </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="p">.</span><span class="mi">42</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Anvils</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Us</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">JetPack</span><span class="w"> </span><span class="mi">1000</span><span class="w">   </span><span class="o">|</span><span class="w">      </span><span class="mi">35</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">······</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+----------------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">84</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>应该保证所有联结都有where子句，否则MySQL将返回比想要的数据多得多的数据。</p>
+</blockquote>
+<h3 id="多表联结">多表联结</h3>
+<p>下面的例子执行的结果都是返回订购产品&quot;TNT2&quot;的客户列表，不同之处在于第一条语句使用了三次where子句条件，第二条语句使用了两次联结操作，语法更简洁明了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">cust_name</span><span class="p">,</span><span class="w"> </span><span class="n">cust_contact</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">from</span><span class="w"> </span><span class="n">customers</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">where</span><span class="w"> </span><span class="n">cust_id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">cust_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                  </span><span class="k">from</span><span class="w"> </span><span class="n">orders</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                  </span><span class="k">where</span><span class="w"> </span><span class="n">order_num</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">order_num</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                                      </span><span class="k">from</span><span class="w"> </span><span class="n">orderitems</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                                      </span><span class="k">where</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;TNT2&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">cust_name</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">cust_contact</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">        </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Yosemite</span><span class="w"> </span><span class="n">Place</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Sam</span><span class="w">        </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">2</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">cust_name</span><span class="p">,</span><span class="w"> </span><span class="n">cust_contact</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">from</span><span class="w"> </span><span class="n">customers</span><span class="p">,</span><span class="w"> </span><span class="n">orders</span><span class="p">,</span><span class="w"> </span><span class="n">orderitems</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">where</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">cust_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">and</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">order_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderitems</span><span class="p">.</span><span class="n">order_num</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">and</span><span class="w"> </span><span class="n">orderitems</span><span class="p">.</span><span class="n">prod_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;TNT2&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">cust_name</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">cust_contact</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">        </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Yosemite</span><span class="w"> </span><span class="n">Place</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Sam</span><span class="w">        </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">2</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="高级联结">高级联结</h2>
+<h3 id="自联结">自联结</h3>
+<p>sql除了可以给列名和计算字段起别名外，还允许给表名起别名。这样做能够缩短sql语句，同时允许在单条select语句中多次使用相同的表。</p>
+<p>如下面的例子，找出生产 <strong>TNT2</strong> 产品的厂商的所有产品。</p>
+<p>此处要注意的是当使用 <strong>p1.prod_id, p1.prod_name</strong> 作为列展示时，where子句中的过滤条件不能为 <strong>p2.prod_id = &ldquo;TNT2&rdquo;</strong>，否则得不到正确的结果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">where</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">vend_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                  </span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                  </span><span class="k">where</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;TNT2&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_name</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">DTNTR</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">Detonator</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">FB</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">Bird</span><span class="w"> </span><span class="n">seed</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">FC</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">Carrots</span><span class="w">        </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">SAFE</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Safe</span><span class="w">           </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">SLING</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">Sling</span><span class="w">          </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">TNT1</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="n">stick</span><span class="p">)</span><span class="w">  </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="n">sticks</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">7</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">prod_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">p2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">where</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">vend_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="n">vend_id</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="n">prod_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;TNT2&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_name</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">DTNTR</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">Detonator</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">FB</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">Bird</span><span class="w"> </span><span class="n">seed</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">FC</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">Carrots</span><span class="w">        </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">SAFE</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Safe</span><span class="w">           </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">SLING</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">Sling</span><span class="w">          </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">TNT1</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="n">stick</span><span class="p">)</span><span class="w">  </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="n">sticks</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">7</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">prod_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">p2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">where</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">vend_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="n">vend_id</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">prod_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;TNT2&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_name</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="n">sticks</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="n">sticks</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="n">sticks</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="n">sticks</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="n">sticks</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="n">sticks</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TNT</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="n">sticks</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">7</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>用自联结而不用子查询，自联结通常作为外部语句用来代替从相同表中检索数据时使用的子查询语句，处理联结的速度远比处理子查询快。</p>
+</blockquote>
+<h3 id="内部联结与外部联结">内部联结与外部联结</h3>
+<p><code>inner join</code>关键字为内部联结，使用效果和where子句的效果一样。</p>
+<p><code>left outer join</code> 或 <code>right outer join</code> 为外部联结。外部联结能够得到得到所有的结果，关键在于关键字<code>left</code>和<code>right</code>。</p>
+<p>在语句 <strong>from customers left outer join orders</strong> 中，会匹配customers表中所有的数据，如果条件不匹配，则其他字段使用 <strong>NULL</strong> 填充。</p>
+<p><code>right</code>同<code>left</code>，只是主表位置在右侧。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="p">,</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">order_num</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">from</span><span class="w"> </span><span class="n">orders</span><span class="p">,</span><span class="w"> </span><span class="n">customers</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">where</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">cust_id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+-----------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">cust_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">order_num</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+-----------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w">   </span><span class="mi">10001</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20005</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10001</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20009</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10003</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20006</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10004</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20007</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10005</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20008</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+-----------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">5</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="p">,</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">order_num</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">from</span><span class="w"> </span><span class="n">customers</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">cust_id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+-----------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">cust_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">order_num</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+-----------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w">   </span><span class="mi">10001</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20005</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10001</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20009</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10003</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20006</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10004</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20007</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10005</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20008</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+-----------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">5</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="p">,</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">order_num</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">from</span><span class="w"> </span><span class="n">customers</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">outer</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">cust_id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+-----------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">cust_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">order_num</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+-----------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w">   </span><span class="mi">10001</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20005</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10001</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20009</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10002</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="k">NULL</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10003</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20006</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10004</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20007</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10005</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20008</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+-----------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">6</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="p">,</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">order_num</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">from</span><span class="w"> </span><span class="n">customers</span><span class="w"> </span><span class="k">right</span><span class="w"> </span><span class="k">outer</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">cust_id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+-----------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">cust_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">order_num</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+-----------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w">   </span><span class="mi">10001</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20005</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10001</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20009</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10003</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20006</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10004</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20007</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">10005</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">20008</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+-----------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">5</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="组合查询">组合查询</h3>
+<ul>
+<li>在单个查询中从不同的表返回类似结构的数据；</li>
+<li>对单个表执行多个查询，按单个查询返回数据。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">vend_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w">    </span><span class="mi">1003</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FC</span><span class="w">      </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1002</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FU1</span><span class="w">     </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="p">.</span><span class="mi">42</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1003</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">SLING</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">4</span><span class="p">.</span><span class="mi">49</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1003</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">TNT1</span><span class="w">    </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">4</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">vend_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="mi">1002</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w">    </span><span class="mi">1001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ANV01</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">5</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ANV02</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">9</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ANV03</span><span class="w">   </span><span class="o">|</span><span class="w">      </span><span class="mi">14</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1002</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FU1</span><span class="w">     </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="p">.</span><span class="mi">42</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1002</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">OL1</span><span class="w">     </span><span class="o">|</span><span class="w">       </span><span class="mi">8</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">5</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>当使用<code>union</code>关键字连接两个select子句时，如果是在不同的表中使用，推荐使用<code>union</code>。相同表使用<code>and</code>或<code>or</code>等操作更简单。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">vend_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="mi">1002</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">union</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">select</span><span class="w"> </span><span class="n">vend_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w">    </span><span class="mi">1001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ANV01</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">5</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ANV02</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">9</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ANV03</span><span class="w">   </span><span class="o">|</span><span class="w">      </span><span class="mi">14</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1002</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FU1</span><span class="w">     </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="p">.</span><span class="mi">42</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1002</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">OL1</span><span class="w">     </span><span class="o">|</span><span class="w">       </span><span class="mi">8</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1003</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FC</span><span class="w">      </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1003</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">SLING</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">4</span><span class="p">.</span><span class="mi">49</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1003</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">TNT1</span><span class="w">    </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">8</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">vend_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="mi">1002</span><span class="p">)</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w">    </span><span class="mi">1001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ANV01</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">5</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ANV02</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">9</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ANV03</span><span class="w">   </span><span class="o">|</span><span class="w">      </span><span class="mi">14</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1003</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FC</span><span class="w">      </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1002</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FU1</span><span class="w">     </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="p">.</span><span class="mi">42</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1002</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">OL1</span><span class="w">     </span><span class="o">|</span><span class="w">       </span><span class="mi">8</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1003</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">SLING</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">4</span><span class="p">.</span><span class="mi">49</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1003</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">TNT1</span><span class="w">    </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">8</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>默认情况下，<code>union</code>会自动去除重复的数据，如果想要展示所有的结果，需要使用<code>union all</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">vend_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="mi">1002</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">union</span><span class="w"> </span><span class="k">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">select</span><span class="w"> </span><span class="n">vend_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w">    </span><span class="mi">1001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ANV01</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">5</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ANV02</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">9</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ANV03</span><span class="w">   </span><span class="o">|</span><span class="w">      </span><span class="mi">14</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1002</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FU1</span><span class="w">     </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="p">.</span><span class="mi">42</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1002</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">OL1</span><span class="w">     </span><span class="o">|</span><span class="w">       </span><span class="mi">8</span><span class="p">.</span><span class="mi">99</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1003</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FC</span><span class="w">      </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1002</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FU1</span><span class="w">     </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="p">.</span><span class="mi">42</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1003</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">SLING</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="mi">4</span><span class="p">.</span><span class="mi">49</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w">    </span><span class="mi">1003</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">TNT1</span><span class="w">    </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------+---------+------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">9</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="小结">小结</h2>
+<ul>
+<li>注意使用的联结类型，一般使用内部联结。</li>
+<li>保证使用正确的联结条件，否则将返回不正确的数据。</li>
+<li>应该总是提供联结条件，否则会得到笛卡儿积。</li>
+<li>在联结多个表时，最好分别测试每个联结。</li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-10-29
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/books/">Books</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">MySQL必知必会</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/5_mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C_%E5%A2%9E%E5%88%A0%E6%94%B9/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">MySQL必知必会 - 增删改</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/3_mysql%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C_%E8%81%9A%E9%9B%86%E5%92%8C%E5%88%86%E7%BB%84/">
+            <span class="next-text nav-default">MySQL必知必会 - 聚集和分组</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

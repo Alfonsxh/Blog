@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>虚拟环境 on Alfons&#39;s Blog</title>
+    <link>https://alfonsxh.github.io/Blog/tags/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</link>
+    <description>Recent content in 虚拟环境 on Alfons&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 07 Feb 2024 14:38:49 +0800</lastBuildDate>
+    <atom:link href="https://alfonsxh.github.io/Blog/tags/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python虚拟环境</title>
+      <link>https://alfonsxh.github.io/Blog/post/python/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Wed, 07 Feb 2024 14:38:49 +0800</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/python/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
+      <description>&lt;p&gt;虚拟环境为运行Python项目的理想环境，可以有效的与系统Python环境进行隔离，每个项目都可以有一个干净的环境运行。&lt;/p&gt;&#xA;&lt;p&gt;但是对于国内一些企业，客户现场环境复杂，甚至无法连接外网。对于这种场景，任何虚拟环境创建的手段都无法实现。&lt;/p&gt;&#xA;&lt;p&gt;虽然 Pyinstaller 可以实现，但跨多个 Linux 操作系统，想要实现 &amp;ldquo;&lt;strong&gt;一包通用&lt;/strong&gt;&amp;quot;，仍没有办法实现。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

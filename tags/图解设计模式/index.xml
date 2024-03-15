@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>图解设计模式 on Alfons&#39;s Blog</title>
+    <link>https://alfonsxh.github.io/Blog/tags/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in 图解设计模式 on Alfons&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 27 Nov 2018 21:07:00 +0000</lastBuildDate>
+    <atom:link href="https://alfonsxh.github.io/Blog/tags/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图解设计模式 - 0-关于UML</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/0-%E5%85%B3%E4%BA%8Euml/</link>
+      <pubDate>Tue, 27 Nov 2018 21:07:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/0-%E5%85%B3%E4%BA%8Euml/</guid>
+      <description>&lt;p&gt;&lt;code&gt;UML(Unified Modeling Language)统一建模语言&lt;/code&gt;，是让系统可视化、让规格和设计文档化的表现方式。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>图解设计模式 - 1-Iterator模式</title>
+      <link>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1-iterator%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Tue, 27 Nov 2018 21:07:00 +0000</pubDate>
+      <guid>https://alfonsxh.github.io/Blog/post/books/professionbooks/%E5%9B%BE%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1-iterator%E6%A8%A1%E5%BC%8F/</guid>
+      <description>&lt;p&gt;&lt;code&gt;迭代器模式&lt;/code&gt;用于在数据集合中按照顺序遍历集合，遍历的顺序可以自定义，&lt;code&gt;从前往后&lt;/code&gt;、&lt;code&gt;从后往前&lt;/code&gt;、&lt;code&gt;跳跃式遍历&lt;/code&gt;都可以。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;迭代器模式&lt;/code&gt;是一种对接口编程的思想，迭代的过程不依赖于迭代目标的实现，而是通过迭代器来实现遍历，减少了类与类之间的耦合性。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

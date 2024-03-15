@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>MySQL必知必会 - 使用视图 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="使用视图" /><meta name="keywords" content="Books, MySQL必知必会" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/6_mysql%E4%BD%BF%E7%94%A8%E8%A7%86%E5%9B%BE/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">MySQL必知必会 - 使用视图</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-10-29 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/books/"> Books </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/"> MySQL必知必会 </a>
+            </div>
+          <span class="more-meta"> 564 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#创建视图">创建视图</a></li>
+        <li><a href="#查看视图">查看视图</a></li>
+        <li><a href="#修改视图">修改视图</a></li>
+        <li><a href="#删除视图">删除视图</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>视图是虚拟的表，仅仅是用来查看存储在别处的数据的一种设施，视图本身不包含数据，它们返回的数据是从其他表中检索出来的，在添加或更改这些表中的数据时，视图将返回改变后的数据。</p>
+<p>视图的应用：</p>
+<ul>
+<li>主要同于数据检索(select 语句)，而不用于更新(insert、update和delete)</li>
+<li>重用SQL语句</li>
+<li>简化复杂的SQL操作。在编写查询后，可以方便地重用它而不必知道它的基本查询细节</li>
+<li>使用表的组成部分而不是整个表</li>
+<li>保护数据。可以给用户授予表的特定部分的访问权限而不是整个表的访问权限</li>
+<li>更改数据格式和表时。视图可返回与底层表的表示和格式不同的数据</li>
+</ul>
+<p>性能问题：每次使用视图时，都必须处理查询执行时所需的任一个检索。</p>
+<h2 id="创建视图">创建视图</h2>
+<p>使用<code>create view VIEW_NAME as *</code>来创建视图。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">productcustomers</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">as</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">select</span><span class="w"> </span><span class="n">cust_name</span><span class="p">,</span><span class="w"> </span><span class="n">cust_contact</span><span class="p">,</span><span class="w"> </span><span class="n">prod_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">from</span><span class="w"> </span><span class="n">customers</span><span class="p">,</span><span class="w"> </span><span class="n">orders</span><span class="p">,</span><span class="w"> </span><span class="n">orderitems</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">where</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">cust_id</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">orderitems</span><span class="p">.</span><span class="n">order_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">order_num</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">cust_name</span><span class="p">,</span><span class="w"> </span><span class="n">cust_contact</span><span class="p">,</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">productcustomers</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+---------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">cust_name</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">cust_contact</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+---------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">ANV01</span><span class="w">   </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">ANV02</span><span class="w">   </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">FB</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">FB</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">OL1</span><span class="w">     </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">SLING</span><span class="w">   </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">ANV03</span><span class="w">   </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Wascals</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">Jim</span><span class="w"> </span><span class="n">Jones</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">JP2000</span><span class="w">  </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Yosemite</span><span class="w"> </span><span class="n">Place</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Sam</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">Fudd</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">Fudd</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="n">FC</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+---------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">11</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>视图种嵌套视图。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">tntproduct</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">as</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">productcustomers</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;tnt2&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">tntproduct</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+---------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">cust_name</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">cust_contact</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+---------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Yosemite</span><span class="w"> </span><span class="n">Place</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Sam</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">    </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+--------------+---------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">2</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查看视图">查看视图</h2>
+<p>使用<code>show create view VIEW_NAME</code>可以查看创建视图的语句。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">productcustomers</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="k">View</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="k">Create</span><span class="w"> </span><span class="k">View</span><span class="w">                                                                                                                                                                                                                                                                                                                                                                                          </span><span class="o">|</span><span class="w"> </span><span class="n">character_set_client</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">collation_connection</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">productcustomers</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="n">ALGORITHM</span><span class="o">=</span><span class="n">UNDEFINED</span><span class="w"> </span><span class="k">DEFINER</span><span class="o">=`</span><span class="n">root</span><span class="o">`@`</span><span class="n">localhost</span><span class="o">`</span><span class="w"> </span><span class="k">SQL</span><span class="w"> </span><span class="k">SECURITY</span><span class="w"> </span><span class="k">DEFINER</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="o">`</span><span class="n">productcustomers</span><span class="o">`</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">`</span><span class="n">customers</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">cust_name</span><span class="o">`</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="n">cust_name</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">customers</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">cust_contact</span><span class="o">`</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="n">cust_contact</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">orderitems</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">prod_id</span><span class="o">`</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="n">prod_id</span><span class="o">`</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="p">((</span><span class="o">`</span><span class="n">customers</span><span class="o">`</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="o">`</span><span class="n">orders</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="o">`</span><span class="n">orderitems</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">((</span><span class="o">`</span><span class="n">customers</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">cust_id</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">`</span><span class="n">orders</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">cust_id</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">orderitems</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">order_num</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">`</span><span class="n">orders</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">order_num</span><span class="o">`</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">utf8</span><span class="w">                 </span><span class="o">|</span><span class="w"> </span><span class="n">utf8_general_ci</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="修改视图">修改视图</h2>
+<p>使用<code>creat or replace view VIEW_NAME *</code>来修改数据库中已存在的视图，如果不存在该视图，则会新建视图。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">productcustomers</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">as</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">select</span><span class="w"> </span><span class="n">cust_name</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">cn</span><span class="p">,</span><span class="w"> </span><span class="n">cust_contact</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">cc</span><span class="p">,</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">pi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">from</span><span class="w"> </span><span class="n">customers</span><span class="p">,</span><span class="w"> </span><span class="n">orders</span><span class="p">,</span><span class="w"> </span><span class="n">orderitems</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">where</span><span class="w"> </span><span class="n">customers</span><span class="p">.</span><span class="n">cust_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">cust_id</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">orderitems</span><span class="p">.</span><span class="n">order_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">order_num</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">productcustomers</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+-----------+--------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">cn</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="n">cc</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">pi</span><span class="w">     </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+-----------+--------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">ANV01</span><span class="w">  </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">ANV02</span><span class="w">  </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">   </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">FB</span><span class="w">     </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">FB</span><span class="w">     </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">OL1</span><span class="w">    </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">SLING</span><span class="w">  </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Coyote</span><span class="w"> </span><span class="n">Inc</span><span class="p">.</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Lee</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">ANV03</span><span class="w">  </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Wascals</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">Jim</span><span class="w"> </span><span class="n">Jones</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">JP2000</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">Yosemite</span><span class="w"> </span><span class="n">Place</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="n">Sam</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">TNT2</span><span class="w">   </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">Fudd</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">Fudd</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">FC</span><span class="w">     </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------+-----------+--------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">11</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="删除视图">删除视图</h2>
+<p>使用<code>drop view VIEW_NAME</code>来删除视图。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">drop</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">productcustomers</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">productcustomers</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ERROR</span><span class="w"> </span><span class="mi">1146</span><span class="w"> </span><span class="p">(</span><span class="mi">42</span><span class="n">S02</span><span class="p">):</span><span class="w"> </span><span class="k">Table</span><span class="w"> </span><span class="s1">&#39;test.productcustomers&#39;</span><span class="w"> </span><span class="n">doesn</span><span class="s1">&#39;t exist
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-10-29
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/books/">Books</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">MySQL必知必会</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/7_mysql%E4%BD%BF%E7%94%A8%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">MySQL必知必会 - 使用存储过程</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/1_sql%E5%9F%BA%E7%A1%80/">
+            <span class="next-text nav-default">MySQL必知必会 - 基础入门</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

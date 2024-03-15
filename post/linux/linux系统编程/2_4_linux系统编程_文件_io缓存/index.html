@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Linux系统编程:文件_IO缓存 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="Linux系统编程:文件_IO缓存" /><meta name="keywords" content="Linux, Linux系统编程" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_4_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_io%E7%BC%93%E5%AD%98/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Linux系统编程:文件_IO缓存</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-23 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/linux/"> Linux </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"> Linux系统编程 </a>
+            </div>
+          <span class="more-meta"> 315 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#io缓存概览">I/O缓存概览</a></li>
+        <li><a href="#stdio库的缓存">stdio库的缓存</a>
+          <ul>
+            <li><a href="#设置stdio流的缓存模式">设置stdio流的缓存模式</a></li>
+          </ul>
+        </li>
+        <li><a href="#文件io系统调用的缓存">文件I/O系统调用的缓存</a>
+          <ul>
+            <li><a href="#同步io数据完整性和同步io文件完整性">同步I/O数据完整性和同步I/O文件完整性</a></li>
+            <li><a href="#在open时指定同步策略">在open时指定同步策略</a></li>
+          </ul>
+        </li>
+        <li><a href="#直接io">直接I/O</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="io缓存概览">I/O缓存概览</h2>
+<p><img src="https://alfonsxh.github.io/Blog/images/Linux/Chapter13/13_io_cache.png" alt="I/O_cache"></p>
+<p>Linux系统中的 <strong>文件I/O缓存</strong> 操作大致如上图所示：</p>
+<ul>
+<li><strong>用户态空间</strong>
+<ul>
+<li>一般情况下，我们是通过 <strong>stdio库函数</strong> 来操作文件，包括 <strong>printf()、scanf()、fopen()等</strong>。<strong>在调用stdio库函数</strong> 时，默认会先存放在用户态空间申请的 <strong>stdio缓存区中</strong>。</li>
+<li>不过，但如果使用 <strong>setvbuf()、setbuf()、setbuffer()</strong> 函数使 <strong>stdio缓存区无效</strong> 时，<strong>stdio库函数</strong> 在执行时会立即调用 <strong>I/O系统调用</strong>。</li>
+<li>另外，如果使用了 <strong>fflush()</strong>，那么立刻刷新 <strong>stdio缓存区</strong>，执行 <strong>I/O系统调用</strong>。</li>
+</ul>
+</li>
+<li><strong>内核态空间</strong>
+<ul>
+<li>在内核态空间，默认会有 <strong>内核高速缓存区</strong> 用来存储需要 <strong>写入磁盘的内容</strong>。</li>
+<li><strong>在使用I/O系统调用</strong> 时，如果指定了 <strong>open()函数</strong> 的打开方式为 <strong>O_SYNC模式</strong>，那么 <strong>I/O系统调用</strong> 处理的内容不会经过 <strong>内核高速缓存区</strong>，而是直接由内核发起写操作，将内容写入磁盘。</li>
+<li>和stdio库函数操作缓存区类似，也有刷新 <strong>内核高速缓存区</strong> 的系统调用：<strong>fsync()、fdatasync()、sync()</strong>。</li>
+<li>另外，会有 <strong>内核线程定时刷新内核高速缓存区</strong>。</li>
+</ul>
+</li>
+<li><strong>磁盘空间</strong>
+<ul>
+<li>现在大多数 <strong>磁盘驱动</strong> 也会创建自己的 <strong>磁盘驱动缓存区</strong>。</li>
+<li>由内核发起的写操作，会先缓存在磁盘驱动缓存区中，然后再写入磁盘。</li>
+</ul>
+</li>
+</ul>
+<p>Linux系统的文件I/O缓存大致就分为以上三个缓存区：<strong>stdio缓存区</strong>、<strong>内核高速缓存区</strong>、<strong>磁盘驱动缓存区</strong>。</p>
+<h2 id="stdio库的缓存">stdio库的缓存</h2>
+<p><strong>stdio缓存区</strong> 的作用在于，使得我们在调用 <strong>stdio库函数对数据进行读写</strong> 时，避免了频繁的进行文件操作。文件操作是对磁盘上的数据进行操作，相对于操作内存而言，会比较耗时。</p>
+<!-- 另外，是否耗时也与 **stdio缓存区** 的大小有关，小的缓存区，相对于大的缓存区，需要更频繁的调用系统调用，也会相对的增加I/O处理的时间消耗。
+
+选择 **大小合适的stdio缓存区** 很重要！ -->
+<h3 id="设置stdio流的缓存模式">设置stdio流的缓存模式</h3>
+<p>对于 <strong>stdio缓冲区大小的设置</strong> 有以下函数： <strong>stevbuf</strong>、<strong>setbuf</strong>、<strong>setbuffer</strong>。</p>
+<h4 id="stevbuf">stevbuf</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">setvbuf</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">mode</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>stream</strong> - 指定需要修改哪个文件流的缓冲，打开流后，必须在调用任何其他stdio函数之前先调用 <strong>setvbuf()</strong>。后续对流的操作将会根据setvbuf函数设置来操作。</li>
+<li><strong>buf</strong> - <strong>自定义的缓存区</strong>。
+<ul>
+<li>可以是静态设置的 <strong>buf[1024]</strong>，也可以是在堆上分配的 <strong>buf = malloc(1024)</strong></li>
+<li>但不能是栈上的，在销毁时会使程序发生错误。</li>
+<li>buf可以为NULL，此时会为stream自动分配一个缓存区。</li>
+</ul>
+</li>
+<li><strong>size</strong> - 自定义缓冲区的大小，buf为NULL时，忽略此选项。</li>
+<li><strong>mode</strong> - 缓存区类型。
+<ul>
+<li><strong>_IONBF(no?)</strong> - 不缓存，直接调用系统调用。 <strong>setvbuf(stdout, NULL, _IONBF, 0)</strong></li>
+<li><strong>_IOLBF(line?)</strong> - 行缓存
+<ul>
+<li>对于输出流，当遇到换行符或者缓存区已满时，刷新缓存区。</li>
+<li>对于输入流，每次读取一行数据。</li>
+</ul>
+</li>
+<li><strong>_IOFBF(full?)</strong> - 全缓存，当缓存区满了，才调用系统调用。也就是说，单次调用 <strong>read()、write()</strong> 函数会直接操作buf。</li>
+</ul>
+</li>
+</ul>
+<h4 id="setbuf">setbuf</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setbuf</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>setbuf(fp, buf)</strong> 调用和 <strong>setvbuf(fp, buf, (buf != BULL)? _IOFBF: _IONBF, BUF_SIZE)</strong> 的效果一样。</p>
+<ul>
+<li>如果buf为NULL，则使用 <strong>无缓存模式</strong>。</li>
+<li>如果buf不为NULL，则使用 <strong>全缓存模式</strong>。</li>
+<li><strong>BUF_SIZE</strong> 会根据buf的大小自行决定。</li>
+</ul>
+<h4 id="setvbuf">setvbuf</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define _BSD_SOURCE
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setbuffer</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>setbuffer(fp, buf, size)</strong> 调用相当于调用了 <strong>setvbuf(fp, buf, (buf != NULL)? _IOFBF: _IONBF, size)</strong>。</p>
+<ul>
+<li>和setbuf一样的效果，只不过调用者可以指定buf的大小了。</li>
+</ul>
+<h4 id="fflush">fflush</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">fflush</span><span class="p">(</span><span class="n">FILE</span><span class="o">*</span> <span class="n">stream</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>强制刷新stream指定的缓存区，如果参数为NULL，将会 <strong>刷新所有的stdio缓存区</strong>。</p>
+<h2 id="文件io系统调用的缓存">文件I/O系统调用的缓存</h2>
+<p>在使用write系统调用时，数据会保存在内存中，而并不是第一时间写入磁盘，而是等待 <strong>内核线程pdflush</strong> 刷新了 <strong>内核高速缓存区</strong> 才将数据写入。</p>
+<p>如果操作系统，在write操作之后，磁盘同步数据之前发生了崩溃，那么这一部分的数据将不会写入磁盘，造成了丢失。</p>
+<h3 id="同步io数据完整性和同步io文件完整性">同步I/O数据完整性和同步I/O文件完整性</h3>
+<ul>
+<li><strong>同步I/O数据完整性(synchronized I/O data integrity completion)</strong>
+<ul>
+<li>就读操作而言，在读操作之前，如果存在改变磁盘数据内容的写操作，会先执行写操作。</li>
+<li>就写操作而言，由于大多数情况下，<strong>文件元数据</strong> 和 <strong>文件数据</strong> 一般不在相同的区域，当只是对文件进行了修改(文件大小并未改变)时，文件的修改日期就不会立即写入磁盘。下次读取文件信息时，会在缓存中读取文件的改变日期，而不是重新在磁盘上读取。</li>
+</ul>
+</li>
+<li><strong>同步I/O文件完整性(synchronized I/O file integrity completion)</strong>
+<ul>
+<li>所有的数据都会同时写入磁盘，即使部分元数据对后续的读操作中并无用处。</li>
+</ul>
+</li>
+</ul>
+<p>文件完整性使用的系统调用为 <strong>fsync</strong>。数据完整性使用的系统调用为 <strong>fdatasync</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">fsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">fdatasync</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>fsync和fdatasync</strong> 能够 <strong>使得数据保持完整性</strong>，但是对于性能来说却很糟糕。在执行这两条命令时，需要 <strong>等待磁盘I/O操作执行完毕</strong>，这部分的时间相对于程序来说是很长的。</p>
+<p><strong>fdatasync</strong> 相对于 <strong>fsync</strong> 来说，<strong>减少了一次元数据的写入过程</strong>，对于减少I/O操作次数是很有用的，比如对于性能要求极高，而对于某些元数据(时间戳)的准确性要求不高的应用，很有帮助。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">sync</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>sync系统调用</strong> 将刷新所有的内核缓存区，当所有数据都已经写入磁盘时，才返回。这一过程是相当耗时的。</p>
+<h3 id="在open时指定同步策略">在open时指定同步策略</h3>
+<p>除了上面的手动同步数据外，还可以在open系统调用使用时，设置打开模式，启动相应的同步策略。</p>
+<ul>
+<li><strong>O_SYNC</strong> - 每个write()调用都会 <strong>按照文件完整性</strong> 自动将文件数据和元数据刷新到磁盘上。</li>
+<li><strong>O_DSYNC</strong> - 每个write()调用都会 <strong>按照数据完整性</strong> 进行操作。</li>
+<li><strong>O_RSYNC</strong> - 和 <strong>O_SYNC以及O_DSYNC</strong> 配合使用，按照两者的处理方式 <strong>进行读操作</strong>。</li>
+</ul>
+<h2 id="直接io">直接I/O</h2>
+<p>在使用open系统调用时，如果使用了参数 <strong>O_DIRECT</strong>，将使得打开的文件不使用 <strong>内核高速缓存区</strong>。</p>
+<p>不推荐使用 <strong>直接I/O</strong>，内核针对 <strong>内核缓存区</strong> 做了很多优化，如果使用了 <strong>直接I/O</strong> 将无法受益于这一优化措施。</p>
+<p>但对于某些数据库系统来说，高速缓存和I/O优化机制都需要自己实现，无需内核消耗CPU时间和内存来完成相同的任务。</p>
+<h2 id="总结">总结</h2>
+<ul>
+<li>操作系统对数据的缓存无处不在：
+<ul>
+<li>寄存器缓存：L1、L2、L3(目前主流三级)，用于缓存内存数据。</li>
+<li>stdio缓存区，处于用户态空间，缓存文件数据。</li>
+<li>内核高速缓存区，缓存系统调用修改的数据。</li>
+<li>磁盘驱动缓存区，数据写入磁盘前，驱动层面对数据进行缓存。</li>
+</ul>
+</li>
+<li><strong>stdio缓存区</strong>
+<ul>
+<li>stdio库函数使用 <strong>stdio缓存区</strong> 对 <strong>文件流数据</strong> 进行缓存。</li>
+<li>可以使用 <strong>setvbuf、setbuf、setbuffer</strong> 来 <strong>自行设置文件流的stdio缓存区</strong>。</li>
+<li>setvbuf可以选择三种模式，常用的模式为 <strong>无缓存</strong> 和 <strong>全缓存</strong>。</li>
+<li>使用fflush强制刷新指定文件流的stdio缓存区，将调用 <strong>write()</strong> 将数据刷新到 <strong>内核高速缓存区</strong>。</li>
+</ul>
+</li>
+<li><strong>内核高速缓存区</strong>
+<ul>
+<li>对于内核高速缓存区，可以调用 <strong>fsync</strong> 和 <strong>fdatasync</strong> 手动刷新指定 <strong>文件描述符</strong> 的缓存。</li>
+<li><strong>fsync</strong> 为 <strong>文件完整性同步</strong>，会将文件的 <strong>原始数据和元数据</strong> 都写入磁盘。</li>
+<li><strong>fdatasync</strong> 为 <strong>数据完整性同步</strong>，将 <strong>原始数据</strong> 写入磁盘。</li>
+<li>同步数据是件很耗时的工作，如果频繁的调用，<strong>会严重影响性能</strong>！！</li>
+<li>内核会定期调用 <strong>内核线程pdflush</strong> 对 <strong>内容发生变化并且在规定时间内未显示的同步到磁盘上的文件</strong> 进行同步，目的是规避缓冲区与磁盘内容长期不一致的问题。</li>
+</ul>
+</li>
+<li>内核对 <strong>内核高速缓存区</strong> 做了很好的优化，一般情况下，不需要使用 <strong>直接I/O</strong>。</li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-04-25
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/linux/">Linux</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/">Linux系统编程</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/docker/docker_4_%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Docker(五) - 创建私有镜像仓库</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_3_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/">
+            <span class="next-text nav-default">Linux系统编程:文件_深入理解文件描述符</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

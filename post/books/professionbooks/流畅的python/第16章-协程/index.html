@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>流畅的Python - 第16章-协程 - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="第16章-协程" /><meta name="keywords" content="Books, 流畅的Python" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC16%E7%AB%A0-%E5%8D%8F%E7%A8%8B/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">流畅的Python - 第16章-协程</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-07-26 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/books/"> Books </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/%E6%B5%81%E7%95%85%E7%9A%84python/"> 流畅的Python </a>
+            </div>
+          <span class="more-meta"> 594 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#yield关键字">yield关键字</a></li>
+        <li><a href="#协程">协程</a></li>
+        <li><a href="#协程的终止和异常处理">协程的终止和异常处理</a></li>
+        <li><a href="#yield-from">yield from</a>
+          <ul>
+            <li><a href="#用法一链接可迭代的对象">用法一：链接可迭代的对象</a></li>
+            <li><a href="#用法二委派生成器">用法二：委派生成器</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="yield关键字">yield关键字</h2>
+<p><code>yield</code>关键字主要有两个使用方式：</p>
+<ul>
+<li><code>yield item:</code>会产出一个值，提供给<code>next(...)</code>的调用方。也可以不产生值，需要<code>yield</code>后面不跟任何参数，返回值为None</li>
+<li><code>i = yield：</code>从调用方接收数据。调用方通过<code>.send(...)</code>的方式将数据提供给协程。</li>
+<li><code>yield：</code>既不接收也不发送数据，纯粹作为流程控制使用。</li>
+</ul>
+<p>将<code>yield</code>作为协程使用时，通常也是将其作为<code>流程控制</code>的调度器使用。</p>
+<h2 id="协程">协程</h2>
+<p>简单的例子开始说起。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">inspect</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">simple_coroutine2</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;-&gt; Started: a = &#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">b</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">a</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;-&gt; Received: b = &#34;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;-&gt; Received: c = &#34;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">c</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">my_cor2</span> <span class="o">=</span> <span class="n">simple_coroutine2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;my_cor2 state -&gt; &#34;</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getgeneratorstate</span><span class="p">(</span><span class="n">my_cor2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">my_cor2 -&gt; &#34;</span><span class="p">,</span> <span class="n">my_cor2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;next(my_cor2) - &gt; &#34;</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">my_cor2</span><span class="p">))</span>         <span class="c1"># 激活， 执行yield a，返回a的值。</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;my_cor2 state -&gt; &#34;</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getgeneratorstate</span><span class="p">(</span><span class="n">my_cor2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;my_cor2.send(10) - &gt; &#34;</span><span class="p">,</span> <span class="n">my_cor2</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># 发送10， 执行 b = yeild，打印 Recevied，执行 yield a + b， 返回 a + b 的结果，断住。</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;my_cor2 state -&gt; &#34;</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getgeneratorstate</span><span class="p">(</span><span class="n">my_cor2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">my_cor2.send(21) - &gt; &#34;</span><span class="p">,</span> <span class="n">my_cor2</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">21</span><span class="p">))</span>  <span class="c1"># 产生StopIteration异常，并不会打印此内容</span>
+</span></span><span class="line"><span class="cl"><span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;cor StopIteration!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;e = &#34;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;my_cor2 state -&gt; &#34;</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getgeneratorstate</span><span class="p">(</span><span class="n">my_cor2</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>产生的结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">my_cor2 state -&gt;  GEN_CREATED
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">my_cor2 -&gt;  &lt;generator object simple_coroutine2 at 0x7fe1668633b8&gt;
+</span></span><span class="line"><span class="cl">-&gt; Started: <span class="nv">a</span> <span class="o">=</span>  <span class="m">1</span>
+</span></span><span class="line"><span class="cl">next<span class="o">(</span>my_cor2<span class="o">)</span> - &gt;  <span class="m">1</span>
+</span></span><span class="line"><span class="cl">my_cor2 state -&gt;  GEN_SUSPENDED
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-&gt; Received: <span class="nv">b</span> <span class="o">=</span>  <span class="m">10</span>
+</span></span><span class="line"><span class="cl">my_cor2.send<span class="o">(</span>10<span class="o">)</span> - &gt;  <span class="m">11</span>
+</span></span><span class="line"><span class="cl">my_cor2 state -&gt;  GEN_SUSPENDED
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-&gt; Received: <span class="nv">c</span> <span class="o">=</span>  <span class="m">21</span>
+</span></span><span class="line"><span class="cl">cor StopIteration!
+</span></span><span class="line"><span class="cl"><span class="nv">e</span> <span class="o">=</span>  <span class="m">21</span>         <span class="c1"># 将返回值当做异常捕获</span>
+</span></span><span class="line"><span class="cl">my_cor2 state -&gt;  GEN_CLOSED
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>yield</code>执行顺序是：先执行<code>yield item</code>，再执行<code>i = yield</code>。</p>
+<p>所以，要想<code>i = yield</code>生效，需要先调用<code>next(...)</code>，让生成器启动起来。这个过程称为<code>预激</code>。</p>
+<p><code>预激</code>过程也可以使用装饰器来完成，可以自己定义，也可以使用系统自带的<code>from coroutil import coroutine</code>。</p>
+<p>另外，再最后一个<code>i = yield</code>接收完数据后会抛出<code>StopIteration</code>的异常，异常捕获后的值是原始函数的返回值，这个是正常情况。</p>
+<p>协程有四种状态：</p>
+<ul>
+<li><code>GEN_CREATED：</code>等待开始执行状态。</li>
+<li><code>GEN_RUNNING：</code>解释器正在执行状态。</li>
+<li><code>GEN_SUSPENDED：</code>在yield表达式处挂起。</li>
+<li><code>GEN_CLOSE：</code>执行结束。</li>
+</ul>
+<p>使用<code>inspect.getgeneratorstate(...)</code>函数能够捕获对应的状态。</p>
+<h2 id="协程的终止和异常处理">协程的终止和异常处理</h2>
+<p>停止协程的方式还是让它产生异常。</p>
+<ul>
+<li>可以隐式的<code>.send(...)</code>一个不符合要求的数据，使其产生异常退出，如果有对应的捕获异常的函数，则能够正常结束。</li>
+<li>显式的调用<code>throw</code>和<code>close</code>方法也能结束协程。
+<ul>
+<li><code>throw</code>方法是致使生成器在暂停的<code>yield</code>表达式处抛出指定的异常。</li>
+<li><code>close</code>方法是致使生成器在暂停的<code>yield</code>表达式处抛出<code>GeneratorExit</code>异常。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>在<code>for</code>循环中，如果<code>for</code>的对象是一个生成器的话，到最后也会抛出异常，只不过循环机制已经将异常做了相应的处理。</p>
+</blockquote>
+<h2 id="yield-from">yield from</h2>
+<p><code>yield from</code>类似于其他语言的<code>await</code>关键字(还没研究过这个关键字&hellip;)。</p>
+<h3 id="用法一链接可迭代的对象">用法一：链接可迭代的对象</h3>
+<p><code>yield from</code>最简单的作用就是链接可迭代的对象。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 下面两个函数使用的方式不同，但是结果一样</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">gen0</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="s2">&#34;ABC&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">yield</span> <span class="n">char</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">yield</span> <span class="n">num</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">gen0</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">gen</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">yield from</span> <span class="s2">&#34;ABC&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">yield from</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">gen</span><span class="p">()))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>打印出的结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span><span class="s1">&#39;A&#39;</span>, <span class="s1">&#39;B&#39;</span>, <span class="s1">&#39;C&#39;</span>, 0, 1, 2, 3, 4, 5, 6<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span><span class="s1">&#39;A&#39;</span>, <span class="s1">&#39;B&#39;</span>, <span class="s1">&#39;C&#39;</span>, 0, 1, 2, 3, 4, 5, 6<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="用法二委派生成器">用法二：委派生成器</h3>
+<p><code>yield from</code>还有一个更重要的用法！<code>打开双向通道，把最外层的调用方与最内层的自生成器连接起来，两者可以直接发送和产生值，还可以直接传入异常，而不用在位于中间的协程中添加大量处理异常的样板代码。</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Result</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&#34;Result&#34;</span><span class="p">,</span> <span class="s2">&#34;count,average&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 子生成器</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">Averager</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">average</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">term</span> <span class="o">=</span> <span class="k">yield</span>            <span class="c1"># 这里接收的是main函数中send的值</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">term</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>        <span class="c1"># 这个判断是必须的，否则会一直循环下去，无法返回</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl">        <span class="n">total</span> <span class="o">+=</span> <span class="n">term</span>
+</span></span><span class="line"><span class="cl">        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">average</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="n">count</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># raise StopIteration(Result(2, 3)) # yield from会捕获StopIteration的第一个参数当做返回值</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Result</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">average</span><span class="p">)</span>       <span class="c1"># 子生成器产生的值都直接传给委派生成器的调用方，即main函数</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 委派生成器</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">Grouper</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">results</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="k">yield from</span> <span class="n">Averager</span><span class="p">()</span>  <span class="c1"># yield from会捕获StopIteration的第一个参数当做返回值，即results[key]=StopIteration[0]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">Report</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">group</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&#34;;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">{:2}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> averaging </span><span class="si">{:.2f}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">count</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">values</span><span class="o">.</span><span class="n">average</span><span class="p">,</span> <span class="n">unit</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 调用方</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">group</span> <span class="o">=</span> <span class="n">Grouper</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">next</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>                 <span class="c1"># 预激</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">group</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>       <span class="c1"># 发送给自生成器的值</span>
+</span></span><span class="line"><span class="cl">        <span class="n">group</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>            <span class="c1"># 停止信号！</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Report</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">datas</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;girls;kg&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">40.9</span><span class="p">,</span> <span class="mf">38.5</span><span class="p">,</span> <span class="mf">44.3</span><span class="p">,</span> <span class="mf">42.2</span><span class="p">,</span> <span class="mf">45.2</span><span class="p">,</span> <span class="mf">41.7</span><span class="p">,</span> <span class="mf">44.5</span><span class="p">,</span> <span class="mf">38.0</span><span class="p">,</span> <span class="mf">40.6</span><span class="p">,</span> <span class="mf">44.5</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;girls;m&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.41</span><span class="p">,</span> <span class="mf">1.39</span><span class="p">,</span> <span class="mf">1.33</span><span class="p">,</span> <span class="mf">1.46</span><span class="p">,</span> <span class="mf">1.45</span><span class="p">,</span> <span class="mf">1.43</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;boys;kg&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">40.9</span><span class="p">,</span> <span class="mf">38.5</span><span class="p">,</span> <span class="mf">44.3</span><span class="p">,</span> <span class="mf">42.2</span><span class="p">,</span> <span class="mf">45.2</span><span class="p">,</span> <span class="mf">41.7</span><span class="p">,</span> <span class="mf">44.5</span><span class="p">,</span> <span class="mf">38.0</span><span class="p">,</span> <span class="mf">40.6</span><span class="p">,</span> <span class="mf">44.5</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;boys;m&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.41</span><span class="p">,</span> <span class="mf">1.39</span><span class="p">,</span> <span class="mf">1.33</span><span class="p">,</span> <span class="mf">1.46</span><span class="p">,</span> <span class="mf">1.45</span><span class="p">,</span> <span class="mf">1.43</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">(</span><span class="n">datas</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 输出结果如下。</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;</span> <span class="mi">10</span> <span class="n">girls</span> <span class="n">averaging</span> <span class="mf">42.04</span> <span class="n">kg</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;</span> <span class="mi">10</span> <span class="n">girls</span> <span class="n">averaging</span> <span class="mf">1.43</span> <span class="n">m</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;</span> <span class="mi">10</span> <span class="n">boys</span> <span class="n">averaging</span> <span class="mf">42.04</span> <span class="n">kg</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;</span> <span class="mi">10</span> <span class="n">boys</span> <span class="n">averaging</span> <span class="mf">1.43</span> <span class="n">m</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在上述例子中，<code>调用方main函数</code>内部通过参数<code>group</code>定义为生成器，在<code>委派生成器grouper()</code>中使用<code>yield from Averager(...)</code>时，<code>子生成器Averager()</code>会获得控制权，把生成的值传给<code>委派生成器grouper()</code>的调用方<code>main函数</code>，即<code>main()</code>直接和<code>Averager()</code>接触。与此同时<code>委派生成器grouper()</code>将会阻塞，直到<code>子生成器Averager()</code>终止。</p>
+<p><img src="https://alfonsxh.github.io/Blog/images/Books/ProfessionBooks/%E6%B5%81%E7%95%85%E7%9A%84Python/16-yield-from.png" alt="16-yield-from.png"></p>
+<p>整个过程中，<code>委派生成器</code>只做中间管道的部分。</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-08-18
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/books/">Books</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/%E6%B5%81%E7%95%85%E7%9A%84python/">流畅的Python</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E6%B5%81%E7%95%85%E7%9A%84python/%E7%AC%AC18%E7%AB%A0-%E4%BD%BF%E7%94%A8asyncio%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">流畅的Python - 第18章-使用asyncio处理并发</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/books/professionbooks/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/elf%E6%96%87%E4%BB%B6/">
+            <span class="next-text nav-default">程序员的自我修养 - Elf文件</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

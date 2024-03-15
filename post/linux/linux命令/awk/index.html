@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>awk - Alfons&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Alfons" /><meta name="description" content="awk" /><meta name="keywords" content="Linux, Linux命令" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.123.8 with theme even" />
+
+
+<link rel="canonical" href="https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/awk/" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://alfonsxh.github.io/Blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alfonsxh.github.io/Blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alfonsxh.github.io/Blog/favicon-16x16.png">
+<link rel="manifest" href="https://alfonsxh.github.io/Blog/manifest.json">
+<link rel="mask-icon" href="https://alfonsxh.github.io/Blog/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="https://alfonsxh.github.io/Blog/Blog/sass/main.min.cb68f97bc9cece255d217346d970e3c62623408634e500c330a62fadabbbe77c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://alfonsxh.github.io/Blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://alfonsxh.github.io/Blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://alfonsxh.github.io/Blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://alfonsxh.github.io/Blog/leetcodes/">
+        <li class="mobile-menu-item">LeetCodes</li>
+      </a><a href="https://alfonsxh.github.io/Blog/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://alfonsxh.github.io/Blog/" class="logo">Alfons&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/leetcodes/">LeetCodes</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://alfonsxh.github.io/Blog/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">awk</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-23 </span>
+        <div class="post-category">
+            <a href="https://alfonsxh.github.io/Blog/categories/linux/"> Linux </a>
+            <a href="https://alfonsxh.github.io/Blog/categories/linux%E5%91%BD%E4%BB%A4/"> Linux命令 </a>
+            </div>
+          <span class="more-meta"> 613 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#工作原理">工作原理</a></li>
+        <li><a href="#例子">例子</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><strong>awk命令</strong> 输入的数据为 <strong>行数据</strong>，经过一些判别处理后，按对应的格式输出。</p>
+<p>一般的命令格式为： <code>awk [选项] '程序' 文件</code>。</p>
+<p>常用选项：</p>
+<ul>
+<li><strong>-F fs</strong>：fs指定输入分隔符，fs可以是字符串或正则表达式，如-F:，以&quot;：&ldquo;作为分割符。</li>
+<li><strong>-v var=value</strong>：赋值一个用户定义变量，将外部变量传递给awk。</li>
+<li><strong>-f scripfile</strong>：从脚本文件中读取awk命令。</li>
+</ul>
+<p>程序部分可以是下面的任意一种或多种形式的组合：</p>
+<ul>
+<li>/正则表达式/：使用通配符的扩展集。</li>
+<li>关系表达式：使用运算符进行操作，可以是字符串或数字的比较测试。</li>
+<li>模式匹配表达式：用运算符~（匹配）和~!（不匹配）。</li>
+<li>BEGIN语句块、pattern语句块、END语句块。</li>
+</ul>
+<p>内建变量:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">内建变量名</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$0</td>
+<td style="text-align:left">当前记录（这个变量中存放着整个行的内容）</td>
+</tr>
+<tr>
+<td style="text-align:left">$1~$n</td>
+<td style="text-align:left">当前记录的第n个字段，字段间由FS分隔</td>
+</tr>
+<tr>
+<td style="text-align:left">FS</td>
+<td style="text-align:left">输入字段分隔符 默认是空格或Tab</td>
+</tr>
+<tr>
+<td style="text-align:left">NF</td>
+<td style="text-align:left">当前记录中的字段个数，就是有多少列</td>
+</tr>
+<tr>
+<td style="text-align:left">NR</td>
+<td style="text-align:left">已经读出的记录数，就是行号，从1开始，如果有多个文件话，这个值也是不断累加中。</td>
+</tr>
+<tr>
+<td style="text-align:left">FNR</td>
+<td style="text-align:left">当前记录数，与NR不同的是，这个值会是各个文件自己的行号</td>
+</tr>
+<tr>
+<td style="text-align:left">RS</td>
+<td style="text-align:left">输入的记录分隔符， 默认为换行符</td>
+</tr>
+<tr>
+<td style="text-align:left">OFS</td>
+<td style="text-align:left">输出字段分隔符， 默认也是空格</td>
+</tr>
+<tr>
+<td style="text-align:left">ORS</td>
+<td style="text-align:left">输出的记录分隔符，默认为换行符</td>
+</tr>
+<tr>
+<td style="text-align:left">FILENAME</td>
+<td style="text-align:left">当前输入文件的名字</td>
+</tr>
+</tbody>
+</table>
+<h2 id="工作原理">工作原理</h2>
+<p><strong>awk脚本</strong> 的基本结构:<code>awk 'BEGIN{ commands } pattern{ commands } END{ commands }'</code>。</p>
+<ul>
+<li><strong>BEGIN语句块</strong>: 在数据读入前执行，如变量的初始化，打印表头等操作可在这里执行。</li>
+<li><strong>pattern语句块</strong>: 这一部分为 <strong>awk命令</strong> 的核心，awk会从文件或者stdin中按行读取内容，由pattern语句部分进行处理。</li>
+<li><strong>END语句块</strong>: 会在处理完所有的数据行后执行，比如打印所有的数据分析结果。</li>
+</ul>
+<h2 id="例子">例子</h2>
+<p>待处理文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">指标	2019年1月	2018年12月	2018年11月	2018年10月	2018年9月	2018年8月	2018年7月	2018年6月	2018年5月	2018年4月	2018年3月	2018年2月
+</span></span><span class="line"><span class="cl">居民消费价格指数(上年同月=100)	101.7	101.9	102.2	102.5	102.5	102.3	102.1	101.9	101.8	101.8	102.1	102.9
+</span></span><span class="line"><span class="cl">食品烟酒类居民消费价格指数(上年同月=100)	102.0	102.4	102.5	102.9	103.0	101.9	101.0	100.8	100.7	101.1	102.0	103.6
+</span></span><span class="line"><span class="cl">衣着类居民消费价格指数(上年同月=100)	101.6	101.5	101.4	101.4	101.2	101.3	101.2	101.1	101.1	101.1	101.1	101.1
+</span></span><span class="line"><span class="cl">居住类居民消费价格指数(上年同月=100)	102.1	102.2	102.4	102.5	102.6	102.5	102.4	102.3	102.2	102.2	102.2	102.2
+</span></span><span class="line"><span class="cl">生活用品及服务类居民消费价格指数(上年同月=100)	101.5	101.4	101.5	101.5	101.6	101.6	101.6	101.5	101.5	101.5	101.6	101.8
+</span></span><span class="line"><span class="cl">交通和通信类居民消费价格指数(上年同月=100)	98.7	99.3	101.6	103.2	102.8	102.7	103.0	102.4	101.8	101.1	100.3	101.5
+</span></span><span class="line"><span class="cl">教育文化和娱乐类居民消费价格指数(上年同月=100)	102.9	102.3	102.5	102.5	102.2	102.6	102.3	101.8	101.9	102.0	102.2	103.7
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>添加前后标识：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ awk <span class="s1">&#39;BEGIN{print &#34;----------awk begin-----------&#34;} {print} END{print &#34;----------awk end--------------&#34;}&#39;</span> awktest.txt
+</span></span><span class="line"><span class="cl">----------awk begin-----------
+</span></span><span class="line"><span class="cl">指标    2019年1月       2018年12月      2018年11月      2018年10月      2018年9月       2018年8月       2018年7月       2018年6月       2018年5月       2018年4月       2018年3月     2018年2月
+</span></span><span class="line"><span class="cl">居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>  101.7   101.9   102.2   102.5   102.5   102.3   102.1   101.9   101.8   101.8   102.1   102.9
+</span></span><span class="line"><span class="cl">食品烟酒类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>        102.0   102.4   102.5   102.9   103.0   101.9   101.0   100.8   100.7   101.1   102.0   103.6
+</span></span><span class="line"><span class="cl">衣着类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>    101.6   101.5   101.4   101.4   101.2   101.3   101.2   101.1   101.1   101.1   101.1   101.1
+</span></span><span class="line"><span class="cl">居住类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>    102.1   102.2   102.4   102.5   102.6   102.5   102.4   102.3   102.2   102.2   102.2   102.2
+</span></span><span class="line"><span class="cl">生活用品及服务类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>  101.5   101.4   101.5   101.5   101.6   101.6   101.6   101.5   101.5   101.5   101.6   101.8
+</span></span><span class="line"><span class="cl">交通和通信类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>      98.7    99.3    101.6   103.2   102.8   102.7   103.0   102.4   101.8   101.1   100.3   101.5
+</span></span><span class="line"><span class="cl">教育文化和娱乐类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>  102.9   102.3   102.5   102.5   102.2   102.6   102.3   101.8   101.9   102.0   102.2   103.7
+</span></span><span class="line"><span class="cl">----------awk end--------------
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>显示增长的百分比：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 先排除第一行(NR==1)，直接打印。</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 第一行之外，遍历每行的各个字段，第一个字段不处理，其余字段格式化输出。</span>
+</span></span><span class="line"><span class="cl">$ awk <span class="s1">&#39;NR==1{print}; NR!=1{for(i=1;i&lt;NF;i++) if(i&gt;1) printf &#34;\t%-0.2f\%&#34;,$i-100;else if(i==1) printf &#34;%-32s&#34;,$i}; { print&#34;\n&#34;;}&#39;</span> <span class="nv">ORS</span><span class="o">=</span><span class="s2">&#34;&#34;</span> awktest.txt 
+</span></span><span class="line"><span class="cl">指标    2019年1月       2018年12月      2018年11月      2018年10月      2018年9月       2018年8月       2018年7月       2018年6月       2018年5月       2018年4月       2018年3月     2018年2月
+</span></span><span class="line"><span class="cl">居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>                  1.70%   1.90%   2.20%   2.50%   2.50%   2.30%   2.10%   1.90%   1.80%   1.80%   2.10%
+</span></span><span class="line"><span class="cl">食品烟酒类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>                2.00%   2.40%   2.50%   2.90%   3.00%   1.90%   1.00%   0.80%   0.70%   1.10%   2.00%
+</span></span><span class="line"><span class="cl">衣着类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>            1.60%   1.50%   1.40%   1.40%   1.20%   1.30%   1.20%   1.10%   1.10%   1.10%   1.10%
+</span></span><span class="line"><span class="cl">居住类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>            2.10%   2.20%   2.40%   2.50%   2.60%   2.50%   2.40%   2.30%   2.20%   2.20%   2.20%
+</span></span><span class="line"><span class="cl">生活用品及服务类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>          1.50%   1.40%   1.50%   1.50%   1.60%   1.60%   1.60%   1.50%   1.50%   1.50%   1.60%
+</span></span><span class="line"><span class="cl">交通和通信类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>              -1.30%  -0.70%  1.60%   3.20%   2.80%   2.70%   3.00%   2.40%   1.80%   1.10%   0.30%
+</span></span><span class="line"><span class="cl">教育文化和娱乐类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>          2.90%   2.30%   2.50%   2.50%   2.20%   2.60%   2.30%   1.80%   1.90%   2.00%   2.20%
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过特殊的字符过滤特定的行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 只显示居住类指标数据</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ～ 为匹配包含后续字符串的内容, !~ 为不匹配</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># /居住/ 为正则匹配规则</span>
+</span></span><span class="line"><span class="cl">$ awk <span class="s1">&#39;NR==1{print}; NR!=1 &amp;&amp; $1 ~ /居住/&#39;</span> awktest.txt 
+</span></span><span class="line"><span class="cl">指标    2019年1月       2018年12月      2018年11月      2018年10月      2018年9月       2018年8月       2018年7月       2018年6月       2018年5月       2018年4月       2018年3月     2018年2月
+</span></span><span class="line"><span class="cl">居住类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>    102.1   102.2   102.4   102.5   102.6   102.5   102.4   102.3   102.2   102.2   102.2   102.2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ awk <span class="s1">&#39;NR==1{print}; NR!=1 &amp;&amp; $1 !~ /居住/&#39;</span> awktest.txt 
+</span></span><span class="line"><span class="cl">指标    2019年1月       2018年12月      2018年11月      2018年10月      2018年9月       2018年8月       2018年7月       2018年6月       2018年5月       2018年4月       2018年3月     2018年2月
+</span></span><span class="line"><span class="cl">居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>  101.7   101.9   102.2   102.5   102.5   102.3   102.1   101.9   101.8   101.8   102.1   102.9
+</span></span><span class="line"><span class="cl">食品烟酒类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>        102.0   102.4   102.5   102.9   103.0   101.9   101.0   100.8   100.7   101.1   102.0   103.6
+</span></span><span class="line"><span class="cl">衣着类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>    101.6   101.5   101.4   101.4   101.2   101.3   101.2   101.1   101.1   101.1   101.1   101.1
+</span></span><span class="line"><span class="cl">生活用品及服务类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>  101.5   101.4   101.5   101.5   101.6   101.6   101.6   101.5   101.5   101.5   101.6   101.8
+</span></span><span class="line"><span class="cl">交通和通信类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>      98.7    99.3    101.6   103.2   102.8   102.7   103.0   102.4   101.8   101.1   100.3   101.5
+</span></span><span class="line"><span class="cl">教育文化和娱乐类居民消费价格指数<span class="o">(</span><span class="nv">上年同月</span><span class="o">=</span>100<span class="o">)</span>  102.9   102.3   102.5   102.5   102.2   102.6   102.3   101.8   101.9   102.0   102.2   103.7
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>统计目录下文件的大小之和：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 通过管道将数据传给awk统计</span>
+</span></span><span class="line"><span class="cl">$ ls -l <span class="p">|</span>awk <span class="s1">&#39;{sum+=$5}; END {printf &#34;%dKB\n&#34;,sum/1024}&#39;</span>
+</span></span><span class="line"><span class="cl">17KB
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Alfons</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-03-23
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href= "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"> Creative Commons BY-NC-ND 3.0 </a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://alfonsxh.github.io/Blog/tags/linux/">Linux</a>
+          <a href="https://alfonsxh.github.io/Blog/tags/linux%E5%91%BD%E4%BB%A4/">Linux命令</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="https://alfonsxh.github.io/Blog/post/linux/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/2_0_linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B_%E6%96%87%E4%BB%B6_%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Linux系统编程:文件_文件系统</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="https://alfonsxh.github.io/Blog/post/linux/linux%E5%91%BD%E4%BB%A4/find/">
+            <span class="next-text nav-default">Linux命令find</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo= 'Alfonsxh/Blog'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/Alfonsxh" class="iconfont icon-github" title="github"></a>
+  <a href="https://alfonsxh.github.io/Blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="https://alfonsxh.github.io/Blog/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2022 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Alfons</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="https://alfonsxh.github.io/Blog/Blog/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
