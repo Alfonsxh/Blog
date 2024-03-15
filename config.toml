@@ -1,4 +1,4 @@
-baseURL = "https://alfonsxh.github.io/Blog/"
+baseURL = "https://alfonsxh.github.io/"
 languageCode = "en"
 defaultContentLanguage = "en"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "Alfons's Blog"
