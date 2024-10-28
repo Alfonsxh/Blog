@@ -2,7 +2,7 @@
 title: "FileResponse实现流式下载大文件"
 date: 2024-10-28T19:02:51+08:00
 lastmod: 2024-10-28T19:02:51+08:00
-draft: true
+draft: false
 keywords: ["Python", "FastAPI"]
 description: "fastapi实现流式下载的一种方式"
 tags: ["Python", "FastAPI"]                    # 归档 
